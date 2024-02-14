@@ -1,0 +1,6153 @@
+1
+00:00:00,821 --> 00:00:03,682
+Okay, welcome back, everyone.
+
+2
+00:00:03,682 --> 00:00:07,528
+Our next session is on security and Mac.
+
+3
+00:00:07,528 --> 00:00:11,671
+Greg Partridge is Professor and Chair
+of the computer science department at
+
+4
+00:00:11,671 --> 00:00:15,180
+Colorado State University and
+would be chairing this session.
+
+5
+00:00:15,180 --> 00:00:18,252
+So I'll hand it off to you Craig,
+go ahead please.
+
+6
+00:00:18,252 --> 00:00:19,827
+>> All right, thank you.
+
+7
+00:00:19,827 --> 00:00:25,191
+And I'm gonna immediately hand
+it over to the next person so
+
+8
+00:00:25,191 --> 00:00:30,030
+we'll go straight to the first talk for
+the session.
+
+9
+00:00:30,030 --> 00:00:36,303
+>> Zhiyi Zhang is a fifth year PhD student
+at the Internet research lab at UCLA.
+
+10
+00:00:36,303 --> 00:00:41,457
+His main research interests are in
+networking, and in network security.
+
+11
+00:00:41,457 --> 00:00:47,276
+And he will be talking about rolling
+out NDN for DDoS mitigation.
+
+12
+00:00:47,276 --> 00:00:48,339
+>> Okay, perfect.
+
+13
+00:00:48,339 --> 00:00:51,911
+We'll get started.
+
+14
+00:00:51,911 --> 00:00:54,490
+Yeah, so I'm glad to be here.
+
+15
+00:00:54,490 --> 00:00:56,121
+I'm Zhiyi from UCLA.
+
+16
+00:00:56,121 --> 00:01:01,657
+And, this work is called rolling
+out NDN for DDoS mitigation,
+
+17
+00:01:01,657 --> 00:01:08,030
+and this is also done by a Sichen from
+UCLA, Angelos from Virginia Tech,
+
+18
+00:01:08,030 --> 00:01:12,224
+Eric from George Mason,
+and Alicia from UCLA.
+
+19
+00:01:12,224 --> 00:01:14,955
+So, okay.
+
+20
+00:01:14,955 --> 00:01:19,810
+So, DDoS, I mentioned it here,
+it can be a killer app.
+
+21
+00:01:19,810 --> 00:01:23,761
+So, we all know that DDoS has
+plagued the internet for decades.
+
+22
+00:01:23,761 --> 00:01:28,509
+And, as we all know, the DDoS is by large
+
+23
+00:01:28,509 --> 00:01:33,415
+enabled by some TCPIPs on, properties.
+
+24
+00:01:33,415 --> 00:01:35,620
+So therefore the DDoS can be a killer app,
+
+25
+00:01:35,620 --> 00:01:38,777
+to push some architectural
+changes of today's internet.
+
+26
+00:01:38,777 --> 00:01:40,746
+And your at any income so
+
+27
+00:01:40,746 --> 00:01:45,976
+our candidate NDN has intrinsic
+DDoS mitigation properties.
+
+28
+00:01:45,976 --> 00:01:51,060
+This includes, for example, off by design,
+we have state of affording,
+
+29
+00:01:51,060 --> 00:01:54,545
+we have named to provide
+better traffic insights.
+
+30
+00:01:54,545 --> 00:01:59,449
+And we can eliminate the reflection
+attack because the data
+
+31
+00:01:59,449 --> 00:02:02,695
+must follow the same path of interest.
+
+32
+00:02:02,695 --> 00:02:08,985
+And before talking about how to bring the
+NDN to reality, to mitigate DDoS attacks,
+
+33
+00:02:08,985 --> 00:02:14,046
+let's first see how today's
+industry practice to mitigate DDoS.
+
+34
+00:02:14,046 --> 00:02:18,767
+So first,
+I show this picture of a CDN network.
+
+35
+00:02:18,767 --> 00:02:22,758
+So we have lines that
+are in their own networks.
+
+36
+00:02:22,758 --> 00:02:27,437
+They connect to the CDN nodes
+where which also add edge, and
+
+37
+00:02:27,437 --> 00:02:34,093
+those CDN nodes connects to the servers as
+Roger and think finally reach the server.
+
+38
+00:02:34,093 --> 00:02:37,591
+So this is how normally CDN is like, but
+
+39
+00:02:37,591 --> 00:02:41,833
+things will be different
+when there's a DDoS.
+
+40
+00:02:41,833 --> 00:02:46,092
+So CDN providers, they have already
+started providing DDoS mitigation
+
+41
+00:02:46,092 --> 00:02:49,383
+services, using their
+existing CDN infrastructure.
+
+42
+00:02:49,383 --> 00:02:51,824
+And when DDoS happened,
+as you can see here.
+
+43
+00:02:51,824 --> 00:02:57,333
+Instead of directly steering the traffic
+to the Azure altar of the server,
+
+44
+00:02:57,333 --> 00:03:00,131
+the steering the traffic to the MaaS,
+
+45
+00:03:00,131 --> 00:03:05,394
+which is mitigation as a service
+infrastructure for DDoS mitigation.
+
+46
+00:03:05,394 --> 00:03:09,577
+So in this MaaS they do, for
+example, TLS decryption,
+
+47
+00:03:09,577 --> 00:03:14,473
+they do deep packet inspection,
+the job those suspect packets.
+
+48
+00:03:14,473 --> 00:03:18,739
+And then after this so
+called traffic scrambling,
+
+49
+00:03:18,739 --> 00:03:23,994
+they steer the plane traffic to
+the edge router of the server and
+
+50
+00:03:23,994 --> 00:03:26,489
+finally reached the server.
+
+51
+00:03:26,489 --> 00:03:30,575
+But the thing is how good is
+today's DDoS mitigation so.
+
+52
+00:03:30,575 --> 00:03:33,678
+First a works, definitely works, and
+
+53
+00:03:33,678 --> 00:03:38,670
+there has been several successful
+mitigated the DDoS events.
+
+54
+00:03:38,670 --> 00:03:44,170
+However, there are several issues first,
+deep packet inspection DPI
+
+55
+00:03:44,170 --> 00:03:49,305
+with TLS traffic is hard,
+because we all know that today's TLS and
+
+56
+00:03:49,305 --> 00:03:53,540
+HTTPS has dominated the web
+application of internet.
+
+57
+00:03:53,540 --> 00:04:00,723
+And to do DPI, this usually requires
+extra infrastructure like MaaS.
+
+58
+00:04:00,723 --> 00:04:06,186
+And also, the the mitigation
+approach used by today's practice
+
+59
+00:04:06,186 --> 00:04:11,068
+is purely to blackhole or
+backhaul, the attack traffic.
+
+60
+00:04:11,068 --> 00:04:15,622
+But this will this surely cause
+large collateral damages to those
+
+61
+00:04:15,622 --> 00:04:19,694
+good clients which is to deny
+the service of good clients.
+
+62
+00:04:19,694 --> 00:04:26,064
+And also, the problem is a slow reaction.
+
+63
+00:04:26,064 --> 00:04:31,469
+And in this work we want to propose
+our FITT over NDM for DDoS mitigation.
+
+64
+00:04:31,469 --> 00:04:37,334
+So FITT is set for 10 grand internet
+interest traffic throttling FITT in short,
+
+65
+00:04:37,334 --> 00:04:43,542
+and this is a DDoS based DDoS mitigation
+system, utilizing ADN stateful forwarding.
+
+66
+00:04:43,542 --> 00:04:49,814
+And for the sake of time, I won't cover
+the details of how FITT is working.
+
+67
+00:04:49,814 --> 00:04:53,602
+I put the link of our
+technical report here, so
+
+68
+00:04:53,602 --> 00:04:57,012
+people can interested can check this tr.
+
+69
+00:04:57,012 --> 00:05:02,292
+And in this talk I want to focus on
+the incremental deployment of NDN and
+
+70
+00:05:02,292 --> 00:05:04,897
+FITT, using today's CDN boxes.
+
+71
+00:05:04,897 --> 00:05:10,570
+And importantly we want to
+analyse the incentives here.
+
+72
+00:05:10,570 --> 00:05:14,901
+And this incremental deployment
+approach also works for other and NDS,
+
+73
+00:05:14,901 --> 00:05:17,390
+ICN DDoS mitigation mechanisms as well.
+
+74
+00:05:17,390 --> 00:05:22,355
+And through this talk,
+I want to show that first NDN and FITT,
+
+75
+00:05:22,355 --> 00:05:24,656
+they help CDN to the better.
+
+76
+00:05:24,656 --> 00:05:26,358
+To be more specific,
+
+77
+00:05:26,358 --> 00:05:32,227
+it provides both CDN DDoS mitigation
+services with even smaller budget.
+
+78
+00:05:32,227 --> 00:05:35,837
+So let's see how it works.
+
+79
+00:05:35,837 --> 00:05:40,110
+So first we want to deploy our NDN and
+FITT at edges.
+
+80
+00:05:40,110 --> 00:05:44,362
+When I say at edges, is we deploy
+
+81
+00:05:44,362 --> 00:05:48,936
+NDN plus FITT on all the CDN boxes.
+
+82
+00:05:48,936 --> 00:05:55,359
+As shown here, and we also deploy NDN
+at the edge router of the server and
+
+83
+00:05:55,359 --> 00:05:59,653
+we also like the server to be NDN and
+FITT aware.
+
+84
+00:05:59,653 --> 00:06:03,397
+And between the CDN and
+those and edge servers, and
+
+85
+00:06:03,397 --> 00:06:06,544
+servers as realtors we build NDN tunnels.
+
+86
+00:06:06,544 --> 00:06:11,793
+And when DDoS happens,
+first of end of the server to react first,
+
+87
+00:06:11,793 --> 00:06:16,386
+because the server is the one
+who suffered from the DDoS.
+
+88
+00:06:16,386 --> 00:06:21,944
+So it shows that, it's an instant feedback
+to the systems in that I got the DDoS
+
+89
+00:06:21,944 --> 00:06:27,014
+attack, and the prefix that is under
+attack is slash a slash me slash C.
+
+90
+00:06:27,014 --> 00:06:32,177
+And if the server knows which of those
+interests packets are malicious,
+
+91
+00:06:32,177 --> 00:06:37,253
+they can also explicitly put those
+interest names into that our facts or
+
+92
+00:06:37,253 --> 00:06:39,725
+into at least into a bloom filter.
+
+93
+00:06:39,725 --> 00:06:44,519
+And, in the message the server have
+also specify what's the request
+
+94
+00:06:44,519 --> 00:06:48,410
+per second capacity of the server,
+under this prefix.
+
+95
+00:06:48,410 --> 00:06:53,452
+And after that, the feedback will
+arrive at the server azure router,
+
+96
+00:06:53,452 --> 00:06:56,271
+the sever azure router will first check
+
+97
+00:06:56,271 --> 00:07:00,905
+the pen interest table ,to see
+those matched flows or packets.
+
+98
+00:07:00,905 --> 00:07:06,324
+And then create a new feedback to
+downstreams to those downstreams
+
+99
+00:07:06,324 --> 00:07:11,840
+where the suspect traffic is from,
+and then through the NDN tunnels
+
+100
+00:07:11,840 --> 00:07:16,697
+those feedback will finally
+reach the CDN boxes hop by hop.
+
+101
+00:07:16,697 --> 00:07:21,920
+And when the CDN knows reached get
+the get feedback, it can start throttling
+
+102
+00:07:21,920 --> 00:07:27,396
+traffic from suspect inspects and only
+under the prefix slash a slash b slash c.
+
+103
+00:07:27,396 --> 00:07:33,688
+And either and even more further
+deployments of our NDA FITT,
+
+104
+00:07:33,688 --> 00:07:40,343
+we can also have the clients night
+works to have as router for NDN.
+
+105
+00:07:40,343 --> 00:07:45,541
+For example, a smart home we can have
+a smart home with a NDN azure router.
+
+106
+00:07:45,541 --> 00:07:51,245
+And in this case, we can further push
+the traffic throttling into edges.
+
+107
+00:07:51,245 --> 00:07:55,376
+And in this case, you can even do
+some reinforcement throttling,
+
+108
+00:07:55,376 --> 00:07:58,475
+which means,
+we can reinforce the throttling for
+
+109
+00:07:58,475 --> 00:08:03,000
+those rogue clients and release
+the throttling for those tame clients.
+
+110
+00:08:06,380 --> 00:08:11,317
+And as I mentioned, I want to analyze
+the incentives of this NDN and
+
+111
+00:08:11,317 --> 00:08:12,738
+FITT deployment.
+
+112
+00:08:12,738 --> 00:08:17,345
+The first FITT and NDN to both
+CDN DDoS mitigation because NDN
+
+113
+00:08:17,345 --> 00:08:21,140
+provides good cache and
+and network storage, and
+
+114
+00:08:21,140 --> 00:08:26,221
+FITT provides DDoS mitigation
+properties and functionalities.
+
+115
+00:08:26,221 --> 00:08:31,004
+And then there's no need as I
+shown before, there's no need for
+
+116
+00:08:31,004 --> 00:08:36,586
+additional hardware or MaaS
+infrastructure to do decentralized packet,
+
+117
+00:08:36,586 --> 00:08:39,522
+deep packet inspection or scrubbing.
+
+118
+00:08:39,522 --> 00:08:43,734
+And we see nicely that FITT and
+the NDN use a smaller
+
+119
+00:08:43,734 --> 00:08:48,446
+resource footprint compared
+with today's practice,
+
+120
+00:08:48,446 --> 00:08:53,573
+which is TLS termination plus
+DPI plus traffic scrambling.
+
+121
+00:08:53,573 --> 00:08:59,724
+And I proved my statement by this
+a real world deployment evaluation,
+
+122
+00:08:59,724 --> 00:09:05,472
+on the one side we deploy FITT over
+NDN of course, and over the IP.
+
+123
+00:09:05,472 --> 00:09:10,546
+And then on the other side we use Squid
+which is a popular CDN software stack.
+
+124
+00:09:10,546 --> 00:09:13,280
+We use the Squid for
+CDN and TLS termination.
+
+125
+00:09:13,280 --> 00:09:18,738
+We didn't even add the scrubbing and the
+TLS forwarding logic in the Squid side.
+
+126
+00:09:18,738 --> 00:09:23,446
+And then we compare
+the overhead of these two and
+
+127
+00:09:23,446 --> 00:09:30,510
+we found that FITT plus NDN only
+requires like one-fifth CPU memory and
+
+128
+00:09:30,510 --> 00:09:35,584
+one-thirds of the bandwidth
+under the same load.
+
+129
+00:09:35,584 --> 00:09:41,340
+And then I want to talk about
+the advantages of FITT in DDoS mitigation.
+
+130
+00:09:41,340 --> 00:09:45,905
+So compared with today's
+centralized mitigation, or
+
+131
+00:09:45,905 --> 00:09:51,926
+using black hole or backhaul, FITT,
+it does distributed throttling and
+
+132
+00:09:51,926 --> 00:09:58,260
+then we have Fine granularity because
+we do per prefix at real attack origin.
+
+133
+00:09:59,640 --> 00:10:04,430
+So this will minimize the collateral
+damage to benign traffic.
+
+134
+00:10:04,430 --> 00:10:07,470
+And we can do Fast
+reaction because we only
+
+135
+00:10:07,470 --> 00:10:11,740
+require one-way delay from the server
+to edge to start throttling.
+
+136
+00:10:11,740 --> 00:10:16,242
+And we see that FITT is enabled by
+NDN's architectural properties.
+
+137
+00:10:16,242 --> 00:10:21,560
+Which is first names provides
+us good insights of the traffic,
+
+138
+00:10:21,560 --> 00:10:24,100
+compare based IP plus port.
+
+139
+00:10:24,100 --> 00:10:27,690
+Therefore, we can do fine-grained
+traffic classification and throttling.
+
+140
+00:10:27,690 --> 00:10:30,649
+The second is to have Stateful forwarding.
+
+141
+00:10:30,649 --> 00:10:36,347
+And this allows FITT to track
+those real attack or ranges.
+
+142
+00:10:36,347 --> 00:10:42,214
+And then the takeaways of this talk, we
+wanna say is that first, the architecture
+
+143
+00:10:42,214 --> 00:10:47,245
+actually plays an important role
+in DDoS resilience and mitigation.
+
+144
+00:10:47,245 --> 00:10:53,673
+This appears at the NDN
+versus today's TCP IP.
+
+145
+00:10:53,673 --> 00:10:59,335
+And obviously that DDoS have a killer
+app to push the deployment potentially.
+
+146
+00:10:59,335 --> 00:11:04,547
+And through our work we show that FITT and
+NDN can be incrementally
+
+147
+00:11:04,547 --> 00:11:09,665
+deployed over to this city in boxes
+without any further burden or
+
+148
+00:11:09,665 --> 00:11:15,710
+overhead, without any further hardware and
+MEMS infrastructure.
+
+149
+00:11:15,710 --> 00:11:20,608
+So there is motivation here to deploy
+FITT and NDN in today's CDN boxes.
+
+150
+00:11:20,608 --> 00:11:27,124
+And that's all for my talk,
+thank you, gracias.
+
+151
+00:11:27,124 --> 00:11:29,970
+>> Thank you, so we have a question.
+
+152
+00:11:29,970 --> 00:11:34,353
+How does FITT detect the attackers
+use valid name prefixes and
+
+153
+00:11:34,353 --> 00:11:36,129
+invalid name suffixes?
+
+154
+00:11:37,500 --> 00:11:41,280
+>> Yeah, so for example,
+
+155
+00:11:41,280 --> 00:11:47,000
+those valid prefix plus invalid
+suffix to reach the server.
+
+156
+00:11:48,070 --> 00:11:53,020
+The server will know that
+there's no corresponding data or
+
+157
+00:11:53,020 --> 00:11:57,622
+service that can be replied
+to the none existing,
+
+158
+00:11:57,622 --> 00:12:02,050
+actually this to reply
+to this attack traffic.
+
+159
+00:12:02,050 --> 00:12:08,590
+So therefore, the server can be aware of
+this interest back is their email id.
+
+160
+00:12:08,590 --> 00:12:13,568
+So when they send back the FITT,
+the feedback to the network,
+
+161
+00:12:13,568 --> 00:12:18,373
+they can explicitly put those
+names into the Bloom filter.
+
+162
+00:12:18,373 --> 00:12:23,130
+So that later the edge and the CDN boxes,
+they can check their pending
+
+163
+00:12:23,130 --> 00:12:27,800
+interest table and
+find where those packets are sent from.
+
+164
+00:12:27,800 --> 00:12:32,559
+And in this way, we can trace
+back to the real attackers and
+
+165
+00:12:32,559 --> 00:12:37,240
+do traffic throttling to that
+prefix to that interface.
+
+166
+00:12:37,240 --> 00:12:41,700
+To mitigate the DDoS attack.
+
+167
+00:12:41,700 --> 00:12:44,234
+>> Cool, thank you.
+
+168
+00:12:44,234 --> 00:12:47,405
+I think what we just have is
+a sassy remark from Dave Moran,
+
+169
+00:12:47,405 --> 00:12:49,237
+which would be characteristic.
+
+170
+00:12:49,237 --> 00:12:50,640
+He likes to talk and
+
+171
+00:12:50,640 --> 00:12:56,538
+then makes the comment that if it works
+too well maybe people won't deploy NDN.
+
+172
+00:12:56,538 --> 00:12:59,815
+I wanted to ask a related question.
+
+173
+00:12:59,815 --> 00:13:06,167
+So this is one particular style of DDoS
+attack which is, you are attacking with
+
+174
+00:13:06,167 --> 00:13:12,150
+interests to create an overwhelming
+volume of interests and or traffic.
+
+175
+00:13:13,360 --> 00:13:18,342
+But the other form of DDoS attack that
+NDN is vulnerable to is ones that cause
+
+176
+00:13:18,342 --> 00:13:21,350
+cache thrashing in the intermediate nodes,
+
+177
+00:13:21,350 --> 00:13:26,831
+where you request vast amounts of valid
+data that you don't actually care about.
+
+178
+00:13:26,831 --> 00:13:31,951
+[COUGH] But you do this to drive the
+actual valuable content out of the caches,
+
+179
+00:13:31,951 --> 00:13:36,993
+and so you end up causing popular content
+to be requested correctly over and
+
+180
+00:13:36,993 --> 00:13:39,380
+over from the source.
+
+181
+00:13:39,380 --> 00:13:43,120
+Does FITT help at all with that?
+
+182
+00:13:43,120 --> 00:13:43,950
+>> For now?
+
+183
+00:13:43,950 --> 00:13:51,310
+No, because the current implementation
+of FITT only protects the applications.
+
+184
+00:13:51,310 --> 00:13:55,548
+But I think what you mentioned,
+the DDoS attack scenario,
+
+185
+00:13:55,548 --> 00:13:59,122
+it actually won't really
+over bloom the server.
+
+186
+00:13:59,122 --> 00:14:04,356
+And if the attacker is smart enough
+to find enough number of content to
+
+187
+00:14:04,356 --> 00:14:09,499
+keep replacing the content store,
+which means there will be a large
+
+188
+00:14:09,499 --> 00:14:15,022
+number of valid entries reaching at
+the server to overwhelm the server.
+
+189
+00:14:15,022 --> 00:14:18,141
+In this case, FITT can help because,
+
+190
+00:14:18,141 --> 00:14:23,404
+in this case the server can tell
+the FITT network seen that okay,
+
+191
+00:14:23,404 --> 00:14:29,062
+this perfect slash A, slash B or
+some other prefix are under attack.
+
+192
+00:14:29,062 --> 00:14:33,475
+And I would expect RPS
+requests per second, even for
+
+193
+00:14:33,475 --> 00:14:37,093
+example, the content delivery service.
+
+194
+00:14:37,093 --> 00:14:40,498
+And with this RPS, even with these RPS,
+
+195
+00:14:40,498 --> 00:14:44,704
+those edge servers as
+routers like the CDN boxes,
+
+196
+00:14:44,704 --> 00:14:51,532
+they both wrote the traffic to meet the
+RPS requirement specified by the server.
+
+197
+00:14:51,532 --> 00:14:54,519
+So yes, in this says, yes,
+
+198
+00:14:54,519 --> 00:14:59,500
+it can stop those valid
+packets overwhelming.
+
+199
+00:15:00,500 --> 00:15:03,690
+>> Cool, okay, well,
+we've now hit our time limit.
+
+200
+00:15:03,690 --> 00:15:06,630
+So thank you very much for
+an interesting talk.
+
+201
+00:15:06,630 --> 00:15:10,154
+Obviously, I see there's some discussion
+going on in the chat group and
+
+202
+00:15:10,154 --> 00:15:13,173
+you may wish to join it and
+talk with them more about your work.
+
+203
+00:15:13,173 --> 00:15:13,989
+Yes, sure.
+
+204
+00:15:13,989 --> 00:15:15,289
+>> We thank you very much.
+
+205
+00:15:15,289 --> 00:15:18,828
+>> Thank you,
+>> You need to release the screen for
+
+206
+00:15:18,828 --> 00:15:20,960
+the next speaker.
+
+207
+00:15:20,960 --> 00:15:22,780
+And while that transition is happening,
+
+208
+00:15:22,780 --> 00:15:26,590
+I'm gonna quickly take advantage
+to say that, it's not formally yet
+
+209
+00:15:26,590 --> 00:15:32,430
+but we expect to announce soon that
+Colorado State University is looking for
+
+210
+00:15:32,430 --> 00:15:37,050
+a new junior faculty member in networking.
+
+211
+00:15:37,050 --> 00:15:38,720
+So we'll be doing a search this year.
+
+212
+00:15:38,720 --> 00:15:42,689
+So if you're looking for
+a faculty position,
+
+213
+00:15:42,689 --> 00:15:47,591
+we encourage you to apply to
+come to lovely four columns.
+
+214
+00:15:47,591 --> 00:15:51,207
+So our next speaker is a Laqin Fan,
+
+215
+00:15:51,207 --> 00:15:55,325
+who is speaking about Secure Sharing of
+
+216
+00:15:55,325 --> 00:16:01,585
+Spatial Temporal Data Through
+Name Based Access Control.
+
+217
+00:16:01,585 --> 00:16:03,870
+I'll pass it over to Laqin.
+
+218
+00:16:03,870 --> 00:16:08,650
+>> Hi everyone,
+I'm Laqin Fan from University of Memphis.
+
+219
+00:16:08,650 --> 00:16:13,542
+The topic I'm gonna present is about
+how we share spatial temporal data
+
+220
+00:16:13,542 --> 00:16:16,729
+security through name
+based access control.
+
+221
+00:16:19,467 --> 00:16:24,108
+Nowadays, mobile devices and
+sensors are pervasive and provide
+
+222
+00:16:24,108 --> 00:16:29,348
+the amount of data which are dynamic and
+continuous on time and the space.
+
+223
+00:16:30,550 --> 00:16:36,430
+For example, mobile has data generated
+at different times and locations.
+
+224
+00:16:36,430 --> 00:16:40,710
+Those data may contain privacy
+sensitive information of the user.
+
+225
+00:16:40,710 --> 00:16:45,770
+We need to make sure only authorized
+users can access the data,
+
+226
+00:16:49,580 --> 00:16:54,780
+the challenges are that we need a fine
+grained access control to express
+
+227
+00:16:54,780 --> 00:17:00,330
+granular access policies related to time
+and the location information of the data.
+
+228
+00:17:02,520 --> 00:17:06,670
+And we need a real time
+data sharing to enable our
+
+229
+00:17:06,670 --> 00:17:10,970
+many intervention are based
+on the collected data.
+
+230
+00:17:10,970 --> 00:17:18,460
+There is a demo or
+example of user box data sharing.
+
+231
+00:17:18,460 --> 00:17:23,880
+Bob is using his smartwatch to
+collect his personal data and
+
+232
+00:17:23,880 --> 00:17:29,730
+sharing the data with his coach,
+physician and data science researcher,
+
+233
+00:17:31,670 --> 00:17:37,020
+his coach can access Bob's activity
+data only generated at the gym, and
+
+234
+00:17:37,020 --> 00:17:43,610
+his physician can access heart
+rate data between 8 AM to 8 PM.
+
+235
+00:17:43,610 --> 00:17:47,760
+And data science researcher
+can access his activity data
+
+236
+00:17:48,770 --> 00:17:54,110
+generated during the daytime and
+not at Bob's house.
+
+237
+00:17:54,110 --> 00:17:58,660
+Those three consumers have
+different access policies.
+
+238
+00:18:01,220 --> 00:18:02,210
+On your work,
+
+239
+00:18:02,210 --> 00:18:07,780
+we use nimbus access control which is
+the access control model in India.
+
+240
+00:18:09,820 --> 00:18:16,010
+And NAC provides data confidentiality by
+encrypting data as a time of production.
+
+241
+00:18:17,630 --> 00:18:23,720
+And it also enables end to end security
+without rely on third party services.
+
+242
+00:18:23,720 --> 00:18:28,350
+As we know, Indian has bunch of benefits
+
+243
+00:18:29,500 --> 00:18:33,720
+like hierarchical naming structure
+on data centric security,
+
+244
+00:18:35,130 --> 00:18:40,500
+that is signed the cryptography
+CLI by the producer and
+
+245
+00:18:40,500 --> 00:18:42,300
+nimbus, the data distribution.
+
+246
+00:18:44,580 --> 00:18:49,239
+Okay, so let me give a brief
+introduction about how NAC works,
+
+247
+00:18:52,270 --> 00:18:58,120
+NAC models there are three entities
+Access manager, Producer and Consumer.
+
+248
+00:18:58,120 --> 00:19:05,930
+And Access Manager publishes access policy
+as a named public private key pair.
+
+249
+00:19:05,930 --> 00:19:12,037
+Whereas public key is used as key
+encryption key, we call it the KEK here.
+
+250
+00:19:12,037 --> 00:19:16,549
+And the private key is used
+as key decryption key,
+
+251
+00:19:16,549 --> 00:19:21,814
+we named it KDK, and
+on data producer generates the data,
+
+252
+00:19:21,814 --> 00:19:29,070
+and there's a corresponding content key,
+which is a symmetric key.
+
+253
+00:19:29,070 --> 00:19:31,560
+To encrypt the data and
+
+254
+00:19:31,560 --> 00:19:37,200
+retrieve the corresponding KEK
+to encrypt the content key
+
+255
+00:19:39,480 --> 00:19:45,200
+data consumer, such as the data
+consumer fetches the encrypted
+
+256
+00:19:45,200 --> 00:19:48,740
+content and the encrypted content is key.
+
+257
+00:19:48,740 --> 00:19:55,090
+And extracts KDK name from the content
+key name and retrieves the KDK
+
+258
+00:19:55,090 --> 00:20:00,610
+to decrypt the content key and then use
+the content key to decrypt the data.
+
+259
+00:20:00,610 --> 00:20:04,439
+So this is basically the workflow
+of name based access control.
+
+260
+00:20:06,899 --> 00:20:10,877
+On your work, we propose spatial
+temporal access control,
+
+261
+00:20:10,877 --> 00:20:16,710
+which provides a hierarchical naming
+convention related to time and location.
+
+262
+00:20:16,710 --> 00:20:21,139
+For example,
+Bob's activity data could be named
+
+263
+00:20:21,139 --> 00:20:25,679
+like Bob/activity/ geolocation/ timestamp.
+
+264
+00:20:26,930 --> 00:20:30,710
+And our access control
+could to support granular,
+
+265
+00:20:30,710 --> 00:20:36,150
+long real time data sharing so that owners
+could share historical data in storage.
+
+266
+00:20:37,500 --> 00:20:41,510
+It supports granular real
+time data sharing as well.
+
+267
+00:20:42,710 --> 00:20:48,270
+For example, the physician could retrieve
+the patient's heart rate data for
+
+268
+00:20:48,270 --> 00:20:50,480
+timely intervention.
+
+269
+00:20:50,480 --> 00:20:57,290
+Meanwhile, we can specify different
+granularities of the content key.
+
+270
+00:20:57,290 --> 00:21:02,160
+And this granularity could be changed
+depending on time and location.
+
+271
+00:21:02,160 --> 00:21:07,879
+For instance,
+the users could configure content
+
+272
+00:21:07,879 --> 00:21:13,051
+key to be generated per second,
+per minute or
+
+273
+00:21:13,051 --> 00:21:17,560
+at each location based on their needs.
+
+274
+00:21:17,560 --> 00:21:22,202
+Then how we define
+granular access policy for
+
+275
+00:21:22,202 --> 00:21:29,180
+the owners to decide who can access
+what data at which granularity.
+
+276
+00:21:29,180 --> 00:21:34,018
+Your design on granular access policy
+
+277
+00:21:34,018 --> 00:21:38,555
+contains a list of constraints like
+
+278
+00:21:38,555 --> 00:21:43,250
+time interval between 8am to 5pm.
+
+279
+00:21:43,250 --> 00:21:47,064
+Let's say example and spatial area,
+
+280
+00:21:47,064 --> 00:21:52,785
+which could be at building level,
+neighborhood level or
+
+281
+00:21:52,785 --> 00:21:58,744
+city level, for example,
+users house and city Memphis and
+
+282
+00:21:58,744 --> 00:22:06,532
+this visual area is represented by
+even a center point and a radius.
+
+283
+00:22:06,532 --> 00:22:12,103
+Here's an example to show
+a circle to located the building
+
+284
+00:22:12,103 --> 00:22:17,689
+which is the fitness center
+at the University of Memphis.
+
+285
+00:22:17,689 --> 00:22:22,951
+We design hierarchical naming scheme for
+spatial temporal data and
+
+286
+00:22:22,951 --> 00:22:28,764
+as a finger on the right side shows,
+naming scheme, your tree structure,
+
+287
+00:22:28,764 --> 00:22:33,490
+on data owner represents a routable
+name prefix of the data.
+
+288
+00:22:33,490 --> 00:22:37,697
+For example, the University of Memphis and
+
+289
+00:22:37,697 --> 00:22:42,585
+the user Bob on data stream
+refers to the data type,
+
+290
+00:22:42,585 --> 00:22:45,439
+like activity and high rate.
+
+291
+00:22:45,439 --> 00:22:53,142
+Under data streams, there are two sub
+trees begin with word data and what rate.
+
+292
+00:22:53,142 --> 00:22:57,477
+That sub tree is to
+represent the namespace for
+
+293
+00:22:57,477 --> 00:23:01,460
+data, PSync and the content key.
+
+294
+00:23:01,460 --> 00:23:05,380
+Read sub tree is for
+namespace of access control.
+
+295
+00:23:07,510 --> 00:23:11,690
+Well, let's see an example how
+
+296
+00:23:12,810 --> 00:23:16,720
+abscess policy is specified here.
+
+297
+00:23:16,720 --> 00:23:21,830
+Access manager helps the owner
+to set up access policies.
+
+298
+00:23:21,830 --> 00:23:27,180
+For example,
+Bob's coach can access Bob's activity data
+
+299
+00:23:30,150 --> 00:23:35,330
+only generated at fitting fitness
+center between 8am to 12pm.
+
+300
+00:23:35,330 --> 00:23:40,438
+From September the 1th to
+September the 5th every day, and
+
+301
+00:23:40,438 --> 00:23:45,745
+does a table on the left side is
+showing the details of the access
+
+302
+00:23:45,745 --> 00:23:50,970
+policy including the data prefix and
+the time interval.
+
+303
+00:23:50,970 --> 00:23:57,194
+Indicated by start of the time and
+end of the time on time unit,
+
+304
+00:23:57,194 --> 00:24:01,863
+which is day here and
+spatial area specified by
+
+305
+00:24:01,863 --> 00:24:07,220
+the center point and
+the radius also includes.
+
+306
+00:24:07,220 --> 00:24:10,768
+It includes the consumers prefix,
+which is the Bob's coach.
+
+307
+00:24:14,774 --> 00:24:17,946
+Okay then, let's say how we follow
+
+308
+00:24:17,946 --> 00:24:22,510
+the naming structure to
+express access policies.
+
+309
+00:24:24,320 --> 00:24:26,250
+After providing access policies,
+
+310
+00:24:26,250 --> 00:24:32,190
+the Access Manager generates
+a pair of KEK and KDK.
+
+311
+00:24:32,190 --> 00:24:40,211
+Their names, she has the same prefix
+of the data they protect activity.
+
+312
+00:24:40,211 --> 00:24:46,121
+Moreover, those keys contain the time and
+
+313
+00:24:46,121 --> 00:24:51,048
+location constraints by following
+
+314
+00:24:51,048 --> 00:24:57,296
+the access policy
+previously in that table.
+
+315
+00:24:57,296 --> 00:25:02,896
+And when Bob generates activity
+data at 8:30 AM September
+
+316
+00:25:02,896 --> 00:25:08,063
+the first at the fitness center,
+this data could be named
+
+317
+00:25:08,063 --> 00:25:13,030
+including the prefix geolocation and
+the timestamp.
+
+318
+00:25:15,010 --> 00:25:23,036
+We also let allow Bob to specify
+content a key granularity,
+
+319
+00:25:23,036 --> 00:25:27,059
+in this case, is one minute.
+
+320
+00:25:27,059 --> 00:25:31,038
+The content of key name
+also has the same prefix of
+
+321
+00:25:31,038 --> 00:25:34,400
+the data appending time interval.
+
+322
+00:25:34,400 --> 00:25:39,666
+The range is one minute here,
+and a special area
+
+323
+00:25:39,666 --> 00:25:44,802
+on this content case
+encrypted using the KEK so
+
+324
+00:25:44,802 --> 00:25:48,634
+it also contains KEK name prefix.
+
+325
+00:25:48,634 --> 00:25:51,460
+In some case,
+the data access will be failed.
+
+326
+00:25:52,500 --> 00:25:57,622
+If the consumer is not
+granted as the access
+
+327
+00:25:57,622 --> 00:26:03,030
+permission involves data sharing example,
+
+328
+00:26:03,030 --> 00:26:10,301
+his code can only access his
+activity data generated at gym.
+
+329
+00:26:10,301 --> 00:26:18,037
+Even his pouch wants to retrieve
+Bob's activity data at his house,
+
+330
+00:26:18,037 --> 00:26:23,202
+he will not have the keys
+to decrypt the data.
+
+331
+00:26:23,202 --> 00:26:28,020
+We have experiments for data retrieval
+time for this access control.
+
+332
+00:26:28,020 --> 00:26:32,751
+And we run the experiments in
+MiniNDN emulation environment
+
+333
+00:26:32,751 --> 00:26:36,751
+using a star topology
+with more than 100 nodes.
+
+334
+00:26:36,751 --> 00:26:41,488
+And our data set contains activity
+data with continuous time and
+
+335
+00:26:41,488 --> 00:26:43,511
+the different locations.
+
+336
+00:26:43,511 --> 00:26:48,594
+And all the consumers have
+the same access policies.
+
+337
+00:26:48,594 --> 00:26:49,410
+>> Cool.
+>> All right.
+
+338
+00:26:49,410 --> 00:26:53,638
+>> We've reached the end,
+you're out of time.
+
+339
+00:26:53,638 --> 00:26:59,504
+>> Okay, so,
+I would like to finish this slide, please.
+
+340
+00:26:59,504 --> 00:27:00,831
+>> Five seconds.
+
+341
+00:27:00,831 --> 00:27:04,728
+>> Okay [LAUGH]
+>> I'm issuing you two minute warning,
+
+342
+00:27:04,728 --> 00:27:07,578
+so,
+>> Okay, so in our experiment,
+
+343
+00:27:07,578 --> 00:27:11,811
+we can fake the different
+granularities of the content key.
+
+344
+00:27:11,811 --> 00:27:17,102
+The granularity could be specified
+based on data generation interval.
+
+345
+00:27:17,102 --> 00:27:22,760
+If the data is generated per second, that
+granularity could be per second or closer.
+
+346
+00:27:22,760 --> 00:27:27,635
+And based on the results,
+there is the trade off between finer
+
+347
+00:27:27,635 --> 00:27:32,138
+granularity and
+the number of contender key generated,
+
+348
+00:27:32,138 --> 00:27:37,138
+the cost of granularity makes
+one content key cover more data.
+
+349
+00:27:37,138 --> 00:27:42,732
+But if the content key is compromised,
+then those data will be exposed.
+
+350
+00:27:42,732 --> 00:27:46,373
+And okay, the results.
+
+351
+00:27:46,373 --> 00:27:50,184
+>> What if you let us leave those up and
+we'll start with the questions.
+
+352
+00:27:50,184 --> 00:27:52,600
+>> Okay, so better.
+
+353
+00:27:52,600 --> 00:27:56,521
+Okay, I would like to say the future work.
+
+354
+00:27:56,521 --> 00:28:00,230
+The future work are we will specify
+the spatial areas directly.
+
+355
+00:28:00,230 --> 00:28:04,431
+So there was a map,
+currently it's manually configured.
+
+356
+00:28:04,431 --> 00:28:09,320
+And we will run experiments by changing
+the granularity of spatial area.
+
+357
+00:28:09,320 --> 00:28:12,030
+Like at the neighborhood level and
+city level.
+
+358
+00:28:12,030 --> 00:28:14,783
+Apparently, it's fixed at pod network.
+
+359
+00:28:14,783 --> 00:28:17,480
+>> Okay.
+>> Okay, that's all, thank you.
+
+360
+00:28:17,480 --> 00:28:19,980
+>> All right, so
+we have multiple questions.
+
+361
+00:28:19,980 --> 00:28:28,573
+So how do we encrypt the data that will be
+used by multiple different access unit.
+
+362
+00:28:28,573 --> 00:28:33,878
+So if one piece of data is to be
+used by say, both a trainer and
+
+363
+00:28:33,878 --> 00:28:38,670
+a physician at the same data,
+how is that encrypted?
+
+364
+00:28:43,050 --> 00:28:46,991
+>> How is the data,
+>> One piece of data used by
+
+365
+00:28:46,991 --> 00:28:51,313
+two different consumers,
+whom you're keeping separate?
+
+366
+00:28:51,313 --> 00:28:56,472
+>> The data is only encrypted
+by the content key.
+
+367
+00:28:56,472 --> 00:29:00,250
+>> Well,
+the problem is you get two streams.
+
+368
+00:29:00,250 --> 00:29:03,645
+That just happened to share some data for
+a period of time.
+
+369
+00:29:03,645 --> 00:29:06,132
+>> It means the same data, right?
+
+370
+00:29:06,132 --> 00:29:07,800
+>> Same data that shared by two
+streams that then separate.
+
+371
+00:29:09,430 --> 00:29:12,012
+>> Yeah, if it works, there's no problem.
+
+372
+00:29:12,012 --> 00:29:14,807
+>> No, let me clarify my question quickly.
+
+373
+00:29:14,807 --> 00:29:17,667
+So one piece of data used by
+two groups of people, and
+
+374
+00:29:17,667 --> 00:29:21,720
+then these two groups of people
+have their different privilege.
+
+375
+00:29:21,720 --> 00:29:25,890
+So if you encrypt the data only once,
+then one group of people get the C key and
+
+376
+00:29:25,890 --> 00:29:26,880
+decrypt data.
+
+377
+00:29:26,880 --> 00:29:30,730
+That means they can also
+decrypt the data for
+
+378
+00:29:30,730 --> 00:29:33,060
+the, they can also see the data
+encrypted for the other.
+
+379
+00:29:34,060 --> 00:29:36,912
+You see what I mean?
+
+380
+00:29:36,912 --> 00:29:42,084
+Like Bob activity home TPM is used
+by both Bob activity home and
+
+381
+00:29:42,084 --> 00:29:44,973
+Bob activity, these two groups.
+
+382
+00:29:44,973 --> 00:29:52,230
+If there's only one C key, that means
+both group have used the same C key.
+
+383
+00:29:52,230 --> 00:29:56,345
+I mean, my question is, do you need
+to encrypt the data for twice or
+
+384
+00:29:56,345 --> 00:29:59,591
+two groups because they
+have different privilege.
+
+385
+00:29:59,591 --> 00:30:04,545
+>> No, even those two groups,
+they have issued access
+
+386
+00:30:04,545 --> 00:30:09,282
+permission, as soon as
+they can access the data.
+
+387
+00:30:09,282 --> 00:30:13,822
+It means the two groups, they want to
+share the content of key with each other.
+
+388
+00:30:13,822 --> 00:30:17,032
+And then we don't,
+>> They don't, their distinct.
+
+389
+00:30:17,032 --> 00:30:21,425
+>> Even they don't share the content
+key and if they are issued as
+
+390
+00:30:21,425 --> 00:30:26,090
+a stem access policy, I think they
+can access the data in any way.
+
+391
+00:30:27,370 --> 00:30:32,410
+>> Okay, sounds like we should
+discuss this more on the chat group.
+
+392
+00:30:32,410 --> 00:30:36,030
+So, another question is,
+given this naming policy,
+
+393
+00:30:36,030 --> 00:30:39,790
+it sounds as if the consumer
+can learn when and
+
+394
+00:30:39,790 --> 00:30:43,490
+where data was generated even
+if they can't decrypt it.
+
+395
+00:30:43,490 --> 00:30:47,974
+And doesn't that actually reveal
+a fair bit about where somebody is and
+
+396
+00:30:47,974 --> 00:30:49,404
+what they're doing.
+
+397
+00:30:49,404 --> 00:30:51,437
+But can you local, right?
+
+398
+00:30:55,444 --> 00:30:57,202
+>> Even it is repeated as a question?
+
+399
+00:30:57,202 --> 00:31:02,021
+>> Okay, that's also in the chat group
+if you want it, from Dave Moran.
+
+400
+00:31:02,021 --> 00:31:04,228
+Given your naming scheme
+as I understand it and
+
+401
+00:31:04,228 --> 00:31:06,920
+Dave, I'm aligning your question slightly.
+
+402
+00:31:06,920 --> 00:31:11,660
+The consumer of the data can still see
+the name even if they can't decrypt
+
+403
+00:31:11,660 --> 00:31:12,601
+the content.
+
+404
+00:31:12,601 --> 00:31:13,959
+And the question is,
+
+405
+00:31:13,959 --> 00:31:18,717
+does the name alone give away enough
+to localize a person in time and space?
+
+406
+00:31:18,717 --> 00:31:23,202
+So I would know where you were even if
+you didn't know the exact readings.
+
+407
+00:31:23,202 --> 00:31:28,207
+>> Okay, this time I was standing,
+I think it means that data name,
+
+408
+00:31:28,207 --> 00:31:34,890
+the data consumers, they don't know
+the data names to retrieve the data.
+
+409
+00:31:34,890 --> 00:31:37,265
+>> No, they tell them they're
+able to discover the names.
+
+410
+00:31:37,265 --> 00:31:40,423
+Sorry, Dave, you wanna try?
+
+411
+00:31:40,423 --> 00:31:41,360
+>> Or I can jump in.
+
+412
+00:31:41,360 --> 00:31:48,882
+>> Sorry, if the names contain
+location and time in the actual names.
+
+413
+00:31:48,882 --> 00:31:54,700
+I assume the consumer can use a nice
+a guessing strategy to try and
+
+414
+00:31:54,700 --> 00:31:59,430
+find which names exist and
+which names don't.
+
+415
+00:31:59,430 --> 00:32:02,100
+And they'll ultimately by
+picking a name get a hit,
+
+416
+00:32:03,190 --> 00:32:07,860
+from which they know anything
+that the name itself tells them.
+
+417
+00:32:07,860 --> 00:32:10,372
+Even if they can't decrypt the data,
+
+418
+00:32:10,372 --> 00:32:15,172
+they can't get a key to decrypt the data
+that was stored under that name.
+
+419
+00:32:15,172 --> 00:32:20,996
+So the question is, are these names
+that have geolocation information and
+
+420
+00:32:20,996 --> 00:32:25,164
+easily guessable,
+another way to ask the question.
+
+421
+00:32:28,589 --> 00:32:30,843
+>> For the sake of time, if I can jump in,
+
+422
+00:32:30,843 --> 00:32:35,460
+I think this is a question touched
+upon during our panel earlier today.
+
+423
+00:32:35,460 --> 00:32:39,931
+The fundamental is how much information
+gets exposed through the naming.
+
+424
+00:32:39,931 --> 00:32:44,880
+I think my answer adequate at that
+time is that it's all about how
+
+425
+00:32:44,880 --> 00:32:47,640
+one can obscure the names, right?
+
+426
+00:32:47,640 --> 00:32:51,533
+The only thing the names need to be
+known is by the producers and consumers.
+
+427
+00:32:51,533 --> 00:32:56,086
+If they have a means of
+understanding the means to
+
+428
+00:32:56,086 --> 00:33:00,230
+obscure the name, that's all you needed.
+
+429
+00:33:00,230 --> 00:33:03,734
+>> But you can't tell a good consumer from
+a bad consumer until after they try to
+
+430
+00:33:03,734 --> 00:33:04,684
+access something.
+
+431
+00:33:08,732 --> 00:33:11,601
+>> I thought consumer
+right was pre defined.
+
+432
+00:33:14,203 --> 00:33:19,450
+>> Okay, so again, another topic, I think,
+for the chat, since we need to move along.
+
+433
+00:33:19,450 --> 00:33:24,379
+Thank you Lixia for your talk, and if you
+could release the screen for Mohammed,
+
+434
+00:33:24,379 --> 00:33:25,985
+that would be wonderful.
+
+435
+00:33:27,576 --> 00:33:33,892
+So our last talk of the session
+Is by Mohammed Elbadri.
+
+436
+00:33:33,892 --> 00:33:39,276
+And Mohammed is a third year PhD
+student at Stony Brook University.
+
+437
+00:33:39,276 --> 00:33:43,040
+And his research interests are wireless
+networks, so he's being more
+
+438
+00:33:43,040 --> 00:33:46,883
+specific about his research interests
+here, and edge communication.
+
+439
+00:33:46,883 --> 00:33:52,933
+So I expect we'll hear about some
+aspects of those interests in his talk,
+
+440
+00:33:52,933 --> 00:33:59,790
+which is entitled A Full Data-centric
+Network Stack Integrating V-MAC and NFD.
+
+441
+00:33:59,790 --> 00:34:01,450
+So Mohammed, you're up.
+
+442
+00:34:03,270 --> 00:34:05,960
+>> Thank you, can you see my screen?
+
+443
+00:34:05,960 --> 00:34:09,120
+>> Yes, we can see your screen just fine,
+thank you.
+
+444
+00:34:09,120 --> 00:34:10,600
+>> Sounds good, thank you.
+
+445
+00:34:10,600 --> 00:34:16,152
+So I'll be covering full data centric
+stack integration between V-MAC and NFD.
+
+446
+00:34:16,152 --> 00:34:19,298
+V-MAC is a new phase we're
+integrating with NFD.
+
+447
+00:34:19,298 --> 00:34:22,794
+And V-MAC is a wireless
+medium access control layer,
+
+448
+00:34:22,794 --> 00:34:27,290
+designed completely from scratch
+which is completely data centric.
+
+449
+00:34:28,540 --> 00:34:31,880
+The reason we ended up
+designing a data centric MAC
+
+450
+00:34:31,880 --> 00:34:35,560
+is because existing MAC layers
+fall short for multiple reasons.
+
+451
+00:34:35,560 --> 00:34:36,871
+One of them is the network and
+
+452
+00:34:36,871 --> 00:34:40,704
+discovery procedure must be established
+before any data centric communication.
+
+453
+00:34:40,704 --> 00:34:42,690
+There is a beaconed communication and
+
+454
+00:34:42,690 --> 00:34:45,241
+sharing that is address
+space that must happen.
+
+455
+00:34:45,241 --> 00:34:49,222
+Given an ad hoc network, you must join the
+network before any communication occur.
+
+456
+00:34:49,222 --> 00:34:53,462
+That incurs continuous overhead,
+media neutralization and latency,
+
+457
+00:34:53,462 --> 00:34:55,833
+specifically in mobile environments.
+
+458
+00:34:55,833 --> 00:34:58,204
+The destination must be
+determined before transmission.
+
+459
+00:34:58,204 --> 00:35:01,480
+That's the standard address based
+communication destination and
+
+460
+00:35:01,480 --> 00:35:02,750
+network group.
+
+461
+00:35:02,750 --> 00:35:05,860
+And traditional MAC multicast
+support doesn't exist.
+
+462
+00:35:05,860 --> 00:35:09,260
+In general its broadcast if we're
+using ad hoc communication which
+
+463
+00:35:09,260 --> 00:35:12,480
+is at low base rate,
+at low data rate, one or six Mbps.
+
+464
+00:35:12,480 --> 00:35:16,130
+And if we go higher data rates,
+it ends up being very lossy.
+
+465
+00:35:18,160 --> 00:35:21,705
+So the challenges we face by designing
+a new wireless MAC layer is that there's
+
+466
+00:35:21,705 --> 00:35:24,783
+a varying reception quality of
+different neighboring receivers.
+
+467
+00:35:24,783 --> 00:35:26,245
+And in general it's very lossy,
+
+468
+00:35:26,245 --> 00:35:30,380
+I believe some presenters from the
+previous presentations touched upon that.
+
+469
+00:35:30,380 --> 00:35:33,750
+And in general from highly mobile
+environments like vehicular networks,
+
+470
+00:35:33,750 --> 00:35:38,100
+we have very short contact durations
+that we want to share data in between.
+
+471
+00:35:38,100 --> 00:35:42,770
+However, in wireless, that is wireless
+communication, we have broadcast meter.
+
+472
+00:35:42,770 --> 00:35:47,860
+So we can do multicast very easily,
+which works very well with an NFDM MDM.
+
+473
+00:35:47,860 --> 00:35:50,780
+We also have the potential to
+eliminate network discovery,
+
+474
+00:35:50,780 --> 00:35:54,170
+which is joining a network, and
+rely on attribute data filtering.
+
+475
+00:35:56,310 --> 00:35:58,050
+And that's why we designed V-MAC,
+
+476
+00:35:58,050 --> 00:36:02,110
+which is a new wireless MAC layer designed
+from scratch which is data centric.
+
+477
+00:36:02,110 --> 00:36:05,270
+The system is beaconless,
+It doesn't require any discovery or
+
+478
+00:36:05,270 --> 00:36:09,120
+joining a network, so
+it eliminates a huge overhead.
+
+479
+00:36:09,120 --> 00:36:12,630
+You turn on the radio and you can
+communicate and share data right away.
+
+480
+00:36:12,630 --> 00:36:17,186
+It uses a pending encoding table which
+does the data name filtering In the MAC
+
+481
+00:36:17,186 --> 00:36:17,692
+layer.
+
+482
+00:36:17,692 --> 00:36:22,764
+We do one matching, it's not pending
+interest table, it's encoding.
+
+483
+00:36:22,764 --> 00:36:28,210
+And the reasons is because in ICM layer,
+it's one interest, one data packet.
+
+484
+00:36:28,210 --> 00:36:29,712
+However, in MAC layer,
+
+485
+00:36:29,712 --> 00:36:33,939
+it's one interest to multiple frames
+that correspond to one packet.
+
+486
+00:36:33,939 --> 00:36:36,246
+A packet gets fragmented and
+
+487
+00:36:36,246 --> 00:36:40,673
+then we filter based on data
+name multiple fragments.
+
+488
+00:36:40,673 --> 00:36:45,712
+And we also build the best effort
+control last robust multicast system.
+
+489
+00:36:45,712 --> 00:36:48,240
+And that protocol doesn't
+require any setup,
+
+490
+00:36:48,240 --> 00:36:52,538
+doesn't require any during communication
+or creating a multicast group name or
+
+491
+00:36:52,538 --> 00:36:55,142
+similar systems that
+exist in traditional MAC.
+
+492
+00:36:55,142 --> 00:36:58,540
+And it provides low control
+losses among all receivers,
+
+493
+00:36:58,540 --> 00:37:01,010
+we tested up to 15 receivers.
+
+494
+00:37:01,010 --> 00:37:05,130
+We have the paper that discusses
+in detail exact implementation and
+
+495
+00:37:05,130 --> 00:37:08,742
+the protocol design that is
+going to appear in SEC 20, and
+
+496
+00:37:08,742 --> 00:37:11,285
+the name is at the bottom in the footnote.
+
+497
+00:37:11,285 --> 00:37:14,702
+To show the performance of V-MAC
+as a face being used for NFD,
+
+498
+00:37:14,702 --> 00:37:18,513
+we have a testbed which uses
+Raspberry Pi's and use V alpha dongles,
+
+499
+00:37:18,513 --> 00:37:23,480
+which are commodity dongles off the shelf,
+pretty cheap and anyone can attain them.
+
+500
+00:37:23,480 --> 00:37:26,882
+We're in the third iteration
+of the kernel module,
+
+501
+00:37:26,882 --> 00:37:29,989
+which is provisioned for
+the NFD integration.
+
+502
+00:37:29,989 --> 00:37:33,321
+I'm going to ask Kevin to play
+a video shortly right after.
+
+503
+00:37:33,321 --> 00:37:35,920
+This video is basically one producer and
+
+504
+00:37:35,920 --> 00:37:39,672
+ten consumers requesting
+the same video at the same time.
+
+505
+00:37:39,672 --> 00:37:45,160
+We're transmitting at 54 Mbps,
+the video is around 2 MB of duration.
+
+506
+00:37:45,160 --> 00:37:47,923
+Kevin if you can kindly
+please play the video
+
+507
+00:38:10,448 --> 00:38:14,984
+Thank you, so as you saw earlier,
+an ad hoc out of ten receivers,
+
+508
+00:38:14,984 --> 00:38:20,692
+this was broadcast out of ten receivers,
+only two were able to even play the file.
+
+509
+00:38:20,692 --> 00:38:25,620
+And the two had very high losses at
+68% and the other one was much higher.
+
+510
+00:38:25,620 --> 00:38:29,684
+Meanwhile, in V-MAC,
+it was very controlled low loss for
+
+511
+00:38:29,684 --> 00:38:33,192
+all ten receivers, 0.5% and lower 0.2%.
+
+512
+00:38:33,192 --> 00:38:36,393
+We also have done further experiments,
+we've done stationary experiments.
+
+513
+00:38:36,393 --> 00:38:40,083
+We tried from 3 consumers up to 15
+consumers for ad hoc and multicast.
+
+514
+00:38:40,083 --> 00:38:44,917
+For ad hoc broadcasts, as you can see
+on the left side on the left figure,
+
+515
+00:38:44,917 --> 00:38:50,480
+you'll have b3, which is three
+consumers one producer, 5, 7, 10, 15.
+
+516
+00:38:50,480 --> 00:38:55,512
+And then after the multicast with
+V-MAC robustness protocol results.
+
+517
+00:38:55,512 --> 00:38:58,012
+Broadcasts with ad hoc
+across all receivers,
+
+518
+00:38:58,012 --> 00:39:00,200
+there is always between 40 to 60%.
+
+519
+00:39:00,200 --> 00:39:05,423
+Meanwhile, when we switch to V-MAC, we get
+under 5% consistently across the board.
+
+520
+00:39:05,423 --> 00:39:10,512
+We've also done real vehicle experiments
+where we have four consumers
+
+521
+00:39:10,512 --> 00:39:14,854
+in platoon and one producer
+using 54 Mbps data rate again.
+
+522
+00:39:14,854 --> 00:39:20,630
+The speed was moderate speed 25 to 35 Mbps
+and it was distance was around four miles.
+
+523
+00:39:21,750 --> 00:39:24,344
+And we've tried multiple interests and
+
+524
+00:39:24,344 --> 00:39:30,072
+data can be transmitted packets includes
+500 data frames the interests coming back.
+
+525
+00:39:30,072 --> 00:39:34,591
+As you can see on the right figure, the
+loss rates is controlled, less than 15%.
+
+526
+00:39:34,591 --> 00:39:39,085
+Even receiver number 4,
+which went out of range multiple times,
+
+527
+00:39:39,085 --> 00:39:42,315
+it was still able to keep
+controlled loss rate.
+
+528
+00:39:42,315 --> 00:39:45,387
+When we tried to do ad hoc with the same
+experiment, it didn't work well.
+
+529
+00:39:45,387 --> 00:39:47,298
+Because receiver number 4 and
+
+530
+00:39:47,298 --> 00:39:52,455
+receiver number 3 kept running out of
+network as the beacon kept timing out.
+
+531
+00:39:52,455 --> 00:39:55,292
+And it kept joining and leaving in
+network which didn't work out for
+
+532
+00:39:55,292 --> 00:39:56,197
+receiving any data.
+
+533
+00:39:58,078 --> 00:40:01,706
+Thus integration of V between V-MAC and
+using V-MAC as a face of NFD,
+
+534
+00:40:01,706 --> 00:40:04,611
+the benefits is that we get
+a full data-centric stack.
+
+535
+00:40:04,611 --> 00:40:09,979
+We get a controlled loss rate, instead
+of 10 to 90% varying loss in broadcasts,
+
+536
+00:40:09,979 --> 00:40:14,970
+we'll get 1 to 5% multicast Loss rates for
+stationary in less than 15% for
+
+537
+00:40:14,970 --> 00:40:16,690
+mobile environments.
+
+538
+00:40:16,690 --> 00:40:18,430
+Our latency is not that high.
+
+539
+00:40:18,430 --> 00:40:21,480
+It's less than 2.5 times
+of broadcast transmission.
+
+540
+00:40:21,480 --> 00:40:26,695
+So if you take 10 seconds in broadcast,
+it will take
+
+541
+00:40:26,695 --> 00:40:32,413
+around 25 maximum risky, saying V-MAC
+was 15 receivers multicast control loss.
+
+542
+00:40:32,413 --> 00:40:39,155
+We have the cross stack latency
+improvement, which comes from a software
+
+543
+00:40:39,155 --> 00:40:43,355
+system that we integrated all the way
+from the firmware up to the user space.
+
+544
+00:40:43,355 --> 00:40:48,000
+We improve the transmission cross
+stack latency 60 times, and
+
+545
+00:40:48,000 --> 00:40:52,495
+the reception by 100 times, we also made
+the system interoperable was ad-hoc and
+
+546
+00:40:52,495 --> 00:40:57,000
+can co-exist with any regular WiFi for
+adaptability over the environment.
+
+547
+00:40:57,000 --> 00:40:58,390
+We support high data rates.
+
+548
+00:40:59,690 --> 00:41:03,890
+Just for time sake,
+don't rush this a little for NFD face.
+
+549
+00:41:03,890 --> 00:41:06,040
+We provide three different media types,
+
+550
+00:41:06,040 --> 00:41:10,400
+which is interest data and announcement,
+which is being used for NACK.
+
+551
+00:41:10,400 --> 00:41:13,410
+We also provide a system that's
+called implicit interest.
+
+552
+00:41:13,410 --> 00:41:17,040
+What implicit interest is,
+is an internal subscription.
+
+553
+00:41:17,040 --> 00:41:21,220
+Because V-MAC right now filters
+based on data name or attributes.
+
+554
+00:41:21,220 --> 00:41:24,420
+If you don't subscribe to the data,
+it will not forward it to NFT.
+
+555
+00:41:24,420 --> 00:41:27,450
+So if someone wants to subscribe to
+data without sending an interest,
+
+556
+00:41:27,450 --> 00:41:29,460
+you can use an implicit answers.
+
+557
+00:41:29,460 --> 00:41:35,190
+We also have configurable data rates,
+on one to 65 MPs at ages 8 to 11.
+
+558
+00:41:35,190 --> 00:41:40,190
+And that platform is ready for Raspberry
+Pi, and up to 900 MPs on 8 to 11 ac
+
+559
+00:41:40,190 --> 00:41:46,232
+which runs on Jetson using mini PCIE
+adaptive that's their Wi-Fi chip.
+
+560
+00:41:47,540 --> 00:41:51,200
+One of our future work is to finalize
+integration prepare for code reviews,
+
+561
+00:41:51,200 --> 00:41:52,230
+and testing.
+
+562
+00:41:52,230 --> 00:41:54,890
+The code will be available
+to the community in October.
+
+563
+00:41:54,890 --> 00:41:58,390
+We need some help from the community
+to finalize integration, and
+
+564
+00:41:58,390 --> 00:42:01,830
+verify that our integration
+is complete and successful.
+
+565
+00:42:01,830 --> 00:42:04,050
+We can also provide the source code for
+V-MAC.
+
+566
+00:42:04,050 --> 00:42:07,630
+If anyone is interested, just contact
+me right away and we can provide it.
+
+567
+00:42:07,630 --> 00:42:10,540
+We're also working on multicast
+frame rate adaptation,
+
+568
+00:42:10,540 --> 00:42:15,300
+to adapt the data rate instead of having a
+fixed rate which will improve the latency,
+
+569
+00:42:15,300 --> 00:42:17,650
+robustness, and
+also reduce some of the loss rates.
+
+570
+00:42:18,660 --> 00:42:21,380
+Further, we're also working
+on supporting more hardware
+
+571
+00:42:21,380 --> 00:42:26,080
+chips to support more different Wi-Fi
+dongles, which also can work on Android.
+
+572
+00:42:26,080 --> 00:42:30,420
+We have also new interesting data centric
+research problems like producer selection
+
+573
+00:42:30,420 --> 00:42:33,980
+can be done in a different way where
+instead of the producer deciding
+
+574
+00:42:33,980 --> 00:42:38,970
+which producer to send the data, we can
+have all producers send the data, and
+
+575
+00:42:38,970 --> 00:42:41,710
+then through the medium while
+the transmission is happening,
+
+576
+00:42:41,710 --> 00:42:46,240
+the consumer selects which producers
+ideal for them which works very well.
+
+577
+00:42:46,240 --> 00:42:50,768
+It could show promising results in mobile
+environments, where the dynamic of
+
+578
+00:42:50,768 --> 00:42:55,550
+the links change consistently, and
+it needs to be adapted dynamically.
+
+579
+00:42:55,550 --> 00:42:57,620
+And also Data-centric they can use.
+
+580
+00:42:58,740 --> 00:43:01,649
+Thank you so much Lixia Zhang and
+Asavari Limaye for your support and
+
+581
+00:43:01,649 --> 00:43:04,356
+starting efforts between integration for
+NFD and V-MAC, and
+
+582
+00:43:04,356 --> 00:43:06,980
+I'm happy to take any of your questions.
+
+583
+00:43:06,980 --> 00:43:11,010
+>> So I notice you're basically pushing
+us all to go read a paper that's going to
+
+584
+00:43:11,010 --> 00:43:14,370
+appear in November about V-MAC.
+
+585
+00:43:14,370 --> 00:43:17,750
+On the other hand, you say that
+it's a software implementation.
+
+586
+00:43:17,750 --> 00:43:20,270
+So it just works on
+an existing Wi-Fi interface.
+
+587
+00:43:20,270 --> 00:43:21,278
+Is that correct?
+
+588
+00:43:21,278 --> 00:43:22,147
+Or have you.
+
+589
+00:43:22,147 --> 00:43:25,560
+>> Right, We made
+>> Yeah
+
+590
+00:43:25,560 --> 00:43:28,570
+>> We made sure the system is working off
+
+591
+00:43:28,570 --> 00:43:32,380
+the shelf commodity Wi-Fi dongles, so
+anyone in the research community can
+
+592
+00:43:32,380 --> 00:43:35,500
+use it right away without buying
+expensive hardware customizing hardware.
+
+593
+00:43:35,500 --> 00:43:39,210
+It's pretty much we change
+the firmware and SOC on the chip and
+
+594
+00:43:39,210 --> 00:43:40,920
+the kernel stack completely.
+
+595
+00:43:40,920 --> 00:43:45,113
+The way we eliminated the whole
+outerspace MAC layer.
+
+596
+00:43:45,113 --> 00:43:48,414
+>> Okay, so you have it that year,
+you're transmitting the Wi-Fi band, but
+
+597
+00:43:48,414 --> 00:43:50,288
+you're doing something very different.
+
+598
+00:43:50,288 --> 00:43:52,014
+>> Right.
+
+599
+00:43:52,014 --> 00:43:55,820
+>> Right, okay, and
+
+600
+00:43:55,820 --> 00:44:00,680
+what you've done is you've done
+some of your mapped channels or
+
+601
+00:44:00,680 --> 00:44:06,940
+particular frequencies to names are you
+doing simply, are you varying on the,
+
+602
+00:44:06,940 --> 00:44:10,690
+I mean, the obvious way to do a lot
+of what you're doing is to do some of
+
+603
+00:44:10,690 --> 00:44:16,570
+the shared random shared clock approaches,
+that have been done for
+
+604
+00:44:16,570 --> 00:44:21,320
+military ad-hoc networks, so when to wake
+up to talk with different people, and
+
+605
+00:44:21,320 --> 00:44:24,240
+there's no access or join and
+leave that has happened.
+
+606
+00:44:24,240 --> 00:44:26,980
+It's just all clock based,
+is yours clock based or
+
+607
+00:44:26,980 --> 00:44:30,180
+is it some or is it based on NDN names?
+
+608
+00:44:30,180 --> 00:44:35,740
+Or is it using some other method for
+deciding who gets to talk when to whom.
+
+609
+00:44:35,740 --> 00:44:37,990
+>> We're actually relying
+on CSMA as though,
+
+610
+00:44:37,990 --> 00:44:41,945
+we kept CSMA as though
+it's much random access.
+
+611
+00:44:41,945 --> 00:44:44,245
+>> Okay, and cool.
+
+612
+00:44:44,245 --> 00:44:46,600
+>> Thank you.
+
+613
+00:44:46,600 --> 00:44:47,100
+>> Thank you.
+
+614
+00:44:48,570 --> 00:44:53,150
+>> See, I think we have time for one more
+question if somebody wants to put one up
+
+615
+00:44:53,150 --> 00:44:57,450
+in the chat room, otherwise,
+I'll end the session here.
+
+616
+00:44:57,450 --> 00:44:58,730
+Mohammed, that was a fun talk.
+
+617
+00:44:58,730 --> 00:45:00,928
+Thank you.
+>> Thank you so much.
+
+618
+00:45:00,928 --> 00:45:02,060
+>> All right.
+
+619
+00:45:02,060 --> 00:45:03,590
+Thank you very much.
+
+620
+00:45:03,590 --> 00:45:05,720
+I think that's it.
+
+621
+00:45:05,720 --> 00:45:07,120
+>> Okay, thank you very much, Craig.
+
+622
+00:45:08,390 --> 00:45:12,946
+Our next session is on discovery and
+configuration.
+
+623
+00:45:12,946 --> 00:45:15,400
+And Marie Joseph Merpati
+
+624
+00:45:15,400 --> 00:45:20,490
+is an adjunct professor at Concordia
+University, and will chair this session.
+
+625
+00:45:20,490 --> 00:45:23,100
+So go ahead manages it.
+
+626
+00:45:23,100 --> 00:45:24,260
+>> Okay, great.
+
+627
+00:45:24,260 --> 00:45:25,200
+Hey.
+
+628
+00:45:25,200 --> 00:45:30,360
+So, yeah, so we'll come to this last but
+not least session,
+
+629
+00:45:30,360 --> 00:45:35,630
+where we're looking at Discovery,
+which I think is extremely important.
+
+630
+00:45:35,630 --> 00:45:39,750
+Actually, it's important for me,
+I hope it's important for the people and
+
+631
+00:45:39,750 --> 00:45:44,910
+everything we do when
+there's data-centric systems.
+
+632
+00:45:44,910 --> 00:45:48,330
+The first talk is from
+John Della Version who is
+
+633
+00:45:48,330 --> 00:45:53,320
+a second year PhD student
+at UCLA working with Lixia.
+
+634
+00:45:53,320 --> 00:46:00,300
+He is a true Los Angelenos born and
+raised in Los Angeles.
+
+635
+00:46:00,300 --> 00:46:04,250
+And he got his undergraduate
+degree in physics and
+
+636
+00:46:04,250 --> 00:46:07,870
+computer science from Amherst,
+which is close to me now.
+
+637
+00:46:07,870 --> 00:46:12,330
+And so yes, what's California and
+Massachusetts getting together and
+
+638
+00:46:12,330 --> 00:46:15,190
+discovering something with MDN.
+
+639
+00:46:15,190 --> 00:46:16,443
+So go ahead, John.
+
+640
+00:46:16,443 --> 00:46:20,540
+>> Great time [CROSSTALK]
+>> I'll time verybody at 10 minutes.
+
+641
+00:46:20,540 --> 00:46:23,520
+So try to give time for questions.
+
+642
+00:46:23,520 --> 00:46:25,450
+So again, thank you, John.
+
+643
+00:46:25,450 --> 00:46:25,950
+Please go ahead.
+
+644
+00:46:26,980 --> 00:46:27,480
+>> Hi, everyone.
+
+645
+00:46:27,480 --> 00:46:30,880
+Thank you so much for
+coming to the talk on MDN plug and play.
+
+646
+00:46:30,880 --> 00:46:35,022
+The work itself was done by Eric Newbery,
+can you please ping me and
+
+647
+00:46:35,022 --> 00:46:38,360
+Lixia and as you know,
+the presenter is drawn to lamberson.
+
+648
+00:46:38,360 --> 00:46:41,740
+So with that in mind,
+a natural question you might have
+
+649
+00:46:41,740 --> 00:46:44,040
+given the name of the talk
+is what is plug and play.
+
+650
+00:46:44,040 --> 00:46:46,040
+So we're going to go ahead and
+
+651
+00:46:46,040 --> 00:46:50,050
+for the purposes of this talk
+did cut that into two sections.
+
+652
+00:46:50,050 --> 00:46:54,160
+So first configuration,
+this is the plug notion.
+
+653
+00:46:54,160 --> 00:46:57,610
+This is the setup that one requires
+to actually talk to other nodes
+
+654
+00:46:57,610 --> 00:46:58,700
+on the network.
+
+655
+00:46:58,700 --> 00:47:01,530
+And secondly, we have the plane ocean,
+which is reachability.
+
+656
+00:47:01,530 --> 00:47:04,070
+How do you find the other
+nodes on the network?
+
+657
+00:47:04,070 --> 00:47:06,160
+How do you find who you'd like to talk to?
+
+658
+00:47:06,160 --> 00:47:09,220
+And in this talk,
+we want to compare these goals, or
+
+659
+00:47:09,220 --> 00:47:12,090
+compare these two steps between IP and
+NDN.
+
+660
+00:47:12,090 --> 00:47:16,340
+Ideally define some sort of steps
+in NDN for how we do this and
+
+661
+00:47:16,340 --> 00:47:17,320
+learn something from that.
+
+662
+00:47:18,590 --> 00:47:22,010
+So with that in mind, yes, great.
+
+663
+00:47:22,010 --> 00:47:26,580
+So we'll first start off with IP
+configuration, so the goal of IP
+
+664
+00:47:26,580 --> 00:47:30,560
+configuration is very simply
+connectivity to the global Internet.
+
+665
+00:47:30,560 --> 00:47:33,060
+And in this sort of plug notion,
+
+666
+00:47:33,060 --> 00:47:36,570
+you plug a node into an existing
+connected IP infrastructure or
+
+667
+00:47:36,570 --> 00:47:42,360
+some semi fixed topology, with the goal
+of being able to talk to other nodes that
+
+668
+00:47:42,360 --> 00:47:45,980
+are, plugged in and connected to that
+infrastructure or just topology.
+
+669
+00:47:45,980 --> 00:47:50,520
+And if we wanted to visualize it, we
+could imagine within the larger internet,
+
+670
+00:47:50,520 --> 00:47:51,720
+some narrow slice.
+
+671
+00:47:51,720 --> 00:47:52,650
+We have some nodes,
+
+672
+00:47:52,650 --> 00:47:57,360
+they have arbitrary IP addresses that
+are connected to some set of routers.
+
+673
+00:47:57,360 --> 00:47:59,500
+And in order to actually join the network,
+
+674
+00:47:59,500 --> 00:48:03,300
+a new node must connect to some DHCP
+server, retrieve an IP address,
+
+675
+00:48:03,300 --> 00:48:06,270
+your subnet mask, your default gateway,
+maybe a DNS server.
+
+676
+00:48:06,270 --> 00:48:10,730
+Then once that's connected,
+once you've gotten those four things,
+
+677
+00:48:10,730 --> 00:48:13,510
+the configuration is complete,
+you're connected.
+
+678
+00:48:13,510 --> 00:48:15,680
+That's all IP configuration is about, and
+
+679
+00:48:15,680 --> 00:48:18,130
+you can communicate with other
+nodes within the network.
+
+680
+00:48:19,380 --> 00:48:22,460
+And then because IP is
+just about connectivity,
+
+681
+00:48:22,460 --> 00:48:27,530
+everything involving trust is necessarily
+going to happen on some higher layer.
+
+682
+00:48:27,530 --> 00:48:31,520
+Which can introduce both vulnerabilities
+and some missed opportunities,
+
+683
+00:48:31,520 --> 00:48:35,850
+because you can't know if you're talking
+to the right party over just IP.
+
+684
+00:48:35,850 --> 00:48:41,130
+And the type of vulnerability that I'd
+like to illustrate, is a DDoS attack.
+
+685
+00:48:42,230 --> 00:48:45,090
+You can spoof the source address,
+you can do
+
+686
+00:48:45,090 --> 00:48:49,780
+redirect attacks pretending that you've
+someone else, so on and so forth.
+
+687
+00:48:49,780 --> 00:48:54,360
+Because you have no way to verify
+authenticity on this level, and
+
+688
+00:48:54,360 --> 00:48:57,610
+that can sort of lead to a lot
+of damage as we've all seen.
+
+689
+00:48:57,610 --> 00:49:01,430
+And secondly, we've seen the example of
+missed opportunities here, where you would
+
+690
+00:49:01,430 --> 00:49:05,740
+really like to have infrastructure
+that's designed around talking.
+
+691
+00:49:05,740 --> 00:49:10,040
+On the edge between two relatively
+local nodes or host, but you can't,
+
+692
+00:49:10,040 --> 00:49:12,990
+because you don't have a way
+to verify authenticity.
+
+693
+00:49:12,990 --> 00:49:15,830
+And so this sort of leads to
+a lot of missed opportunities, or
+
+694
+00:49:15,830 --> 00:49:19,970
+going to the cloud for
+everything or what have you.
+
+695
+00:49:19,970 --> 00:49:24,076
+So with that in mind, we can sort of
+briefly talk about the play of notion,
+
+696
+00:49:24,076 --> 00:49:27,210
+IP reachability,
+ultimately this is fairly trivial.
+
+697
+00:49:27,210 --> 00:49:29,208
+Once you've actually
+done your configuration,
+
+698
+00:49:29,208 --> 00:49:32,058
+once you can talk to everyone,
+you either send it to the local network or
+
+699
+00:49:32,058 --> 00:49:33,545
+you send it to your default gateway.
+
+700
+00:49:33,545 --> 00:49:37,080
+And the network takes care of getting it
+to the right place or the right host.
+
+701
+00:49:38,480 --> 00:49:42,902
+So finally, we can move on to what is
+perhaps the more interesting notion,
+
+702
+00:49:42,902 --> 00:49:45,040
+NDN configuration.
+
+703
+00:49:45,040 --> 00:49:50,874
+So, if IP configuration is plugging
+a host into a fixed infrastructure or
+
+704
+00:49:50,874 --> 00:49:53,236
+semi fixed infrastructure.
+
+705
+00:49:53,236 --> 00:49:57,810
+NDN configuration is plugging a new
+entity into an application namespace.
+
+706
+00:49:57,810 --> 00:50:01,274
+And because trust relations exists
+within application namespaces, there
+
+707
+00:50:01,274 --> 00:50:06,460
+are also inheriting trust relations within
+that namespace, relative to other names.
+
+708
+00:50:06,460 --> 00:50:11,010
+And it's important to note here,
+that because we're asserting trust here,
+
+709
+00:50:11,010 --> 00:50:16,650
+because we're bootstrapping both names and
+security, authenticity here is critical.
+
+710
+00:50:16,650 --> 00:50:22,419
+If you sort of screw that up, you
+are paused for the rest of the process.
+
+711
+00:50:23,530 --> 00:50:28,870
+But as I said, this configuration
+process is all about names and security.
+
+712
+00:50:28,870 --> 00:50:31,240
+And in fact,
+the whole configuration process,
+
+713
+00:50:31,240 --> 00:50:35,900
+can be encapsulated in, first, getting
+a name from some relevant application.
+
+714
+00:50:35,900 --> 00:50:39,360
+And secondly,
+getting a certificate from a trust anchor.
+
+715
+00:50:39,360 --> 00:50:41,700
+Everything else is either automatable,
+
+716
+00:50:41,700 --> 00:50:44,590
+you can retrieve a trust
+anchor from a trust schema.
+
+717
+00:50:44,590 --> 00:50:47,860
+Excuse me, from that trust anchor for
+reachability,
+
+718
+00:50:47,860 --> 00:50:50,400
+you can automatically discover namespaces.
+
+719
+00:50:50,400 --> 00:50:55,066
+And it's also interesting to
+note that NDN configuration,
+
+720
+00:50:55,066 --> 00:50:59,557
+sort of unlike IP configuration,
+is not a one time thing.
+
+721
+00:50:59,557 --> 00:51:06,983
+An NDN entity that's on the network,
+can in fact get a new certificate or
+
+722
+00:51:06,983 --> 00:51:11,023
+even get a new name or so on and so forth.
+
+723
+00:51:11,023 --> 00:51:15,581
+Which we haven't explored within
+the code that you've developed, but
+
+724
+00:51:15,581 --> 00:51:18,057
+use sort of part of NDN configuration.
+
+725
+00:51:18,057 --> 00:51:22,567
+And of course, the fact that you're
+involved in application namespaces,
+
+726
+00:51:22,567 --> 00:51:25,250
+rather than in infrastructure or topology.
+
+727
+00:51:25,250 --> 00:51:26,350
+Is also what makes NDN so
+
+728
+00:51:26,350 --> 00:51:29,101
+good at accommodating mobility
+with this configuration.
+
+729
+00:51:30,142 --> 00:51:34,722
+Because you don't need to get a new
+certificate every time you move places, or
+
+730
+00:51:34,722 --> 00:51:38,702
+change the router or
+whatever that you're connected to.
+
+731
+00:51:38,702 --> 00:51:42,885
+So if we wanted to sort of
+visualize NDN configuration,
+
+732
+00:51:42,885 --> 00:51:47,784
+we might take, again,
+some small sample or some small network.
+
+733
+00:51:47,784 --> 00:51:52,731
+Where we have a couple of hosts that
+have sort of example, trust schemas.
+
+734
+00:51:52,731 --> 00:51:57,756
+And then two trust anchors, in this case
+we've two different namespaces/ndn/home.
+
+735
+00:51:57,756 --> 00:52:02,444
+So if a new entity wants to join the
+network, all it has to do, or what it has
+
+736
+00:52:02,444 --> 00:52:07,229
+to do, is first get a name from the sort
+of application that it's running.
+
+737
+00:52:07,229 --> 00:52:10,021
+And then get a certificate
+from the anchor,
+
+738
+00:52:10,021 --> 00:52:15,013
+if it wants to publish under the namespace
+/home/p or the prefix /home/p.
+
+739
+00:52:15,013 --> 00:52:18,030
+They would have to get a certificate
+from the trust anchor 2,
+
+740
+00:52:18,030 --> 00:52:20,130
+which sort of runs administrates/home.
+
+741
+00:52:22,620 --> 00:52:24,430
+And if you'd like me to
+linger on the slide,
+
+742
+00:52:24,430 --> 00:52:26,270
+I'll come back to it,
+please just let me know.
+
+743
+00:52:26,270 --> 00:52:31,228
+But, from here we're sort of
+taking care of the plug aspect
+
+744
+00:52:31,228 --> 00:52:36,650
+of NDN configuration, and
+we can get to the play aspect.
+
+745
+00:52:36,650 --> 00:52:39,150
+And one of the nice things about NDN,
+
+746
+00:52:39,150 --> 00:52:42,110
+is there are many ways to
+get reachability here.
+
+747
+00:52:42,110 --> 00:52:46,560
+Once you have done the essential
+components of configuration, you can
+
+748
+00:52:46,560 --> 00:52:50,920
+either use NDN broadcast self-learning to
+figure out where other namespaces are.
+
+749
+00:52:50,920 --> 00:52:54,164
+You could use NDND,
+you could use Ndn-autoconfig,
+
+750
+00:52:54,164 --> 00:52:58,680
+which contrary [LAUGH] to the name, is not
+actually an auto-configuration system.
+
+751
+00:52:58,680 --> 00:53:00,577
+It's a fine closest hub system, so
+
+752
+00:53:00,577 --> 00:53:04,003
+that's definitely falls under
+the category of reachability.
+
+753
+00:53:04,003 --> 00:53:09,493
+Or you could use NLSR for routing and
+
+754
+00:53:09,493 --> 00:53:14,362
+then, There we go.
+
+755
+00:53:14,362 --> 00:53:18,237
+So from there, we can ask the question,
+how do you implement plug and play, or
+
+756
+00:53:18,237 --> 00:53:20,610
+what ways to do that,
+that are there to do that?
+
+757
+00:53:20,610 --> 00:53:24,316
+And to our view,
+probably the best way to do that is to
+
+758
+00:53:24,316 --> 00:53:28,968
+provide easy ways to safe way,
+which means authentically here.
+
+759
+00:53:28,968 --> 00:53:32,794
+Input a trust anchor, certificate,
+name of the band, and
+
+760
+00:53:32,794 --> 00:53:36,863
+then do our best to automate all
+the reachability beyond that.
+
+761
+00:53:36,863 --> 00:53:43,710
+This is sort of our imagining of how you
+replicate the system of, in IP land.
+
+762
+00:53:43,710 --> 00:53:45,930
+Connecting to the internet, doing DHCP and
+
+763
+00:53:45,930 --> 00:53:49,590
+then just sort of being
+ready to go plug and play.
+
+764
+00:53:49,590 --> 00:53:51,754
+And this ensures that the developer or
+the user, so
+
+765
+00:53:51,754 --> 00:53:55,395
+he doesn't need to be concerned about
+anything beyond the necessary parts.
+
+766
+00:53:55,395 --> 00:53:58,676
+And the essential bits of
+configuration and bootstrapping.
+
+767
+00:54:02,134 --> 00:54:05,554
+We've also gone ahead and
+developed some existing code for this.
+
+768
+00:54:05,554 --> 00:54:10,244
+That works relatively simply, it connects
+to other machines in one-hop, Wi Fi or
+
+769
+00:54:10,244 --> 00:54:14,540
+Ethernet range, and ensures that you
+get sort of the relevant components.
+
+770
+00:54:15,760 --> 00:54:19,830
+So here, we have a sort of quick demo
+that I'm just gonna go ahead and
+
+771
+00:54:19,830 --> 00:54:20,750
+play for everyone.
+
+772
+00:54:22,600 --> 00:54:25,620
+We have two Raspberry Pi's and one Mac.
+
+773
+00:54:27,340 --> 00:54:30,940
+The Mac NFT,
+which you can see on the right, was up and
+
+774
+00:54:30,940 --> 00:54:32,811
+running the Pis were not.
+
+775
+00:54:33,980 --> 00:54:36,740
+The three devices were sort of
+connected through Ethernet, and
+
+776
+00:54:36,740 --> 00:54:39,750
+on Mac we have a server up and running.
+
+777
+00:54:41,020 --> 00:54:44,270
+That will generate a trust
+anchor certificate schema, for
+
+778
+00:54:44,270 --> 00:54:48,208
+devices, and listen to requests for
+distributing them.
+
+779
+00:54:48,208 --> 00:54:53,180
+And we'll see in the demo
+that the Raspberry Pi's, will
+
+780
+00:54:54,300 --> 00:54:58,770
+start with the default identities, and
+then they will request the relevant bits.
+
+781
+00:54:58,770 --> 00:54:59,480
+And it will get them and
+
+782
+00:54:59,480 --> 00:55:01,850
+they will be installed in
+a sort of hard coded location.
+
+783
+00:55:03,560 --> 00:55:06,992
+Though in this demo the server is
+the one assigning the names and
+
+784
+00:55:06,992 --> 00:55:09,856
+the identities,
+that's not actually necessary.
+
+785
+00:55:09,856 --> 00:55:14,730
+And the code itself does
+support the Raspberry Pis or
+
+786
+00:55:14,730 --> 00:55:20,510
+whoever else is running this to
+request a name and the server.
+
+787
+00:55:20,510 --> 00:55:25,235
+Can then discriminate whether or not it's
+going to be giving out that certificate.
+
+788
+00:55:25,235 --> 00:55:27,599
+Or you could certainly use
+something like NDN cert,
+
+789
+00:55:27,599 --> 00:55:30,406
+which would do out of band methods and
+has already developed.
+
+790
+00:55:33,653 --> 00:55:35,403
+>> John, you are almost out of time.
+
+791
+00:55:54,998 --> 00:55:58,692
+>> Yes, and from here you can see
+we're just going to, sort of print out
+
+792
+00:55:58,692 --> 00:56:03,423
+the relevant certificates, which, take my
+word on it, they're in the proper place.
+
+793
+00:56:03,423 --> 00:56:08,340
+So from there, just to briefly talk about
+future directions We want to further
+
+794
+00:56:08,340 --> 00:56:12,460
+clarify and iron down the difference
+between IP and NDN configuration.
+
+795
+00:56:12,460 --> 00:56:15,676
+We want to develop the automation
+tools for reachability.
+
+796
+00:56:15,676 --> 00:56:20,320
+And on the topic of configuration, we
+also want to extend this to be flexible.
+
+797
+00:56:20,320 --> 00:56:24,380
+So you can go through this configuration
+process multiple times to retrieve either
+
+798
+00:56:24,380 --> 00:56:29,250
+more identities or different certificates,
+so on and so forth.
+
+799
+00:56:29,250 --> 00:56:33,752
+So in conclusion, IP configuration is
+concerned solely with connectivity so
+
+800
+00:56:33,752 --> 00:56:36,151
+the host can send and receive IP packets.
+
+801
+00:56:36,151 --> 00:56:39,227
+And the application itself
+has to configure security,
+
+802
+00:56:39,227 --> 00:56:43,487
+which we've seen comes with some
+vulnerabilities and some disadvantages.
+
+803
+00:56:43,487 --> 00:56:46,596
+Whereas NDN entities take their
+name from the application and
+
+804
+00:56:46,596 --> 00:56:48,720
+then configure their security.
+
+805
+00:56:48,720 --> 00:56:53,009
+Which requires bootstrapping
+of both names and securities,
+
+806
+00:56:53,009 --> 00:56:55,737
+which in turn requires authenticity.
+
+807
+00:56:55,737 --> 00:56:59,180
+And then once you're configured, you can
+do reachability in any number of ways.
+
+808
+00:56:59,180 --> 00:57:01,000
+And so that's how we see plug and
+
+809
+00:57:01,000 --> 00:57:05,150
+play proceeding in named data
+networking in the future.
+
+810
+00:57:05,150 --> 00:57:06,890
+And that's about what I have.
+
+811
+00:57:06,890 --> 00:57:11,177
+So if anyone has any questions,
+I would welcome them.
+
+812
+00:57:11,177 --> 00:57:15,594
+>> Well,
+there is a few questions on the chat and
+
+813
+00:57:15,594 --> 00:57:22,347
+I would recommend you do that because
+we're completely out of time.
+
+814
+00:57:22,347 --> 00:57:23,720
+>> Sure, sorry about that.
+
+815
+00:57:23,720 --> 00:57:25,235
+>> I think we should move.
+
+816
+00:57:25,235 --> 00:57:29,432
+Yeah, check the chat and please
+answer to the questions on the chat.
+
+817
+00:57:29,432 --> 00:57:32,030
+So now we move to the second presentation.
+
+818
+00:57:33,820 --> 00:57:38,605
+And the presentation is by Saurab Dulal
+
+819
+00:57:38,605 --> 00:57:43,390
+who is currently doing a PhD in computer
+
+820
+00:57:43,390 --> 00:57:48,320
+science at the University of Memphis and
+
+821
+00:57:48,320 --> 00:57:53,838
+is involved in NDN research since 2017.
+
+822
+00:57:53,838 --> 00:57:58,729
+With areas of research in routing, IoT,
+
+823
+00:57:58,729 --> 00:58:06,154
+data synchronization,
+all of it in NDN, so Saurab, please.
+
+824
+00:58:06,154 --> 00:58:07,786
+>> Thank you so much.
+
+825
+00:58:07,786 --> 00:58:08,870
+Hello, everyone.
+
+826
+00:58:10,270 --> 00:58:15,876
+So today I'm going to present
+a research and that is NDNSD.
+
+827
+00:58:15,876 --> 00:58:18,190
+It is a service publishing and
+discovery in NDN.
+
+828
+00:58:19,280 --> 00:58:23,427
+So I'm Saurab Dulal and
+I'm from the University of Memphis.
+
+829
+00:58:23,427 --> 00:58:27,396
+So, service discovery is very
+important in modern applications,
+
+830
+00:58:27,396 --> 00:58:29,911
+whether it be IoT or mobile applications.
+
+831
+00:58:29,911 --> 00:58:33,513
+There are so many use cases of
+it like discovering printer,
+
+832
+00:58:33,513 --> 00:58:35,545
+service storage devices, and so on.
+
+833
+00:58:35,545 --> 00:58:38,887
+So when we were doing this building
+management system project, we faced
+
+834
+00:58:38,887 --> 00:58:42,558
+a several challenge because of the lack
+of service discovery mechanism in NDM,
+
+835
+00:58:42,558 --> 00:58:44,940
+and we had to do a lot of
+this manual configuration.
+
+836
+00:58:46,040 --> 00:58:48,715
+And we started looking at some
+of the existing solution and
+
+837
+00:58:48,715 --> 00:58:51,727
+we found out that either some of
+the solutions were centralized.
+
+838
+00:58:51,727 --> 00:58:56,470
+And so all the solutions were limited
+to very specific environment.
+
+839
+00:58:56,470 --> 00:59:01,026
+And in most of the solutions, we found out
+that the absence of higher level APIs.
+
+840
+00:59:01,026 --> 00:59:05,840
+So applications were forced to deal
+with a lower level network primitives.
+
+841
+00:59:07,982 --> 00:59:12,639
+That's why our primary research
+goal is to design a general
+
+842
+00:59:12,639 --> 00:59:17,309
+purpose distributed service
+discovery protocol for NDN.
+
+843
+00:59:17,309 --> 00:59:19,837
+And that can support various
+types of services and
+
+844
+00:59:19,837 --> 00:59:22,400
+cover a wide range of environment.
+
+845
+00:59:22,400 --> 00:59:25,675
+And we also want to develop
+a reusable library component and
+
+846
+00:59:25,675 --> 00:59:27,515
+also provide higher level APIs.
+
+847
+00:59:27,515 --> 00:59:31,524
+So this will facilitate application
+developer to implement their own logic,
+
+848
+00:59:31,524 --> 00:59:35,421
+without having trouble to deal with
+those lower level network primitives.
+
+849
+00:59:35,421 --> 00:59:38,359
+But the obvious possible solution is
+to flooding, flood the network, and
+
+850
+00:59:38,359 --> 00:59:39,872
+the consumer will flood the request.
+
+851
+00:59:39,872 --> 00:59:43,801
+And whoever provides the service
+we'll serve the request.
+
+852
+00:59:43,801 --> 00:59:47,970
+But things will start getting complicated
+when this network size grows.
+
+853
+00:59:47,970 --> 00:59:51,596
+And obviously flooding will not scale.
+
+854
+00:59:51,596 --> 00:59:58,212
+Other solution is to move the discovery
+to a rendezvous point or to a cloud.
+
+855
+00:59:58,212 --> 01:00:00,071
+But with this solution,
+there are some problems.
+
+856
+01:00:00,071 --> 01:00:03,088
+We don't want a centralized solution
+because it can incur a single point
+
+857
+01:00:03,088 --> 01:00:04,050
+of failure.
+
+858
+01:00:04,050 --> 01:00:07,012
+It can have an extra compute time,
+even for
+
+859
+01:00:07,012 --> 01:00:10,895
+this kind of services that
+are very close to each other.
+
+860
+01:00:10,895 --> 01:00:12,980
+They have to incur this extra round trip.
+
+861
+01:00:12,980 --> 01:00:17,366
+And there can also be some external
+dependencies in some cases.
+
+862
+01:00:17,366 --> 01:00:18,800
+So we don't want a centralized solution.
+
+863
+01:00:18,800 --> 01:00:21,384
+So we want something
+that is decentralized.
+
+864
+01:00:21,384 --> 01:00:25,070
+So our solution is to group
+the services by the service type.
+
+865
+01:00:25,070 --> 01:00:29,216
+For instance, printers,
+servers, or stories like that,
+
+866
+01:00:29,216 --> 01:00:32,237
+depending on what type
+of service they are.
+
+867
+01:00:32,237 --> 01:00:36,125
+And use a synchronizing protocol to
+synchronize the metadata of the services
+
+868
+01:00:36,125 --> 01:00:38,150
+are under common name prefix.
+
+869
+01:00:38,150 --> 01:00:41,163
+For instance, printers will
+be under this name prefix and
+
+870
+01:00:41,163 --> 01:00:42,710
+servers will be underneath.
+
+871
+01:00:42,710 --> 01:00:47,010
+>> Sir, sorry to interrupt, but
+your slides are not transitioning.
+
+872
+01:00:47,010 --> 01:00:49,692
+You're still on your title slide.
+
+873
+01:00:49,692 --> 01:00:53,330
+>> Okay, so-
+>> Yes, now it's moving.
+
+874
+01:00:54,750 --> 01:00:58,644
+>> Okay, so are we on the our
+solution slide right now.
+
+875
+01:00:58,644 --> 01:01:00,954
+>> Yes.
+
+876
+01:01:00,954 --> 01:01:02,809
+>> Okay, so these were the slide I missed.
+
+877
+01:01:02,809 --> 01:01:04,031
+Should I go?
+
+878
+01:01:04,031 --> 01:01:07,576
+Okay, I'll just go ahead from here.
+
+879
+01:01:07,576 --> 01:01:11,333
+So the solution is to group
+the services based on the service side,
+
+880
+01:01:11,333 --> 01:01:13,020
+that is printer and servers.
+
+881
+01:01:13,020 --> 01:01:17,079
+As I said earlier, and use
+the synchronizing protocol to synchronize
+
+882
+01:01:17,079 --> 01:01:22,031
+the service under the common name prefix,
+that is printers will use this namespace,
+
+883
+01:01:22,031 --> 01:01:24,880
+and servers will use this namespace,
+and so on.
+
+884
+01:01:26,010 --> 01:01:29,143
+And we provide a high level API
+with a well defined high level API.
+
+885
+01:01:29,143 --> 01:01:32,326
+Currently we provide a service
+publisher API and service locator API.
+
+886
+01:01:32,326 --> 01:01:35,432
+Publisher API is used to serve
+the publish the service and
+
+887
+01:01:35,432 --> 01:01:37,968
+the locator API is used
+to locate the service.
+
+888
+01:01:37,968 --> 01:01:41,291
+So if you look at this flow diagram,
+then this is a publisher
+
+889
+01:01:41,291 --> 01:01:45,544
+application which receives an request
+from the user to publish a service and
+
+890
+01:01:45,544 --> 01:01:48,950
+underneath it will use a sync
+to publish the service.
+
+891
+01:01:48,950 --> 01:01:51,843
+So if the service already exists in
+the network, let's say the printer,
+
+892
+01:01:51,843 --> 01:01:55,271
+the service names printer already exists,
+then it will just publish under that name.
+
+893
+01:01:55,271 --> 01:01:59,095
+If the service doesn't exist, for
+instance, I want to create a group for
+
+894
+01:01:59,095 --> 01:02:00,356
+a gaming application.
+
+895
+01:02:00,356 --> 01:02:05,335
+Then the NNEFI specify some service type
+then this will be created on the fly,
+
+896
+01:02:05,335 --> 01:02:08,643
+and it will be advertised
+throughout the network.
+
+897
+01:02:08,643 --> 01:02:11,802
+On the locator side, if some requests
+comes in like, for instance,
+
+898
+01:02:11,802 --> 01:02:13,670
+I want to look at all the printers.
+
+899
+01:02:13,670 --> 01:02:17,083
+Then the locator application
+will fetch all the names,
+
+900
+01:02:17,083 --> 01:02:21,742
+the corresponding names and these
+names are basically application names.
+
+901
+01:02:21,742 --> 01:02:24,310
+I'll talk about this names
+later on the later slide.
+
+902
+01:02:24,310 --> 01:02:28,226
+And it will fit these names and
+then face the individual service info and
+
+903
+01:02:28,226 --> 01:02:30,453
+will provide the reply back to the user.
+
+904
+01:02:30,453 --> 01:02:33,735
+For instance, printer one and this is
+the service info, and printer two and
+
+905
+01:02:33,735 --> 01:02:36,940
+this is service and also for
+coarser servicing provided.
+
+906
+01:02:36,940 --> 01:02:40,908
+So the rationale what is the what is
+the reason we are using a single sink for
+
+907
+01:02:40,908 --> 01:02:42,255
+the service discovery.
+
+908
+01:02:42,255 --> 01:02:46,020
+So, sync provider pops up,
+which simplifies the discovery process.
+
+909
+01:02:46,020 --> 01:02:49,758
+Because if you see the discovery process
+then it basically is somebody trying to
+
+910
+01:02:49,758 --> 01:02:52,958
+publish some service and
+someone else trying to fetch the service.
+
+911
+01:02:52,958 --> 01:02:55,880
+So it's a sort of kind of pub-sub model.
+
+912
+01:02:55,880 --> 01:03:00,693
+So we decided to use sync, and
+using sync is very flexible to implement
+
+913
+01:03:00,693 --> 01:03:06,336
+the application semantic because several
+party can agree on a common sync group.
+
+914
+01:03:06,336 --> 01:03:08,757
+And without caring about
+all those details,
+
+915
+01:03:08,757 --> 01:03:12,589
+they can agree on a common sync group and
+that will work perfectly fine.
+
+916
+01:03:12,589 --> 01:03:16,311
+And there are also other
+benefits of using sync, but
+
+917
+01:03:16,311 --> 01:03:18,857
+these are two important benefits.
+
+918
+01:03:18,857 --> 01:03:21,305
+So talking about the design features,
+
+919
+01:03:21,305 --> 01:03:26,090
+we offer a hierarchical namespace design,
+which has two types of prefix.
+
+920
+01:03:26,090 --> 01:03:29,272
+One is a discovery prefix and
+another application prefix.
+
+921
+01:03:29,272 --> 01:03:32,111
+So discovery prefix is very flexible and
+this will
+
+922
+01:03:32,111 --> 01:03:36,750
+be based on the what type of service
+the service provider is going to offer.
+
+923
+01:03:36,750 --> 01:03:41,339
+For instance, here, you can see there is
+a route which can be organized and or
+
+924
+01:03:41,339 --> 01:03:45,018
+home or anything and
+there is a discovery under the new route.
+
+925
+01:03:45,018 --> 01:03:46,450
+And these are the type of the services.
+
+926
+01:03:46,450 --> 01:03:48,952
+For instance,
+image processing is one type of services,
+
+927
+01:03:48,952 --> 01:03:52,335
+a lot of applications in these days were
+concerned about this kind of service.
+
+928
+01:03:52,335 --> 01:03:56,842
+Similarly, there can be server printers or
+any other computers on surfaces.
+
+929
+01:03:56,842 --> 01:04:00,217
+And these services who actually
+offer the services can
+
+930
+01:04:00,217 --> 01:04:04,032
+be grouped under this namespace and
+the application prefix or
+
+931
+01:04:04,032 --> 01:04:07,570
+the name prefix that
+carries the service info.
+
+932
+01:04:07,570 --> 01:04:10,730
+So, if you look at this design
+application data namespace design, then,
+
+933
+01:04:10,730 --> 01:04:14,840
+there's a group which is pretty
+much same with the previous route.
+
+934
+01:04:14,840 --> 01:04:16,660
+And this is the actual service provider.
+
+935
+01:04:16,660 --> 01:04:20,450
+So, the printer one is for
+service provider and the service-info.
+
+936
+01:04:20,450 --> 01:04:23,270
+The printer one will have a bunch
+of service-info like what kind of
+
+937
+01:04:23,270 --> 01:04:25,260
+printer it is and
+what kind of service it provides.
+
+938
+01:04:25,260 --> 01:04:29,000
+And similarly, more granular information
+can also be here, like for instance,
+
+939
+01:04:29,000 --> 01:04:33,400
+the location of the printer itself,
+like library or some other things.
+
+940
+01:04:33,400 --> 01:04:36,600
+So, in the sync level,
+these two namespace will be,
+
+941
+01:04:36,600 --> 01:04:38,840
+this prefix will be used like this.
+
+942
+01:04:38,840 --> 01:04:42,060
+So, the printer, this is a service
+group and this also is a sync group.
+
+943
+01:04:43,150 --> 01:04:45,750
+And this is a content that the sync
+group will carry, basically,
+
+944
+01:04:45,750 --> 01:04:46,526
+the sync will carry.
+
+945
+01:04:46,526 --> 01:04:52,390
+It will carry the all the name application
+prefix within the synchro and whenever,
+
+946
+01:04:52,390 --> 01:04:57,335
+whoever fetches this content, they can
+retrieve the individual service-info.
+
+947
+01:04:58,460 --> 01:05:01,500
+And in our case,
+which is a service locator.
+
+948
+01:05:01,500 --> 01:05:03,750
+The all service design
+feature is service-info,
+
+949
+01:05:03,750 --> 01:05:06,210
+which is basically a service detail.
+
+950
+01:05:06,210 --> 01:05:09,310
+So, this will provide
+a great opportunity for,
+
+951
+01:05:09,310 --> 01:05:11,146
+to generalize the service
+discovery protocol.
+
+952
+01:05:11,146 --> 01:05:15,011
+Because in service detail, based on
+what type of service you're offering,
+
+953
+01:05:15,011 --> 01:05:17,694
+you can have as many as
+description as possible here.
+
+954
+01:05:17,694 --> 01:05:21,719
+So, for instance, for this specific
+type of service here, image processing,
+
+955
+01:05:21,719 --> 01:05:24,990
+the description here, release here,
+and there's a lifetime.
+
+956
+01:05:26,110 --> 01:05:28,130
+So, lifetime, basically, this is used, for
+
+957
+01:05:28,130 --> 01:05:32,430
+instance, some type of service
+are very sensitive to the lifetime.
+
+958
+01:05:32,430 --> 01:05:35,138
+Some, I offer this service only for
+50 seconds and
+
+959
+01:05:35,138 --> 01:05:36,935
+it will expire after that second.
+
+960
+01:05:36,935 --> 01:05:40,987
+So, we use this lifetime along with
+the publish timestamp of the service to
+
+961
+01:05:40,987 --> 01:05:44,332
+compute either the service is expired or
+is still active, and
+
+962
+01:05:44,332 --> 01:05:48,200
+this information would be
+provided to the service locator.
+
+963
+01:05:48,200 --> 01:05:50,090
+And this will help to
+generalize the protocol for
+
+964
+01:05:50,090 --> 01:05:52,580
+a wide range of applicantion because
+they can implement their own type of,
+
+965
+01:05:52,580 --> 01:05:55,500
+they can specify their own
+type of service detail.
+
+966
+01:05:55,500 --> 01:05:58,120
+Along with this, the API,
+
+967
+01:05:58,120 --> 01:06:02,510
+a law of measurement information can also
+be provided, is also provided via API.
+
+968
+01:06:02,510 --> 01:06:04,162
+For instance,
+a round trip time to the service.
+
+969
+01:06:04,162 --> 01:06:08,570
+This has the network level information
+you can provide to the service locator so
+
+970
+01:06:08,570 --> 01:06:12,580
+that it can do the QS or
+other other type of thing.
+
+971
+01:06:12,580 --> 01:06:16,846
+But with round trip time, one can
+look at the closest gateway or hub.
+
+972
+01:06:16,846 --> 01:06:21,982
+And with service stability, if the service
+locator want to figure out the service
+
+973
+01:06:21,982 --> 01:06:26,746
+stability, then the periodic probing,
+the NDNSD library can do a periodic
+
+974
+01:06:26,746 --> 01:06:31,660
+probing and then find out how to stable
+the services similarly retransmission
+
+975
+01:06:31,660 --> 01:06:36,600
+count to the fetch service, and this
+information can be provided via the API.
+
+976
+01:06:38,230 --> 01:06:40,326
+The other important
+aspects is accessibility.
+
+977
+01:06:40,326 --> 01:06:45,158
+So, someone who fetches the service
+info probably need to be
+
+978
+01:06:45,158 --> 01:06:48,810
+authorized to access the service-info.
+
+979
+01:06:48,810 --> 01:06:49,949
+So, how do you protect that?
+
+980
+01:06:49,949 --> 01:06:52,494
+How do you protect some sensitive
+information being displayed to
+
+981
+01:06:52,494 --> 01:06:53,610
+an unauthorized audience?
+
+982
+01:06:54,830 --> 01:06:57,241
+So, we plan to use a name
+based access control.
+
+983
+01:06:57,241 --> 01:06:59,467
+Latin already presented.
+
+984
+01:06:59,467 --> 01:07:01,770
+Sometimes, I go about the NAC.
+
+985
+01:07:01,770 --> 01:07:05,090
+So, this basically, the service-info will,
+the content that is
+
+986
+01:07:05,090 --> 01:07:09,070
+basically a service info will be encrypted
+using a CK, that is a content key.
+
+987
+01:07:09,070 --> 01:07:11,990
+And this content key will be decrypted,
+encrypted using a key,
+
+988
+01:07:11,990 --> 01:07:14,750
+encryption key,
+which is obtained from the access manager.
+
+989
+01:07:14,750 --> 01:07:16,920
+So, both of these content
+will be provided to,
+
+990
+01:07:16,920 --> 01:07:19,540
+will we passed onto the service locator.
+
+991
+01:07:19,540 --> 01:07:22,960
+After the service locator will get
+this content, it will face the KDK,
+
+992
+01:07:22,960 --> 01:07:24,660
+which is key decryption key.
+
+993
+01:07:24,660 --> 01:07:27,050
+Decrypt this content key and
+then, finally,
+
+994
+01:07:27,050 --> 01:07:28,700
+decrypt the content and get the content.
+
+995
+01:07:28,700 --> 01:07:31,420
+So, this is based on the,
+sort of access policy,
+
+996
+01:07:31,420 --> 01:07:35,380
+if the user is authorized to
+access this content or not.
+
+997
+01:07:35,380 --> 01:07:39,792
+If he's authorized,
+it can access all the ways he can.
+
+998
+01:07:39,792 --> 01:07:43,127
+So, this is the use case and
+this is also our motivations where this,
+
+999
+01:07:43,127 --> 01:07:44,240
+everything started.
+
+1000
+01:07:44,240 --> 01:07:46,689
+So, we were doing this BMS
+project that I've said already.
+
+1001
+01:07:46,689 --> 01:07:51,112
+This is a simple building management
+system project where the parties involved
+
+1002
+01:07:51,112 --> 01:07:53,250
+are sensor, repos, and a user.
+
+1003
+01:07:53,250 --> 01:07:54,861
+So, the basic flow is,
+
+1004
+01:07:54,861 --> 01:08:00,112
+sensor wants to discover the respective
+repo where it can insert the data to.
+
+1005
+01:08:00,112 --> 01:08:04,420
+So, it will use NDNSD
+to discover the repos.
+
+1006
+01:08:04,420 --> 01:08:06,488
+For instance, these repos will,
+
+1007
+01:08:06,488 --> 01:08:10,720
+are willing to insert whatever
+the sensor will produce the data.
+
+1008
+01:08:10,720 --> 01:08:12,407
+So, it will discover the possible repos.
+
+1009
+01:08:12,407 --> 01:08:16,646
+For instant, these three repos are here
+and it discovered the repos using an NDNSD
+
+1010
+01:08:16,646 --> 01:08:19,613
+and it will use one of these
+repo to do the data transport.
+
+1011
+01:08:19,613 --> 01:08:23,256
+Once the data is received by the repo, the
+data will be replicated among all these
+
+1012
+01:08:23,256 --> 01:08:27,780
+repos using a sync protocol underneath,
+and then the data will be replicated.
+
+1013
+01:08:27,780 --> 01:08:32,020
+Now, once the user wants
+to fetch some data, it will
+
+1014
+01:08:32,020 --> 01:08:37,580
+first discover all the prefixes that
+particular repo serves the data for.
+
+1015
+01:08:37,580 --> 01:08:40,390
+So, this is an interesting application.
+
+1016
+01:08:40,390 --> 01:08:43,558
+>> I gave you a few more minutes,
+but I hope you're at the end.
+
+1017
+01:08:43,558 --> 01:08:46,503
+>> Yeah, I'm [INAUDIBLE].
+
+1018
+01:08:46,503 --> 01:08:48,412
+And he will discover all the prefixes and
+
+1019
+01:08:48,412 --> 01:08:51,160
+then it will fetch the corresponding
+data from the repo.
+
+1020
+01:08:51,160 --> 01:08:52,630
+So, this is a entire use case.
+
+1021
+01:08:52,630 --> 01:08:54,920
+With our discovery protocol here,
+
+1022
+01:08:54,920 --> 01:08:57,530
+it will be really painful to do
+all this configuration manually.
+
+1023
+01:08:58,630 --> 01:08:59,801
+So, we did some of
+the preliminary evaluation.
+
+1024
+01:08:59,801 --> 01:09:04,169
+We set up the testbed in University
+of Memphis using Raspberry Pi's, and
+
+1025
+01:09:04,169 --> 01:09:08,700
+we did some experiments with distance and
+and also for the condition.
+
+1026
+01:09:08,700 --> 01:09:12,649
+These are the distribution of
+the Raspberry Pi across the Dunn Hall,
+
+1027
+01:09:12,649 --> 01:09:14,300
+the University of Memphis.
+
+1028
+01:09:14,300 --> 01:09:16,707
+And we also did some wired and
+wireless simulations.
+
+1029
+01:09:16,707 --> 01:09:19,580
+We have our implementation
+on top of PSync and
+
+1030
+01:09:19,580 --> 01:09:24,192
+Chronosync which are actively
+maintained sync protocol right now, and
+
+1031
+01:09:24,192 --> 01:09:27,229
+the NDNSDs can adopt to
+both of these protocol.
+
+1032
+01:09:27,229 --> 01:09:31,180
+So, one of the evaluation that I would
+like to share here is from the mini-NDN,.
+
+1033
+01:09:31,180 --> 01:09:33,080
+This is a emulation experiment.
+
+1034
+01:09:33,080 --> 01:09:38,190
+So, data, there are multi hop involved,
+this is a multi hop policy.
+
+1035
+01:09:38,190 --> 01:09:42,729
+Service-info upgrade frequency is 900
+milliseconds per 200 milliseconds jitter,
+
+1036
+01:09:42,729 --> 01:09:45,830
+which is how often
+the service-info is updated.
+
+1037
+01:09:45,830 --> 01:09:47,941
+And total number of upgrade
+is 300 per producer.
+
+1038
+01:09:47,941 --> 01:09:51,330
+The protocol users, PSync and
+Link-delay was 10 millisecond.
+
+1039
+01:09:51,330 --> 01:09:55,120
+So, you see, if this, you see at
+this delays, then these are lower,
+
+1040
+01:09:55,120 --> 01:09:58,120
+lesser than the actual
+delay that should be there.
+
+1041
+01:09:58,120 --> 01:10:00,764
+For instance,
+the round trip time for this one,
+
+1042
+01:10:00,764 --> 01:10:04,054
+from the point where the publisher
+publishes the service and
+
+1043
+01:10:04,054 --> 01:10:08,960
+the sync propagate this information to the
+consumer, which is 10 millisecond around,
+
+1044
+01:10:08,960 --> 01:10:12,769
+and then fetching the service-info
+is another 20 millisecond, so
+
+1045
+01:10:12,769 --> 01:10:17,029
+which is about 30 millisecond, but
+it comes down to 25 milliseconds, and
+
+1046
+01:10:17,029 --> 01:10:18,872
+it happens for all the hops here.
+
+1047
+01:10:18,872 --> 01:10:23,135
+So, this is very, this is due to
+the in-network caching of NDN also and
+
+1048
+01:10:23,135 --> 01:10:25,340
+also due to the sync multicast.
+
+1049
+01:10:25,340 --> 01:10:27,020
+So, this is reducing the overall delay.
+
+1050
+01:10:27,020 --> 01:10:30,828
+So, this is one of the benefit of
+using multicasting, multicast and
+
+1051
+01:10:30,828 --> 01:10:32,083
+multicasting of NDN.
+
+1052
+01:10:32,083 --> 01:10:34,274
+So, in conclusion,
+we develop a general-purpose,
+
+1053
+01:10:34,274 --> 01:10:37,468
+we're developing a general-purpose,
+a distributed service publishing and
+
+1054
+01:10:37,468 --> 01:10:39,346
+discovery mechanism for NDN.
+
+1055
+01:10:39,346 --> 01:10:43,642
+We defined well-defined pub-sub API for
+discovery and reusable library components
+
+1056
+01:10:43,642 --> 01:10:47,910
+are there and we'll share some of
+the preliminary evaluation and use-case.
+
+1057
+01:10:47,910 --> 01:10:51,950
+Some of the existing difficulties that
+we're facing is to set up a real-world
+
+1058
+01:10:51,950 --> 01:10:53,980
+testbed and also do experiment.
+
+1059
+01:10:53,980 --> 01:10:58,010
+One of the problem that we faced was due
+to lack of multicast suppression in NFD.
+
+1060
+01:10:58,010 --> 01:11:00,840
+We observe enormous amount of
+unsolicited data and interest.
+
+1061
+01:11:00,840 --> 01:11:03,090
+And this was causing a huge
+condition in the network.
+
+1062
+01:11:03,090 --> 01:11:07,853
+So, we are not, I was practically when
+doing experiment wasn't able to go
+
+1063
+01:11:07,853 --> 01:11:11,950
+beyond 10 to 12 nodes in a MESS setup,
+in one hop MESS setup.
+
+1064
+01:11:12,970 --> 01:11:17,010
+So, the future work was, is to perform
+some scaling experiment in mini-NDN.
+
+1065
+01:11:17,010 --> 01:11:19,820
+And also, do some real world
+multi-hop wireless experiments and
+
+1066
+01:11:19,820 --> 01:11:23,260
+also to implement the use
+case that I have seen earlier
+
+1067
+01:11:23,260 --> 01:11:26,290
+to completely implement the use case that
+I've seen earlier and do more evaluation.
+
+1068
+01:11:27,390 --> 01:11:30,420
+Thank you.
+
+1069
+01:11:30,420 --> 01:11:31,640
+>> Thank you very much.
+
+1070
+01:11:31,640 --> 01:11:37,080
+There's a lot of activity on the chats
+that I suppose to be able to look at.
+
+1071
+01:11:37,080 --> 01:11:41,916
+And so, for the sake of timing,
+because it's really close to
+
+1072
+01:11:41,916 --> 01:11:46,102
+when we should stop and
+we still have a presentation,
+
+1073
+01:11:46,102 --> 01:11:50,399
+I would suggest that we take
+the questions to the chat.
+
+1074
+01:11:50,399 --> 01:11:52,679
+>> Okay, sure.
+
+1075
+01:11:52,679 --> 01:11:54,530
+>> And so, thank you very much.
+
+1076
+01:11:54,530 --> 01:11:58,450
+So, the last but not the least, so
+it's the last and the last of the last.
+
+1077
+01:12:00,170 --> 01:12:05,277
+We have a presentation
+from Susmit Shannigrahi
+
+1078
+01:12:05,277 --> 01:12:09,192
+from Tennessee Tech where he
+is an assistant professor.
+
+1079
+01:12:09,192 --> 01:12:15,074
+We're looking and doing research
+in Networking for Big Science,
+
+1080
+01:12:15,074 --> 01:12:21,493
+obviously future Internet Architecture and
+also 5G Mobile Networks.
+
+1081
+01:12:21,493 --> 01:12:26,674
+And he's going to share
+the presentation with Zhaoning Kong,
+
+1082
+01:12:26,674 --> 01:12:29,222
+who is a PhD student at Purdue.
+
+1083
+01:12:29,222 --> 01:12:32,541
+And he used to be at UCLA for
+his master's and
+
+1084
+01:12:32,541 --> 01:12:38,221
+is also interested obviously in
+Network System and Distribution System.
+
+1085
+01:12:38,221 --> 01:12:42,918
+And they will talk about an NDN-Repo for
+genomics datasets,
+
+1086
+01:12:42,918 --> 01:12:46,362
+which is the progress and
+future direction.
+
+1087
+01:12:46,362 --> 01:12:51,418
+And I think a lot of people,
+it's interesting that we close with
+
+1088
+01:12:51,418 --> 01:12:57,620
+this because I think we started with
+a presentation on NDN for large datasets.
+
+1089
+01:12:57,620 --> 01:13:01,914
+So we're now closing the loop,
+so Susmit and
+
+1090
+01:13:01,914 --> 01:13:06,323
+Zhaoning, please start your presentation.
+
+1091
+01:13:06,323 --> 01:13:08,740
+>> Okay, great, thank you for
+the introduction.
+
+1092
+01:13:08,740 --> 01:13:14,861
+And as you said, we are closing the loop
+we opened with the genomics doc and
+
+1093
+01:13:14,861 --> 01:13:17,443
+now we're closing the cycle.
+
+1094
+01:13:17,443 --> 01:13:24,175
+The motivation for this talk, so
+the Repo is a generic storage,
+
+1095
+01:13:24,175 --> 01:13:30,172
+it's not necessarily only for
+the genomics community.
+
+1096
+01:13:30,172 --> 01:13:36,271
+But we are taking the genomics example,
+to drive the development for the repo.
+
+1097
+01:13:36,271 --> 01:13:40,306
+For those who were in the NDN
+community for a long time,
+
+1098
+01:13:40,306 --> 01:13:42,691
+you might remember NDN-repo.
+
+1099
+01:13:42,691 --> 01:13:48,842
+And it was again the same thing,
+it's a persistent repo that stores packet.
+
+1100
+01:13:48,842 --> 01:13:53,978
+We took the genomics use case,
+and we found a few differences
+
+1101
+01:13:53,978 --> 01:13:58,780
+that we need to incorporate
+in the repo's design.
+
+1102
+01:13:58,780 --> 01:14:05,923
+And we are going to go over those,
+give a little bit of experimental results.
+
+1103
+01:14:05,923 --> 01:14:10,443
+But more importantly, it's still in
+the design and implementation phase, so
+
+1104
+01:14:10,443 --> 01:14:13,963
+if you have any feedback,
+that would be really appreciated.
+
+1105
+01:14:13,963 --> 01:14:19,966
+[COUGH] Okay, so as we saw in
+the first session that large science
+
+1106
+01:14:19,966 --> 01:14:25,292
+datasets can really benefit
+from NDN's name-based,
+
+1107
+01:14:25,292 --> 01:14:29,161
+and location transparent networking.
+
+1108
+01:14:29,161 --> 01:14:32,581
+The one critical aspect of
+that is to have storage.
+
+1109
+01:14:35,773 --> 01:14:41,548
+What are the properties that we need for
+scientific datasets?
+
+1110
+01:14:41,548 --> 01:14:45,760
+They have to support very large data sets,
+
+1111
+01:14:45,760 --> 01:14:49,745
+anywhere from terabytes to petabytes.
+
+1112
+01:14:49,745 --> 01:14:55,136
+We have tested the new Python-Repo
+with over 1 terabytes of data.
+
+1113
+01:14:55,136 --> 01:14:59,476
+But again in Graham Scheme of Things,
+
+1114
+01:14:59,476 --> 01:15:05,184
+that's not too large, so
+we have a long way to go.
+
+1115
+01:15:05,184 --> 01:15:09,956
+It should provide the persistent
+storage at a file level.
+
+1116
+01:15:09,956 --> 01:15:15,460
+So, even though NDN chunks
+files into packets,
+
+1117
+01:15:15,460 --> 01:15:19,488
+we are saying that because all these
+
+1118
+01:15:19,488 --> 01:15:24,760
+communities their unit
+of operation is file.
+
+1119
+01:15:24,760 --> 01:15:31,118
+So it makes sense instead of just
+having all the packets at one place,
+
+1120
+01:15:31,118 --> 01:15:36,503
+we should have things stored
+at a file level granularity.
+
+1121
+01:15:36,503 --> 01:15:40,200
+It should provide
+transparent data access to
+
+1122
+01:15:40,200 --> 01:15:45,280
+the requesters who know
+where the data is located.
+
+1123
+01:15:45,280 --> 01:15:49,192
+And then it has also be replicated for
+availability and
+
+1124
+01:15:49,192 --> 01:15:51,922
+geographically distributed users.
+
+1125
+01:15:51,922 --> 01:15:58,770
+So all these communities most of
+them are pretty international.
+
+1126
+01:15:58,770 --> 01:16:06,385
+So they even nationally distributed, so we
+cannot have only one repo at one place and
+
+1127
+01:16:06,385 --> 01:16:11,549
+tell everyone to go to that,
+that's not going to scale.
+
+1128
+01:16:14,963 --> 01:16:17,199
+So for the genomics use case,
+
+1129
+01:16:17,199 --> 01:16:22,600
+we wanted the publishers to
+publish data sets into the repo.
+
+1130
+01:16:22,600 --> 01:16:28,430
+And they could use their own
+community defined names.
+
+1131
+01:16:28,430 --> 01:16:32,490
+So if the same repo is storing physics and
+
+1132
+01:16:32,490 --> 01:16:38,320
+genomics dataset, it should support both
+the community define naming schemes.
+
+1133
+01:16:38,320 --> 01:16:42,234
+Instead of saying that this
+is a repo that I'm running,
+
+1134
+01:16:42,234 --> 01:16:46,832
+everything that you publish from
+here must have the same prefix.
+
+1135
+01:16:46,832 --> 01:16:52,930
+The second point is data is
+automatically replicated.
+
+1136
+01:16:52,930 --> 01:16:57,112
+So the degree of replication
+is defined by use cases.
+
+1137
+01:16:57,112 --> 01:17:00,670
+The genomics community might have
+three degree of replications,
+
+1138
+01:17:00,670 --> 01:17:02,010
+others might have more.
+
+1139
+01:17:04,620 --> 01:17:07,538
+It should automatically maintain
+the degree of replication when
+
+1140
+01:17:07,538 --> 01:17:08,392
+failure happens.
+
+1141
+01:17:08,392 --> 01:17:13,395
+So if a replica goes down,
+it needs to replicate
+
+1142
+01:17:13,395 --> 01:17:18,660
+that failed content to
+another instance of repo.
+
+1143
+01:17:18,660 --> 01:17:24,030
+We're not going to go into the details
+of that, but that's how it should work.
+
+1144
+01:17:25,330 --> 01:17:30,550
+Now, the other thing to know that
+the repo is a persistent storage.
+
+1145
+01:17:30,550 --> 01:17:35,121
+But there is opportunity for
+creating another layer, on top of that,
+
+1146
+01:17:35,121 --> 01:17:37,533
+that supports different use cases.
+
+1147
+01:17:37,533 --> 01:17:44,880
+For example, genomics, we have data in the
+repo, but how do we figure out the names?
+
+1148
+01:17:44,880 --> 01:17:48,400
+So we can have sort of
+a separate name catalog or
+
+1149
+01:17:48,400 --> 01:17:52,410
+database, where the scientists can go and
+look things up.
+
+1150
+01:17:53,870 --> 01:17:57,922
+If we have another example
+might be replication.
+
+1151
+01:17:57,922 --> 01:18:02,066
+So you might have some
+sort of logic that says,
+
+1152
+01:18:02,066 --> 01:18:08,995
+these are the top 10% of the datasets
+that are being used by the scientist.
+
+1153
+01:18:08,995 --> 01:18:10,823
+So from Alex's talk,
+
+1154
+01:18:10,823 --> 01:18:16,321
+you might remember that there's
+42 petabytes of genomics data.
+
+1155
+01:18:16,321 --> 01:18:20,990
+So obviously, all of that cannot
+be replicated multiple times.
+
+1156
+01:18:20,990 --> 01:18:25,641
+So you might create a thin layer
+on top of the repo that says,
+
+1157
+01:18:25,641 --> 01:18:30,401
+this is the really popular data set and
+can benefit from NDN.
+
+1158
+01:18:30,401 --> 01:18:34,986
+So we are going to only replicate
+those datasets into the repo.
+
+1159
+01:18:34,986 --> 01:18:41,576
+So that's the high level view,
+I'm going to hand it over to Zhaoning for
+
+1160
+01:18:41,576 --> 01:18:45,693
+the actual implementation and the details.
+
+1161
+01:18:49,024 --> 01:18:50,581
+>> Hi, everyone, can you hear me?
+
+1162
+01:18:51,785 --> 01:18:54,270
+>> Yes.
+
+1163
+01:18:54,270 --> 01:18:56,817
+>> Hi, can you hear me?
+
+1164
+01:18:56,817 --> 01:18:59,546
+>> Yes, I can hear you.
+
+1165
+01:18:59,546 --> 01:19:02,900
+>> Okay, hi, everyone,
+my name is Zhaoning and
+
+1166
+01:19:02,900 --> 01:19:05,832
+I'm gonna finish the rest of this talk.
+
+1167
+01:19:05,832 --> 01:19:10,060
+So first I'd like to start
+with overview of the NDN-Repo.
+
+1168
+01:19:10,060 --> 01:19:13,843
+So, on the slide,
+you can see there's two graphs.
+
+1169
+01:19:13,843 --> 01:19:19,923
+The graph on the left is showing how
+application inserts file into the repo.
+
+1170
+01:19:19,923 --> 01:19:25,450
+And on the right, you can see how the
+application retrieves data from the repo.
+
+1171
+01:19:25,450 --> 01:19:28,512
+So, basically this is a reactive process.
+
+1172
+01:19:28,512 --> 01:19:31,005
+The repo just sits there and waits for
+
+1173
+01:19:31,005 --> 01:19:35,762
+the application to send a request as for
+insertion or data retrieval.
+
+1174
+01:19:35,762 --> 01:19:39,900
+And that's an assessment,
+next slide, please?
+
+1175
+01:19:43,052 --> 01:19:48,102
+So why do we want to do
+replication on NDN repos?
+
+1176
+01:19:48,102 --> 01:19:51,230
+So first by deploying a set
+of distributed repo nodes,
+
+1177
+01:19:51,230 --> 01:19:55,452
+waiting through the availability and
+performance of the entire system.
+
+1178
+01:19:55,452 --> 01:19:59,831
+Because the request doesn't
+have to go to one place,
+
+1179
+01:19:59,831 --> 01:20:02,762
+it can go to many different places.
+
+1180
+01:20:02,762 --> 01:20:07,540
+And to this end, we're thinking
+of using any test, so basically
+
+1181
+01:20:08,990 --> 01:20:14,660
+All the repos can announce
+the same routing announcement and
+
+1182
+01:20:14,660 --> 01:20:19,452
+an interest will be forwarded
+to the nearest repo.
+
+1183
+01:20:19,452 --> 01:20:25,274
+And the other thing is by replicating
+data files on multiple repo nodes,
+
+1184
+01:20:25,274 --> 01:20:28,335
+we avoid the single point of failure.
+
+1185
+01:20:28,335 --> 01:20:33,061
+And to make this work we are thinking
+of using consistent hashing
+
+1186
+01:20:33,061 --> 01:20:36,921
+to decide which file to be
+replicated on which node.
+
+1187
+01:20:36,921 --> 01:20:40,194
+And I will talk about how that
+is done in the next few slides.
+
+1188
+01:20:42,377 --> 01:20:44,189
+Next slide please.
+
+1189
+01:20:44,189 --> 01:20:49,525
+So, the high level idea of
+consistent hashing is that
+
+1190
+01:20:49,525 --> 01:20:55,110
+we have both repo node and
+files onto the same hash ring.
+
+1191
+01:20:55,110 --> 01:20:57,898
+So as you can see on
+the graph on the right,
+
+1192
+01:20:57,898 --> 01:21:01,587
+we have multiple repo nodes,
+A, B, C, D, and so on.
+
+1193
+01:21:01,587 --> 01:21:05,579
+And we hash these nodes onto a hash ring.
+
+1194
+01:21:05,579 --> 01:21:10,676
+In the meantime, we also hash files or
+data onto this ring.
+
+1195
+01:21:10,676 --> 01:21:15,888
+So for example, let's say there's
+a file called filename, and
+
+1196
+01:21:15,888 --> 01:21:21,305
+we use hash function H1 and
+hash that to a place between node B and C.
+
+1197
+01:21:21,305 --> 01:21:26,038
+And we use a convention saying that
+this file would be replicated,
+
+1198
+01:21:26,038 --> 01:21:31,459
+will be stored by the closest node smaller
+than it, in this case it is node B.
+
+1199
+01:21:32,742 --> 01:21:36,287
+Right, so and to step up the level,
+
+1200
+01:21:36,287 --> 01:21:40,426
+we can also use multiple hash functions so
+
+1201
+01:21:40,426 --> 01:21:45,997
+that the same file can be
+replicated on multiple nodes.
+
+1202
+01:21:48,277 --> 01:21:49,241
+Next slide please.
+
+1203
+01:21:53,216 --> 01:21:56,369
+So to make consistent hashing work,
+
+1204
+01:21:56,369 --> 01:22:00,750
+we need to have
+a Membership Management Protocol.
+
+1205
+01:22:00,750 --> 01:22:05,867
+Which enables each repo node to
+have a global view of a list of all
+
+1206
+01:22:05,867 --> 01:22:11,002
+other members, so that each of
+them can construct such a ring.
+
+1207
+01:22:11,002 --> 01:22:16,506
+And also each node have to quickly
+learn that a new node has joined or
+
+1208
+01:22:16,506 --> 01:22:18,975
+an existing node has failed.
+
+1209
+01:22:18,975 --> 01:22:22,881
+So to make this work we're
+currently thinking of
+
+1210
+01:22:22,881 --> 01:22:27,274
+having each node periodically
+ping is next neighbor.
+
+1211
+01:22:27,274 --> 01:22:33,565
+And this ping message will contain
+a membership list with timestamp.
+
+1212
+01:22:33,565 --> 01:22:38,559
+So that this membership list will
+be circulated around the ring and
+
+1213
+01:22:38,559 --> 01:22:43,562
+gets everyone updated about what's
+the list of current members.
+
+1214
+01:22:43,562 --> 01:22:50,647
+And also for fast failure discovery,
+we can broadcast the failure messages,
+
+1215
+01:22:50,647 --> 01:22:55,923
+so it so that it gets propagated
+to everyone immediately.
+
+1216
+01:22:55,923 --> 01:23:00,218
+And for new nodes to join we can
+set a predefined namespace, for
+
+1217
+01:23:00,218 --> 01:23:02,493
+example, repo_group/join.
+
+1218
+01:23:02,493 --> 01:23:08,797
+And whenever a new node comes,
+it can send an interest to this prefix.
+
+1219
+01:23:08,797 --> 01:23:16,010
+And this interest will be routed in
+anycast fashion to one of the nodes and
+
+1220
+01:23:16,010 --> 01:23:21,223
+that node will include this
+new node into the array.
+
+1221
+01:23:21,223 --> 01:23:24,431
+Yeah, this is how we handle
+membership management.
+
+1222
+01:23:24,431 --> 01:23:27,674
+And in the next slide,
+I will talk about how we insert and
+
+1223
+01:23:27,674 --> 01:23:30,167
+retrieve data from this replicated repo.
+
+1224
+01:23:30,167 --> 01:23:31,350
+Next slide please.
+
+1225
+01:23:34,242 --> 01:23:39,600
+So to insert data into the repo,
+we're thinking of using anycast.
+
+1226
+01:23:39,600 --> 01:23:43,445
+Physically, the app sends insert request,
+and
+
+1227
+01:23:43,445 --> 01:23:48,990
+this request will be routed in
+anycast style to the nearest neighbor.
+
+1228
+01:23:48,990 --> 01:23:52,475
+Let's say for example,
+in the graph on the right,
+
+1229
+01:23:52,475 --> 01:23:55,729
+let's say that this
+interest gets routed to H.
+
+1230
+01:23:55,729 --> 01:24:00,664
+And then node H will look at
+this hash ring and decide that,
+
+1231
+01:24:00,664 --> 01:24:05,929
+okay, this file is gonna be
+replicated on nodes B, D, and F.
+
+1232
+01:24:05,929 --> 01:24:11,316
+And then it will send requests
+through these three nodes and
+
+1233
+01:24:11,316 --> 01:24:14,341
+ask them to replicate this file.
+
+1234
+01:24:14,341 --> 01:24:17,580
+And retrieving data from
+the repo is a similar process.
+
+1235
+01:24:17,580 --> 01:24:21,736
+Basically the application was in
+the interest to one of the nodes, but
+
+1236
+01:24:21,736 --> 01:24:24,423
+this node may not
+necessarily hold the data.
+
+1237
+01:24:24,423 --> 01:24:28,237
+So it will look at the hash ring,
+and decide, and
+
+1238
+01:24:28,237 --> 01:24:31,132
+find out which node holds this data.
+
+1239
+01:24:31,132 --> 01:24:37,735
+And then retrieve the file from that node
+and send it back to the application.
+
+1240
+01:24:37,735 --> 01:24:39,236
+Next slide please.
+
+1241
+01:24:43,368 --> 01:24:49,345
+So the last slide talks about how we-
+>> Am sorry to interrupt but
+
+1242
+01:24:49,345 --> 01:24:52,485
+you only have few minutes left.
+
+1243
+01:24:52,485 --> 01:24:54,767
+>> Right, this is my last slide.
+
+1244
+01:24:54,767 --> 01:24:58,700
+So there are two cases here,
+have one existing nodes fail.
+
+1245
+01:24:58,700 --> 01:25:03,298
+For this case we can use a convention
+saying that the next clockwise node is
+
+1246
+01:25:03,298 --> 01:25:05,606
+responsible for failure recovery.
+
+1247
+01:25:05,606 --> 01:25:09,847
+For example,
+let's say that node B failed and
+
+1248
+01:25:09,847 --> 01:25:13,979
+node D,
+in this case would be responsible for
+
+1249
+01:25:13,979 --> 01:25:19,228
+doing failure recovery for
+the files, it shares with B.
+
+1250
+01:25:19,228 --> 01:25:24,439
+And then it looks at the hash ring and
+figured out A will be responsible for
+
+1251
+01:25:24,439 --> 01:25:29,749
+these files after B failed, and
+initiate the failure recovery process.
+
+1252
+01:25:29,749 --> 01:25:33,032
+And when you know joins,
+that's also pretty simple.
+
+1253
+01:25:33,032 --> 01:25:38,059
+Basically, the next
+clockwise node will figure
+
+1254
+01:25:38,059 --> 01:25:42,727
+out which files will be
+moved to the new node.
+
+1255
+01:25:42,727 --> 01:25:43,817
+Next slide please.
+
+1256
+01:25:46,613 --> 01:25:50,075
+So in the end, I would like to talk
+about some of the future works.
+
+1257
+01:25:50,075 --> 01:25:57,498
+So first, I think is one step would be
+to enhance the repo with file semantics.
+
+1258
+01:25:57,498 --> 01:26:03,470
+Because repo initially was designed so
+that it holds individual data packets.
+
+1259
+01:26:03,470 --> 01:26:08,564
+However, during our actual deployment,
+we found that most application,
+
+1260
+01:26:08,564 --> 01:26:12,154
+insert and
+retrieve individual files from the repo.
+
+1261
+01:26:12,154 --> 01:26:16,942
+And by using file semantics, some things
+can be designed in a simpler way.
+
+1262
+01:26:16,942 --> 01:26:21,231
+For example, the replication
+process that I just talked about.
+
+1263
+01:26:21,231 --> 01:26:25,395
+And also I think it's important to
+update the repo protocol spec and
+
+1264
+01:26:25,395 --> 01:26:28,038
+implement the repo replication process.
+
+1265
+01:26:28,038 --> 01:26:30,527
+The algorithm I just talked about.
+
+1266
+01:26:30,527 --> 01:26:35,258
+And we're also thinking about publishing
+a tech report on the python repo and
+
+1267
+01:26:35,258 --> 01:26:36,653
+the implementation.
+
+1268
+01:26:36,653 --> 01:26:39,040
+Right, that's all thanks.
+
+1269
+01:26:42,320 --> 01:26:43,292
+>> Thank you very much.
+
+1270
+01:26:43,292 --> 01:26:48,009
+Again, we have some
+discussions on the chat
+
+1271
+01:26:48,009 --> 01:26:52,096
+that I suggest that you have a look at.
+
+1272
+01:26:52,096 --> 01:26:57,534
+There's a few questions and
+a few comments and
+
+1273
+01:26:57,534 --> 01:27:03,963
+it's exactly 5 PM and
+we were supposed to end at 5 PM.
+
+1274
+01:27:03,963 --> 01:27:07,966
+So I will thank everyone to have lasted so
+
+1275
+01:27:07,966 --> 01:27:11,984
+long, thank you to all the presenters.
+
+1276
+01:27:11,984 --> 01:27:17,755
+And I will hand it over to Lofty for,
+I guess the conclusion.
+
+1277
+01:27:17,755 --> 01:27:20,744
+Thank you very much, everyone.
+
+1278
+01:27:20,744 --> 01:27:27,482
+>> Okay, thanks Marie Josie, I guess
+we reached the end of NDN Count 2020.
+
+1279
+01:27:27,482 --> 01:27:31,513
+Many thanks again to
+all the session chairs,
+
+1280
+01:27:31,513 --> 01:27:36,400
+the panel chairs, panelists and
+all the presenters.
+
+1281
+01:27:36,400 --> 01:27:42,376
+Just a couple of quick announcements one
+is, next week you should receive an email
+
+1282
+01:27:42,376 --> 01:27:48,111
+from the NIST conference staff asking
+you for feedback on how this event went.
+
+1283
+01:27:48,111 --> 01:27:51,287
+This is first time we're doing
+NDN Community remotely, so
+
+1284
+01:27:51,287 --> 01:27:53,263
+I'm sure we can do better next time.
+
+1285
+01:27:53,263 --> 01:27:58,161
+And the second thing is that some of
+the attendees are asking whether we will
+
+1286
+01:27:58,161 --> 01:28:00,038
+make the slides available.
+
+1287
+01:28:00,038 --> 01:28:04,118
+So I will send an email to all
+the presenters to get their
+
+1288
+01:28:04,118 --> 01:28:07,058
+permission to post the slides online.
+
+1289
+01:28:07,058 --> 01:28:13,135
+With that, thanks again everyone,
+and see you next time, I guess.
+
+1290
+01:28:13,135 --> 01:28:14,394
+Bye bye, everyone.
+
+1291
+01:28:14,394 --> 01:28:16,284
+>> Thank you.
+
+1292
+01:28:16,284 --> 01:28:19,110
+>> Thank you very much and
+Lofty by the way,
+
+1293
+01:28:19,110 --> 01:28:23,115
+even if it was your first time
+it worked went really well.
+
+1294
+01:28:23,115 --> 01:28:25,970
+Congratulations to you and your team.
+
+1295
+01:28:25,970 --> 01:28:28,683
+>> Thanks,
+we'll see you guys face here right here.
+
+1296
+01:28:32,833 --> 01:28:38,201
+>> Okay, thanks NIST for hosting this
+meeting, I think it's a great meeting.
+
+1297
+01:28:38,201 --> 01:28:39,723
+Thank you.

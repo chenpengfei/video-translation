@@ -1,0 +1,2216 @@
+1
+00:00:01,660 --> 00:00:02,160
+All right.
+
+2
+00:00:02,160 --> 00:00:04,270
+Welcome back, everyone.
+
+3
+00:00:04,270 --> 00:00:08,320
+This is the session on posters and demos.
+
+4
+00:00:08,320 --> 00:00:12,548
+We have seven talks in this session.
+
+5
+00:00:12,548 --> 00:00:17,728
+Each presenter will have about three
+minutes to present and afterwards,
+
+6
+00:00:17,728 --> 00:00:23,340
+we'll have the actual posters and
+demo session in different BlueJeans rooms.
+
+7
+00:00:24,770 --> 00:00:28,254
+The first presentation
+is by Junxiao Shi on
+
+8
+00:00:28,254 --> 00:00:33,109
+NDNts Named Data Networking libraries for
+the Modern Web.
+
+9
+00:00:33,109 --> 00:00:37,567
+And Junxiao is currently
+at NIST he got his PhD from
+
+10
+00:00:37,567 --> 00:00:42,890
+University of Arizona and
+currently a researcher at NIST.
+
+11
+00:00:42,890 --> 00:00:48,583
+He's a core NDN developer and has been
+developing NDN network forwarders.
+
+12
+00:00:48,583 --> 00:00:52,401
+Most recently the NBN dpdk forwarder.
+
+13
+00:00:52,401 --> 00:00:55,251
+Junxiao go ahead.
+
+14
+00:00:55,251 --> 00:00:56,834
+>> Next page.
+
+15
+00:00:56,834 --> 00:00:58,108
+Hi, my Junxiao Shi.
+
+16
+00:00:58,108 --> 00:01:04,690
+Today I'm presenting my personal project
+NDNts: NDN Libraries for the Modern Web.
+
+17
+00:01:04,690 --> 00:01:05,190
+Next page.
+
+18
+00:01:07,285 --> 00:01:11,228
+NDNts is a set of modern
+Java script libraries.
+
+19
+00:01:11,228 --> 00:01:16,810
+It is compatible with both TypeScript and
+the JavaScript projects.
+
+20
+00:01:16,810 --> 00:01:20,855
+It works in both Node.js and
+the browser environment and
+
+21
+00:01:20,855 --> 00:01:26,460
+we have good test coverage as well as
+automated and manual browser test.
+
+22
+00:01:26,460 --> 00:01:32,590
+NDNts libraries can operate a stand
+alone without using a a forwarder or
+
+23
+00:01:32,590 --> 00:01:37,870
+if you chose, it can connect to NFD or
+NDN- DPDK forwarders.
+
+24
+00:01:37,870 --> 00:01:43,559
+Most importantly, NDNts project is
+active maintains new features are being
+
+25
+00:01:43,559 --> 00:01:49,261
+added mostly to the libraries and
+we support the latest NDN specifications.
+
+26
+00:01:49,261 --> 00:01:49,761
+Next page.
+
+27
+00:01:53,270 --> 00:01:56,126
+During the support poster demo session,
+
+28
+00:01:56,126 --> 00:01:59,559
+I will show some code
+samples of the endpoint API.
+
+29
+00:01:59,559 --> 00:02:05,110
+This is a new API design which
+is a better version of the face.
+
+30
+00:02:05,110 --> 00:02:08,581
+And on the left side,
+there is the features of the current face.
+
+31
+00:02:08,581 --> 00:02:13,280
+It has only a little bit of fisher, but
+with endpoint it will automatic handle
+
+32
+00:02:13,280 --> 00:02:18,055
+a few things such as the automatic
+interest retransmission, date signing and
+
+33
+00:02:18,055 --> 00:02:20,463
+verification based on trust schemas.
+
+34
+00:02:20,463 --> 00:02:23,088
+Data buffering on the producer side, and
+
+35
+00:02:23,088 --> 00:02:26,740
+it also automatically
+handles the transport errors.
+
+36
+00:02:26,740 --> 00:02:30,900
+So that in the application you just
+need to focus on application logic.
+
+37
+00:02:30,900 --> 00:02:31,400
+Next page.
+
+38
+00:02:34,079 --> 00:02:35,148
+In the demo session,
+I will also show some code samples of
+
+39
+00:02:35,148 --> 00:02:35,765
+Trust Schema implementation.
+
+40
+00:02:35,765 --> 00:02:41,471
+So, Trust Schema is this implementation
+
+41
+00:02:41,471 --> 00:02:46,687
+is inspired by Casey's talk last year
+
+42
+00:02:46,687 --> 00:02:51,257
+of Versatile Security Toolkit.
+
+43
+00:02:51,257 --> 00:02:52,056
+Next Page.
+
+44
+00:02:54,950 --> 00:03:00,635
+I will show online web
+application which displaces
+
+45
+00:03:00,635 --> 00:03:05,668
+NLSR status in today's global NDN testbed.
+
+46
+00:03:05,668 --> 00:03:06,799
+And there's a URL example on top right
+corner you can already try to look at it.
+
+47
+00:03:06,799 --> 00:03:10,544
+Next page.
+
+48
+00:03:14,182 --> 00:03:19,740
+I will show my implementation of the NDN
+certificate Management Protocol.
+
+49
+00:03:19,740 --> 00:03:23,081
+This includes a Node.js
+web application called
+
+50
+00:03:23,081 --> 00:03:28,460
+the NDNts Personal Certificate Authority,
+as well as a commander land client
+
+51
+00:03:28,460 --> 00:03:33,360
+of the NDNts certified management
+protocol to request a certificate.
+
+52
+00:03:33,360 --> 00:03:33,862
+Next page.
+
+53
+00:03:40,067 --> 00:03:41,667
+Please switch to the next page.
+
+54
+00:03:45,267 --> 00:03:52,390
+And finally, I will show a demo
+of the home civilians camera.
+
+55
+00:03:52,390 --> 00:03:55,960
+I demo the older version of
+this application two years ago,
+
+56
+00:03:55,960 --> 00:03:58,000
+which was written on NDNts.
+
+57
+00:03:58,000 --> 00:04:02,640
+But now I have rebuilt this application
+with my new libraries NDNts.
+
+58
+00:04:02,640 --> 00:04:05,096
+I also added a screencast feature and
+
+59
+00:04:05,096 --> 00:04:09,100
+this will be online demo
+accessible using this UI.
+
+60
+00:04:09,100 --> 00:04:09,840
+Okay, thank you.
+
+61
+00:04:09,840 --> 00:04:14,074
+That's all from me, I hope you can
+join me after the post session.
+
+62
+00:04:16,638 --> 00:04:17,840
+>> Thank you very much Junxiao.
+
+63
+00:04:18,860 --> 00:04:22,890
+Next talk is by Alex Afanasyev.
+
+64
+00:04:22,890 --> 00:04:27,480
+CertCoalesce: Effecient Certificate Pool
+for NDN-Based Systems.
+
+65
+00:04:27,480 --> 00:04:31,520
+Alex is an assistant professor at
+Florida International University.
+
+66
+00:04:31,520 --> 00:04:35,632
+His main research focus is on next
+generation architectures as part of
+
+67
+00:04:35,632 --> 00:04:38,489
+the NDN project,
+in particular scalability and
+
+68
+00:04:38,489 --> 00:04:42,254
+name based routing,
+auto configuration autoconfiguration,
+
+69
+00:04:42,254 --> 00:04:47,084
+distributed data synchronization as well
+as application and network security.
+
+70
+00:04:47,084 --> 00:04:48,483
+Alex?
+
+71
+00:04:48,483 --> 00:04:52,780
+>> Sure, so you probably can skip
+the title slide of my presentation.
+
+72
+00:04:52,780 --> 00:04:55,230
+Just move.
+
+73
+00:04:55,230 --> 00:04:56,029
+Yeah.
+
+74
+00:04:56,029 --> 00:04:58,000
+So basically the motivation for
+
+75
+00:04:58,000 --> 00:05:02,810
+this work is a simple assumption
+that we need the many certificates.
+
+76
+00:05:02,810 --> 00:05:07,430
+And so for example, it needs to be
+used for to realize least privileges
+
+77
+00:05:07,430 --> 00:05:11,736
+separation, for example,
+we have kind of very rich namespace,
+
+78
+00:05:11,736 --> 00:05:16,513
+you want to have a separate key for
+individual pieces of that namespace,
+
+79
+00:05:16,513 --> 00:05:20,383
+like foo/bar/a, foo/bar/b and
+so forth, and so on.
+
+80
+00:05:20,383 --> 00:05:25,260
+Another part is basically trying to
+limit exposure of individual keys.
+
+81
+00:05:25,260 --> 00:05:30,050
+So for example,
+if you kinda have a validity of one year,
+
+82
+00:05:30,050 --> 00:05:33,400
+then you have to implement some
+mechanism to revoke the certificate.
+
+83
+00:05:33,400 --> 00:05:36,642
+If you have a validity
+period of a few minutes,
+
+84
+00:05:36,642 --> 00:05:40,812
+then you probably don't need
+the additional mechanisms.
+
+85
+00:05:40,812 --> 00:05:41,740
+And next slide please.
+
+86
+00:05:43,858 --> 00:05:51,950
+So the basic approach in traditional
+systems is to use kind of
+
+87
+00:05:51,950 --> 00:05:57,230
+ordinary certificate systems where on one
+side you generate the public key pair.
+
+88
+00:05:57,230 --> 00:06:00,570
+And whenever you want to get a certificate
+you basically request certificate
+
+89
+00:06:00,570 --> 00:06:01,198
+for this pair.
+
+90
+00:06:02,510 --> 00:06:07,110
+I mean in theory,
+you can go certificate authority or
+
+91
+00:06:07,110 --> 00:06:11,190
+certificate issuer can reissue
+certificates for the same public key.
+
+92
+00:06:11,190 --> 00:06:16,370
+But that's not a great idea because you
+want to limit exposure of individual keys.
+
+93
+00:06:16,370 --> 00:06:18,360
+That's kind of a basic principle.
+
+94
+00:06:18,360 --> 00:06:23,410
+And the limitation or kind of the outcome,
+if you want to have tons of certificates
+
+95
+00:06:23,410 --> 00:06:28,860
+for different namespace or
+tons of certificates for kind of different
+
+96
+00:06:28,860 --> 00:06:34,440
+time granularities, it's both the network
+overhead and storage requirement.
+
+97
+00:06:34,440 --> 00:06:39,000
+And basically what I'm trying to do as
+part of this work is trying to do some
+
+98
+00:06:39,000 --> 00:06:44,750
+optimization maybe with a few trade-offs,
+but trying to do some optimization.
+
+99
+00:06:44,750 --> 00:06:45,450
+So the next slide.
+
+100
+00:06:50,010 --> 00:06:58,950
+So the basic process here, is still
+based on elliptic curve cryptography,
+
+101
+00:06:58,950 --> 00:07:03,590
+but instead of having a single key or
+single private public key, and
+
+102
+00:07:03,590 --> 00:07:08,160
+then getting the single certificate,
+you're basically creating a master key or
+
+103
+00:07:08,160 --> 00:07:13,020
+caterpillar key that can bootstrap
+a sequence of infinite sequence of
+
+104
+00:07:13,020 --> 00:07:18,120
+contracts actual public, private key
+pairs that you can use in the future.
+
+105
+00:07:18,120 --> 00:07:23,150
+You can request certification of that
+the single key which will result in
+
+106
+00:07:23,150 --> 00:07:29,530
+on a kind of certificate the isher site,
+generation of unlimited
+
+107
+00:07:29,530 --> 00:07:34,420
+sequence of keys,
+unlimited sequence of public keys and
+
+108
+00:07:34,420 --> 00:07:40,880
+correspondingly it can generate unlimited
+sequence of certificates basically.
+
+109
+00:07:40,880 --> 00:07:45,670
+And in case of IT devices,
+this can be quite easy.
+
+110
+00:07:45,670 --> 00:07:49,798
+You can just store a single,
+this master key, on the device.
+
+111
+00:07:49,798 --> 00:07:53,740
+And whenever you need it, you just
+kind of using the basic conventions,
+
+112
+00:07:53,740 --> 00:07:54,650
+naming conventions.
+
+113
+00:07:54,650 --> 00:08:00,720
+You do define when To use specific key,
+quickly you generate that private key.
+
+114
+00:08:00,720 --> 00:08:04,350
+As soon as on the certificates
+on authority site,
+
+115
+00:08:04,350 --> 00:08:09,110
+this key is the corresponding
+certificate that have been created.
+
+116
+00:08:09,110 --> 00:08:12,960
+I'll probably stop here unless
+I have a few more minutes.
+
+117
+00:08:12,960 --> 00:08:16,100
+But in any case this is preliminary work,
+
+118
+00:08:16,100 --> 00:08:19,240
+we can have devise some
+ideas how this can be done.
+
+119
+00:08:19,240 --> 00:08:23,075
+We kind of borrowed some ideas
+from some of the vehicular work
+
+120
+00:08:23,075 --> 00:08:25,336
+that have been proposed recently.
+
+121
+00:08:25,336 --> 00:08:28,554
+I would not use an everything
+from that environment, but
+
+122
+00:08:28,554 --> 00:08:32,040
+mostly focusing on the ability
+to have a single key.
+
+123
+00:08:32,040 --> 00:08:36,909
+Generating, creating multitude of
+kind of derivative keys even though
+
+124
+00:08:36,909 --> 00:08:42,351
+there's still forward secrecy properties
+preserved during this derivation.
+
+125
+00:08:42,351 --> 00:08:47,908
+And ability to independent generate
+on the certificate issuer site
+
+126
+00:08:47,908 --> 00:08:53,959
+certificates if your whatever original
+master key is still not revoked.
+
+127
+00:08:53,959 --> 00:08:59,893
+So basically some kind of combination
+mechanism of certificate authority or
+
+128
+00:08:59,893 --> 00:09:04,825
+issuing a certificate and
+revocation certificates by the way of
+
+129
+00:09:04,825 --> 00:09:09,410
+not issuing new certificates okay,
+I guess that would be.
+
+130
+00:09:10,630 --> 00:09:12,880
+>> Okay thank you, Alex.
+
+131
+00:09:12,880 --> 00:09:17,520
+Our next presenter is Sanjeev Ramani
+on MDN Viber vibration assistant
+
+132
+00:09:17,520 --> 00:09:20,900
+automated bootstrapping of IoT devices.
+
+133
+00:09:20,900 --> 00:09:25,450
+Sanjeev is a PHD student At [COUGH]
+Florida International University working
+
+134
+00:09:25,450 --> 00:09:28,940
+with Alex under the supervision of Alex.
+
+135
+00:09:28,940 --> 00:09:33,220
+His research interests include NDNViber
+security as well as privacy and
+
+136
+00:09:33,220 --> 00:09:37,770
+trust management in wireless
+sensor networks and IOT devices.
+
+137
+00:09:37,770 --> 00:09:41,070
+Sanjeev,
+>> Hope I'm visible and
+
+138
+00:09:41,070 --> 00:09:42,460
+all of you can hear me out.
+
+139
+00:09:42,460 --> 00:09:44,183
+Thank you, Lotti.
+
+140
+00:09:44,183 --> 00:09:48,720
+Can you go to the next slide,
+well all of us.
+
+141
+00:09:50,070 --> 00:09:54,010
+Yeah, so
+all of us know that IoT devices have
+
+142
+00:09:54,010 --> 00:09:56,880
+pretty much penetrated into
+everyone's daily livelihood.
+
+143
+00:09:56,880 --> 00:09:59,780
+And we have a lot of wearable devices and
+
+144
+00:09:59,780 --> 00:10:03,950
+other kinds of IoT devices that
+we use on a day to day basis.
+
+145
+00:10:03,950 --> 00:10:10,870
+But, and in the near future, we assume
+it's going to explode to a larger extent.
+
+146
+00:10:10,870 --> 00:10:18,270
+An important aspect in any IoT devices
+life cycle is the bootstrapping process
+
+147
+00:10:18,270 --> 00:10:22,440
+rather than it gets to know of the network
+or environment it will be working in.
+
+148
+00:10:22,440 --> 00:10:25,450
+And the network on the other
+hand actually gets to know
+
+149
+00:10:25,450 --> 00:10:29,640
+about the device that's joining
+the environment and so,
+
+150
+00:10:29,640 --> 00:10:34,060
+that they can have trustworthy
+communication and exchanges later on.
+
+151
+00:10:34,060 --> 00:10:39,407
+So, usually this bootstrapping
+happens in an auxiliary channel or
+
+152
+00:10:39,407 --> 00:10:44,095
+an out of band channel, and
+when the bootstrapping keys and
+
+153
+00:10:44,095 --> 00:10:47,595
+other info crypto material are exchanged.
+
+154
+00:10:47,595 --> 00:10:52,584
+So, in our exploration,
+we basically surveyed all the out of band
+
+155
+00:10:52,584 --> 00:10:57,129
+channels to identify,
+which would be most apt in a situation
+
+156
+00:10:57,129 --> 00:11:02,140
+rather than you have an IoT device
+that's not in the line of sight.
+
+157
+00:11:02,140 --> 00:11:06,410
+It's probably behind the wall or
+embedded on the table.
+
+158
+00:11:06,410 --> 00:11:09,770
+And we want to try to
+bootstrap this device.
+
+159
+00:11:09,770 --> 00:11:13,600
+By not trying to increase the complexity
+of the hardware that is associated with
+
+160
+00:11:13,600 --> 00:11:18,940
+the device, but just trying to
+use a simple accelerometer or
+
+161
+00:11:18,940 --> 00:11:23,140
+a device or a sensor that's pretty
+
+162
+00:11:23,140 --> 00:11:27,460
+much available with most of the IoT
+devices that come in today.
+
+163
+00:11:27,460 --> 00:11:32,172
+So that's when we place our hands
+on vibration based autobank
+
+164
+00:11:32,172 --> 00:11:36,975
+channel which basically give us
+multiple security benefits as
+
+165
+00:11:36,975 --> 00:11:41,340
+well which basically starts
+our proximity based trust.
+
+166
+00:11:41,340 --> 00:11:46,365
+Because you need to have the device and
+the controller at pretty close
+
+167
+00:11:46,365 --> 00:11:51,907
+quarters in close less than in a distance
+of less than 1.5 centimeters for
+
+168
+00:11:51,907 --> 00:11:56,868
+the vibrations to be actually felt
+by the IoT device and bootstrap.
+
+169
+00:11:56,868 --> 00:12:01,479
+And also the NDNViber design
+that we came up with using
+
+170
+00:12:01,479 --> 00:12:05,140
+this vibration based channel.
+
+171
+00:12:05,140 --> 00:12:09,580
+Can be a dynamic approach as
+against the most traditional static
+
+172
+00:12:09,580 --> 00:12:11,650
+ways of doing bootstrapping.
+
+173
+00:12:11,650 --> 00:12:16,550
+And also we can use commodity or
+stock Android phones as controllers.
+
+174
+00:12:16,550 --> 00:12:17,050
+Next slide please.
+
+175
+00:12:20,565 --> 00:12:26,230
+So, the NDNViber overview, I'll probably
+just run through this pretty quick.
+
+176
+00:12:26,230 --> 00:12:30,430
+It's split into four different stages
+starting with the pilot sequence which
+
+177
+00:12:30,430 --> 00:12:37,330
+would basically awaken the IoT device and
+make it listen on the vibration channel
+
+178
+00:12:37,330 --> 00:12:42,490
+for any triggers or any information
+that's passed on by the controller.
+
+179
+00:12:42,490 --> 00:12:45,070
+Then the trigger sequence follows wherein,
+
+180
+00:12:46,630 --> 00:12:50,670
+there is an exchange of
+environment information, and
+
+181
+00:12:50,670 --> 00:12:55,880
+also learning information like temporary
+cryptographic keys or encryption keys.
+
+182
+00:12:55,880 --> 00:13:00,600
+And even the channel that
+the device should use in further
+
+183
+00:13:00,600 --> 00:13:02,850
+communication when in the network.
+
+184
+00:13:02,850 --> 00:13:08,320
+Following the trigger sequence and is the
+anchor of exchanges where the device after
+
+185
+00:13:08,320 --> 00:13:14,370
+the completion of the anchor sequence gets
+to know of the trust anchor certificate.
+
+186
+00:13:14,370 --> 00:13:20,590
+And finally we have the NDN cert
+sequence that runs when the device is
+
+187
+00:13:20,590 --> 00:13:25,710
+able to generate its and obtain its Indian
+certificate for the key namespace and
+
+188
+00:13:25,710 --> 00:13:29,990
+use it for signing information
+that it produces in the network.
+
+189
+00:13:29,990 --> 00:13:31,870
+Next slide please.
+
+190
+00:13:31,870 --> 00:13:34,250
+So basically this is the overview and
+
+191
+00:13:34,250 --> 00:13:40,270
+if you can join me at the poster
+we could discuss further about.
+
+192
+00:13:40,270 --> 00:13:43,180
+What does a specific in coding
+scheme that we used for
+
+193
+00:13:43,180 --> 00:13:47,645
+vibration channel and
+how it's used in NDNViber.
+
+194
+00:13:47,645 --> 00:13:52,080
+And what are the advantages that
+we see in terms of bootstrapping
+
+195
+00:13:52,080 --> 00:13:56,717
+multiple devices at the same time, the
+security properties that we observed and
+
+196
+00:13:56,717 --> 00:14:01,510
+also the challenges in evaluation,
+preliminary evaluation that we have.
+
+197
+00:14:02,770 --> 00:14:06,270
+That's pretty much it for
+this I guess I continue next again.
+
+198
+00:14:07,730 --> 00:14:09,450
+>> Yes so you have two posters.
+
+199
+00:14:09,450 --> 00:14:15,430
+This is the second one on use to
+secure smartphone distribution.
+
+200
+00:14:15,430 --> 00:14:20,850
+>> Okay, so this is basically in
+its preliminary exploration stage.
+
+201
+00:14:20,850 --> 00:14:25,510
+This is more of we all know that
+smart grids is a modern adoption
+
+202
+00:14:25,510 --> 00:14:29,650
+of power systems with the potential to
+revolutionize power distribution and
+
+203
+00:14:29,650 --> 00:14:30,750
+management.
+
+204
+00:14:30,750 --> 00:14:35,070
+In a general setting you have multiple,
+
+205
+00:14:35,070 --> 00:14:40,740
+multiple stakeholders be the consumer,
+the producer of power.
+
+206
+00:14:40,740 --> 00:14:46,360
+And a lot of other intermediary devices,
+be it sensor or
+
+207
+00:14:46,360 --> 00:14:50,250
+any transmission, right,
+the transformers that
+
+208
+00:14:50,250 --> 00:14:54,570
+transform the electricity from step-up,
+step-down transformers.
+
+209
+00:14:54,570 --> 00:14:59,660
+There are a lot of devices and the digital
+communication that happens among these
+
+210
+00:14:59,660 --> 00:15:05,707
+devices is basically the support system
+for the whole operation of the smart grid.
+
+211
+00:15:05,707 --> 00:15:11,380
+And also smart grid basically
+provides us decouple the wrong
+
+212
+00:15:11,380 --> 00:15:17,000
+interconnection that power generation
+sites have with the consumption sites and
+
+213
+00:15:17,000 --> 00:15:21,120
+makes power basically a commodity
+that can be requested for.
+
+214
+00:15:22,430 --> 00:15:28,389
+Well so I have mentioned two types of
+information that's basically exchanged in
+
+215
+00:15:28,389 --> 00:15:34,450
+this system that's more a technical data
+corresponding to the energy profiles.
+
+216
+00:15:34,450 --> 00:15:38,922
+And management related information
+that's building, pricing,
+
+217
+00:15:38,922 --> 00:15:43,315
+and even information that can be used for
+analytics to identify how
+
+218
+00:15:43,315 --> 00:15:47,324
+new infrastructure has to be
+established and other things.
+
+219
+00:15:47,324 --> 00:15:51,774
+And in the end,
+we believe with all the inherent features,
+
+220
+00:15:51,774 --> 00:15:57,470
+like data centric security
+Optimal routing and other
+
+221
+00:15:57,470 --> 00:16:02,160
+benefits of the data centric approach,
+data centric
+
+222
+00:16:03,210 --> 00:16:09,940
+architecture can provide a better is
+a good fit for smart grid communication.
+
+223
+00:16:09,940 --> 00:16:11,565
+Next slide please.
+
+224
+00:16:15,004 --> 00:16:21,973
+Yeah, so the common issues that we see
+with the current SmartGrid set up is that
+
+225
+00:16:21,973 --> 00:16:27,480
+most of these power systems
+are usually legacy systems.
+
+226
+00:16:27,480 --> 00:16:29,350
+And they're not interface
+relative to each other.
+
+227
+00:16:29,350 --> 00:16:33,750
+So If you're talking about an IoT
+device as the end consumer and
+
+228
+00:16:33,750 --> 00:16:39,610
+the power generation sites being having
+large machinary probably the interface
+
+229
+00:16:39,610 --> 00:16:45,930
+between these devices is not very well
+taken care of in the current system.
+
+230
+00:16:45,930 --> 00:16:50,374
+And also there are a lot of security
+concerns with information power flowing
+
+231
+00:16:50,374 --> 00:16:54,689
+through different channels and media and
+which is one that double check.
+
+232
+00:16:54,689 --> 00:16:59,648
+With NDN What we can do is more of
+an off by default approach wherein only
+
+233
+00:16:59,648 --> 00:17:03,178
+when any of the nodes are required or
+requested for
+
+234
+00:17:03,178 --> 00:17:08,138
+information they could be turned on and
+hence, you can prevent any bad
+
+235
+00:17:08,138 --> 00:17:12,790
+information coming in or
+any leaks that can happen in the system.
+
+236
+00:17:14,070 --> 00:17:15,130
+Next slide.
+
+237
+00:17:15,130 --> 00:17:19,120
+I probably have a small example here.
+
+238
+00:17:19,120 --> 00:17:20,620
+Let's consider a smart home.
+
+239
+00:17:20,620 --> 00:17:23,290
+I hope I'm not running out of time on it.
+
+240
+00:17:23,290 --> 00:17:24,170
+I'll make it real quick.
+
+241
+00:17:24,170 --> 00:17:27,020
+So a smart home with
+the smart refrigerator that's
+
+242
+00:17:27,020 --> 00:17:29,180
+trying to request for power.
+
+243
+00:17:29,180 --> 00:17:33,410
+It basically has, like I told you there
+are different stakeholders different
+
+244
+00:17:34,470 --> 00:17:38,220
+notes are different people involved in
+this whole entire communication and
+
+245
+00:17:38,220 --> 00:17:42,610
+NDN provides with its flexible
+naming convention and
+
+246
+00:17:42,610 --> 00:17:48,360
+other benefits makes it an easier
+option to achieve this power which is
+
+247
+00:17:48,360 --> 00:17:53,270
+basically decoupled as a commodity
+by the smart credit system and
+
+248
+00:17:53,270 --> 00:17:56,330
+request efficiently and use it.
+
+249
+00:17:56,330 --> 00:18:00,110
+Next slide, so when you pass by or
+
+250
+00:18:00,110 --> 00:18:05,920
+when we are at the poster
+session probably we can
+
+251
+00:18:05,920 --> 00:18:12,680
+discuss on how NDN basically helps in
+all these smart-grid operations and
+
+252
+00:18:12,680 --> 00:18:19,750
+the smart grid operation can be made more
+hassle free with the adoption of NDN.
+
+253
+00:18:19,750 --> 00:18:20,730
+Thank you, I guess.
+
+254
+00:18:22,270 --> 00:18:22,860
+>> All right.
+
+255
+00:18:22,860 --> 00:18:24,490
+Thank you, Sanjeev.
+
+256
+00:18:24,490 --> 00:18:29,514
+Next speaker is Italo Brito
+
+257
+00:18:29,514 --> 00:18:34,680
+on the topic of
+Distance Vector Routing for NDN.
+
+258
+00:18:34,680 --> 00:18:39,370
+Italo is a PhD student at
+Federal University of Bahia in Brazil.
+
+259
+00:18:40,500 --> 00:18:41,000
+Go ahead Italo.
+
+260
+00:18:43,960 --> 00:18:44,820
+>> Hello, everyone.
+
+261
+00:18:44,820 --> 00:18:45,780
+Good afternoon?
+
+262
+00:18:45,780 --> 00:18:49,440
+So this work is a collaboration
+between myself, my advisor,
+
+263
+00:18:49,440 --> 00:18:53,760
+Professor Lambino, and
+also Professor Alicia Zang from UCLA.
+
+264
+00:18:53,760 --> 00:19:01,120
+So the idea is to propose a distance
+vector routing algorithm for the engine.
+
+265
+00:19:01,120 --> 00:19:02,010
+Next slide please.
+
+266
+00:19:02,010 --> 00:19:08,880
+So, the NDN in the mobile Adhoc Scenarios
+presents some challenges.
+
+267
+00:19:08,880 --> 00:19:14,450
+And the queue has deployed
+engine routing protocol NLSR is
+
+268
+00:19:14,450 --> 00:19:16,400
+based on link state algorithms.
+
+269
+00:19:16,400 --> 00:19:20,610
+Link state ours require synchronization
+between the link state database across
+
+270
+00:19:20,610 --> 00:19:25,330
+the nodes, anything and
+in the mobile doc scenarios,
+
+271
+00:19:25,330 --> 00:19:29,950
+which is our wireless, dynamic
+environments, they design a lightweight
+
+272
+00:19:29,950 --> 00:19:35,500
+routing protocol, to propagate the rapidly
+change data reachability information.
+
+273
+00:19:35,500 --> 00:19:39,780
+The distance vector routing protocol
+enables each node to selectively
+
+274
+00:19:39,780 --> 00:19:44,770
+the action exchange, name prefix,
+reachability information and also to
+
+275
+00:19:44,770 --> 00:19:50,510
+estimate the wish ability to design data
+in a distributed in a synchronous manner
+
+276
+00:19:50,510 --> 00:19:55,660
+different from the link state our which
+require the synchronization the distance
+
+277
+00:19:55,660 --> 00:20:01,180
+vector is based on distribution and
+a synchronous communication.
+
+278
+00:20:01,180 --> 00:20:01,980
+Next slide please.
+
+279
+00:20:06,446 --> 00:20:12,595
+So our goal is to propose a simplest
+as possible way to propagate the name
+
+280
+00:20:12,595 --> 00:20:18,336
+prefix reachability information
+in a mobile adhoc scenario, and
+
+281
+00:20:18,336 --> 00:20:24,040
+our designs base it on
+dynamically detect the neighbors.
+
+282
+00:20:24,040 --> 00:20:26,270
+Upon detecting a neighbor,
+
+283
+00:20:26,270 --> 00:20:31,010
+the node sends an interest to retrieve the
+neighbor's distance vector information,
+
+284
+00:20:31,010 --> 00:20:36,180
+the routes and we need to remember that
+the interest they are not secured but
+
+285
+00:20:36,180 --> 00:20:41,040
+in our case is not a problem because it's
+just a request and then neighbors replies
+
+286
+00:20:41,040 --> 00:20:45,590
+back with the reachability information
+which is the distance vector the house.
+
+287
+00:20:45,590 --> 00:20:49,190
+And the data packets are secured and
+can be validated.
+
+288
+00:20:49,190 --> 00:20:51,640
+So we can make sure
+that the data is valid.
+
+289
+00:20:52,740 --> 00:20:58,230
+We use the distributed Bellman-Ford
+algorithm with sequence number approach.
+
+290
+00:20:58,230 --> 00:20:59,045
+Those are true,
+
+291
+00:20:59,045 --> 00:21:05,090
+well-known algorithm from the mobile
+adhoc network research community.
+
+292
+00:21:05,090 --> 00:21:09,500
+So we just took advantage of
+the same well-known algorithms.
+
+293
+00:21:09,500 --> 00:21:10,354
+Next slide please.
+
+294
+00:21:16,383 --> 00:21:21,388
+Our naming schema,
+we are based mainly on two message,
+
+295
+00:21:21,388 --> 00:21:27,992
+the hello message, which is the one
+that is used for Neighbor discover and
+
+296
+00:21:27,992 --> 00:21:34,278
+also it is an extended hello message
+because it It is also used to inform
+
+297
+00:21:34,278 --> 00:21:39,660
+the neighbors about a new D
+vector information on the node.
+
+298
+00:21:39,660 --> 00:21:44,000
+So, we are going to discuss this a little
+bit later on the poster session.
+
+299
+00:21:44,000 --> 00:21:50,010
+But the other type of message is
+the distance vector information.
+
+300
+00:21:50,010 --> 00:21:54,190
+Then we use this naming schema.
+
+301
+00:21:54,190 --> 00:21:58,240
+We have the ndvr, dvinfo,
+and also the halter name and
+
+302
+00:21:58,240 --> 00:22:03,780
+the version of the package,
+the version of the interest of the data.
+
+303
+00:22:03,780 --> 00:22:06,880
+And those messages are silent
+by the routers key.
+
+304
+00:22:06,880 --> 00:22:11,900
+And we also have the key exchange
+we use pretty much the same rock
+
+305
+00:22:11,900 --> 00:22:20,230
+the same naming schema, as analysts use
+to the nodes that they exchange the key.
+
+306
+00:22:20,230 --> 00:22:23,110
+The certificate key to validate the data,
+
+307
+00:22:23,110 --> 00:22:27,620
+our assumption is that each node
+must know about a trust anchor.
+
+308
+00:22:27,620 --> 00:22:31,680
+In this case, the certificate for
+the slash network name.
+
+309
+00:22:32,750 --> 00:22:33,634
+Next slide please.
+
+310
+00:22:36,577 --> 00:22:42,910
+In this example, we just have two
+wireless routers, router A and router B.
+
+311
+00:22:42,910 --> 00:22:46,960
+In this case UFBA is just
+the hotter the network name.
+
+312
+00:22:46,960 --> 00:22:49,730
+It could be Google, it could be UCLA.
+
+313
+00:22:49,730 --> 00:22:54,350
+It could be NIST, anything that you want,
+but it's just on a sample.
+
+314
+00:22:54,350 --> 00:23:00,070
+And the first step is the hotter sent out
+interest on the network to say Hello,
+
+315
+00:23:00,070 --> 00:23:01,860
+this is hotter A and
+
+316
+00:23:01,860 --> 00:23:07,670
+each URC sent the same interest in
+the network, in the wi-fi network.
+
+317
+00:23:07,670 --> 00:23:12,625
+As soon as the hotter get to know
+about the existence of another hotter
+
+318
+00:23:12,625 --> 00:23:17,120
+this hotter start requesting
+the distance factory formation for
+
+319
+00:23:17,120 --> 00:23:22,130
+the hotter, which means we
+send our interest asking for
+
+320
+00:23:22,130 --> 00:23:25,020
+the information for
+the health that we just discovered.
+
+321
+00:23:25,020 --> 00:23:28,360
+And as soon as the hotter process,
+the request,
+
+322
+00:23:28,360 --> 00:23:31,370
+it replies back with
+the distance vector information.
+
+323
+00:23:31,370 --> 00:23:36,580
+So it's sending these vector data
+package back to the requester.
+
+324
+00:23:36,580 --> 00:23:37,639
+Next slide please.
+
+325
+00:23:41,607 --> 00:23:46,810
+So I think is this in, I hope you
+can join us on the poster section.
+
+326
+00:23:46,810 --> 00:23:50,420
+In the poster section we will
+discuss a little bit more about
+
+327
+00:23:50,420 --> 00:23:54,930
+the prototype that we
+developed on ndnSIM 2.8.
+
+328
+00:23:54,930 --> 00:23:59,800
+We are going to present some preliminary
+results from the evaluation that we use,
+
+329
+00:23:59,800 --> 00:24:05,660
+using the random walk mobility model,
+and comparing with DTSN,
+
+330
+00:24:05,660 --> 00:24:09,660
+which is a data synchronization algorithm.
+
+331
+00:24:09,660 --> 00:24:15,169
+And you're gonna present some challenges
+some ongoing works about this test.
+
+332
+00:24:15,169 --> 00:24:15,902
+Thank you.
+
+333
+00:24:17,952 --> 00:24:20,450
+>> Okay, thank you, Lito.
+
+334
+00:24:20,450 --> 00:24:24,370
+Next presenter is Amar Abane
+
+335
+00:24:24,370 --> 00:24:29,940
+on managing MDN with
+the Multiverse Network Management System.
+
+336
+00:24:29,940 --> 00:24:34,460
+Amar got his PhD from CNAM in France,
+and he's currently a researcher.
+
+337
+00:24:34,460 --> 00:24:36,954
+And he directs network
+technologies division at NIST.
+
+338
+00:24:36,954 --> 00:24:37,660
+Go ahead, Amar.
+
+339
+00:24:41,080 --> 00:24:41,660
+>> Okay, thanks.
+
+340
+00:24:43,840 --> 00:24:48,920
+Yeah, so this is the Multiverse
+Network Management System Project.
+
+341
+00:24:48,920 --> 00:24:52,950
+So just as a situation to
+describe the situation.
+
+342
+00:24:52,950 --> 00:24:56,791
+So when we deal with the NDN deployments,
+
+343
+00:24:56,791 --> 00:25:02,450
+some management features are required or
+at least some configurations
+
+344
+00:25:02,450 --> 00:25:07,410
+are needed on the forwarders like,
+basically routing information.
+
+345
+00:25:09,240 --> 00:25:12,520
+But at least so,
+to manage our NDN network,
+
+346
+00:25:12,520 --> 00:25:16,630
+we have some different situations.
+
+347
+00:25:16,630 --> 00:25:19,860
+So we can manage the NDN
+network via an IP network.
+
+348
+00:25:20,940 --> 00:25:25,684
+If we for example, if we need
+the remote management, we can do it.
+
+349
+00:25:31,755 --> 00:25:36,853
+Can also manage the NDN network
+over both IP and NDN and
+
+350
+00:25:36,853 --> 00:25:43,090
+since there are still some IP,
+some equipment that are using IP.
+
+351
+00:25:43,090 --> 00:25:47,650
+But we also need to manage some parts of
+
+352
+00:25:47,650 --> 00:25:52,890
+the IP network or so to NDN or IP.
+
+353
+00:25:52,890 --> 00:25:57,480
+And we think it may be useful to
+have one management solution for
+
+354
+00:25:57,480 --> 00:26:01,380
+these different situations or
+different universes.
+
+355
+00:26:01,380 --> 00:26:04,144
+So, next slide, please.
+
+356
+00:26:07,666 --> 00:26:15,135
+Yes, so that's what the multiverse network
+management system is designed for.
+
+357
+00:26:15,135 --> 00:26:18,785
+So we aim to manage these
+different situations.
+
+358
+00:26:18,785 --> 00:26:19,603
+Next slide.
+
+359
+00:26:23,091 --> 00:26:26,502
+Yeah, so
+briefly it's a centralized management and
+
+360
+00:26:26,502 --> 00:26:31,078
+we want to stick with this very simple
+architecture and very familiar.
+
+361
+00:26:31,078 --> 00:26:36,060
+So we have the Data plane with
+
+362
+00:26:36,060 --> 00:26:42,870
+the NDN-DPDK forwarders which we
+are working to support currently.
+
+363
+00:26:42,870 --> 00:26:47,130
+And they are for the Control plane they
+are agent deployed on each node and
+
+364
+00:26:47,130 --> 00:26:49,800
+they are agents are connected
+to the controller.
+
+365
+00:26:49,800 --> 00:26:54,990
+And there is a controller provides some
+centralized management features there
+
+366
+00:26:54,990 --> 00:27:01,480
+are some of them are automatic features
+like face creation, face computation.
+
+367
+00:27:01,480 --> 00:27:09,230
+And some other things are provided
+to the operator to be used manually.
+
+368
+00:27:09,230 --> 00:27:14,250
+And there is also, in addition to
+the management, there is an telemetry
+
+369
+00:27:15,650 --> 00:27:19,800
+feature integrated with these agents,
+depending on what
+
+370
+00:27:19,800 --> 00:27:25,250
+measurements are implemented on the agent.
+
+371
+00:27:25,250 --> 00:27:26,470
+Yeah, so in the poster,
+
+372
+00:27:26,470 --> 00:27:31,410
+there will be basically some screenshots
+of what's implemented so far and
+
+373
+00:27:31,410 --> 00:27:37,860
+some design course also
+that's in this project.
+
+374
+00:27:39,310 --> 00:27:40,110
+>> I think that's it.
+
+375
+00:27:40,110 --> 00:27:41,920
+Yeah, thanks.
+
+376
+00:27:41,920 --> 00:27:43,760
+>> Okay, thank you Amar.
+
+377
+00:27:43,760 --> 00:27:49,787
+Next speaker is Quassim Karrakchuo
+on Novel P4 Target Architecture for
+
+378
+00:27:49,787 --> 00:27:53,560
+Runtime-Reconfigurable NDN Data Planes.
+
+379
+00:27:53,560 --> 00:27:56,600
+Quassim received his
+Bachelor's Degree from France and
+
+380
+00:27:56,600 --> 00:27:59,960
+he's currently a PhD student
+at University of Ottawa.
+
+381
+00:27:59,960 --> 00:28:04,580
+With research interests that include ICN,
+SDN and Cloud Technologies.
+
+382
+00:28:05,840 --> 00:28:06,698
+Go ahead Ouassim.
+
+383
+00:28:06,698 --> 00:28:08,710
+>> Thank you Lotfi.
+
+384
+00:28:08,710 --> 00:28:10,580
+Hello, everyone.
+
+385
+00:28:10,580 --> 00:28:17,770
+So today I give you a quick introduction
+of our work that is titled,
+
+386
+00:28:17,770 --> 00:28:22,326
+a Novelty P4 Targets Architecture for
+Runtime Reconfigurable Engine Data Planes.
+
+387
+00:28:22,326 --> 00:28:25,328
+Next slide, please.
+
+388
+00:28:28,331 --> 00:28:33,115
+So the motivation of our work
+is that in the current switches,
+
+389
+00:28:33,115 --> 00:28:37,163
+the switch functionalities
+are usually fixed, and
+
+390
+00:28:37,163 --> 00:28:41,680
+can only be changed by
+the switch manufacturer.
+
+391
+00:28:41,680 --> 00:28:45,230
+That means that the algorithms that
+processed the packets inside the switch,
+
+392
+00:28:45,230 --> 00:28:51,410
+there are either like hardware optimized
+and hard coded in the hardware.
+
+393
+00:28:51,410 --> 00:28:56,630
+So they can only be changed by buying
+the new hardware, or they are part of
+
+394
+00:28:56,630 --> 00:29:02,490
+the firmware of the switch, though if
+a new protocol needs to be supported.
+
+395
+00:29:03,830 --> 00:29:09,327
+The network operator will have to wait for
+a new update from the switch manufacturer.
+
+396
+00:29:11,170 --> 00:29:16,040
+So, P4 was introduced to
+solve this limitation by
+
+397
+00:29:16,040 --> 00:29:21,310
+opening up the data plane and
+allowing the network operators to
+
+398
+00:29:21,310 --> 00:29:27,170
+specify themselves their own custom for
+writing behaviors in their switches.
+
+399
+00:29:27,170 --> 00:29:28,340
+So how does it work?
+
+400
+00:29:28,340 --> 00:29:33,750
+The network operators will use P4
+which is a high level programming
+
+401
+00:29:33,750 --> 00:29:38,432
+language to program their
+data planes using the P4
+
+402
+00:29:38,432 --> 00:29:43,150
+programs in order to completely specify
+everything they need in their switches.
+
+403
+00:29:44,750 --> 00:29:49,009
+Now, the current P4 architectures, they
+
+404
+00:29:49,009 --> 00:29:54,710
+have a small limitation which is that
+
+405
+00:29:54,710 --> 00:29:59,310
+usually one switch can only run
+one big P4 program at a time.
+
+406
+00:30:00,600 --> 00:30:05,750
+So that means that if a network operator
+wants to add a new functionality to
+
+407
+00:30:05,750 --> 00:30:10,522
+their switch,
+they have to edit this large P4 program.
+
+408
+00:30:10,522 --> 00:30:16,750
+And then upload it in the switch,
+which needs to be reset,
+
+409
+00:30:16,750 --> 00:30:20,250
+to update the whole program that's
+processes everything in the switch.
+
+410
+00:30:20,250 --> 00:30:23,290
+So there is always
+a downtime that is needed
+
+411
+00:30:23,290 --> 00:30:26,830
+each time you do an update to add
+the functionality to a switch.
+
+412
+00:30:28,160 --> 00:30:34,460
+And a second limitation of P4,
+which is more specific to the case of NDN
+
+413
+00:30:34,460 --> 00:30:40,160
+is that P4 was actually designed
+in the context of the IP world.
+
+414
+00:30:40,160 --> 00:30:47,180
+Where the headers are usually fixed and
+have fields that have a fixed size, right?
+
+415
+00:30:47,180 --> 00:30:53,710
+And so, when you want to apply it directly
+to NDN, where one of the main fields
+
+416
+00:30:53,710 --> 00:30:57,990
+in the headers is the constants name,
+which is a string of a variable length.
+
+417
+00:30:57,990 --> 00:31:03,000
+There are some limitations
+that you have to overcome.
+
+418
+00:31:03,000 --> 00:31:05,520
+Okay, the next slide please.
+
+419
+00:31:11,406 --> 00:31:16,602
+So, the main objective of our
+work is to have an engine
+
+420
+00:31:16,602 --> 00:31:22,380
+data plane that has some other
+programmability using P4.
+
+421
+00:31:23,430 --> 00:31:31,290
+And we want to do it in a way where you
+can assign a specific custom writing
+
+422
+00:31:31,290 --> 00:31:37,322
+logic to a specific namespace that is
+all encompassed in the P4 function.
+
+423
+00:31:37,322 --> 00:31:41,920
+So your associates a custom P4 function,
+going and then space.
+
+424
+00:31:41,920 --> 00:31:47,110
+And we want to do it in a way where all
+these P4 functions are independent.
+
+425
+00:31:47,110 --> 00:31:53,570
+And you can add them without impacting
+the rest of the switch, right, so.
+
+426
+00:31:54,570 --> 00:31:59,606
+So we want to design this kind of
+new P4 target architecture that
+
+427
+00:31:59,606 --> 00:32:04,455
+allows us to run multiple small,
+lightweight P4 programs,
+
+428
+00:32:04,455 --> 00:32:08,745
+which we call P4 functions
+to run them in isolation and
+
+429
+00:32:08,745 --> 00:32:11,563
+to have them have a separate state.
+
+430
+00:32:11,563 --> 00:32:16,237
+So we can have every default function
+be reconfigurable separately
+
+431
+00:32:16,237 --> 00:32:21,080
+without impacting anything else,
+so without causing any down side.
+
+432
+00:32:21,080 --> 00:32:26,604
+And also because the main context
+of our work is the NDN protocol,
+
+433
+00:32:26,604 --> 00:32:31,727
+we want to extend the P4 language
+in efficient way in order to
+
+434
+00:32:31,727 --> 00:32:37,453
+allow all these string processing
+operations that are critical for
+
+435
+00:32:37,453 --> 00:32:40,280
+the support of the NDN protocol.
+
+436
+00:32:41,410 --> 00:32:48,210
+While at the same time being
+compatible with the P4
+
+437
+00:32:48,210 --> 00:32:53,040
+language standard so we can use the normal
+P4 compilers without any modification.
+
+438
+00:32:55,250 --> 00:32:56,344
+Next slide, please.
+
+439
+00:32:59,964 --> 00:33:07,730
+So this is an outline of the data
+plane architecture that we propose.
+
+440
+00:33:07,730 --> 00:33:12,800
+So the main goal of this architecture is,
+as I said, to be able to assign
+
+441
+00:33:12,800 --> 00:33:17,705
+the complex stateful forwarding
+behavior to a specific namespace,
+
+442
+00:33:17,705 --> 00:33:21,086
+for example,
+to do things like telemetering,
+
+443
+00:33:21,086 --> 00:33:25,507
+geo-monitoring, geo-fencing,
+stateful firewall etc.
+
+444
+00:33:25,507 --> 00:33:30,660
+And so
+our architecture has two main modules.
+
+445
+00:33:30,660 --> 00:33:35,900
+The first module is called the EProcessing
+module, which I will say basically
+
+446
+00:33:35,900 --> 00:33:42,880
+contains the main NDN forwarding
+pipeline with some modifications
+
+447
+00:33:42,880 --> 00:33:48,640
+in order to do this assignment
+of a P4 function to a namespace.
+
+448
+00:33:48,640 --> 00:33:53,830
+And once this EProcessing finishes
+with the processing of packets,
+
+449
+00:33:53,830 --> 00:33:57,380
+therefore added to the new module
+which is called Forwarding Logic,
+
+450
+00:33:57,380 --> 00:34:02,480
+which contains a set of different
+P4 functions running in isolations
+
+451
+00:34:02,480 --> 00:34:07,045
+that will process these
+NDN packets in order to
+
+452
+00:34:07,045 --> 00:34:13,450
+do any type of forwarding behaviors that
+the network operates or wants to do.
+
+453
+00:34:13,450 --> 00:34:18,532
+And then these packets are passed
+towards the Parser that may
+
+454
+00:34:18,532 --> 00:34:25,408
+optionally modify the packets based on
+instructions from the P4 function before
+
+455
+00:34:25,408 --> 00:34:32,170
+the packets are forwarded through
+the faces and go to to the next host.
+
+456
+00:34:32,170 --> 00:34:39,680
+We did also small modifications where we
+put the content store outside of the fast
+
+457
+00:34:39,680 --> 00:34:45,480
+path of the packets in the NDN pipeline.
+
+458
+00:34:45,480 --> 00:34:50,480
+So the content store is accessed
+through an internal face.
+
+459
+00:34:50,480 --> 00:34:54,940
+So the caching decisions
+can be controlled by adding
+
+460
+00:34:54,940 --> 00:34:59,460
+a next hop to the CS by namespace so
+
+461
+00:34:59,460 --> 00:35:03,940
+the p4 function can control
+the caching decisions by adding or
+
+462
+00:35:03,940 --> 00:35:08,270
+removing this next hop to
+the content store internal face.
+
+463
+00:35:09,540 --> 00:35:13,930
+And so in the poster session,
+I'll explain you in more details
+
+464
+00:35:14,950 --> 00:35:18,460
+what is inside these different modules and
+how we did this
+
+465
+00:35:21,560 --> 00:35:25,260
+data plane and
+how we interface efficiently with people.
+
+466
+00:35:26,700 --> 00:35:31,890
+And thank you everyone and
+I'll see you during my poster session.
+
+467
+00:35:33,880 --> 00:35:35,410
+>> All right, thank you, Ouassim.

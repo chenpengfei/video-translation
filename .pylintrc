@@ -1,0 +1,18 @@
+[tool.pylint.main]
+disable =
+    missing-module-docstring,
+    missing-function-docstring,
+    missing-class-docstring,
+    too-few-public-methods,
+    logging-fstring-interpolation,
+    fixme,
+    import-outside-toplevel,
+    too-many-arguments,
+    missing-timeout,
+    duplicate-code
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.pylint.string]
+check-quote-consistency = true

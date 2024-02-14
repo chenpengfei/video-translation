@@ -1,0 +1,12882 @@
+1
+00:00:03,710 --> 00:00:06,240
+>> Good morning,
+and welcome to
+
+2
+00:00:06,240 --> 00:00:09,945
+Day 2 of NDNComm 2021.
+
+3
+00:00:09,945 --> 00:00:12,780
+We start today
+with Session 5 on
+
+4
+00:00:12,780 --> 00:00:14,400
+applications
+which would be
+
+5
+00:00:14,400 --> 00:00:16,500
+chaired by Jeff Burke.
+
+6
+00:00:16,500 --> 00:00:17,775
+Jeff is a
+
+7
+00:00:17,775 --> 00:00:19,740
+Professor-in-Residence
+and the Associate
+
+8
+00:00:19,740 --> 00:00:21,240
+Dean for Technology and
+
+9
+00:00:21,240 --> 00:00:23,430
+Innovation at UCLA
+School of Theatre,
+
+10
+00:00:23,430 --> 00:00:24,930
+Film and Television,
+
+11
+00:00:24,930 --> 00:00:28,620
+where he co-directs
+the REMAP Center.
+
+12
+00:00:28,620 --> 00:00:30,260
+As most of you know,
+
+13
+00:00:30,260 --> 00:00:32,420
+he has been one of
+the CO-PI's and
+
+14
+00:00:32,420 --> 00:00:33,710
+Application Lead for
+
+15
+00:00:33,710 --> 00:00:36,410
+the NSF-funded
+NDN program.
+
+16
+00:00:36,410 --> 00:00:39,130
+Jeff, go ahead, please.
+
+17
+00:00:39,130 --> 00:00:41,730
+>> Hi. Happy to
+be here. We have
+
+18
+00:00:41,730 --> 00:00:43,815
+three talks in
+this session.
+
+19
+00:00:43,815 --> 00:00:45,620
+I'm going to introduce
+
+20
+00:00:45,620 --> 00:00:47,630
+them briefly to give
+
+21
+00:00:47,630 --> 00:00:49,500
+them as much time
+as I can to speak.
+
+22
+00:00:49,500 --> 00:00:51,620
+We have about 15 minutes
+for each speaker
+
+23
+00:00:51,620 --> 00:00:54,425
+plus five minutes
+for questions.
+
+24
+00:00:54,425 --> 00:00:56,000
+I'll be looking in
+
+25
+00:00:56,000 --> 00:00:57,350
+both slack and
+the blue jeans
+
+26
+00:00:57,350 --> 00:01:00,655
+chat to help
+facilitate questions.
+
+27
+00:01:00,655 --> 00:01:02,780
+Our first talk by Lan Wang
+
+28
+00:01:02,780 --> 00:01:05,045
+at the University of
+Memphis is mGuard,
+
+29
+00:01:05,045 --> 00:01:06,980
+a secure real-time
+data distribution
+
+30
+00:01:06,980 --> 00:01:10,620
+system with fine-grained
+access control.
+
+31
+00:01:17,160 --> 00:01:19,245
+>> Hello. Can you hear me?
+
+32
+00:01:19,245 --> 00:01:21,220
+>> Oh, sorry. I
+realized I have
+
+33
+00:01:21,220 --> 00:01:23,215
+a bio that I need to read.
+
+34
+00:01:23,215 --> 00:01:25,360
+That is a Professor
+and Chair of
+
+35
+00:01:25,360 --> 00:01:27,010
+the Department of
+Computer Science
+
+36
+00:01:27,010 --> 00:01:28,135
+at the University
+of Memphis.
+
+37
+00:01:28,135 --> 00:01:29,830
+She's been working
+on NDN since
+
+38
+00:01:29,830 --> 00:01:32,110
+2010 focusing on routing,
+
+39
+00:01:32,110 --> 00:01:33,160
+forwarding strategies,
+
+40
+00:01:33,160 --> 00:01:35,930
+Sync, and application
+development.
+
+41
+00:01:36,560 --> 00:01:42,220
+>> Thank you. Let me
+see if I can share.
+
+42
+00:01:42,220 --> 00:01:45,080
+Can you see my screen?
+
+43
+00:01:45,780 --> 00:01:47,185
+>> Yes.
+
+44
+00:01:47,185 --> 00:01:48,610
+>> Hello, okay.
+
+45
+00:01:48,610 --> 00:01:55,240
+[NOISE]
+
+46
+00:01:55,240 --> 00:01:56,720
+>> Go full screen.
+
+47
+00:01:56,720 --> 00:01:59,860
+>> Yeah, can you see
+the full screen?
+
+48
+00:02:01,520 --> 00:02:03,795
+>> Can you see it, Jeff?
+
+49
+00:02:03,795 --> 00:02:06,390
+>> We're still seeing
+speaker view right now.
+
+50
+00:02:06,390 --> 00:02:07,990
+>> Yeah.
+
+51
+00:02:08,840 --> 00:02:11,715
+>> Can you see
+the full screen?
+
+52
+00:02:11,715 --> 00:02:15,730
+No? Let me try again.
+
+53
+00:02:18,470 --> 00:02:21,810
+>> You need to stop
+sharing first then you
+
+54
+00:02:21,810 --> 00:02:23,130
+select as a full-screen
+
+55
+00:02:23,130 --> 00:02:24,840
+that window. Yeah.
+Now it's okay.
+
+56
+00:02:24,840 --> 00:02:26,410
+>> Now we see it.
+
+57
+00:02:26,710 --> 00:02:31,085
+>> All right.
+Good morning.
+
+58
+00:02:31,085 --> 00:02:34,420
+I'm going to talk about
+
+59
+00:02:34,420 --> 00:02:37,375
+our project called mGuard.
+
+60
+00:02:37,375 --> 00:02:38,840
+It's an effort to
+
+61
+00:02:38,840 --> 00:02:41,510
+help mobile health
+researchers
+
+62
+00:02:41,510 --> 00:02:47,110
+access data securely
+and in real-time.
+
+63
+00:02:47,110 --> 00:02:49,220
+This is a
+collaboration between
+
+64
+00:02:49,220 --> 00:02:52,330
+the University of
+Memphis and UCLA,
+
+65
+00:02:52,330 --> 00:02:55,245
+and it's supported by NSF.
+
+66
+00:02:55,245 --> 00:02:58,880
+Last year, I actually
+gave an overview
+
+67
+00:02:58,880 --> 00:03:02,460
+of the project
+during NDNComm,
+
+68
+00:03:02,460 --> 00:03:05,225
+that was at the beginning
+of the project.
+
+69
+00:03:05,225 --> 00:03:08,165
+Though I didn't
+give much detail.
+
+70
+00:03:08,165 --> 00:03:10,580
+This time we've been
+
+71
+00:03:10,580 --> 00:03:12,260
+working on the
+project for one year,
+
+72
+00:03:12,260 --> 00:03:16,905
+so I can give you
+a progress report.
+
+73
+00:03:16,905 --> 00:03:19,430
+First, this project is
+
+74
+00:03:19,430 --> 00:03:22,550
+motivated by a
+use case that
+
+75
+00:03:22,550 --> 00:03:25,970
+is collecting
+
+76
+00:03:25,970 --> 00:03:29,020
+and distributing
+mobile health data.
+
+77
+00:03:29,020 --> 00:03:32,840
+Basically, our
+university has
+
+78
+00:03:32,840 --> 00:03:37,640
+NIH funded center
+called MD2K.
+
+79
+00:03:37,640 --> 00:03:39,065
+They are collecting
+a lot of
+
+80
+00:03:39,065 --> 00:03:41,945
+data from lab studies,
+
+81
+00:03:41,945 --> 00:03:46,040
+field studies,
+from thousands of
+
+82
+00:03:46,040 --> 00:03:51,080
+participants with
+trillions of data points.
+
+83
+00:03:51,080 --> 00:03:55,085
+They want to share
+the data with
+
+84
+00:03:55,085 --> 00:04:02,145
+many researchers and also,
+
+85
+00:04:02,145 --> 00:04:05,420
+study coordinators and
+
+86
+00:04:05,420 --> 00:04:08,615
+the study participants
+themselves.
+
+87
+00:04:08,615 --> 00:04:13,860
+The question is, right now
+
+88
+00:04:13,860 --> 00:04:20,450
+the existing tools
+or system they are
+
+89
+00:04:20,450 --> 00:04:22,340
+using cannot support
+
+90
+00:04:22,340 --> 00:04:24,815
+fine-grained
+access control
+
+91
+00:04:24,815 --> 00:04:28,000
+and real-time data
+distribution.
+
+92
+00:04:28,000 --> 00:04:31,070
+They cannot, for example,
+
+93
+00:04:31,070 --> 00:04:34,550
+limit the study
+coordinator
+
+94
+00:04:34,550 --> 00:04:36,695
+to access only
+their study,
+
+95
+00:04:36,695 --> 00:04:38,345
+not somebody else's study.
+
+96
+00:04:38,345 --> 00:04:43,460
+They cannot limit
+study participants to
+
+97
+00:04:43,460 --> 00:04:45,455
+access only their
+own data and that
+
+98
+00:04:45,455 --> 00:04:49,560
+other participants' data,
+so on and so forth.
+
+99
+00:04:49,560 --> 00:04:53,354
+They want very flexible
+access control
+
+100
+00:04:53,354 --> 00:04:56,760
+but existing systems
+don't support that.
+
+101
+00:04:56,760 --> 00:04:59,990
+[NOISE] Also,
+they wanted to be
+
+102
+00:04:59,990 --> 00:05:03,250
+able to give researchers
+
+103
+00:05:03,250 --> 00:05:06,950
+real-time access
+so they can
+
+104
+00:05:06,950 --> 00:05:10,340
+provide real-time
+intervention if
+
+105
+00:05:10,340 --> 00:05:12,440
+there's any problems
+with a patient,
+
+106
+00:05:12,440 --> 00:05:16,355
+for example, but
+that's not supported.
+
+107
+00:05:16,355 --> 00:05:20,030
+What our project wants
+to do is to apply
+
+108
+00:05:20,030 --> 00:05:23,375
+NDN named-based
+data-centric approaches,
+
+109
+00:05:23,375 --> 00:05:26,400
+in particular,
+Sync and NAC or
+
+110
+00:05:26,400 --> 00:05:28,970
+name-based access
+control to
+
+111
+00:05:28,970 --> 00:05:32,635
+solve the above problems.
+
+112
+00:05:32,635 --> 00:05:36,175
+This is a collaboration
+with MD2K.
+
+113
+00:05:36,175 --> 00:05:40,310
+They provide the
+data and use
+
+114
+00:05:40,310 --> 00:05:43,610
+case requirements so we
+
+115
+00:05:43,610 --> 00:05:47,250
+can design the mechanisms.
+
+116
+00:05:47,510 --> 00:05:52,309
+Here's an overview
+of the system.
+
+117
+00:05:52,309 --> 00:05:54,620
+The main components you
+
+118
+00:05:54,620 --> 00:05:57,080
+can see are the
+data adapter,
+
+119
+00:05:57,080 --> 00:06:00,594
+publisher, a storage unit,
+
+120
+00:06:00,594 --> 00:06:04,835
+an access manager,
+and a subscriber.
+
+121
+00:06:04,835 --> 00:06:11,720
+Basically, we take
+existing data in MD2K to
+
+122
+00:06:11,720 --> 00:06:15,530
+repository and convert it
+
+123
+00:06:15,530 --> 00:06:20,800
+into NDN data and
+store it in NDN repos.
+
+124
+00:06:20,800 --> 00:06:26,020
+Then the data names
+
+125
+00:06:26,020 --> 00:06:30,305
+are provided to
+the publisher.
+
+126
+00:06:30,305 --> 00:06:32,915
+The publisher will
+create metadata
+
+127
+00:06:32,915 --> 00:06:36,385
+and store the
+metadata in the repo.
+
+128
+00:06:36,385 --> 00:06:38,750
+At the same time,
+the publisher
+
+129
+00:06:38,750 --> 00:06:40,520
+is going to advertise
+
+130
+00:06:40,520 --> 00:06:42,260
+this information about
+
+131
+00:06:42,260 --> 00:06:46,740
+new data to the
+subscribers.
+
+132
+00:06:46,740 --> 00:06:50,540
+The subscribers can
+request any data
+
+133
+00:06:50,540 --> 00:06:55,345
+they want from the
+publisher in real-time.
+
+134
+00:06:55,345 --> 00:06:57,815
+They can subscribe to
+
+135
+00:06:57,815 --> 00:07:01,820
+only a subset of the
+data streams so that
+
+136
+00:07:01,820 --> 00:07:11,680
+they can
+
+137
+00:07:13,390 --> 00:07:15,770
+receive only the data
+
+138
+00:07:15,770 --> 00:07:18,090
+of interest to them.
+
+139
+00:07:19,820 --> 00:07:23,750
+The access manager
+will create
+
+140
+00:07:23,750 --> 00:07:28,490
+the keys for users
+to decrypt the data.
+
+141
+00:07:28,490 --> 00:07:30,140
+At the same time,
+
+142
+00:07:30,140 --> 00:07:32,660
+the access manager
+will share
+
+143
+00:07:32,660 --> 00:07:37,850
+some parameters for
+the data adapter
+
+144
+00:07:37,850 --> 00:07:40,970
+to encrypt the NDN data.
+
+145
+00:07:40,970 --> 00:07:44,970
+That's the overall system.
+
+146
+00:07:47,060 --> 00:07:50,250
+In the first year
+of this project,
+
+147
+00:07:50,250 --> 00:07:52,720
+we developed the
+system design
+
+148
+00:07:52,720 --> 00:07:56,245
+and also the NDN
+naming scheme.
+
+149
+00:07:56,245 --> 00:08:02,725
+We also developed a
+policy specification
+
+150
+00:08:02,725 --> 00:08:05,515
+and parser for the
+access control.
+
+151
+00:08:05,515 --> 00:08:10,345
+We extended the existing
+NAC-ABE library
+
+152
+00:08:10,345 --> 00:08:12,040
+to support key
+
+153
+00:08:12,040 --> 00:08:16,040
+policy attribute-based
+encryption.
+
+154
+00:08:16,040 --> 00:08:20,190
+We designed a pub-sub
+API using PSync
+
+155
+00:08:20,190 --> 00:08:22,720
+and NAC-ABE to publish
+
+156
+00:08:22,720 --> 00:08:24,865
+and subscribe to
+data streams.
+
+157
+00:08:24,865 --> 00:08:26,725
+I'm going to give
+more details
+
+158
+00:08:26,725 --> 00:08:29,030
+of each of these items.
+
+159
+00:08:29,030 --> 00:08:35,290
+First of all, the
+MD2K center collect
+
+160
+00:08:35,290 --> 00:08:37,340
+raw data and they also
+
+161
+00:08:37,340 --> 00:08:42,100
+produce derived data
+based on the raw data.
+
+162
+00:08:42,100 --> 00:08:46,475
+We named each differently
+
+163
+00:08:46,475 --> 00:08:49,235
+for the raw data stream.
+
+164
+00:08:49,235 --> 00:08:52,100
+This data naming
+scheme is based
+
+165
+00:08:52,100 --> 00:08:56,040
+on their existing naming,
+
+166
+00:08:56,040 --> 00:09:00,940
+but we reordered
+some components.
+
+167
+00:09:00,940 --> 00:09:04,830
+It's basically a prefix,
+
+168
+00:09:04,830 --> 00:09:07,085
+then the study name,
+
+169
+00:09:07,085 --> 00:09:09,200
+the participant name, and
+
+170
+00:09:09,200 --> 00:09:12,030
+device that
+collect the data,
+
+171
+00:09:12,030 --> 00:09:13,320
+sensor,
+
+172
+00:09:13,320 --> 00:09:14,690
+and the attachment where
+
+173
+00:09:14,690 --> 00:09:16,450
+the sensor is attached.
+
+174
+00:09:16,450 --> 00:09:20,315
+Then the derived data
+
+175
+00:09:20,315 --> 00:09:24,470
+is named the
+prefix, study,
+
+176
+00:09:24,470 --> 00:09:26,750
+then participant
+and algorithm
+
+177
+00:09:26,750 --> 00:09:28,280
+or package that is
+
+178
+00:09:28,280 --> 00:09:32,400
+used to produce
+the derived data.
+
+179
+00:09:32,400 --> 00:09:36,619
+[NOISE] The
+specific data point
+
+180
+00:09:36,619 --> 00:09:39,335
+has the data
+streams prefix,
+
+181
+00:09:39,335 --> 00:09:44,525
+then the keyword data,
+then a timestamp.
+
+182
+00:09:44,525 --> 00:09:53,340
+That's how the existing
+data is labeled.
+
+183
+00:09:53,340 --> 00:09:55,810
+They have their timestamp.
+
+184
+00:09:56,150 --> 00:09:59,260
+For each data point,
+
+185
+00:09:59,260 --> 00:10:02,060
+there is a corresponding
+content key.
+
+186
+00:10:02,060 --> 00:10:06,005
+We also name
+the content key
+
+187
+00:10:06,005 --> 00:10:09,185
+using the same
+stream prefix
+
+188
+00:10:09,185 --> 00:10:12,125
+and a keyword, Ckey.
+
+189
+00:10:12,125 --> 00:10:14,840
+As I mentioned before,
+
+190
+00:10:14,840 --> 00:10:18,025
+the publisher also creates
+
+191
+00:10:18,025 --> 00:10:21,150
+a manifest or metadata for
+
+192
+00:10:21,150 --> 00:10:25,680
+each data stream so
+that manifest has
+
+193
+00:10:25,680 --> 00:10:27,885
+the data streams prefix
+
+194
+00:10:27,885 --> 00:10:32,135
+and manifest keyword
+in a sequence number.
+
+195
+00:10:32,135 --> 00:10:35,960
+Periodically,
+the publisher
+
+196
+00:10:35,960 --> 00:10:39,710
+will produce a
+new manifest with
+
+197
+00:10:39,710 --> 00:10:40,985
+a new sequence number
+
+198
+00:10:40,985 --> 00:10:42,440
+and the subscribers will
+
+199
+00:10:42,440 --> 00:10:47,465
+be notified when this
+manifest is created.
+
+200
+00:10:47,465 --> 00:10:51,330
+That's how we
+name the data.
+
+201
+00:10:51,740 --> 00:10:54,230
+For the access control,
+
+202
+00:10:54,230 --> 00:10:57,140
+our main goal is
+to define and
+
+203
+00:10:57,140 --> 00:10:59,000
+enforce
+fine-grained rights
+
+204
+00:10:59,000 --> 00:11:00,095
+to access the data.
+
+205
+00:11:00,095 --> 00:11:01,780
+What do we mean by that?
+
+206
+00:11:01,780 --> 00:11:03,140
+That first, we need to
+
+207
+00:11:03,140 --> 00:11:06,320
+support different
+types of users,
+
+208
+00:11:06,320 --> 00:11:10,160
+data producers,
+study coordinators,
+
+209
+00:11:10,160 --> 00:11:14,035
+and data administrators,
+for example.
+
+210
+00:11:14,035 --> 00:11:16,669
+We want to give each user
+
+211
+00:11:16,669 --> 00:11:18,740
+minimal access
+rights based
+
+212
+00:11:18,740 --> 00:11:20,765
+on the terms of use.
+
+213
+00:11:20,765 --> 00:11:22,580
+Minimal means,
+you don't get
+
+214
+00:11:22,580 --> 00:11:26,530
+more than what you're
+supposed to access.
+
+215
+00:11:26,530 --> 00:11:35,780
+We want to support
+novice users who don't
+
+216
+00:11:35,780 --> 00:11:41,509
+necessarily have very
+in-depth knowledge
+
+217
+00:11:41,509 --> 00:11:45,830
+of security to be able
+to define a policy.
+
+218
+00:11:45,830 --> 00:11:50,850
+The policy language
+should be very simple.
+
+219
+00:11:52,200 --> 00:11:55,869
+In order to support
+the above goals,
+
+220
+00:11:55,869 --> 00:12:01,240
+we leverage the existing
+NAC-ABE library
+
+221
+00:12:01,240 --> 00:12:04,045
+to encrypt data
+with content key,
+
+222
+00:12:04,045 --> 00:12:05,470
+and then encrypt
+
+223
+00:12:05,470 --> 00:12:09,370
+each content keyword
+set of attributes
+
+224
+00:12:09,370 --> 00:12:13,570
+that can help enforce
+
+225
+00:12:13,570 --> 00:12:16,615
+the access control policy,
+
+226
+00:12:16,615 --> 00:12:18,609
+and then we generate,
+
+227
+00:12:18,609 --> 00:12:20,890
+distribute the
+content keys
+
+228
+00:12:20,890 --> 00:12:24,310
+to the corresponding
+users,
+
+229
+00:12:24,310 --> 00:12:27,040
+so each user has
+
+230
+00:12:27,040 --> 00:12:33,970
+the key associated with
+their access rights.
+
+231
+00:12:33,970 --> 00:12:38,995
+What do we mean by
+access control policy?
+
+232
+00:12:38,995 --> 00:12:41,620
+I have an example here.
+
+233
+00:12:41,620 --> 00:12:45,790
+First, the data
+owner defines
+
+234
+00:12:45,790 --> 00:12:47,875
+a set of attributes
+
+235
+00:12:47,875 --> 00:12:50,465
+based on the
+policy to support,
+
+236
+00:12:50,465 --> 00:12:55,305
+and then specifies
+a set of policies
+
+237
+00:12:55,305 --> 00:12:58,635
+containing the
+attributes that
+
+238
+00:12:58,635 --> 00:13:00,660
+each user is
+associated with.
+
+239
+00:13:00,660 --> 00:13:04,560
+For example,
+for each policy
+
+240
+00:13:04,560 --> 00:13:08,260
+we have an id
+identifying the policy,
+
+241
+00:13:08,260 --> 00:13:10,750
+and then who are
+
+242
+00:13:10,750 --> 00:13:13,690
+associated with
+this policy,
+
+243
+00:13:13,690 --> 00:13:15,340
+so here is a list of
+
+244
+00:13:15,340 --> 00:13:21,145
+names corresponding to
+the users of the data.
+
+245
+00:13:21,145 --> 00:13:23,680
+These users are allowed to
+
+246
+00:13:23,680 --> 00:13:27,175
+access data with
+these attributes,
+
+247
+00:13:27,175 --> 00:13:29,350
+and they're not allowed to
+
+248
+00:13:29,350 --> 00:13:31,900
+access data with
+these attributes.
+
+249
+00:13:31,900 --> 00:13:34,960
+The data owner needs to
+
+250
+00:13:34,960 --> 00:13:39,190
+specify is the list
+
+251
+00:13:39,190 --> 00:13:41,410
+of people who can
+access the data,
+
+252
+00:13:41,410 --> 00:13:43,840
+and the allowed
+attributes,
+
+253
+00:13:43,840 --> 00:13:45,895
+and the denied attributes.
+
+254
+00:13:45,895 --> 00:13:48,130
+For example, here's
+
+255
+00:13:48,130 --> 00:13:51,780
+an example policy [NOISE].
+
+256
+00:13:51,780 --> 00:13:54,780
+A user, Alice at UCLA can
+
+257
+00:13:54,780 --> 00:13:57,790
+access MD2K data
+produced by
+
+258
+00:13:57,790 --> 00:14:00,535
+the mperf study
+participant
+
+259
+00:14:00,535 --> 00:14:03,700
+dd40c when the participant
+
+260
+00:14:03,700 --> 00:14:05,230
+was at home or at work,
+
+261
+00:14:05,230 --> 00:14:07,195
+but Alice cannot obtain
+
+262
+00:14:07,195 --> 00:14:09,965
+the participants
+GPS locations.
+
+263
+00:14:09,965 --> 00:14:13,290
+How do we support
+this policy?
+
+264
+00:14:13,290 --> 00:14:16,030
+First we specify
+the name of
+
+265
+00:14:16,030 --> 00:14:21,340
+the data user,
+alice/edu/user/alice,
+
+266
+00:14:21,340 --> 00:14:25,120
+then in the allowed
+attributes we specify
+
+267
+00:14:25,120 --> 00:14:31,075
+the dataset which is
+/org/md2k/mperf/dd40c,
+
+268
+00:14:31,075 --> 00:14:33,310
+that's the data
+set corresponding
+
+269
+00:14:33,310 --> 00:14:35,800
+to the study participant.
+
+270
+00:14:35,800 --> 00:14:39,805
+Then we say, only when
+this user is at home,
+
+271
+00:14:39,805 --> 00:14:42,100
+or this participant is
+at home or at work,
+
+272
+00:14:42,100 --> 00:14:44,845
+these two attributes
+identify where
+
+273
+00:14:44,845 --> 00:14:49,285
+the location of this
+study participant,
+
+274
+00:14:49,285 --> 00:14:50,995
+when the data
+was produced,
+
+275
+00:14:50,995 --> 00:14:54,850
+and we specify
+an attribute
+
+276
+00:14:54,850 --> 00:14:56,635
+in the denied
+field, that is,
+
+277
+00:14:56,635 --> 00:14:59,905
+the data name of
+
+278
+00:14:59,905 --> 00:15:03,655
+the GPS location
+of this user.
+
+279
+00:15:03,655 --> 00:15:06,895
+That's very simple
+and intuitive
+
+280
+00:15:06,895 --> 00:15:12,560
+for a novice
+user to specify.
+
+281
+00:15:13,200 --> 00:15:16,555
+That's the control policy.
+
+282
+00:15:16,555 --> 00:15:18,715
+Now how do we
+support this policy?
+
+283
+00:15:18,715 --> 00:15:20,080
+As I mentioned before,
+
+284
+00:15:20,080 --> 00:15:22,135
+we have a parser
+that converts
+
+285
+00:15:22,135 --> 00:15:25,520
+each policy to
+an expression.
+
+286
+00:15:25,830 --> 00:15:30,100
+For example, if
+the allowed field
+
+287
+00:15:30,100 --> 00:15:33,070
+has three attributes,
+
+288
+00:15:33,070 --> 00:15:35,770
+we will use the
+operator or,
+
+289
+00:15:35,770 --> 00:15:38,755
+to connect the attributes
+of the same time.
+
+290
+00:15:38,755 --> 00:15:40,600
+These are the
+location attributes,
+
+291
+00:15:40,600 --> 00:15:42,430
+so we connect
+them with or.
+
+292
+00:15:42,430 --> 00:15:44,215
+For the other I should be
+
+293
+00:15:44,215 --> 00:15:47,230
+we connect it with and.
+
+294
+00:15:47,230 --> 00:15:49,630
+This means the data is
+
+295
+00:15:49,630 --> 00:15:52,060
+produced at home
+or at work,
+
+296
+00:15:52,060 --> 00:15:54,370
+and the data is produced
+
+297
+00:15:54,370 --> 00:15:57,655
+after September 1st, 2021.
+
+298
+00:15:57,655 --> 00:16:03,025
+This expression or set of
+
+299
+00:16:03,025 --> 00:16:06,505
+attributes are
+encoded into
+
+300
+00:16:06,505 --> 00:16:08,950
+the data users
+decryption key.
+
+301
+00:16:08,950 --> 00:16:10,930
+The data user can only
+
+302
+00:16:10,930 --> 00:16:14,000
+access data with
+these attributes.
+
+303
+00:16:15,270 --> 00:16:20,530
+How is this decryption
+key generated?
+
+304
+00:16:20,530 --> 00:16:23,635
+It's generated by
+the access manager
+
+305
+00:16:23,635 --> 00:16:26,410
+provided by the
+NAC-ABE library,
+
+306
+00:16:26,410 --> 00:16:29,275
+it provides automated
+key management.
+
+307
+00:16:29,275 --> 00:16:33,205
+It can distribute
+this key to the user,
+
+308
+00:16:33,205 --> 00:16:37,510
+and also provide
+
+309
+00:16:37,510 --> 00:16:41,050
+the necessary
+encryption parameters
+
+310
+00:16:41,050 --> 00:16:44,365
+for the data publisher
+
+311
+00:16:44,365 --> 00:16:47,270
+to encrypt the data with.
+
+312
+00:16:47,370 --> 00:16:50,740
+Because the original
+implementation supports
+
+313
+00:16:50,740 --> 00:16:53,965
+only ciphertext
+policy ABE,
+
+314
+00:16:53,965 --> 00:16:57,625
+we extended it to
+support key policy ABE,
+
+315
+00:16:57,625 --> 00:17:00,550
+which means the
+policy is embedded or
+
+316
+00:17:00,550 --> 00:17:03,700
+encoded in the
+decryption key because
+
+317
+00:17:03,700 --> 00:17:08,080
+this approach is more
+
+318
+00:17:08,080 --> 00:17:11,155
+suitable for our project.
+
+319
+00:17:11,155 --> 00:17:15,775
+How do we distribute
+the data in real time?
+
+320
+00:17:15,775 --> 00:17:19,990
+We have defined a Pub-Sub
+API to allow users
+
+321
+00:17:19,990 --> 00:17:22,480
+to subscribe to
+data streams as
+
+322
+00:17:22,480 --> 00:17:25,090
+permitted by their
+access policies,
+
+323
+00:17:25,090 --> 00:17:27,430
+and this Pub-Sub API
+
+324
+00:17:27,430 --> 00:17:30,910
+guarantees the reception
+of the latest data,
+
+325
+00:17:30,910 --> 00:17:33,040
+and it will
+verify the data
+
+326
+00:17:33,040 --> 00:17:35,605
+in each subscribed stream,
+
+327
+00:17:35,605 --> 00:17:37,510
+I can use this piecing to
+
+328
+00:17:37,510 --> 00:17:40,375
+discover and subscribe
+to the data streams,
+
+329
+00:17:40,375 --> 00:17:44,875
+and use NAC-ABE to
+encrypt and decrypt data.
+
+330
+00:17:44,875 --> 00:17:46,930
+The one problem
+we encountered
+
+331
+00:17:46,930 --> 00:17:48,265
+is there is a lot of
+
+332
+00:17:48,265 --> 00:17:51,280
+small data objects we need
+
+333
+00:17:51,280 --> 00:17:55,390
+to sign and verify,
+
+334
+00:17:55,390 --> 00:17:58,840
+and this can incur
+very high overhead
+
+335
+00:17:58,840 --> 00:18:00,430
+if the small data is
+
+336
+00:18:00,430 --> 00:18:02,860
+produced at a very
+high frequency.
+
+337
+00:18:02,860 --> 00:18:06,235
+The other solution
+is to use Manifest.
+
+338
+00:18:06,235 --> 00:18:08,695
+Basically the
+publisher produces
+
+339
+00:18:08,695 --> 00:18:11,020
+a series of Manifests for
+
+340
+00:18:11,020 --> 00:18:13,090
+each data stream with
+
+341
+00:18:13,090 --> 00:18:15,050
+this name,
+
+342
+00:18:16,860 --> 00:18:18,865
+stream-prefix/manifest/sequence
+number.
+
+343
+00:18:18,865 --> 00:18:22,315
+This Manifest contains
+the full name,
+
+344
+00:18:22,315 --> 00:18:24,400
+including the
+implicit digest
+
+345
+00:18:24,400 --> 00:18:28,255
+of the new data
+objects produced in
+
+346
+00:18:28,255 --> 00:18:31,105
+this last period since
+
+347
+00:18:31,105 --> 00:18:35,695
+the last manifest
+was produced.
+
+348
+00:18:35,695 --> 00:18:38,545
+The subscribers basically
+
+349
+00:18:38,545 --> 00:18:42,620
+receives the manifest and
+
+350
+00:18:42,990 --> 00:18:48,085
+retrieves the
+individual data items
+
+351
+00:18:48,085 --> 00:18:52,930
+or objects corresponding
+to these names.
+
+352
+00:18:52,930 --> 00:18:55,060
+Because the names
+
+353
+00:18:55,060 --> 00:18:57,205
+contain the
+implicit digest,
+
+354
+00:18:57,205 --> 00:19:00,430
+the subscriber can
+verify the retrieved
+
+355
+00:19:00,430 --> 00:19:04,930
+the data matches these
+implicit digest.
+
+356
+00:19:04,930 --> 00:19:08,140
+Each data object
+is not signed,
+
+357
+00:19:08,140 --> 00:19:10,600
+so we can reduce
+
+358
+00:19:10,600 --> 00:19:13,585
+the overhead of signing
+and verification,
+
+359
+00:19:13,585 --> 00:19:16,240
+we also can reduce
+the overhead of
+
+360
+00:19:16,240 --> 00:19:17,560
+syncing because we're not
+
+361
+00:19:17,560 --> 00:19:19,165
+syncing individual
+objects,
+
+362
+00:19:19,165 --> 00:19:20,980
+we're thinking a set of
+
+363
+00:19:20,980 --> 00:19:24,070
+objects at once
+using the Manifest,
+
+364
+00:19:24,070 --> 00:19:27,550
+and piecing makes sure
+
+365
+00:19:27,550 --> 00:19:32,090
+that the subscribers
+receives the Manifests.
+
+366
+00:19:32,820 --> 00:19:36,490
+Now I'm going to
+give us summary.
+
+367
+00:19:36,490 --> 00:19:40,150
+But what lessons
+do we learn?
+
+368
+00:19:40,150 --> 00:19:41,860
+First, we spent a lot
+
+369
+00:19:41,860 --> 00:19:43,420
+of time trying
+to understand
+
+370
+00:19:43,420 --> 00:19:48,530
+the requirements MD2K
+has for access control.
+
+371
+00:19:48,750 --> 00:19:52,510
+This is a specific
+use case,
+
+372
+00:19:52,510 --> 00:19:58,465
+but it gives us
+a good idea of
+
+373
+00:19:58,465 --> 00:20:04,255
+what requirements
+for security
+
+374
+00:20:04,255 --> 00:20:07,150
+the mobile health
+data may have.
+
+375
+00:20:07,150 --> 00:20:09,370
+We also spend
+a lot of time
+
+376
+00:20:09,370 --> 00:20:11,110
+trying to understand
+how we can
+
+377
+00:20:11,110 --> 00:20:13,180
+use NAC-ABE to support
+
+378
+00:20:13,180 --> 00:20:16,780
+these requirements
+[NOISE].
+
+379
+00:20:16,780 --> 00:20:19,060
+Previous work, I
+think, for example,
+
+380
+00:20:19,060 --> 00:20:23,710
+NDN flint used NAC
+
+381
+00:20:23,710 --> 00:20:25,360
+but it's not the
+
+382
+00:20:25,360 --> 00:20:27,985
+attribute-based
+encryption version,
+
+383
+00:20:27,985 --> 00:20:32,020
+so we have to think
+about how do we use
+
+384
+00:20:32,020 --> 00:20:34,930
+attribute-based
+encryption to support
+
+385
+00:20:34,930 --> 00:20:36,250
+these requirements.
+
+386
+00:20:36,250 --> 00:20:38,280
+[NOISE]
+
+387
+00:20:38,280 --> 00:20:41,760
+>> Also the policy
+specification
+
+388
+00:20:41,760 --> 00:20:44,310
+went through
+several iterations.
+
+389
+00:20:44,310 --> 00:20:47,490
+In the beginning we used
+
+390
+00:20:47,490 --> 00:20:51,435
+policy specification
+that's very
+
+391
+00:20:51,435 --> 00:20:54,540
+close to their existing
+implementation,
+
+392
+00:20:54,540 --> 00:20:58,260
+basically specifies
+for each table
+
+393
+00:20:58,260 --> 00:21:01,155
+or each database table,
+
+394
+00:21:01,155 --> 00:21:04,260
+which columns the
+user can access,
+
+395
+00:21:04,260 --> 00:21:05,760
+and what's the value of
+
+396
+00:21:05,760 --> 00:21:08,415
+the fields that the
+user can access.
+
+397
+00:21:08,415 --> 00:21:11,670
+Later, we realized
+that that's not the
+
+398
+00:21:11,670 --> 00:21:15,000
+best or the most
+suitable type of
+
+399
+00:21:15,000 --> 00:21:17,010
+specification for
+
+400
+00:21:17,010 --> 00:21:20,370
+the attribute-based
+access control
+
+401
+00:21:20,370 --> 00:21:23,610
+or main attribute-based
+access control.
+
+402
+00:21:23,610 --> 00:21:25,560
+We realized that we should
+
+403
+00:21:25,560 --> 00:21:27,405
+use just the names and
+
+404
+00:21:27,405 --> 00:21:29,865
+attributes in the
+policy specification
+
+405
+00:21:29,865 --> 00:21:31,380
+and it actually simply,
+
+406
+00:21:31,380 --> 00:21:33,030
+this approach simplifies
+
+407
+00:21:33,030 --> 00:21:34,890
+this policy specification
+
+408
+00:21:34,890 --> 00:21:38,295
+a lot and it's very
+intuitive too.
+
+409
+00:21:38,295 --> 00:21:40,829
+Those are two
+major lessons
+
+410
+00:21:40,829 --> 00:21:42,780
+we learned. Now the
+
+411
+00:21:42,780 --> 00:21:46,850
+>> We're coming
+up on time.
+
+412
+00:21:46,850 --> 00:21:47,960
+You want to wrap up?
+
+413
+00:21:47,960 --> 00:21:50,700
+>> Yeah. There are
+
+414
+00:21:50,700 --> 00:21:53,760
+a few major opening
+issues. Why is that?
+
+415
+00:21:53,760 --> 00:21:56,910
+There is no negative
+operator support
+
+416
+00:21:56,910 --> 00:21:57,960
+in that KBE,
+
+417
+00:21:57,960 --> 00:22:01,545
+so it's difficult to
+
+418
+00:22:01,545 --> 00:22:03,900
+implement the
+deny attributes.
+
+419
+00:22:03,900 --> 00:22:05,895
+Basically, we have to
+
+420
+00:22:05,895 --> 00:22:08,580
+list all the attributes in
+
+421
+00:22:08,580 --> 00:22:10,500
+a particular
+type and remove
+
+422
+00:22:10,500 --> 00:22:12,135
+the denied attributes
+
+423
+00:22:12,135 --> 00:22:14,385
+and that's very
+cumbersome.
+
+424
+00:22:14,385 --> 00:22:17,715
+We hope this problem
+can be solved.
+
+425
+00:22:17,715 --> 00:22:22,170
+Then there's also potential
+scalability issue
+
+426
+00:22:22,170 --> 00:22:24,375
+for the NAC-ABE approach.
+
+427
+00:22:24,375 --> 00:22:27,675
+When the policies are
+very fine-grained,
+
+428
+00:22:27,675 --> 00:22:29,175
+there can be a
+large number
+
+429
+00:22:29,175 --> 00:22:30,855
+of attributes that's
+
+430
+00:22:30,855 --> 00:22:35,610
+difficult to specify
+and also handle.
+
+431
+00:22:35,610 --> 00:22:39,780
+We need a very reliable
+repo implementation
+
+432
+00:22:39,780 --> 00:22:42,165
+that can support
+high-speed,
+
+433
+00:22:42,165 --> 00:22:45,340
+reliable data
+and insertion.
+
+434
+00:22:46,700 --> 00:22:49,710
+In the second year
+we want to finish
+
+435
+00:22:49,710 --> 00:22:50,955
+the implementation
+
+436
+00:22:50,955 --> 00:22:52,515
+and testing of the system,
+
+437
+00:22:52,515 --> 00:22:54,510
+and then we want to deploy
+
+438
+00:22:54,510 --> 00:22:57,690
+mGuard on the NDN
+testbed by connecting
+
+439
+00:22:57,690 --> 00:23:01,170
+the MD2K server to
+and subscribers
+
+440
+00:23:01,170 --> 00:23:04,945
+to the testbed.
+That's all for me.
+
+441
+00:23:04,945 --> 00:23:06,500
+>> Great. Thank you
+
+442
+00:23:06,500 --> 00:23:07,880
+very much for right
+at time there
+
+443
+00:23:07,880 --> 00:23:09,260
+are some nice questions
+
+444
+00:23:09,260 --> 00:23:10,595
+in the Slack channel,
+
+445
+00:23:10,595 --> 00:23:12,410
+so if you have time to
+
+446
+00:23:12,410 --> 00:23:13,310
+answer them over there,
+
+447
+00:23:13,310 --> 00:23:14,210
+I think that
+would be great.
+
+448
+00:23:14,210 --> 00:23:16,115
+Let's move on to the next.
+
+449
+00:23:16,115 --> 00:23:17,770
+>> Thank you.
+
+450
+00:23:17,770 --> 00:23:19,650
+>> It's my pleasure
+
+451
+00:23:19,650 --> 00:23:23,550
+to introduce Susmit
+Shannigrahi.
+
+452
+00:23:23,550 --> 00:23:25,125
+I hope I got that close.
+
+453
+00:23:25,125 --> 00:23:26,250
+Who is a professor
+
+454
+00:23:26,250 --> 00:23:28,005
+at Tennessee
+Tech University,
+
+455
+00:23:28,005 --> 00:23:30,240
+directs to the next
+generation Internet lab
+
+456
+00:23:30,240 --> 00:23:32,310
+there is research
+focuses on
+
+457
+00:23:32,310 --> 00:23:34,080
+building tools and
+protocols that
+
+458
+00:23:34,080 --> 00:23:35,700
+facilitate big
+data management
+
+459
+00:23:35,700 --> 00:23:37,335
+and movement over
+the Internet.
+
+460
+00:23:37,335 --> 00:23:39,240
+He studies,
+designs, and builds
+
+461
+00:23:39,240 --> 00:23:40,440
+intelligent protocols for
+
+462
+00:23:40,440 --> 00:23:41,805
+that next generation here.
+
+463
+00:23:41,805 --> 00:23:46,200
+Today assessment talk
+is on Hydra secure,
+
+464
+00:23:46,200 --> 00:23:48,180
+distributed and
+federated storage
+
+465
+00:23:48,180 --> 00:23:50,580
+for large and science data
+
+466
+00:23:50,580 --> 00:23:55,680
+and I directly again to
+black for questions,
+
+467
+00:23:55,680 --> 00:23:58,020
+and we'll try to leave
+a couple minutes.
+
+468
+00:23:58,020 --> 00:23:59,310
+If you can suspended
+at the end
+
+469
+00:23:59,310 --> 00:24:00,390
+for some questions that we
+
+470
+00:24:00,390 --> 00:24:03,270
+can answer them.
+Thanks so much.
+
+471
+00:24:03,270 --> 00:24:06,880
+>> Thank you. Can
+you see my screen?
+
+472
+00:24:07,040 --> 00:24:09,405
+>> Yes, we can see it.
+
+473
+00:24:09,405 --> 00:24:13,275
+>> Great. Good
+morning everyone.
+
+474
+00:24:13,275 --> 00:24:16,590
+This is a new NSF project
+
+475
+00:24:16,590 --> 00:24:20,160
+that started last month,
+so it's brand new.
+
+476
+00:24:20,160 --> 00:24:22,365
+But we have been
+working on this
+
+477
+00:24:22,365 --> 00:24:25,530
+for last year or so.
+
+478
+00:24:25,530 --> 00:24:28,650
+I'm going to
+present a Hydra.
+
+479
+00:24:28,650 --> 00:24:31,110
+It's a federated
+storage system over
+
+480
+00:24:31,110 --> 00:24:34,350
+NDN and this is
+
+481
+00:24:34,350 --> 00:24:35,820
+a collaborative effort
+
+482
+00:24:35,820 --> 00:24:38,490
+between Tennessee
+take Clemson,
+
+483
+00:24:38,490 --> 00:24:41,770
+FIU, and UCLA.
+
+484
+00:24:41,980 --> 00:24:45,110
+These are the *** and then
+
+485
+00:24:45,110 --> 00:24:46,700
+I don't know
+why the student
+
+486
+00:24:46,700 --> 00:24:47,840
+names didn't show up,
+
+487
+00:24:47,840 --> 00:24:49,510
+but I had been there.
+
+488
+00:24:49,510 --> 00:24:53,190
+The goal for Hydra is to
+
+489
+00:24:53,190 --> 00:24:54,719
+have really federated
+
+490
+00:24:54,719 --> 00:24:57,120
+storage system over NDN.
+
+491
+00:24:57,120 --> 00:25:00,330
+The motivation is, we
+
+492
+00:25:00,330 --> 00:25:01,920
+know at this point
+
+493
+00:25:01,920 --> 00:25:04,230
+that the large
+scientific data sets,
+
+494
+00:25:04,230 --> 00:25:06,255
+such as high-energy
+physics,
+
+495
+00:25:06,255 --> 00:25:09,014
+as you've heard
+yesterday, in genomics,
+
+496
+00:25:09,014 --> 00:25:11,850
+they can really
+benefit from NDNs
+
+497
+00:25:11,850 --> 00:25:13,440
+named-based and location
+
+498
+00:25:13,440 --> 00:25:15,345
+transparent networking.
+
+499
+00:25:15,345 --> 00:25:18,974
+But to make
+that a reality,
+
+500
+00:25:18,974 --> 00:25:21,810
+we need to make the
+data available first.
+
+501
+00:25:21,810 --> 00:25:25,185
+How do we make the data
+available over NDN.
+
+502
+00:25:25,185 --> 00:25:28,380
+We have a couple of
+ways of doing it,
+
+503
+00:25:28,380 --> 00:25:31,755
+so we could have a
+stand alone repository.
+
+504
+00:25:31,755 --> 00:25:33,675
+Like NDN repo,
+
+505
+00:25:33,675 --> 00:25:35,920
+but that doesn't
+scale very well.
+
+506
+00:25:35,920 --> 00:25:39,290
+Now, we could have file
+system interfaces,
+
+507
+00:25:39,290 --> 00:25:42,020
+as you heard from
+Katelyn stock yesterday.
+
+508
+00:25:42,020 --> 00:25:44,030
+But then the
+replication and
+
+509
+00:25:44,030 --> 00:25:48,330
+availability becomes
+user's responsibility.
+
+510
+00:25:49,070 --> 00:25:52,305
+In this talk, we're
+going to talk about
+
+511
+00:25:52,305 --> 00:25:53,880
+federated repository
+
+512
+00:25:53,880 --> 00:25:58,540
+that are also
+self-organizing.
+
+513
+00:25:58,580 --> 00:26:01,530
+The users, they
+can publish
+
+514
+00:26:01,530 --> 00:26:03,840
+the data sets into
+these repositories
+
+515
+00:26:03,840 --> 00:26:05,790
+and then forget about
+
+516
+00:26:05,790 --> 00:26:08,805
+all the logistics
+of publishing data.
+
+517
+00:26:08,805 --> 00:26:11,775
+Logistics include
+replication,
+
+518
+00:26:11,775 --> 00:26:13,875
+access control.
+
+519
+00:26:13,875 --> 00:26:16,065
+If a node fails,
+
+520
+00:26:16,065 --> 00:26:17,805
+then failure recovery,
+
+521
+00:26:17,805 --> 00:26:22,245
+all that is taken
+care of by Hydra.
+
+522
+00:26:22,245 --> 00:26:24,750
+For this project we use
+
+523
+00:26:24,750 --> 00:26:27,760
+the genomics community
+as the driver.
+
+524
+00:26:28,250 --> 00:26:30,480
+What are the requirements
+
+525
+00:26:30,480 --> 00:26:31,860
+for the genomics
+community?
+
+526
+00:26:31,860 --> 00:26:34,424
+This is going to
+be very generic.
+
+527
+00:26:34,424 --> 00:26:36,765
+It's going to be the
+
+528
+00:26:36,765 --> 00:26:39,720
+same for many
+scientific communities,
+
+529
+00:26:39,720 --> 00:26:41,490
+as at the first
+requirement is
+
+530
+00:26:41,490 --> 00:26:44,070
+that storage system
+must support
+
+531
+00:26:44,070 --> 00:26:47,160
+very large data sets
+that can be anywhere
+
+532
+00:26:47,160 --> 00:26:48,330
+from terabytes to
+
+533
+00:26:48,330 --> 00:26:51,375
+petabytes and
+eventually exabytes.
+
+534
+00:26:51,375 --> 00:26:54,390
+Data publication
+mechanisms have to be
+
+535
+00:26:54,390 --> 00:26:57,120
+simple and then provide
+
+536
+00:26:57,120 --> 00:27:00,030
+persistent storage
+at the file level.
+
+537
+00:27:00,030 --> 00:27:03,105
+Unlike the original
+repository designs
+
+538
+00:27:03,105 --> 00:27:06,420
+where we are storing
+NDN packets,
+
+539
+00:27:06,420 --> 00:27:11,200
+Hydra is going
+to store files.
+
+540
+00:27:12,020 --> 00:27:14,460
+Downloading object
+
+541
+00:27:14,460 --> 00:27:16,750
+would be at the
+high level.
+
+542
+00:27:18,410 --> 00:27:20,370
+These communities are
+
+543
+00:27:20,370 --> 00:27:21,900
+geographically
+distributed,
+
+544
+00:27:21,900 --> 00:27:23,520
+so the data sets are
+
+545
+00:27:23,520 --> 00:27:25,320
+replicated for
+availability and
+
+546
+00:27:25,320 --> 00:27:28,020
+then there's an
+option to optimize
+
+547
+00:27:28,020 --> 00:27:29,490
+the placement
+of data based
+
+548
+00:27:29,490 --> 00:27:32,200
+on where they are needed.
+
+549
+00:27:32,360 --> 00:27:34,470
+Of course, NDN
+
+550
+00:27:34,470 --> 00:27:37,455
+provides transparent
+data access.
+
+551
+00:27:37,455 --> 00:27:39,510
+But we also need for
+
+552
+00:27:39,510 --> 00:27:41,115
+some of the
+genomics datasets,
+
+553
+00:27:41,115 --> 00:27:43,450
+we need access control.
+
+554
+00:27:43,940 --> 00:27:48,420
+Because as you
+can imagine,
+
+555
+00:27:48,420 --> 00:27:52,390
+genomics data can be
+privacy sensitive.
+
+556
+00:27:57,260 --> 00:28:00,645
+To follow up a
+little bit on
+
+557
+00:28:00,645 --> 00:28:01,920
+what's available today for
+
+558
+00:28:01,920 --> 00:28:03,735
+the genomics community,
+
+559
+00:28:03,735 --> 00:28:06,060
+they need simple and
+
+560
+00:28:06,060 --> 00:28:07,470
+secure publication
+and access
+
+561
+00:28:07,470 --> 00:28:09,900
+mechanisms and then have
+
+562
+00:28:09,900 --> 00:28:12,270
+persistent and
+replicated data storege.
+
+563
+00:28:12,270 --> 00:28:14,130
+The current options right
+
+564
+00:28:14,130 --> 00:28:18,585
+now it can go to a
+central repository,
+
+565
+00:28:18,585 --> 00:28:22,065
+NCBI or NHS and
+then tell them,
+
+566
+00:28:22,065 --> 00:28:23,985
+I need to publish
+this data
+
+567
+00:28:23,985 --> 00:28:25,785
+will you do that for me?
+
+568
+00:28:25,785 --> 00:28:29,640
+They might say, "Okay
+I'll publish your data,
+
+569
+00:28:29,640 --> 00:28:32,280
+but it might take a few
+months to do that."
+
+570
+00:28:32,280 --> 00:28:34,440
+Or they might
+say, this data is
+
+571
+00:28:34,440 --> 00:28:37,350
+not in our interest
+to publish,
+
+572
+00:28:37,350 --> 00:28:41,140
+so we're not going
+to take that data.
+
+573
+00:28:41,240 --> 00:28:45,210
+Then if the second
+thing happens,
+
+574
+00:28:45,210 --> 00:28:48,840
+then scientists
+have the result
+
+575
+00:28:48,840 --> 00:28:51,060
+to add her publication.
+
+576
+00:28:51,060 --> 00:28:53,850
+It might be an
+HTTP web server,
+
+577
+00:28:53,850 --> 00:28:57,000
+it can be a scientist's
+personal webpage,
+
+578
+00:28:57,000 --> 00:29:01,185
+FTP server, but then
+it becomes very ad hoc
+
+579
+00:29:01,185 --> 00:29:02,760
+and then finding
+and utilizing
+
+580
+00:29:02,760 --> 00:29:06,195
+the data becomes
+very difficult.
+
+581
+00:29:06,195 --> 00:29:08,940
+Now, when the scientists
+
+582
+00:29:08,940 --> 00:29:10,964
+wonder run in workflow,
+
+583
+00:29:10,964 --> 00:29:13,245
+they have to specify
+
+584
+00:29:13,245 --> 00:29:15,310
+which data sets
+they want to use,
+
+585
+00:29:15,310 --> 00:29:18,860
+and the problem with
+
+586
+00:29:18,860 --> 00:29:21,170
+ad hoc publication is it
+
+587
+00:29:21,170 --> 00:29:22,610
+things become hard-coded
+
+588
+00:29:22,610 --> 00:29:23,750
+into those workloads.
+
+589
+00:29:23,750 --> 00:29:25,450
+If anything
+needs to change,
+
+590
+00:29:25,450 --> 00:29:27,750
+the whole workflow
+needs to change
+
+591
+00:29:27,750 --> 00:29:31,450
+and which can be
+very tedious.
+
+592
+00:29:32,150 --> 00:29:35,215
+The other thing we noted
+
+593
+00:29:35,215 --> 00:29:38,245
+that Cloud storage
+is expensive.
+
+594
+00:29:38,245 --> 00:29:40,105
+We could potentially put
+
+595
+00:29:40,105 --> 00:29:43,520
+all the data into the
+Cloud and be done.
+
+596
+00:29:43,520 --> 00:29:46,445
+But it's not cheap
+
+597
+00:29:46,445 --> 00:29:50,150
+to store that amount
+of data in the Cloud.
+
+598
+00:29:50,850 --> 00:29:53,200
+But storage is also
+
+599
+00:29:53,200 --> 00:29:55,045
+available at
+various institutes,
+
+600
+00:29:55,045 --> 00:29:56,870
+but they cannot be easily
+
+601
+00:29:56,870 --> 00:29:59,540
+utilizable or federated.
+
+602
+00:29:59,660 --> 00:30:03,955
+Each institute operates
+in their silos and
+
+603
+00:30:03,955 --> 00:30:09,140
+provides access to the
+local researchers,
+
+604
+00:30:09,510 --> 00:30:13,930
+which is obviously
+not very efficient,
+
+605
+00:30:13,930 --> 00:30:15,910
+and also limits
+the capacity
+
+606
+00:30:15,910 --> 00:30:17,855
+that they can have.
+
+607
+00:30:17,855 --> 00:30:21,415
+Data security is currently
+very challenging.
+
+608
+00:30:21,415 --> 00:30:23,225
+Access control is tied to
+
+609
+00:30:23,225 --> 00:30:25,340
+a specific
+publication system.
+
+610
+00:30:25,340 --> 00:30:27,025
+If it's HTTP,
+
+611
+00:30:27,025 --> 00:30:31,040
+it uses one-third
+of access control,
+
+612
+00:30:31,040 --> 00:30:34,060
+if it's S bearer or FTP,
+
+613
+00:30:34,060 --> 00:30:36,595
+it might be different.
+
+614
+00:30:36,595 --> 00:30:38,650
+Then there's a huge
+
+615
+00:30:38,650 --> 00:30:41,630
+manual component
+to all of these.
+
+616
+00:30:41,700 --> 00:30:45,139
+There's user
+credential setups,
+
+617
+00:30:45,139 --> 00:30:47,800
+role management,
+role assignment,
+
+618
+00:30:47,800 --> 00:30:50,960
+and then if a user leaves,
+
+619
+00:30:51,720 --> 00:30:55,870
+the credentials
+need to be updated.
+
+620
+00:30:55,870 --> 00:30:58,585
+Then finally, the
+data delivery,
+
+621
+00:30:58,585 --> 00:31:00,125
+even when it's encrypted,
+
+622
+00:31:00,125 --> 00:31:01,745
+it's over individual
+
+623
+00:31:01,745 --> 00:31:04,715
+and separate
+secure channels.
+
+624
+00:31:04,715 --> 00:31:08,375
+There is no inherent
+security to the data.
+
+625
+00:31:08,375 --> 00:31:10,330
+It's all tied to
+
+626
+00:31:10,330 --> 00:31:11,585
+either the channels
+
+627
+00:31:11,585 --> 00:31:14,150
+or individual encryptions.
+
+628
+00:31:14,820 --> 00:31:19,090
+If a lab has five
+students and we want
+
+629
+00:31:19,090 --> 00:31:25,510
+to provide
+personalized security
+
+630
+00:31:25,510 --> 00:31:26,750
+for each of them,
+
+631
+00:31:26,750 --> 00:31:28,180
+it becomes very difficult.
+
+632
+00:31:28,180 --> 00:31:32,155
+Either you encrypt
+the data five times,
+
+633
+00:31:32,155 --> 00:31:34,690
+or you encrypt once,
+
+634
+00:31:34,690 --> 00:31:36,370
+you keep the
+key to the PI,
+
+635
+00:31:36,370 --> 00:31:37,959
+and then the PI decides
+
+636
+00:31:37,959 --> 00:31:40,075
+how to secure the data,
+
+637
+00:31:40,075 --> 00:31:43,610
+which again, is not
+very efficient.
+
+638
+00:31:44,990 --> 00:31:47,385
+At a very high level,
+
+639
+00:31:47,385 --> 00:31:48,870
+this is what Hydra is.
+
+640
+00:31:48,870 --> 00:31:51,330
+It's a federated
+storage system in
+
+641
+00:31:51,330 --> 00:31:53,820
+the network over NDN,
+
+642
+00:31:53,820 --> 00:31:58,200
+sorry, it's a set
+of repo nodes.
+
+643
+00:31:58,640 --> 00:32:00,850
+It utilizes
+
+644
+00:32:00,850 --> 00:32:02,050
+every level storage at
+
+645
+00:32:02,050 --> 00:32:03,485
+different organizations.
+
+646
+00:32:03,485 --> 00:32:06,925
+We're thinking
+unlike Cassandra or
+
+647
+00:32:06,925 --> 00:32:08,680
+distributed
+databases which are
+
+648
+00:32:08,680 --> 00:32:10,840
+under single management.
+
+649
+00:32:10,840 --> 00:32:13,480
+These are at
+different institutes
+
+650
+00:32:13,480 --> 00:32:15,175
+managed by
+different people.
+
+651
+00:32:15,175 --> 00:32:17,405
+But once you
+install Hydra,
+
+652
+00:32:17,405 --> 00:32:20,335
+it becomes a
+self-organizing system.
+
+653
+00:32:20,335 --> 00:32:23,030
+Then once the data
+is published,
+
+654
+00:32:23,030 --> 00:32:25,000
+it uses Anycast,
+
+655
+00:32:25,000 --> 00:32:27,475
+NDN's default
+Anycast mechanism
+
+656
+00:32:27,475 --> 00:32:29,755
+or data access.
+
+657
+00:32:29,755 --> 00:32:33,280
+The replication also
+happens automatically.
+
+658
+00:32:33,280 --> 00:32:35,200
+Right now, the
+default degree
+
+659
+00:32:35,200 --> 00:32:36,655
+of replication is three.
+
+660
+00:32:36,655 --> 00:32:38,680
+But that can be tune
+
+661
+00:32:38,680 --> 00:32:41,890
+based on what is needed
+by the community.
+
+662
+00:32:41,890 --> 00:32:45,065
+Then once the data
+is replicated,
+
+663
+00:32:45,065 --> 00:32:48,230
+it can be requested
+by anyone.
+
+664
+00:32:48,230 --> 00:32:52,555
+The Hydra also handles
+failure transparently.
+
+665
+00:32:52,555 --> 00:32:53,965
+If a node fails,
+
+666
+00:32:53,965 --> 00:32:57,125
+data is automatically
+replicated to another.
+
+667
+00:32:57,125 --> 00:33:00,669
+Then it maintains,
+if possible,
+
+668
+00:33:00,669 --> 00:33:04,429
+the desired degree
+of replication.
+
+669
+00:33:04,500 --> 00:33:08,245
+For security, we
+are planning to
+
+670
+00:33:08,245 --> 00:33:11,560
+use NDN's name based
+trust schemas,
+
+671
+00:33:11,560 --> 00:33:16,570
+and both traditional PKI
+
+672
+00:33:16,570 --> 00:33:21,040
+and attribute-based
+access control.
+
+673
+00:33:21,040 --> 00:33:23,335
+The other aspect is
+
+674
+00:33:23,335 --> 00:33:24,865
+findability of this data,
+
+675
+00:33:24,865 --> 00:33:27,310
+so we are planning
+to provide
+
+676
+00:33:27,310 --> 00:33:31,190
+a uniform name based
+interface for all data.
+
+677
+00:33:31,190 --> 00:33:34,675
+Instead of the scientists
+finding out whether
+
+678
+00:33:34,675 --> 00:33:36,605
+the data comes
+from a legacy
+
+679
+00:33:36,605 --> 00:33:38,915
+FTP or HTTP storage,
+
+680
+00:33:38,915 --> 00:33:41,035
+they are all going
+to go through Hydra.
+
+681
+00:33:41,035 --> 00:33:45,055
+It provides them a
+unified namespace.
+
+682
+00:33:45,055 --> 00:33:48,400
+Then Hydra takes care
+of getting the data
+
+683
+00:33:48,400 --> 00:33:51,805
+for them and then
+solving it back to them.
+
+684
+00:33:51,805 --> 00:33:53,860
+There's an intermediate
+
+685
+00:33:53,860 --> 00:33:57,185
+translation that happens.
+
+686
+00:33:57,185 --> 00:34:00,550
+If the data is useful
+for many people,
+
+687
+00:34:00,550 --> 00:34:03,335
+then it potentially
+can upload the data,
+
+688
+00:34:03,335 --> 00:34:05,950
+but that's for
+future work.
+
+689
+00:34:08,070 --> 00:34:13,000
+This is a little bit
+more detailed view
+
+690
+00:34:13,000 --> 00:34:14,330
+of how Hydra works.
+
+691
+00:34:14,330 --> 00:34:17,535
+On the left you
+have publisher A
+
+692
+00:34:17,535 --> 00:34:20,335
+that sends a
+publication request
+
+693
+00:34:20,335 --> 00:34:21,830
+to the Cloud,
+
+694
+00:34:21,830 --> 00:34:25,040
+which is Hydra, and then
+
+695
+00:34:25,040 --> 00:34:26,195
+that request goes to
+
+696
+00:34:26,195 --> 00:34:28,895
+a repo that's closest
+to the publisher.
+
+697
+00:34:28,895 --> 00:34:32,615
+The publisher looks
+at the trust schema,
+
+698
+00:34:32,615 --> 00:34:34,330
+does access control,
+
+699
+00:34:34,330 --> 00:34:35,410
+and then retrieves
+
+700
+00:34:35,410 --> 00:34:37,100
+the file from
+the publisher.
+
+701
+00:34:37,100 --> 00:34:38,690
+Then at that point,
+
+702
+00:34:38,690 --> 00:34:40,645
+it generates a
+notification
+
+703
+00:34:40,645 --> 00:34:43,490
+to the other nodes
+in the system.
+
+704
+00:34:43,680 --> 00:34:46,270
+The notification goes out.
+
+705
+00:34:46,270 --> 00:34:50,075
+Everyone knows that a
+new file has come in.
+
+706
+00:34:50,075 --> 00:34:52,000
+We're going to talk about
+
+707
+00:34:52,000 --> 00:34:53,465
+how they are replicated.
+
+708
+00:34:53,465 --> 00:34:55,330
+But depending on if
+
+709
+00:34:55,330 --> 00:34:57,220
+they need to
+be replicated,
+
+710
+00:34:57,220 --> 00:34:59,740
+they get the
+data from that,
+
+711
+00:34:59,740 --> 00:35:01,930
+the first
+contacted node and
+
+712
+00:35:01,930 --> 00:35:05,000
+then replicate
+into their repo.
+
+713
+00:35:05,120 --> 00:35:07,805
+At the top, you've
+
+714
+00:35:07,805 --> 00:35:10,260
+seen ray that's
+in a archway.
+
+715
+00:35:10,260 --> 00:35:12,020
+That's the interface with
+
+716
+00:35:12,020 --> 00:35:13,895
+the existing data
+repositories.
+
+717
+00:35:13,895 --> 00:35:16,220
+Your request comes in
+
+718
+00:35:16,220 --> 00:35:19,385
+from user A or user
+B on the right.
+
+719
+00:35:19,385 --> 00:35:22,610
+If the data is
+already not in Hydra,
+
+720
+00:35:22,610 --> 00:35:24,780
+the Hydra goes out and
+
+721
+00:35:24,780 --> 00:35:25,890
+then get the data from
+
+722
+00:35:25,890 --> 00:35:27,980
+the existing repository.
+
+723
+00:35:30,090 --> 00:35:35,720
+In the middle, Hydra
+uses sync SVS,
+
+724
+00:35:35,720 --> 00:35:38,555
+a State Vector
+Sync to keep
+
+725
+00:35:38,555 --> 00:35:41,220
+the global state
+consistent
+
+726
+00:35:41,220 --> 00:35:45,250
+among the different
+repositories.
+
+727
+00:35:46,410 --> 00:35:49,659
+Speaking a little bit
+about the design,
+
+728
+00:35:49,659 --> 00:35:52,570
+we assume a few
+things here.
+
+729
+00:35:52,570 --> 00:35:55,315
+We assume that all
+the nodes are equal.
+
+730
+00:35:55,315 --> 00:35:57,775
+There is no single
+point of control.
+
+731
+00:35:57,775 --> 00:35:59,970
+As I said, it replicates
+
+732
+00:35:59,970 --> 00:36:02,005
+data at the file
+granularity.
+
+733
+00:36:02,005 --> 00:36:04,885
+Files are immutable
+just like NDN.
+
+734
+00:36:04,885 --> 00:36:08,105
+The repo only handles
+insertion and deletion.
+
+735
+00:36:08,105 --> 00:36:12,460
+There's not update. Then I
+
+736
+00:36:12,460 --> 00:36:14,230
+think this is the most
+
+737
+00:36:14,230 --> 00:36:16,540
+important aspect of Hydra,
+
+738
+00:36:16,540 --> 00:36:18,425
+is that each node makes
+
+739
+00:36:18,425 --> 00:36:20,470
+local decisions
+about which file
+
+740
+00:36:20,470 --> 00:36:21,970
+they want to replicate.
+
+741
+00:36:21,970 --> 00:36:23,945
+We do this by
+
+742
+00:36:23,945 --> 00:36:28,395
+creating a numerical value
+
+743
+00:36:28,395 --> 00:36:30,360
+that we call favor.
+
+744
+00:36:30,360 --> 00:36:33,925
+Each node
+announces a favor
+
+745
+00:36:33,925 --> 00:36:36,835
+to the whole system
+saying that this is
+
+746
+00:36:36,835 --> 00:36:39,250
+how likely I am to
+
+747
+00:36:39,250 --> 00:36:43,810
+replicate a new file
+that would come in.
+
+748
+00:36:44,030 --> 00:36:46,659
+Then Hydra is
+not responsible
+
+749
+00:36:46,659 --> 00:36:48,185
+for file confidentiality.
+
+750
+00:36:48,185 --> 00:36:49,845
+It does access control.
+
+751
+00:36:49,845 --> 00:36:53,995
+But if file
+confidentiality is needed,
+
+752
+00:36:53,995 --> 00:36:55,190
+the user needs to
+
+753
+00:36:55,190 --> 00:36:57,385
+encrypt and
+upload that code.
+
+754
+00:36:57,385 --> 00:37:00,430
+Then for now at
+the initial stage,
+
+755
+00:37:00,430 --> 00:37:02,825
+we are assuming there
+is no compromise now,
+
+756
+00:37:02,825 --> 00:37:04,570
+but that assumption with
+
+757
+00:37:04,570 --> 00:37:07,400
+change in the future.
+
+758
+00:37:08,220 --> 00:37:12,320
+The basic building block
+for Hydra is files.
+
+759
+00:37:12,320 --> 00:37:15,490
+Users, it's just a BLOB
+
+760
+00:37:15,490 --> 00:37:18,805
+of data identified
+by a name.
+
+761
+00:37:18,805 --> 00:37:22,405
+The data publisher
+can insert a file.
+
+762
+00:37:22,405 --> 00:37:26,150
+Biology SRA followed
+by the SRA ID,
+
+763
+00:37:26,150 --> 00:37:28,330
+and that's a
+genome sequence.
+
+764
+00:37:28,330 --> 00:37:29,920
+The consumer can send
+
+765
+00:37:29,920 --> 00:37:32,645
+an NDN interest
+through the system.
+
+766
+00:37:32,645 --> 00:37:35,300
+It says slash
+Hydra slash fetch,
+
+767
+00:37:35,300 --> 00:37:38,610
+followed by that name
+and gets the data back.
+
+768
+00:37:38,610 --> 00:37:40,930
+For this work we are using
+
+769
+00:37:40,930 --> 00:37:42,935
+the established
+naming scheme
+
+770
+00:37:42,935 --> 00:37:44,135
+that has already been
+
+771
+00:37:44,135 --> 00:37:45,905
+created by the community.
+
+772
+00:37:45,905 --> 00:37:48,039
+We just took it
+and translated
+
+773
+00:37:48,039 --> 00:37:51,230
+that into NDN
+naming scheme.
+
+774
+00:37:54,410 --> 00:37:58,714
+The basic operations
+are insertion deletion.
+
+775
+00:37:58,714 --> 00:38:01,150
+Again, just like
+getting the data,
+
+776
+00:38:01,150 --> 00:38:04,280
+you send a command
+to the repo prefix,
+
+777
+00:38:04,280 --> 00:38:07,155
+followed by the
+actual data.
+
+778
+00:38:07,155 --> 00:38:10,469
+Then the data consumers,
+
+779
+00:38:10,469 --> 00:38:12,455
+they turn
+interest directly
+
+780
+00:38:12,455 --> 00:38:14,730
+to Hydra to get the data.
+
+781
+00:38:16,320 --> 00:38:20,075
+Here is what happens
+on publication.
+
+782
+00:38:20,075 --> 00:38:21,395
+The app on the right,
+
+783
+00:38:21,395 --> 00:38:23,315
+it publishes the data.
+
+784
+00:38:23,315 --> 00:38:27,270
+It contracts a node
+that's closest to it,
+
+785
+00:38:27,270 --> 00:38:28,960
+and then at that point,
+
+786
+00:38:28,960 --> 00:38:31,555
+the node generates a
+group message that goes
+
+787
+00:38:31,555 --> 00:38:36,020
+to everyone else
+to Vector Sync.
+
+788
+00:38:36,020 --> 00:38:38,460
+At that point, everyone
+knows that there is
+
+789
+00:38:38,460 --> 00:38:41,410
+a new file they might
+need to replicate.
+
+790
+00:38:41,990 --> 00:38:46,220
+Hydra also maintains
+a Global View.
+
+791
+00:38:46,220 --> 00:38:48,225
+The group message is
+
+792
+00:38:48,225 --> 00:38:50,675
+essentially trying
+to exchange
+
+793
+00:38:50,675 --> 00:38:53,140
+that Global View
+and update it.
+
+794
+00:38:53,430 --> 00:38:57,335
+On the right you'd
+see it has a bunch of
+
+795
+00:38:57,335 --> 00:39:01,175
+nodes and each node
+has individual favors.
+
+796
+00:39:01,175 --> 00:39:04,810
+Whenever a new
+file comes in,
+
+797
+00:39:04,810 --> 00:39:06,745
+this message is exchanged.
+
+798
+00:39:06,745 --> 00:39:11,910
+Then everyone knows
+that what are
+
+799
+00:39:11,910 --> 00:39:14,585
+the top three or
+top five nodes
+
+800
+00:39:14,585 --> 00:39:16,060
+are that can potentially
+
+801
+00:39:16,060 --> 00:39:18,190
+replicate these files.
+
+802
+00:39:19,640 --> 00:39:23,785
+As I said, nodes are
+self-organizing.
+
+803
+00:39:23,785 --> 00:39:28,985
+The file insertion
+would be file comes in.
+
+804
+00:39:28,985 --> 00:39:32,155
+It consults the
+Global View,
+
+805
+00:39:32,155 --> 00:39:36,545
+and it chooses
+three to six nodes
+
+806
+00:39:36,545 --> 00:39:39,080
+depending on that
+Global View.
+
+807
+00:39:41,700 --> 00:39:45,110
+Then once the
+notification goes in,
+
+808
+00:39:45,110 --> 00:39:47,600
+everyone knows that
+they're the next
+
+809
+00:39:47,600 --> 00:39:50,695
+to copy that file or
+replicate the file.
+
+810
+00:39:50,695 --> 00:39:53,020
+On the left at bottom,
+
+811
+00:39:53,020 --> 00:39:56,845
+you'll see on list
+and backup list.
+
+812
+00:39:56,845 --> 00:40:00,095
+On list is it's
+already on that node,
+
+813
+00:40:00,095 --> 00:40:02,255
+and then the
+backup list is
+
+814
+00:40:02,255 --> 00:40:06,400
+where the replication
+should happen next.
+
+815
+00:40:06,400 --> 00:40:10,540
+This is that it's on the
+backup list and it's
+
+816
+00:40:10,540 --> 00:40:12,635
+the first on the
+backup list that
+
+817
+00:40:12,635 --> 00:40:15,045
+starts to replicate
+the file from F,
+
+818
+00:40:15,045 --> 00:40:17,680
+and then B does it next.
+
+819
+00:40:17,680 --> 00:40:19,600
+Then eventually, when
+
+820
+00:40:19,600 --> 00:40:21,275
+three copies are achieved,
+
+821
+00:40:21,275 --> 00:40:28,650
+then the
+replication stops.
+
+822
+00:40:28,650 --> 00:40:31,420
+If a node crashes,
+
+823
+00:40:31,420 --> 00:40:33,960
+some of the other
+nodes might
+
+824
+00:40:33,960 --> 00:40:36,160
+notice that a
+node has failed,
+
+825
+00:40:36,160 --> 00:40:38,090
+and then it might send out
+
+826
+00:40:38,090 --> 00:40:41,250
+a notification saying
+that node D has failed.
+
+827
+00:40:41,250 --> 00:40:42,900
+At that point,
+
+828
+00:40:42,900 --> 00:40:44,620
+again, and the nodes are
+
+829
+00:40:44,620 --> 00:40:47,290
+going to console
+the backup list.
+
+830
+00:40:47,390 --> 00:40:49,570
+The node G is the
+
+831
+00:40:49,570 --> 00:40:51,280
+first one on the
+backup list so
+
+832
+00:40:51,280 --> 00:40:53,849
+it takes that
+five replicates
+
+833
+00:40:53,849 --> 00:40:55,270
+in its own storage,
+
+834
+00:40:55,270 --> 00:40:57,515
+and then we have again,
+
+835
+00:40:57,515 --> 00:41:00,130
+replication
+degree of three.
+
+836
+00:41:01,320 --> 00:41:03,920
+Deletion is simple.
+
+837
+00:41:03,920 --> 00:41:08,585
+Only the publisher can
+
+838
+00:41:08,585 --> 00:41:10,205
+delete the file
+from the repo.
+
+839
+00:41:10,205 --> 00:41:12,620
+It sends to command
+
+840
+00:41:12,620 --> 00:41:15,395
+to the repo saying
+that delete this file,
+
+841
+00:41:15,395 --> 00:41:18,070
+and then that message goes
+
+842
+00:41:18,070 --> 00:41:22,550
+across everyone who
+has that file deletes.
+
+843
+00:41:23,070 --> 00:41:26,305
+Then file fetching is
+pretty simple in NDN.
+
+844
+00:41:26,305 --> 00:41:29,050
+You just send
+the request if
+
+845
+00:41:29,050 --> 00:41:30,580
+that particular node does
+
+846
+00:41:30,580 --> 00:41:32,545
+not have the content.
+
+847
+00:41:32,545 --> 00:41:34,785
+When you talk
+about global view,
+
+848
+00:41:34,785 --> 00:41:38,105
+we're not talking
+about the actual data,
+
+849
+00:41:38,105 --> 00:41:40,310
+we're talking
+about metadata.
+
+850
+00:41:40,310 --> 00:41:43,470
+But the actual data,
+not all nodes would
+
+851
+00:41:43,470 --> 00:41:46,145
+have the same
+all data sets.
+
+852
+00:41:46,145 --> 00:41:48,240
+If the request
+comes into F
+
+853
+00:41:48,240 --> 00:41:50,585
+and F has the data,
+
+854
+00:41:50,585 --> 00:41:52,240
+it returns the data.
+
+855
+00:41:52,240 --> 00:41:53,870
+But if it doesn't have it,
+
+856
+00:41:53,870 --> 00:41:56,195
+it sends back a
+forwarding hint
+
+857
+00:41:56,195 --> 00:41:58,535
+to a node that
+has the data,
+
+858
+00:41:58,535 --> 00:42:00,805
+and then the app
+follows that hint
+
+859
+00:42:00,805 --> 00:42:03,580
+and gets the data
+from another node.
+
+860
+00:42:03,580 --> 00:42:09,185
+In this example, it
+might be D or A, or B.
+
+861
+00:42:09,185 --> 00:42:11,320
+>> Personally, I just
+want to give you
+
+862
+00:42:11,320 --> 00:42:12,605
+a one minute warning here.
+
+863
+00:42:12,605 --> 00:42:13,925
+We're getting
+close to end.
+
+864
+00:42:13,925 --> 00:42:16,460
+>> Yes, I'm almost
+done. Thank you.
+
+865
+00:42:17,220 --> 00:42:19,240
+The other parts of
+
+866
+00:42:19,240 --> 00:42:21,365
+the project is NR-archway,
+
+867
+00:42:21,365 --> 00:42:23,285
+as I was mentioning that
+
+868
+00:42:23,285 --> 00:42:26,195
+currently the files,
+
+869
+00:42:26,195 --> 00:42:28,884
+they have diverse names,
+metadata standards.
+
+870
+00:42:28,884 --> 00:42:31,210
+The problem becomes it
+
+871
+00:42:31,210 --> 00:42:32,630
+cannot find the data sets,
+
+872
+00:42:32,630 --> 00:42:34,285
+and if you cannot
+find the datasets,
+
+873
+00:42:34,285 --> 00:42:35,560
+then you cannot use
+
+874
+00:42:35,560 --> 00:42:37,720
+them in the
+scientific workflows.
+
+875
+00:42:37,720 --> 00:42:41,340
+The archway acts as a
+gateway to all data.
+
+876
+00:42:41,340 --> 00:42:46,825
+It converts to NDN
+data as needed.
+
+877
+00:42:46,825 --> 00:42:50,025
+User need not know the
+publication specifics.
+
+878
+00:42:50,025 --> 00:42:51,415
+If it's over NDN,
+
+879
+00:42:51,415 --> 00:42:52,955
+if it's over HTTP,
+
+880
+00:42:52,955 --> 00:42:57,610
+if it is over FTP or
+SFTP or something else.
+
+881
+00:42:57,990 --> 00:43:01,565
+It does it through a
+name conversion catalog
+
+882
+00:43:01,565 --> 00:43:02,700
+and then creating
+
+883
+00:43:02,700 --> 00:43:03,750
+an interface to
+
+884
+00:43:03,750 --> 00:43:08,425
+HTTP or FTP existing
+repositories.
+
+885
+00:43:08,425 --> 00:43:11,475
+The security we're
+assuming for now,
+
+886
+00:43:11,475 --> 00:43:14,115
+there is going to be a
+central trust anchor,
+
+887
+00:43:14,115 --> 00:43:15,870
+the network
+operating center
+
+888
+00:43:15,870 --> 00:43:16,890
+that's going to issue
+
+889
+00:43:16,890 --> 00:43:18,360
+the certificates
+to individual
+
+890
+00:43:18,360 --> 00:43:20,245
+nodes and the users.
+
+891
+00:43:20,245 --> 00:43:22,975
+Then once you have
+the attributes
+
+892
+00:43:22,975 --> 00:43:24,320
+and the certificates,
+
+893
+00:43:24,320 --> 00:43:26,855
+then you can
+create name based
+
+894
+00:43:26,855 --> 00:43:30,280
+access control
+both traditional
+
+895
+00:43:30,280 --> 00:43:32,045
+and attribute-based
+name control.
+
+896
+00:43:32,045 --> 00:43:34,320
+Attribute-based
+encryption is what
+
+897
+00:43:34,320 --> 00:43:36,770
+we're going to use
+for access control.
+
+898
+00:43:36,770 --> 00:43:39,515
+Then the final
+part is testing.
+
+899
+00:43:39,515 --> 00:43:41,780
+We are working
+with Fabric to
+
+900
+00:43:41,780 --> 00:43:44,465
+deploy this on Fabric.
+
+901
+00:43:44,465 --> 00:43:46,145
+The goal is to have
+
+902
+00:43:46,145 --> 00:43:51,400
+the Hydra on Fabric
+and then we'll
+
+903
+00:43:51,400 --> 00:43:56,255
+have workflows that will
+
+904
+00:43:56,255 --> 00:43:57,845
+be deployed on different
+
+905
+00:43:57,845 --> 00:43:59,255
+cloud computing platforms.
+
+906
+00:43:59,255 --> 00:44:00,450
+It can be AWS,
+
+907
+00:44:00,450 --> 00:44:02,675
+it can be PRP,
+
+908
+00:44:02,675 --> 00:44:04,360
+the Pacific
+Research Platform
+
+909
+00:44:04,360 --> 00:44:06,300
+, Open Science Grid.
+
+910
+00:44:06,300 --> 00:44:08,135
+We're going to simulate
+
+911
+00:44:08,135 --> 00:44:11,360
+10 to1000 simulated
+users from
+
+912
+00:44:11,360 --> 00:44:13,175
+these workflows and get
+
+913
+00:44:13,175 --> 00:44:15,020
+the data out of Hydra.
+
+914
+00:44:15,020 --> 00:44:18,460
+That way we will
+get a real feel of
+
+915
+00:44:18,460 --> 00:44:20,090
+how the system is behaving
+
+916
+00:44:20,090 --> 00:44:21,950
+if we need any
+optimization,
+
+917
+00:44:21,950 --> 00:44:26,220
+how the system
+scales, and so on.
+
+918
+00:44:26,220 --> 00:44:29,755
+To conclude, so currently
+
+919
+00:44:29,755 --> 00:44:31,270
+the data
+publication is very
+
+920
+00:44:31,270 --> 00:44:34,455
+fragmented and
+findability is very poor.
+
+921
+00:44:34,455 --> 00:44:39,090
+The Hydra tries
+to address that.
+
+922
+00:44:39,090 --> 00:44:42,220
+There are storage at
+various institutes.
+
+923
+00:44:42,220 --> 00:44:43,810
+They are not
+sufficient for
+
+924
+00:44:43,810 --> 00:44:46,725
+everything that the
+scientists want to do.
+
+925
+00:44:46,725 --> 00:44:49,525
+If we could federate them,
+
+926
+00:44:49,525 --> 00:44:52,705
+they can support
+large-scale genomics
+
+927
+00:44:52,705 --> 00:44:54,505
+and then security
+currently
+
+928
+00:44:54,505 --> 00:44:55,780
+is difficult to configure.
+
+929
+00:44:55,780 --> 00:45:00,215
+Hydra addresses all
+this by creating
+
+930
+00:45:00,215 --> 00:45:02,145
+a loosely coupled and
+
+931
+00:45:02,145 --> 00:45:06,370
+self-organization
+federated storage system.
+
+932
+00:45:06,650 --> 00:45:09,770
+Thank you and I'll take
+
+933
+00:45:09,770 --> 00:45:13,025
+any questions you
+might have on Slack.
+
+934
+00:45:13,025 --> 00:45:15,485
+>> Thanks, Susmit. In
+the interest of time,
+
+935
+00:45:15,485 --> 00:45:17,025
+let's direct the
+questions to
+
+936
+00:45:17,025 --> 00:45:19,630
+Slack and we'll get
+to the next speaker.
+
+937
+00:45:19,630 --> 00:45:21,450
+There's already a few in
+
+938
+00:45:21,450 --> 00:45:22,780
+the Slack discussion
+
+939
+00:45:22,780 --> 00:45:25,390
+for this particular paper.
+
+940
+00:45:25,390 --> 00:45:29,469
+Our next speaker is
+Tianyuan Yu from UCLA,
+
+941
+00:45:29,469 --> 00:45:30,695
+who is a PhD candidate in
+
+942
+00:45:30,695 --> 00:45:32,710
+the computer science
+department under
+
+943
+00:45:32,710 --> 00:45:34,600
+the supervision
+of Professor.
+
+944
+00:45:34,600 --> 00:45:36,750
+Professor Li Zhuang.
+
+945
+00:45:36,750 --> 00:45:38,255
+His main research
+interests
+
+946
+00:45:38,255 --> 00:45:39,665
+are named data networking,
+
+947
+00:45:39,665 --> 00:45:41,195
+IoT and network security.
+
+948
+00:45:41,195 --> 00:45:42,510
+He's also contributing to
+
+949
+00:45:42,510 --> 00:45:43,995
+the development of NDN,
+
+950
+00:45:43,995 --> 00:45:46,250
+IoT and security
+bootstrapping.
+
+951
+00:45:46,250 --> 00:45:47,470
+That's what I
+think he's going
+
+952
+00:45:47,470 --> 00:45:48,420
+to talk about today.
+
+953
+00:45:48,420 --> 00:45:49,510
+The title of the talk is,
+
+954
+00:45:49,510 --> 00:45:51,835
+"Bootstrapping
+Remote NDN Entity,
+
+955
+00:45:51,835 --> 00:45:53,560
+Leveraging Existing
+
+956
+00:45:53,560 --> 00:45:56,365
+Authentications."
+Thank you.
+
+957
+00:45:56,365 --> 00:45:58,605
+>> Can people
+see my screen?
+
+958
+00:45:58,605 --> 00:45:59,860
+>> Yes, we can.
+
+959
+00:45:59,860 --> 00:46:02,990
+>> Yeah, thank
+you. Hi, everyone.
+
+960
+00:46:02,990 --> 00:46:05,710
+Glad to be here
+at the NDN com.
+
+961
+00:46:05,710 --> 00:46:07,260
+Today, my presentation
+
+962
+00:46:07,260 --> 00:46:08,845
+we'll focus on how we can
+
+963
+00:46:08,845 --> 00:46:11,640
+bootstrap remote
+and the entities so
+
+964
+00:46:11,640 --> 00:46:15,880
+we can meet your NDN
+neighbors from far.
+
+965
+00:46:15,890 --> 00:46:19,985
+We know NDN claims
+data are secured
+
+966
+00:46:19,985 --> 00:46:22,000
+saying in the
+network we have
+
+967
+00:46:22,000 --> 00:46:24,615
+producers, we
+have consumers.
+
+968
+00:46:24,615 --> 00:46:28,545
+But those producers
+and consumers need
+
+969
+00:46:28,545 --> 00:46:29,855
+some bootstrappings
+
+970
+00:46:29,855 --> 00:46:33,150
+to actually secure
+communications.
+
+971
+00:46:33,150 --> 00:46:35,325
+We know producers use
+
+972
+00:46:35,325 --> 00:46:37,210
+their private key to sign
+
+973
+00:46:37,210 --> 00:46:38,885
+the ddata and
+the consumer can
+
+974
+00:46:38,885 --> 00:46:42,160
+use producer's public
+key to verify the data.
+
+975
+00:46:42,160 --> 00:46:44,750
+But the question is,
+
+976
+00:46:44,750 --> 00:46:46,315
+where are the keys?
+
+977
+00:46:46,315 --> 00:46:48,030
+Someone has to configure
+
+978
+00:46:48,030 --> 00:46:50,929
+the keys into
+those entities.
+
+979
+00:46:51,030 --> 00:46:54,660
+Therefore, each
+entity need to obtain
+
+980
+00:46:54,660 --> 00:46:56,415
+their security credentials
+
+981
+00:46:56,415 --> 00:46:59,535
+from these
+bootstrapping process.
+
+982
+00:46:59,535 --> 00:47:03,725
+Before I talk about
+how we can get
+
+983
+00:47:03,725 --> 00:47:06,245
+those security credentials
+
+984
+00:47:06,245 --> 00:47:08,585
+into the entities,
+
+985
+00:47:08,585 --> 00:47:11,435
+I want to go back a
+little bit to talk about
+
+986
+00:47:11,435 --> 00:47:13,060
+what are the
+terminologies we
+
+987
+00:47:13,060 --> 00:47:15,625
+will use in this process.
+
+988
+00:47:15,625 --> 00:47:19,155
+We still have
+this NDN network.
+
+989
+00:47:19,155 --> 00:47:23,375
+Then we say the authority
+
+990
+00:47:23,375 --> 00:47:24,965
+of the network system
+
+991
+00:47:24,965 --> 00:47:26,920
+and create a trust anchor,
+
+992
+00:47:26,920 --> 00:47:30,410
+we say T. This
+
+993
+00:47:30,410 --> 00:47:34,515
+authority can be authority
+from real world,
+
+994
+00:47:34,515 --> 00:47:37,220
+say the authority of
+
+995
+00:47:37,220 --> 00:47:40,685
+an organizations
+or smart home or
+
+996
+00:47:40,685 --> 00:47:42,905
+the active project we
+
+997
+00:47:42,905 --> 00:47:45,070
+saw from the earlier
+presentation
+
+998
+00:47:45,070 --> 00:47:47,210
+is like mGuard
+and the Hydra.
+
+999
+00:47:47,210 --> 00:47:50,585
+Then all of the entities
+
+1000
+00:47:50,585 --> 00:47:52,120
+under the same
+trust anchor,
+
+1001
+00:47:52,120 --> 00:47:53,340
+which means they trust
+
+1002
+00:47:53,340 --> 00:47:56,135
+the same self certificate.
+
+1003
+00:47:56,135 --> 00:48:00,095
+Those in the entities
+can make a trust zone.
+
+1004
+00:48:00,095 --> 00:48:03,515
+Then the owner of
+this trust anchor T,
+
+1005
+00:48:03,515 --> 00:48:04,950
+we refer this as
+
+1006
+00:48:04,950 --> 00:48:08,095
+the controller of
+the trust zone.
+
+1007
+00:48:08,095 --> 00:48:10,985
+Then with this
+terminology,
+
+1008
+00:48:10,985 --> 00:48:13,969
+we can say bootstrapping
+a new entity
+
+1009
+00:48:13,969 --> 00:48:16,110
+E_new is really
+bootstrapping
+
+1010
+00:48:16,110 --> 00:48:19,430
+these E_new into
+this trust zone.
+
+1011
+00:48:19,430 --> 00:48:21,570
+This E_new must have
+
+1012
+00:48:21,570 --> 00:48:23,440
+a name either
+obtained on its
+
+1013
+00:48:23,440 --> 00:48:25,370
+own or otherwise assigned
+
+1014
+00:48:25,370 --> 00:48:27,510
+by this trust
+of controller,.
+
+1015
+00:48:27,510 --> 00:48:33,035
+Then E_new must have
+its trust anchor,
+
+1016
+00:48:33,035 --> 00:48:35,020
+say this T, and
+
+1017
+00:48:35,020 --> 00:48:38,025
+its own certificate and
+the trust policies.
+
+1018
+00:48:38,025 --> 00:48:40,070
+We refer this process
+
+1019
+00:48:40,070 --> 00:48:42,620
+as security bootstrapping.
+
+1020
+00:48:42,620 --> 00:48:44,890
+After security
+bootstrapping we
+
+1021
+00:48:44,890 --> 00:48:46,865
+can answer a
+few questions.
+
+1022
+00:48:46,865 --> 00:48:50,350
+First, for our
+entity, who are you?
+
+1023
+00:48:50,350 --> 00:48:52,210
+This entity will
+have a name,
+
+1024
+00:48:52,210 --> 00:48:56,040
+say slash alice
+slash lamp.
+
+1025
+00:48:56,040 --> 00:48:59,680
+Then we can have the
+security credentials to
+
+1026
+00:48:59,680 --> 00:49:03,375
+prove the identity
+of this alice lamp.
+
+1027
+00:49:03,375 --> 00:49:06,160
+Then this alice lamp
+
+1028
+00:49:06,160 --> 00:49:07,475
+knows who to trust
+
+1029
+00:49:07,475 --> 00:49:09,810
+under the same
+trust anchor.
+
+1030
+00:49:10,490 --> 00:49:13,035
+We can answer
+the questions
+
+1031
+00:49:13,035 --> 00:49:16,290
+that what are your
+cross relations?
+
+1032
+00:49:17,780 --> 00:49:21,705
+But let's think
+about how we
+
+1033
+00:49:21,705 --> 00:49:25,265
+can actually say
+realise such a process.
+
+1034
+00:49:25,265 --> 00:49:28,100
+What are the
+required steps?
+
+1035
+00:49:28,100 --> 00:49:30,545
+First, we have controllers
+
+1036
+00:49:30,545 --> 00:49:32,335
+and the E_new
+in this field.
+
+1037
+00:49:32,335 --> 00:49:34,650
+But actually as
+the first step
+
+1038
+00:49:34,650 --> 00:49:36,485
+the trust zone controller
+
+1039
+00:49:36,485 --> 00:49:38,795
+needs to
+authenticate E_new.
+
+1040
+00:49:38,795 --> 00:49:40,310
+It wants to make sure
+
+1041
+00:49:40,310 --> 00:49:43,855
+the remote priority
+is transversing.
+
+1042
+00:49:43,855 --> 00:49:46,570
+Then E_new to authenticate
+
+1043
+00:49:46,570 --> 00:49:49,219
+the trust zone
+controller also,
+
+1044
+00:49:49,219 --> 00:49:51,290
+because it wants to accept
+
+1045
+00:49:51,290 --> 00:49:54,940
+that controller to
+be its authority.
+
+1046
+00:49:55,320 --> 00:49:58,790
+After this mutual
+authentication achieved,
+
+1047
+00:49:58,790 --> 00:50:01,200
+the controller can install
+
+1048
+00:50:01,200 --> 00:50:02,945
+the security
+components which
+
+1049
+00:50:02,945 --> 00:50:04,875
+contains the certificate,
+
+1050
+00:50:04,875 --> 00:50:06,485
+the trust policy and trust
+
+1051
+00:50:06,485 --> 00:50:09,340
+anchors into this E_new.
+
+1052
+00:50:09,380 --> 00:50:12,890
+Given the such
+important process,
+
+1053
+00:50:12,890 --> 00:50:16,215
+there must be some
+works in this field.
+
+1054
+00:50:16,215 --> 00:50:20,225
+Among all the existing
+works we have NDNCERT.
+
+1055
+00:50:20,225 --> 00:50:22,955
+But NDNCERT only
+issues certificate,
+
+1056
+00:50:22,955 --> 00:50:25,465
+leaving the
+authentication methods,
+
+1057
+00:50:25,465 --> 00:50:27,350
+which is the first step
+
+1058
+00:50:27,350 --> 00:50:29,775
+as a need to be filled in.
+
+1059
+00:50:29,775 --> 00:50:32,775
+We have this
+Data-Centric Toolkit
+
+1060
+00:50:32,775 --> 00:50:34,645
+shortened as DCT,
+
+1061
+00:50:34,645 --> 00:50:37,490
+which is this unit is
+actually in paper,
+
+1062
+00:50:37,490 --> 00:50:40,775
+which provides
+command-line tools
+
+1063
+00:50:40,775 --> 00:50:43,110
+to generate a
+security bundle
+
+1064
+00:50:43,110 --> 00:50:45,065
+and the user for
+
+1065
+00:50:45,065 --> 00:50:46,690
+the out-of-band install
+
+1066
+00:50:46,690 --> 00:50:49,080
+this bundle
+into the E_new.
+
+1067
+00:50:49,080 --> 00:50:51,635
+The mutual authentication
+is done through
+
+1068
+00:50:51,635 --> 00:50:53,885
+this some kind of
+
+1069
+00:50:53,885 --> 00:50:57,750
+locally physically
+connected environment.
+
+1070
+00:50:57,750 --> 00:51:00,220
+But however, we need to
+
+1071
+00:51:00,220 --> 00:51:02,690
+solve a new problem now,
+
+1072
+00:51:02,690 --> 00:51:05,114
+which is remote
+bootstrapping.
+
+1073
+00:51:05,114 --> 00:51:07,000
+We can also see
+
+1074
+00:51:07,000 --> 00:51:08,710
+from the previous
+presentation,
+
+1075
+00:51:08,710 --> 00:51:10,290
+this remote
+bootstrapping is
+
+1076
+00:51:10,290 --> 00:51:13,170
+also needed by Hydra.
+
+1077
+00:51:16,910 --> 00:51:21,555
+We can see the
+important part
+
+1078
+00:51:21,555 --> 00:51:24,090
+is the mutual
+authentication.
+
+1079
+00:51:24,090 --> 00:51:26,340
+That authentication
+
+1080
+00:51:26,340 --> 00:51:29,100
+needs some existing
+facts to verify.
+
+1081
+00:51:29,100 --> 00:51:31,080
+We need to answer
+the questions that
+
+1082
+00:51:31,080 --> 00:51:34,050
+where are the existing
+facts come from?
+
+1083
+00:51:34,050 --> 00:51:36,210
+However, the
+answers depends
+
+1084
+00:51:36,210 --> 00:51:38,789
+on specific use
+case scenarios.
+
+1085
+00:51:38,789 --> 00:51:40,515
+Therefore we develop
+
+1086
+00:51:40,515 --> 00:51:44,235
+specific security
+bootstrapping process
+
+1087
+00:51:44,235 --> 00:51:46,185
+on this remote case.
+
+1088
+00:51:46,185 --> 00:51:47,640
+We say this E_new is
+
+1089
+00:51:47,640 --> 00:51:50,640
+remote and the trusted
+controller can only
+
+1090
+00:51:50,640 --> 00:51:52,770
+reach remote E_new over
+
+1091
+00:51:52,770 --> 00:51:56,595
+current unsecure
+TCP/IP connectivity.
+
+1092
+00:51:56,595 --> 00:51:57,930
+Then we will do
+
+1093
+00:51:57,930 --> 00:51:59,925
+that mutual
+authentication first,
+
+1094
+00:51:59,925 --> 00:52:03,700
+then install the
+security components.
+
+1095
+00:52:07,120 --> 00:52:09,920
+To achieve this
+mutual authentication
+
+1096
+00:52:09,920 --> 00:52:12,500
+between the controller
+and the E_new,
+
+1097
+00:52:12,500 --> 00:52:15,235
+first look at
+the OPrah arc.
+
+1098
+00:52:15,235 --> 00:52:18,480
+Our controller
+authenticate E_new.
+
+1099
+00:52:18,480 --> 00:52:20,430
+I'm looking through
+the interaction of
+
+1100
+00:52:20,430 --> 00:52:23,759
+leveraging existing
+authentication solutions.
+
+1101
+00:52:23,759 --> 00:52:25,350
+Fortunately,
+there are many of
+
+1102
+00:52:25,350 --> 00:52:27,240
+them in current Internet.
+
+1103
+00:52:27,240 --> 00:52:29,850
+We have the security
+authorities
+
+1104
+00:52:29,850 --> 00:52:31,410
+which issues
+certificates with
+
+1105
+00:52:31,410 --> 00:52:32,310
+with DNS name,
+
+1106
+00:52:32,310 --> 00:52:35,380
+then we also have DNSSEC
+
+1107
+00:52:35,990 --> 00:52:38,820
+accompanied with
+the finger system
+
+1108
+00:52:38,820 --> 00:52:41,865
+to provide authentication
+to DNS names.
+
+1109
+00:52:41,865 --> 00:52:45,540
+Also if you are a user
+with the password,
+
+1110
+00:52:45,540 --> 00:52:47,295
+you can use some
+technologies
+
+1111
+00:52:47,295 --> 00:52:48,540
+like Single- Sign- On
+
+1112
+00:52:48,540 --> 00:52:50,760
+to authenticate
+yourself in
+
+1113
+00:52:50,760 --> 00:52:52,605
+the today's web system.
+
+1114
+00:52:52,605 --> 00:52:55,050
+Now let's think
+about there are
+
+1115
+00:52:55,050 --> 00:52:57,660
+such authentication
+system here,
+
+1116
+00:52:57,660 --> 00:53:00,375
+in today's internet,
+and that's
+
+1117
+00:53:00,375 --> 00:53:03,780
+authentication
+system authenticate
+
+1118
+00:53:03,780 --> 00:53:05,730
+this remote E_new.
+
+1119
+00:53:05,730 --> 00:53:08,685
+Then if the controller
+
+1120
+00:53:08,685 --> 00:53:11,609
+asked this
+authentication system,
+
+1121
+00:53:11,609 --> 00:53:13,815
+then controller can derive
+
+1122
+00:53:13,815 --> 00:53:16,650
+authentication through
+this remote E_new.
+
+1123
+00:53:16,650 --> 00:53:20,080
+We can get that first
+OPrah arc done.
+
+1124
+00:53:21,080 --> 00:53:24,855
+Assuming E_new is NDN app
+
+1125
+00:53:24,855 --> 00:53:27,690
+running on remote hosts H,
+
+1126
+00:53:27,690 --> 00:53:30,660
+then the CA authenticate
+
+1127
+00:53:30,660 --> 00:53:35,175
+this remote host by
+issuing SSL certificate.
+
+1128
+00:53:35,175 --> 00:53:38,440
+Then Trust Zone Controller
+
+1129
+00:53:40,970 --> 00:53:44,250
+can authenticate
+E_new which
+
+1130
+00:53:44,250 --> 00:53:45,585
+is the NDN app here,
+
+1131
+00:53:45,585 --> 00:53:48,915
+if the DNS name of
+the remote host is
+
+1132
+00:53:48,915 --> 00:53:50,595
+authenticated device A
+
+1133
+00:53:50,595 --> 00:53:53,070
+with the SSL Certificate.
+
+1134
+00:53:53,070 --> 00:53:55,860
+Then we have got
+the OPrah arc down,
+
+1135
+00:53:55,860 --> 00:53:57,360
+but what about the
+
+1136
+00:53:57,360 --> 00:54:00,105
+[inaudible] or
+
+1137
+00:54:00,105 --> 00:54:02,770
+E-new authenticated
+controller.
+
+1138
+00:54:03,050 --> 00:54:06,450
+The controller can put
+
+1139
+00:54:06,450 --> 00:54:10,395
+the NDN app implementation
+code on GitHub
+
+1140
+00:54:10,395 --> 00:54:14,400
+with the trust anchor
+app pre-embedded.
+
+1141
+00:54:14,400 --> 00:54:16,815
+Then someone say user,
+
+1142
+00:54:16,815 --> 00:54:18,525
+can download this code
+
+1143
+00:54:18,525 --> 00:54:22,305
+from sources like GitHub,
+
+1144
+00:54:22,305 --> 00:54:26,595
+then the trusted controller
+is authenticated
+
+1145
+00:54:26,595 --> 00:54:27,855
+through Built-in
+
+1146
+00:54:27,855 --> 00:54:29,354
+during this software
+distribution
+
+1147
+00:54:29,354 --> 00:54:32,260
+with the trust
+anchor embedded.
+
+1148
+00:54:34,850 --> 00:54:41,265
+We will apply this
+direction to Hydra.
+
+1149
+00:54:41,265 --> 00:54:42,930
+You can see from
+the previous
+
+1150
+00:54:42,930 --> 00:54:44,460
+presentation, in Hydra,
+
+1151
+00:54:44,460 --> 00:54:46,320
+different organizations
+who have contributed
+
+1152
+00:54:46,320 --> 00:54:48,870
+file servers and
+ensure data and
+
+1153
+00:54:48,870 --> 00:54:51,600
+users from different
+organizations need to
+
+1154
+00:54:51,600 --> 00:54:52,965
+install the Hydra app
+
+1155
+00:54:52,965 --> 00:54:55,005
+or they contributed
+a file server.
+
+1156
+00:54:55,005 --> 00:54:58,155
+Then the Hydra Network
+Operating Center
+
+1157
+00:54:58,155 --> 00:54:59,400
+will serve as
+
+1158
+00:54:59,400 --> 00:55:00,750
+the trust zone controller
+
+1159
+00:55:00,750 --> 00:55:05,170
+for a namespace
+slash hydra.
+
+1160
+00:55:05,180 --> 00:55:07,605
+We can see here,
+
+1161
+00:55:07,605 --> 00:55:09,975
+the Hydra app running on
+
+1162
+00:55:09,975 --> 00:55:12,600
+those remote file
+servers need
+
+1163
+00:55:12,600 --> 00:55:14,220
+authentications as
+
+1164
+00:55:14,220 --> 00:55:17,260
+the requirements of
+security bootstrapping.
+
+1165
+00:55:20,150 --> 00:55:23,535
+We have this Hydra app
+
+1166
+00:55:23,535 --> 00:55:25,375
+running on remote host,
+
+1167
+00:55:25,375 --> 00:55:28,520
+and this remote
+host has DNS name,
+
+1168
+00:55:28,520 --> 00:55:33,320
+the bruins.cs.ucla.edu,
+and
+
+1169
+00:55:33,320 --> 00:55:36,620
+UCLA's CA InCommon
+will authenticate
+
+1170
+00:55:36,620 --> 00:55:40,645
+the DNS name by issuing
+SSL Certificate.
+
+1171
+00:55:40,645 --> 00:55:43,310
+In this case, we can view
+
+1172
+00:55:43,310 --> 00:55:48,305
+this SSL Certificates
+from this IP work,
+
+1173
+00:55:48,305 --> 00:55:50,630
+as the existing
+authentication that we
+
+1174
+00:55:50,630 --> 00:55:54,210
+can utilize to bootstrap
+the Hydra app.
+
+1175
+00:55:55,280 --> 00:55:58,664
+We know also Incommon CA
+
+1176
+00:55:58,664 --> 00:56:01,575
+issued SSL certificate
+to the file server,
+
+1177
+00:56:01,575 --> 00:56:07,050
+then the Hydra NOC
+on the other hand,
+
+1178
+00:56:07,050 --> 00:56:10,590
+will trust this InCommon
+CA out of them,
+
+1179
+00:56:10,590 --> 00:56:14,085
+by downloading InCommon
+CA Certificate
+
+1180
+00:56:14,085 --> 00:56:17,860
+from a trusted URL.
+
+1181
+00:56:17,860 --> 00:56:22,310
+Then Hydra NOC thereby
+can authenticate all
+
+1182
+00:56:22,310 --> 00:56:23,750
+InCommon authenticated
+
+1183
+00:56:23,750 --> 00:56:26,560
+host identifiers
+like Bruins.
+
+1184
+00:56:26,560 --> 00:56:29,085
+Thereby, it can
+authenticate
+
+1185
+00:56:29,085 --> 00:56:30,600
+the Hydra app instances
+
+1186
+00:56:30,600 --> 00:56:33,580
+installed on these
+remote hosts.
+
+1187
+00:56:34,580 --> 00:56:37,110
+Then on the order
+of the reaction,
+
+1188
+00:56:37,110 --> 00:56:38,685
+as we mentioned earlier,
+
+1189
+00:56:38,685 --> 00:56:40,515
+the Hydra app
+will authenticate
+
+1190
+00:56:40,515 --> 00:56:41,910
+Hydra NOC at
+
+1191
+00:56:41,910 --> 00:56:44,250
+the application
+installation time.
+
+1192
+00:56:44,250 --> 00:56:49,230
+Hydra NOC puts
+the trust anchor
+
+1193
+00:56:49,230 --> 00:56:51,915
+into the Hydra app
+implementation codes,
+
+1194
+00:56:51,915 --> 00:56:54,795
+and the user of Hydra app,
+
+1195
+00:56:54,795 --> 00:56:58,020
+will download
+this code with
+
+1196
+00:56:58,020 --> 00:57:00,315
+the pre-embedded
+trust anchor
+
+1197
+00:57:00,315 --> 00:57:02,970
+and initial
+trust policies.
+
+1198
+00:57:02,970 --> 00:57:07,860
+However, the user
+authenticated
+
+1199
+00:57:07,860 --> 00:57:09,780
+application package
+on offence,
+
+1200
+00:57:09,780 --> 00:57:13,770
+but however, this
+application package
+
+1201
+00:57:13,770 --> 00:57:16,785
+should be fetched from
+transmitter source.
+
+1202
+00:57:16,785 --> 00:57:18,810
+If the Hydra app put
+
+1203
+00:57:18,810 --> 00:57:21,150
+the code at the
+GitHub link,
+
+1204
+00:57:21,150 --> 00:57:24,090
+then users say
+Alice must obtain
+
+1205
+00:57:24,090 --> 00:57:28,390
+this URL from
+trusted channels,
+
+1206
+00:57:29,090 --> 00:57:32,130
+to ensure she is
+
+1207
+00:57:32,130 --> 00:57:34,690
+fetching the
+correct package.
+
+1208
+00:57:36,380 --> 00:57:39,540
+Now we have the mutual
+authentication,
+
+1209
+00:57:39,540 --> 00:57:41,040
+the two arcs done,
+
+1210
+00:57:41,040 --> 00:57:42,720
+let's talk about how we
+
+1211
+00:57:42,720 --> 00:57:44,954
+can install this
+equipment components.
+
+1212
+00:57:44,954 --> 00:57:46,725
+Before we talk about
+
+1213
+00:57:46,725 --> 00:57:48,900
+all the crypto
+materials like
+
+1214
+00:57:48,900 --> 00:57:52,365
+certificates and
+permanent public keys,
+
+1215
+00:57:52,365 --> 00:57:55,035
+this NDN the
+entities Hydra app,
+
+1216
+00:57:55,035 --> 00:57:57,150
+should have a label first.
+
+1217
+00:57:57,150 --> 00:57:59,325
+In Hydra use case,
+
+1218
+00:57:59,325 --> 00:58:00,900
+these E_new name has
+
+1219
+00:58:00,900 --> 00:58:03,794
+the application prefix
+and the unique suffix.
+
+1220
+00:58:03,794 --> 00:58:05,490
+The application prefix,
+
+1221
+00:58:05,490 --> 00:58:07,710
+can come from the
+trust anchor,
+
+1222
+00:58:07,710 --> 00:58:10,185
+because we know
+the trust anchor
+
+1223
+00:58:10,185 --> 00:58:12,645
+is already perfect
+squeeze slash Hydra.
+
+1224
+00:58:12,645 --> 00:58:14,190
+Then we always obtain
+
+1225
+00:58:14,190 --> 00:58:16,350
+its application
+prefix from it.
+
+1226
+00:58:16,350 --> 00:58:21,130
+But the unique suffix
+here needs assignment.
+
+1227
+00:58:23,060 --> 00:58:26,940
+The remote host who is
+running a Hydra app,
+
+1228
+00:58:26,940 --> 00:58:28,110
+already has a name,
+
+1229
+00:58:28,110 --> 00:58:29,415
+this is DNS name.
+
+1230
+00:58:29,415 --> 00:58:31,215
+But in this case,
+
+1231
+00:58:31,215 --> 00:58:34,605
+we want to give this
+Hydra app a new name,
+
+1232
+00:58:34,605 --> 00:58:38,290
+which is a name under
+hydra's context.
+
+1233
+00:58:38,360 --> 00:58:42,104
+Solution could be after
+
+1234
+00:58:42,104 --> 00:58:45,195
+we apply this
+application prefix,
+
+1235
+00:58:45,195 --> 00:58:47,340
+we adopt a DNS name from
+
+1236
+00:58:47,340 --> 00:58:51,120
+the remote host as the
+suffix assignment.
+
+1237
+00:58:51,120 --> 00:58:52,530
+The entity name will
+
+1238
+00:58:52,530 --> 00:59:00,090
+be
+/hydra/bruins.cs.ucla.edu.
+
+1239
+00:59:00,090 --> 00:59:02,175
+Optionally Alice
+can still decide
+
+1240
+00:59:02,175 --> 00:59:03,960
+a new identifier that
+
+1241
+00:59:03,960 --> 00:59:06,730
+fit into hydra's context.
+
+1242
+00:59:08,360 --> 00:59:12,075
+Now, we have the
+mutual authentication,
+
+1243
+00:59:12,075 --> 00:59:13,650
+we have the trust anchor
+
+1244
+00:59:13,650 --> 00:59:15,810
+and mutual trust
+policy installed,
+
+1245
+00:59:15,810 --> 00:59:19,860
+we obtain the name by
+adopting the DNS name
+
+1246
+00:59:19,860 --> 00:59:22,800
+and append a after
+
+1247
+00:59:22,800 --> 00:59:24,330
+the application
+prefix which
+
+1248
+00:59:24,330 --> 00:59:26,055
+is coming from
+the trust anchor,
+
+1249
+00:59:26,055 --> 00:59:31,750
+but now here we still
+need certificate.
+
+1250
+00:59:34,000 --> 00:59:36,080
+The Hydra app,
+
+1251
+00:59:36,080 --> 00:59:38,405
+will use the
+NDNCERT protocol
+
+1252
+00:59:38,405 --> 00:59:40,820
+to apply the
+certificate from
+
+1253
+00:59:40,820 --> 00:59:43,430
+Hydra NOC with the
+SSL Certificate
+
+1254
+00:59:43,430 --> 00:59:46,375
+attached with the
+existing authentication.
+
+1255
+00:59:46,375 --> 00:59:49,229
+Then the Hydra NOC
+after receiving
+
+1256
+00:59:49,229 --> 00:59:53,235
+the certificate request,
+
+1257
+00:59:53,235 --> 00:59:56,055
+will verify this
+SSL Certificate
+
+1258
+00:59:56,055 --> 00:59:59,445
+against the local trusted
+CAs say InCommon,
+
+1259
+00:59:59,445 --> 01:00:01,410
+if the Hydra NOC pass it.
+
+1260
+01:00:01,410 --> 01:00:06,150
+Then if the validation
+is successful,
+
+1261
+01:00:06,150 --> 01:00:07,470
+it will issue
+
+1262
+01:00:07,470 --> 01:00:09,690
+the new certificate
+to the Hydra app,
+
+1263
+01:00:09,690 --> 01:00:12,015
+after Hydra app passed
+
+1264
+01:00:12,015 --> 01:00:14,295
+the newly issued
+a certificate,
+
+1265
+01:00:14,295 --> 01:00:17,010
+we will have to trust
+
+1266
+01:00:17,010 --> 01:00:18,390
+anchor initial transfer
+
+1267
+01:00:18,390 --> 01:00:20,685
+policies and the
+certificate.
+
+1268
+01:00:20,685 --> 01:00:23,805
+Then all the security
+
+1269
+01:00:23,805 --> 01:00:26,890
+components are
+installed here.
+
+1270
+01:00:28,430 --> 01:00:31,770
+In summary,
+this work takes
+
+1271
+01:00:31,770 --> 01:00:34,035
+a first step towards
+
+1272
+01:00:34,035 --> 01:00:36,825
+bootstrapping remote
+NDN entities.
+
+1273
+01:00:36,825 --> 01:00:44,114
+Because we found to
+NDNlize each new entity,
+
+1274
+01:00:44,114 --> 01:00:46,245
+we should configure
+the Name,
+
+1275
+01:00:46,245 --> 01:00:47,835
+Trust Anchor certificate,
+
+1276
+01:00:47,835 --> 01:00:49,845
+and Trust
+Policies into it.
+
+1277
+01:00:49,845 --> 01:00:51,885
+Our design makes use of
+
+1278
+01:00:51,885 --> 01:00:54,540
+existing authentication
+system which
+
+1279
+01:00:54,540 --> 01:00:56,875
+is the current CAs,
+
+1280
+01:00:56,875 --> 01:00:59,060
+and we were applying
+
+1281
+01:00:59,060 --> 01:01:00,830
+the same approach
+to address
+
+1282
+01:01:00,830 --> 01:01:03,245
+remote entity
+authentication problems
+
+1283
+01:01:03,245 --> 01:01:05,840
+in using arrows
+like mGUARD,
+
+1284
+01:01:05,840 --> 01:01:07,520
+and the NDN AR
+
+1285
+01:01:07,520 --> 01:01:10,730
+protect as presented
+yesterday.
+
+1286
+01:01:10,730 --> 01:01:13,490
+Thanks for listening.
+That's all
+
+1287
+01:01:13,490 --> 01:01:15,680
+my presentation [NOISE].
+
+1288
+01:01:15,680 --> 01:01:17,030
+>> Great. Thank
+you so much.
+
+1289
+01:01:17,030 --> 01:01:19,190
+This will actually
+give us a chance
+
+1290
+01:01:19,190 --> 01:01:20,795
+to catch up on
+time a little bit.
+
+1291
+01:01:20,795 --> 01:01:24,425
+I direct all the questions
+and discussion to
+
+1292
+01:01:24,425 --> 01:01:26,880
+Slack and turn it over
+
+1293
+01:01:26,880 --> 01:01:29,565
+to the moderator
+of the next panel.
+
+1294
+01:01:29,565 --> 01:01:30,240
+Thanks so much to
+
+1295
+01:01:30,240 --> 01:01:32,740
+the speakers in
+this first session.
+
+1296
+01:01:32,900 --> 01:01:35,670
+>> Thank you Jeff.
+Marie-Jose you are
+
+1297
+01:01:35,670 --> 01:01:36,600
+next, go ahead.
+
+1298
+01:01:36,600 --> 01:02:00,655
+[NOISE]
+
+1299
+01:02:00,655 --> 01:02:03,040
+>> Hey, welcome everyone.
+
+1300
+01:02:03,040 --> 01:02:07,070
+This is the
+panel number 2.
+
+1301
+01:02:07,290 --> 01:02:09,565
+I'm Marie-Jose Montpetit.
+
+1302
+01:02:09,565 --> 01:02:13,570
+I'm Affiliate Professor at
+
+1303
+01:02:13,570 --> 01:02:15,775
+Concordia University
+in Montreal,
+
+1304
+01:02:15,775 --> 01:02:19,060
+and it is my pleasure
+to host this panel.
+
+1305
+01:02:19,060 --> 01:02:21,250
+We had a discussion,
+
+1306
+01:02:21,250 --> 01:02:22,570
+so Smith, Lofty,
+
+1307
+01:02:22,570 --> 01:02:24,220
+and I a little
+bit about this.
+
+1308
+01:02:24,220 --> 01:02:28,480
+We called it NDN beyond
+NDN and we recognize
+
+1309
+01:02:28,480 --> 01:02:36,115
+the upcoming importance of
+
+1310
+01:02:36,115 --> 01:02:38,185
+data-driven applications
+
+1311
+01:02:38,185 --> 01:02:39,940
+and services everywhere.
+
+1312
+01:02:39,940 --> 01:02:41,830
+I think the
+previous session
+
+1313
+01:02:41,830 --> 01:02:43,959
+had the definite,
+
+1314
+01:02:43,959 --> 01:02:45,835
+I would say NDN
+slant on it.
+
+1315
+01:02:45,835 --> 01:02:49,630
+But data is becoming very
+
+1316
+01:02:49,630 --> 01:02:50,815
+important in
+
+1317
+01:02:50,815 --> 01:02:54,700
+networking research
+especially in IoT.
+
+1318
+01:02:54,700 --> 01:02:57,715
+We wanted to put this
+as a conversation.
+
+1319
+01:02:57,715 --> 01:02:59,425
+You will see
+that it is not
+
+1320
+01:02:59,425 --> 01:03:01,090
+a panel in the sense
+
+1321
+01:03:01,090 --> 01:03:03,520
+people presenting and then
+
+1322
+01:03:03,520 --> 01:03:05,710
+waiting then for
+the questions.
+
+1323
+01:03:05,710 --> 01:03:07,150
+We would like this
+to be extremely
+
+1324
+01:03:07,150 --> 01:03:08,950
+interactive between
+
+1325
+01:03:08,950 --> 01:03:10,360
+the panelists and between
+
+1326
+01:03:10,360 --> 01:03:13,520
+the panelists and
+the audience.
+
+1327
+01:03:15,000 --> 01:03:18,760
+A little bit
+of background.
+
+1328
+01:03:18,760 --> 01:03:21,955
+Again, I just
+introduced myself.
+
+1329
+01:03:21,955 --> 01:03:23,860
+The panelists, I think are
+
+1330
+01:03:23,860 --> 01:03:26,920
+a very good mix of
+people who are involved
+
+1331
+01:03:26,920 --> 01:03:29,125
+already and have
+been involved
+
+1332
+01:03:29,125 --> 01:03:31,600
+in NDN research
+and people who
+
+1333
+01:03:31,600 --> 01:03:33,820
+were new but
+come again from
+
+1334
+01:03:33,820 --> 01:03:36,040
+this more and more
+
+1335
+01:03:36,040 --> 01:03:41,540
+data-driven research
+slant in networking.
+
+1336
+01:03:41,580 --> 01:03:44,110
+I don't know if
+Eve is online.
+
+1337
+01:03:44,110 --> 01:03:47,050
+But actually,
+Eve said that
+
+1338
+01:03:47,050 --> 01:03:50,680
+data was the research fuel
+
+1339
+01:03:50,680 --> 01:03:52,120
+for the 21st century,
+
+1340
+01:03:52,120 --> 01:03:56,500
+and I think she was
+absolutely right.
+
+1341
+01:03:56,500 --> 01:03:58,690
+About this time last year
+
+1342
+01:03:58,690 --> 01:04:01,135
+with ending full spring
+
+1343
+01:04:01,135 --> 01:04:02,710
+of Columbia University,
+
+1344
+01:04:02,710 --> 01:04:07,390
+we ran three
+times two days,
+
+1345
+01:04:07,390 --> 01:04:09,700
+free workshops
+on the future of
+
+1346
+01:04:09,700 --> 01:04:11,110
+broadband research and it
+
+1347
+01:04:11,110 --> 01:04:14,110
+was broadband
+research as a whole,
+
+1348
+01:04:14,110 --> 01:04:19,045
+technology, economics,
+social sciences.
+
+1349
+01:04:19,045 --> 01:04:21,520
+Effectively there were
+
+1350
+01:04:21,520 --> 01:04:23,905
+very different
+conclusions.
+
+1351
+01:04:23,905 --> 01:04:26,500
+But one thing that
+everybody was
+
+1352
+01:04:26,500 --> 01:04:29,485
+sharing was the
+need to get
+
+1353
+01:04:29,485 --> 01:04:32,290
+more data to
+learn how to use
+
+1354
+01:04:32,290 --> 01:04:35,740
+the existing data better,
+
+1355
+01:04:35,740 --> 01:04:39,910
+to create new ways
+of capturing data,
+
+1356
+01:04:39,910 --> 01:04:42,565
+discovering it,
+sharing it.
+
+1357
+01:04:42,565 --> 01:04:44,770
+It was true that the
+
+1358
+01:04:44,770 --> 01:04:47,139
+data fuels that
+research in technology,
+
+1359
+01:04:47,139 --> 01:04:49,555
+economy, and
+social sciences.
+
+1360
+01:04:49,555 --> 01:04:51,730
+This is what this panel
+
+1361
+01:04:51,730 --> 01:04:53,065
+is a little bit about,
+
+1362
+01:04:53,065 --> 01:04:55,150
+what is data-driven and
+
+1363
+01:04:55,150 --> 01:04:57,280
+how we're going to use it.
+
+1364
+01:04:57,280 --> 01:05:00,025
+I created a few questions
+
+1365
+01:05:00,025 --> 01:05:01,060
+and we'll come back to
+
+1366
+01:05:01,060 --> 01:05:03,700
+them after the
+presentations.
+
+1367
+01:05:03,700 --> 01:05:06,670
+Essentially, for
+the people on
+
+1368
+01:05:06,670 --> 01:05:08,395
+the panel and also people
+
+1369
+01:05:08,395 --> 01:05:10,150
+in the audience,
+think about it.
+
+1370
+01:05:10,150 --> 01:05:11,620
+What is the
+role of data in
+
+1371
+01:05:11,620 --> 01:05:13,705
+your work on
+your research,
+
+1372
+01:05:13,705 --> 01:05:15,310
+and would you
+describe your work
+
+1373
+01:05:15,310 --> 01:05:17,020
+as data-driven?
+
+1374
+01:05:17,020 --> 01:05:18,970
+Especially in IoT,
+
+1375
+01:05:18,970 --> 01:05:21,220
+which is where I
+work right now,
+
+1376
+01:05:21,220 --> 01:05:23,380
+although
+distributed system,
+
+1377
+01:05:23,380 --> 01:05:24,070
+there's this idea
+
+1378
+01:05:24,070 --> 01:05:26,590
+of storing, finding,
+processing.
+
+1379
+01:05:26,590 --> 01:05:28,540
+All that data needs
+
+1380
+01:05:28,540 --> 01:05:30,520
+features and
+operations that
+
+1381
+01:05:30,520 --> 01:05:32,065
+are maybe different,
+
+1382
+01:05:32,065 --> 01:05:36,220
+and how are you
+panelists and people in
+
+1383
+01:05:36,220 --> 01:05:38,260
+the audience
+addressing this with
+
+1384
+01:05:38,260 --> 01:05:41,200
+NDN or non-NDN approaches?
+
+1385
+01:05:41,200 --> 01:05:43,480
+What would be
+the feature of
+
+1386
+01:05:43,480 --> 01:05:45,040
+a more data-centric
+approach to
+
+1387
+01:05:45,040 --> 01:05:47,125
+distribute systems or IoT,
+
+1388
+01:05:47,125 --> 01:05:49,060
+and how could
+NDN be part of
+
+1389
+01:05:49,060 --> 01:05:51,430
+that solution?
+I'm done talking.
+
+1390
+01:05:51,430 --> 01:05:53,860
+I will ask Dirk,
+
+1391
+01:05:53,860 --> 01:05:58,330
+who has a hard deadline
+to present a few of
+
+1392
+01:05:58,330 --> 01:06:04,630
+his ideas and then we'll
+continue with Rute,
+
+1393
+01:06:04,630 --> 01:06:08,155
+and then Ike,
+
+1394
+01:06:08,155 --> 01:06:12,070
+and then Srikathyayani to
+
+1395
+01:06:12,070 --> 01:06:13,555
+close it from California.
+
+1396
+01:06:13,555 --> 01:06:15,740
+I will stop sharing.
+
+1397
+01:06:15,990 --> 01:06:19,460
+Dirk you can
+start sharing.
+
+1398
+01:06:31,320 --> 01:06:32,890
+>> You can hear me now?
+
+1399
+01:06:32,890 --> 01:06:38,120
+[inaudible]. Can
+you hear me?
+
+1400
+01:06:41,940 --> 01:06:44,185
+>> We hear you perfectly.
+
+1401
+01:06:44,185 --> 01:06:46,165
+>> Okay, good, sorry.
+
+1402
+01:06:46,165 --> 01:06:49,130
+I'm going to use a
+label to the UI.
+
+1403
+01:06:49,530 --> 01:06:51,280
+Thanks, Marie-Jose.
+
+1404
+01:06:51,280 --> 01:06:54,285
+Thanks for
+inviting me here.
+
+1405
+01:06:54,285 --> 01:06:57,870
+I just realized this is
+my fifth organization
+
+1406
+01:06:57,870 --> 01:07:00,435
+since starting with
+
+1407
+01:07:00,435 --> 01:07:03,110
+ICN research
+many years ago.
+
+1408
+01:07:03,110 --> 01:07:05,290
+It shows either
+how old I am or
+
+1409
+01:07:05,290 --> 01:07:07,105
+how quickly I change
+organizations.
+
+1410
+01:07:07,105 --> 01:07:09,055
+Probably both of
+it a little bit.
+
+1411
+01:07:09,055 --> 01:07:11,930
+I went a little bit back,
+
+1412
+01:07:13,080 --> 01:07:16,330
+as you can see
+from the title,
+
+1413
+01:07:16,330 --> 01:07:18,490
+to the answer
+that was given in
+
+1414
+01:07:18,490 --> 01:07:21,340
+the paper bag in 2009
+on networking named
+
+1415
+01:07:21,340 --> 01:07:22,900
+content and try
+to understand
+
+1416
+01:07:22,900 --> 01:07:24,820
+what the question really
+
+1417
+01:07:24,820 --> 01:07:26,410
+was and then trying
+to address some of
+
+1418
+01:07:26,410 --> 01:07:28,390
+your questions
+around data.
+
+1419
+01:07:28,390 --> 01:07:30,400
+But I was mainly looking
+at it from what's
+
+1420
+01:07:30,400 --> 01:07:32,440
+the importance
+the data place
+
+1421
+01:07:32,440 --> 01:07:34,600
+when building and
+looking at some of
+
+1422
+01:07:34,600 --> 01:07:38,450
+the approaches that
+I'm looking at now.
+
+1423
+01:07:38,640 --> 01:07:42,835
+Whoops, sorry,
+
+1424
+01:07:42,835 --> 01:07:45,260
+I think I pressed
+the wrong thing.
+
+1425
+01:07:47,700 --> 01:07:50,425
+As long as it
+
+1426
+01:07:50,425 --> 01:07:53,125
+wasn't all about data
+when we started with,
+
+1427
+01:07:53,125 --> 01:07:56,200
+was NDN already
+made with data in
+
+1428
+01:07:56,200 --> 01:07:59,170
+mind and if you look
+at data as facts,
+
+1429
+01:07:59,170 --> 01:08:01,810
+information that are
+used to calculate,
+
+1430
+01:08:01,810 --> 01:08:03,010
+analyze, and
+blend something
+
+1431
+01:08:03,010 --> 01:08:04,750
+as a definition
+of Webster.
+
+1432
+01:08:04,750 --> 01:08:07,300
+They are probably
+not wrong. Data had
+
+1433
+01:08:07,300 --> 01:08:08,530
+been as part of
+
+1434
+01:08:08,530 --> 01:08:09,580
+focusing and the
+very beginning
+
+1435
+01:08:09,580 --> 01:08:10,390
+it was a lot of discussion
+
+1436
+01:08:10,390 --> 01:08:12,370
+on what particular name
+
+1437
+01:08:12,370 --> 01:08:14,275
+to stick at it,
+
+1438
+01:08:14,275 --> 01:08:16,060
+and as the paper
+title suggests
+
+1439
+01:08:16,060 --> 01:08:17,965
+that content was
+what was used,
+
+1440
+01:08:17,965 --> 01:08:19,645
+data was also used.
+
+1441
+01:08:19,645 --> 01:08:20,965
+In the very early days,
+
+1442
+01:08:20,965 --> 01:08:23,590
+we at some point
+got to information,
+
+1443
+01:08:23,590 --> 01:08:25,870
+and the ICN reflects
+
+1444
+01:08:25,870 --> 01:08:27,700
+that as information-centric
+networking
+
+1445
+01:08:27,700 --> 01:08:31,765
+to be using information
+as something bad.
+
+1446
+01:08:31,765 --> 01:08:34,480
+The thing that I
+started looking
+
+1447
+01:08:34,480 --> 01:08:38,890
+into more recently for
+
+1448
+01:08:38,890 --> 01:08:42,760
+last 2-3 years probably
+
+1449
+01:08:42,760 --> 01:08:45,010
+is the aspect of
+computation that
+
+1450
+01:08:45,010 --> 01:08:47,890
+combines these aspects
+a little bit together
+
+1451
+01:08:47,890 --> 01:08:52,375
+into taking data and
+making sense out of it.
+
+1452
+01:08:52,375 --> 01:08:54,190
+Maybe turning it
+into information,
+
+1453
+01:08:54,190 --> 01:08:57,070
+into facts a details
+about a subject and
+
+1454
+01:08:57,070 --> 01:09:00,370
+allowing me to connect
+it to a subject.
+
+1455
+01:09:00,370 --> 01:09:01,600
+Maybe that's
+the closest to
+
+1456
+01:09:01,600 --> 01:09:02,680
+what content
+really was meant
+
+1457
+01:09:02,680 --> 01:09:05,770
+to mean initially in the
+paper. I don't know.
+
+1458
+01:09:05,770 --> 01:09:08,650
+But it's certainly
+something
+
+1459
+01:09:08,650 --> 01:09:12,055
+where in the current
+research I'm doing
+
+1460
+01:09:12,055 --> 01:09:15,730
+permanently move
+across between data
+
+1461
+01:09:15,730 --> 01:09:18,220
+as data that comes from
+
+1462
+01:09:18,220 --> 01:09:19,810
+various sources IoT being
+
+1463
+01:09:19,810 --> 01:09:21,280
+one of the examples.
+
+1464
+01:09:21,280 --> 01:09:24,400
+But we're also looking
+and work for instance
+
+1465
+01:09:24,400 --> 01:09:26,890
+in distributed identities
+
+1466
+01:09:26,890 --> 01:09:28,360
+for EID approaches,
+
+1467
+01:09:28,360 --> 01:09:30,700
+here in Europe at the
+moment, quite big.
+
+1468
+01:09:30,700 --> 01:09:33,640
+What is it that you
+could be doing with
+
+1469
+01:09:33,640 --> 01:09:36,670
+respect to digital
+technologies in order
+
+1470
+01:09:36,670 --> 01:09:38,470
+to provide an identity
+
+1471
+01:09:38,470 --> 01:09:39,910
+framework that would be
+
+1472
+01:09:39,910 --> 01:09:41,560
+highly distributed
+
+1473
+01:09:41,560 --> 01:09:43,660
+maybe rather than
+being centralized?
+
+1474
+01:09:43,660 --> 01:09:45,370
+That's another set of
+
+1475
+01:09:45,370 --> 01:09:47,890
+very rich data that's
+out there that
+
+1476
+01:09:47,890 --> 01:09:49,525
+needs to be
+combined somehow
+
+1477
+01:09:49,525 --> 01:09:52,750
+through computation
+to something useful.
+
+1478
+01:09:52,750 --> 01:09:56,890
+NDN say if the
+
+1479
+01:09:56,890 --> 01:10:01,240
+paradigm change that
+the networking and
+
+1480
+01:10:01,240 --> 01:10:03,820
+content paper
+was postulating
+
+1481
+01:10:03,820 --> 01:10:05,410
+maybe they need move from
+
+1482
+01:10:05,410 --> 01:10:10,195
+the where to the what.
+
+1483
+01:10:10,195 --> 01:10:12,400
+Then maybe it all
+comes way down
+
+1484
+01:10:12,400 --> 01:10:14,440
+to this aspect
+of the name,
+
+1485
+01:10:14,440 --> 01:10:16,450
+like can be named
+with anything.
+
+1486
+01:10:16,450 --> 01:10:18,865
+Is it a spectrum
+
+1487
+01:10:18,865 --> 01:10:22,270
+between data computation
+information?
+
+1488
+01:10:22,270 --> 01:10:24,430
+We've seen various
+approaches
+
+1489
+01:10:24,430 --> 01:10:26,980
+when using NDN,
+
+1490
+01:10:26,980 --> 01:10:29,710
+ICN systems for
+content retrieval,
+
+1491
+01:10:29,710 --> 01:10:33,010
+static objects for
+name function.
+
+1492
+01:10:33,010 --> 01:10:35,590
+Networking has extended
+that to computation,
+
+1493
+01:10:35,590 --> 01:10:38,620
+so naming actually
+named functions of
+
+1494
+01:10:38,620 --> 01:10:42,250
+computation that
+could be used,
+
+1495
+01:10:42,250 --> 01:10:45,595
+or raw data and IoT.
+
+1496
+01:10:45,595 --> 01:10:48,070
+It's the centrality
+of the name
+
+1497
+01:10:48,070 --> 01:10:50,215
+that really
+comes in the end
+
+1498
+01:10:50,215 --> 01:10:52,375
+down to what is
+really we want to do
+
+1499
+01:10:52,375 --> 01:10:54,985
+in an NDN system
+or an ICN system.
+
+1500
+01:10:54,985 --> 01:10:58,000
+But looking at least
+the three aspects
+
+1501
+01:10:58,000 --> 01:11:00,080
+I put on the left there.
+
+1502
+01:11:00,920 --> 01:11:04,110
+The question I
+think we have been
+
+1503
+01:11:04,110 --> 01:11:05,910
+asking throughout
+the research for
+
+1504
+01:11:05,910 --> 01:11:08,070
+many years is data and
+
+1505
+01:11:08,070 --> 01:11:09,660
+information retrieval
+architecture really
+
+1506
+01:11:09,660 --> 01:11:10,740
+the best for computation.
+
+1507
+01:11:10,740 --> 01:11:12,400
+That's something I've been
+
+1508
+01:11:12,400 --> 01:11:14,710
+toying with for
+quite some time now.
+
+1509
+01:11:14,710 --> 01:11:16,960
+Is the flow balance,
+
+1510
+01:11:16,960 --> 01:11:18,610
+which is one of
+the key aspects
+
+1511
+01:11:18,610 --> 01:11:20,185
+in an NDN architecture,
+
+1512
+01:11:20,185 --> 01:11:22,495
+something that
+is naturally
+
+1513
+01:11:22,495 --> 01:11:25,930
+mapped onto computational
+interactions.
+
+1514
+01:11:25,930 --> 01:11:28,300
+Can be addressed
+computation by
+
+1515
+01:11:28,300 --> 01:11:30,385
+supporting information
+readability,
+
+1516
+01:11:30,385 --> 01:11:31,090
+for instance,
+
+1517
+01:11:31,090 --> 01:11:32,590
+that is reminiscence
+to some of
+
+1518
+01:11:32,590 --> 01:11:34,960
+the discussions we had
+many years ago around
+
+1519
+01:11:34,960 --> 01:11:37,150
+channel semantics
+that of having
+
+1520
+01:11:37,150 --> 01:11:39,115
+individual information
+retrieval semantics
+
+1521
+01:11:39,115 --> 01:11:41,470
+as we have the natively.
+
+1522
+01:11:41,470 --> 01:11:45,100
+Another problem in
+computation that's
+
+1523
+01:11:45,100 --> 01:11:48,750
+been keeping me busy
+
+1524
+01:11:48,750 --> 01:11:51,375
+is how to support
+computer affinity?
+
+1525
+01:11:51,375 --> 01:11:55,020
+What if data
+follows up with
+
+1526
+01:11:55,020 --> 01:11:56,520
+data that just needs to be
+
+1527
+01:11:56,520 --> 01:11:58,910
+retrieved from
+the same entity?
+
+1528
+01:11:58,910 --> 01:12:01,059
+Application state,
+and computation
+
+1529
+01:12:01,059 --> 01:12:02,455
+or something that
+comes to mind
+
+1530
+01:12:02,455 --> 01:12:05,740
+where I may end up
+at a data source,
+
+1531
+01:12:05,740 --> 01:12:07,600
+but for the
+subsequent operations
+
+1532
+01:12:07,600 --> 01:12:09,280
+I may need to go back
+to the data source.
+
+1533
+01:12:09,280 --> 01:12:11,155
+I can't go to
+another data source
+
+1534
+01:12:11,155 --> 01:12:13,600
+because the data
+is intrinsically
+
+1535
+01:12:13,600 --> 01:12:16,390
+linked and therefore will
+
+1536
+01:12:16,390 --> 01:12:19,450
+need to be pulled from
+that same source.
+
+1537
+01:12:19,450 --> 01:12:22,000
+The word for that come
+
+1538
+01:12:22,000 --> 01:12:25,120
+up is the affinity
+part and I know that
+
+1539
+01:12:25,120 --> 01:12:29,530
+someday papers on
+our computation
+
+1540
+01:12:29,530 --> 01:12:30,850
+ICN I've be talking about
+
+1541
+01:12:30,850 --> 01:12:32,545
+the affinity
+problem as well.
+
+1542
+01:12:32,545 --> 01:12:33,850
+These are some of
+the things that
+
+1543
+01:12:33,850 --> 01:12:36,790
+had fired me around
+and trying to
+
+1544
+01:12:36,790 --> 01:12:40,180
+see where do
+these concepts
+
+1545
+01:12:40,180 --> 01:12:41,470
+all come together
+and how can
+
+1546
+01:12:41,470 --> 01:12:43,780
+ICN systems in
+general and the NDN,
+
+1547
+01:12:43,780 --> 01:12:45,710
+in particular, support
+
+1548
+01:12:45,710 --> 01:12:49,095
+the mix of all of
+those both data,
+
+1549
+01:12:49,095 --> 01:12:50,895
+computation, and
+information,
+
+1550
+01:12:50,895 --> 01:12:53,175
+and how can we use
+the architectures
+
+1551
+01:12:53,175 --> 01:12:55,140
+properly to
+support them all
+
+1552
+01:12:55,140 --> 01:12:57,150
+and how can we build
+not only data systems,
+
+1553
+01:12:57,150 --> 01:12:58,980
+but systems have computed
+
+1554
+01:12:58,980 --> 01:12:59,700
+over this data in
+
+1555
+01:12:59,700 --> 01:13:01,715
+a distributed
+manner properly?
+
+1556
+01:13:01,715 --> 01:13:03,310
+Hopefully, that gets us to
+
+1557
+01:13:03,310 --> 01:13:04,570
+a couple of discussions.
+
+1558
+01:13:04,570 --> 01:13:06,025
+As Marie-Jose said,
+
+1559
+01:13:06,025 --> 01:13:07,735
+we want to have
+a conversation.
+
+1560
+01:13:07,735 --> 01:13:09,745
+I have no particularly
+good answers.
+
+1561
+01:13:09,745 --> 01:13:10,870
+I just wanted to throw out
+
+1562
+01:13:10,870 --> 01:13:12,865
+some questions. Thanks.
+
+1563
+01:13:12,865 --> 01:13:17,320
+>> Thank you very
+much. Is Rute
+
+1564
+01:13:17,320 --> 01:13:19,735
+in a place where she can
+
+1565
+01:13:19,735 --> 01:13:22,190
+communicate right now?
+
+1566
+01:13:23,140 --> 01:13:25,400
+>> Yes finally.
+
+1567
+01:13:25,400 --> 01:13:26,600
+[LAUGHTER]
+
+1568
+01:13:26,600 --> 01:13:26,601
+[BACKGROUND]
+
+1569
+01:13:26,601 --> 01:13:30,320
+>> Sorry for this
+I was a bit late.
+
+1570
+01:13:30,320 --> 01:13:32,145
+Let me share the slides.
+
+1571
+01:13:32,145 --> 01:13:36,665
+>> Yes you're next and
+I realize right now,
+
+1572
+01:13:36,665 --> 01:13:37,990
+that we have
+three over four
+
+1573
+01:13:37,990 --> 01:13:40,185
+panelists from Germany.
+
+1574
+01:13:40,185 --> 01:13:43,250
+It's just, I don't
+
+1575
+01:13:43,250 --> 01:13:45,290
+know down to
+me, but anyway,
+
+1576
+01:13:45,290 --> 01:13:50,850
+it's it's run.
+Go ahead Rute.
+
+1577
+01:13:52,240 --> 01:13:55,060
+>> Can you see my slides?
+
+1578
+01:13:55,060 --> 01:13:57,855
+>> Yes, but you should
+go full screen.
+
+1579
+01:13:57,855 --> 01:14:00,810
+Now it's perfect,
+thank you,.
+
+1580
+01:14:01,410 --> 01:14:05,210
+>> First of all,
+hi everybody.
+
+1581
+01:14:05,350 --> 01:14:09,270
+I've been working in
+the NDN on the for
+
+1582
+01:14:09,270 --> 01:14:14,475
+also maybe a decade
+and so now I've
+
+1583
+01:14:14,475 --> 01:14:16,215
+moved through
+affiliation or
+
+1584
+01:14:16,215 --> 01:14:17,540
+more prior affiliation and
+
+1585
+01:14:17,540 --> 01:14:19,250
+I've worked mostly with
+
+1586
+01:14:19,250 --> 01:14:20,900
+NDN in the context
+
+1587
+01:14:20,900 --> 01:14:22,760
+of opportunistic
+routing in
+
+1588
+01:14:22,760 --> 01:14:26,120
+wireless environments
+and currently
+
+1589
+01:14:26,120 --> 01:14:29,385
+in 40s we are of course,
+
+1590
+01:14:29,385 --> 01:14:31,760
+using NDN more on
+the device to device
+
+1591
+01:14:31,760 --> 01:14:32,630
+communication and more
+
+1592
+01:14:32,630 --> 01:14:34,455
+specifically in
+decentralized.
+
+1593
+01:14:34,455 --> 01:14:37,050
+Purposely subscribe
+environments
+
+1594
+01:14:37,050 --> 01:14:40,725
+within the
+manufacturing domain.
+
+1595
+01:14:40,725 --> 01:14:42,350
+On my slides I'm going to
+
+1596
+01:14:42,350 --> 01:14:43,460
+jump apart, of course,
+
+1597
+01:14:43,460 --> 01:14:44,720
+which gives you
+a little bit
+
+1598
+01:14:44,720 --> 01:14:46,665
+more information
+about this,
+
+1599
+01:14:46,665 --> 01:14:48,930
+so on this slide,
+
+1600
+01:14:48,930 --> 01:14:50,510
+you see where we are,
+
+1601
+01:14:50,510 --> 01:14:52,355
+where we want
+to apply NDN.
+
+1602
+01:14:52,355 --> 01:14:56,075
+Basically from an
+end-to-end perspective,
+
+1603
+01:14:56,075 --> 01:14:58,070
+in terms of
+manufacturing domains,
+
+1604
+01:14:58,070 --> 01:15:00,905
+we have on the
+left-hand side
+
+1605
+01:15:00,905 --> 01:15:03,590
+different types
+of devices.
+
+1606
+01:15:03,590 --> 01:15:07,085
+Some devices are,
+let's say IP enable,
+
+1607
+01:15:07,085 --> 01:15:12,035
+or they have already
+some semantic capability
+
+1608
+01:15:12,035 --> 01:15:15,020
+to be automatically
+discovered
+
+1609
+01:15:15,020 --> 01:15:17,450
+or connected to an end
+to end IoT system,
+
+1610
+01:15:17,450 --> 01:15:20,180
+but others, brownfield
+devices normally.
+
+1611
+01:15:20,180 --> 01:15:21,425
+The robots, etc.
+
+1612
+01:15:21,425 --> 01:15:24,185
+the old robot they
+
+1613
+01:15:24,185 --> 01:15:27,200
+don't and as you
+possibly know,
+
+1614
+01:15:27,200 --> 01:15:30,290
+what is used in these
+environments are.
+
+1615
+01:15:30,290 --> 01:15:34,210
+Protocols that
+are specifically
+
+1616
+01:15:34,210 --> 01:15:38,030
+or that provides some
+extensive security,
+
+1617
+01:15:38,030 --> 01:15:39,420
+so in the sense that
+
+1618
+01:15:39,420 --> 01:15:42,780
+they create a
+closed environment,
+
+1619
+01:15:42,780 --> 01:15:44,150
+so that is one aspect of
+
+1620
+01:15:44,150 --> 01:15:45,740
+the second aspect
+is of course,
+
+1621
+01:15:45,740 --> 01:15:48,380
+that we have critical
+applications,
+
+1622
+01:15:48,380 --> 01:15:51,015
+we need tight control loop
+
+1623
+01:15:51,015 --> 01:15:53,090
+and these protocols have
+
+1624
+01:15:53,090 --> 01:15:56,120
+been developed
+to support that,
+
+1625
+01:15:56,120 --> 01:15:58,100
+but however one
+of the issues
+
+1626
+01:15:58,100 --> 01:16:00,440
+that is now
+happening of course,
+
+1627
+01:16:00,440 --> 01:16:01,460
+is that these
+environments are
+
+1628
+01:16:01,460 --> 01:16:03,980
+changing and the
+communication
+
+1629
+01:16:03,980 --> 01:16:05,475
+was normally then in
+
+1630
+01:16:05,475 --> 01:16:08,000
+a very simple way just
+to extract some data,
+
+1631
+01:16:08,000 --> 01:16:09,530
+but not the
+applications that we
+
+1632
+01:16:09,530 --> 01:16:11,990
+have in the industrial
+environment.
+
+1633
+01:16:11,990 --> 01:16:14,450
+They are becoming
+more data-driven,
+
+1634
+01:16:14,450 --> 01:16:18,735
+and they require
+some more clever way
+
+1635
+01:16:18,735 --> 01:16:21,345
+of exchanging data
+decentralized,
+
+1636
+01:16:21,345 --> 01:16:23,445
+but also in a way that
+
+1637
+01:16:23,445 --> 01:16:25,545
+can meet the
+requirements so that
+
+1638
+01:16:25,545 --> 01:16:26,915
+the timing models that
+
+1639
+01:16:26,915 --> 01:16:30,210
+the networking
+part provides,
+
+1640
+01:16:30,210 --> 01:16:32,595
+the critical
+infrastructure setup.
+
+1641
+01:16:32,595 --> 01:16:35,615
+One of the things that
+
+1642
+01:16:35,615 --> 01:16:38,330
+we wanted to explore
+was in the end because
+
+1643
+01:16:38,330 --> 01:16:39,680
+of course there
+we don't have
+
+1644
+01:16:39,680 --> 01:16:41,620
+the issue with Ip
+so we wanted to
+
+1645
+01:16:41,620 --> 01:16:43,140
+explore in the end against
+
+1646
+01:16:43,140 --> 01:16:45,590
+some other approaches such
+
+1647
+01:16:45,590 --> 01:16:48,200
+as OPC way or MQTT.
+
+1648
+01:16:48,200 --> 01:16:51,320
+There are different,
+of course,
+
+1649
+01:16:51,320 --> 01:16:53,210
+benefits as we all know,
+
+1650
+01:16:53,210 --> 01:16:55,130
+but there are also as
+
+1651
+01:16:55,130 --> 01:16:57,065
+explained a few
+challenges.
+
+1652
+01:16:57,065 --> 01:16:59,150
+The first one,
+which is possibly
+
+1653
+01:16:59,150 --> 01:17:01,280
+not critical at the
+current stage in
+
+1654
+01:17:01,280 --> 01:17:03,440
+manufacturing
+domains relates with
+
+1655
+01:17:03,440 --> 01:17:04,790
+mobility and in particular
+
+1656
+01:17:04,790 --> 01:17:06,905
+the producer mobility.
+
+1657
+01:17:06,905 --> 01:17:08,570
+Even though it's
+not critical,
+
+1658
+01:17:08,570 --> 01:17:10,550
+the fact is that
+it has to be
+
+1659
+01:17:10,550 --> 01:17:11,750
+addressed and there are
+
+1660
+01:17:11,750 --> 01:17:13,065
+environments
+where of course,
+
+1661
+01:17:13,065 --> 01:17:15,260
+we have mobile robots and
+
+1662
+01:17:15,260 --> 01:17:19,205
+also mobile devices
+such as AGVs.
+
+1663
+01:17:19,205 --> 01:17:21,755
+It would be
+helpful to have
+
+1664
+01:17:21,755 --> 01:17:23,015
+a decentralized
+
+1665
+01:17:23,015 --> 01:17:25,250
+communication
+approach that would
+
+1666
+01:17:25,250 --> 01:17:26,860
+allow these devices
+to exchange
+
+1667
+01:17:26,860 --> 01:17:29,200
+data directly
+among themselves.
+
+1668
+01:17:29,200 --> 01:17:30,440
+But of course,
+again, this is not
+
+1669
+01:17:30,440 --> 01:17:32,990
+a critical aspect
+and there are
+
+1670
+01:17:32,990 --> 01:17:34,580
+a few mechanisms
+that have been
+
+1671
+01:17:34,580 --> 01:17:38,220
+developed based on
+anchor points, etc.
+
+1672
+01:17:38,220 --> 01:17:40,100
+There are other things
+that we can do.
+
+1673
+01:17:40,100 --> 01:17:43,160
+Integrate mobility
+suppressor mechanisms
+
+1674
+01:17:43,160 --> 01:17:44,335
+of machine learning to
+
+1675
+01:17:44,335 --> 01:17:46,475
+improve the mobility, etc.
+
+1676
+01:17:46,475 --> 01:17:47,930
+I would say that
+this is not
+
+1677
+01:17:47,930 --> 01:17:49,295
+really a key challenge,
+
+1678
+01:17:49,295 --> 01:17:51,680
+but however,
+it's something
+
+1679
+01:17:51,680 --> 01:17:54,720
+that in the future will
+have to be handled.
+
+1680
+01:17:54,720 --> 01:17:57,435
+Other telling
+that are more
+
+1681
+01:17:57,435 --> 01:17:59,300
+relevant in the context
+
+1682
+01:17:59,300 --> 01:18:00,320
+of this industrial demands
+
+1683
+01:18:00,320 --> 01:18:03,255
+relate to the
+naming part so NDN
+
+1684
+01:18:03,255 --> 01:18:04,970
+has of course a
+very expressive
+
+1685
+01:18:04,970 --> 01:18:06,995
+and quite flexible
+naming space.
+
+1686
+01:18:06,995 --> 01:18:10,040
+But the way we are
+currently handling it
+
+1687
+01:18:10,040 --> 01:18:11,450
+means that when applying
+
+1688
+01:18:11,450 --> 01:18:12,945
+it to the
+industrial domain,
+
+1689
+01:18:12,945 --> 01:18:16,160
+we would be
+creating, again,
+
+1690
+01:18:16,160 --> 01:18:18,645
+the same problem
+that we have where
+
+1691
+01:18:18,645 --> 01:18:20,985
+the semantic
+descriptions of
+
+1692
+01:18:20,985 --> 01:18:23,149
+machines not just
+have sensors,
+
+1693
+01:18:23,149 --> 01:18:25,240
+are basically tie it to
+
+1694
+01:18:25,240 --> 01:18:28,955
+a protocol or to
+invocation architecture.
+
+1695
+01:18:28,955 --> 01:18:32,270
+There we can do
+different things.
+
+1696
+01:18:32,270 --> 01:18:33,770
+We can work on
+translation.
+
+1697
+01:18:33,770 --> 01:18:35,790
+I would say that would
+be the first stage.
+
+1698
+01:18:35,790 --> 01:18:41,375
+But of course, we need
+also to look ahead.
+
+1699
+01:18:41,375 --> 01:18:43,925
+Then for these
+environments, of course,
+
+1700
+01:18:43,925 --> 01:18:45,050
+there's also
+the issue with
+
+1701
+01:18:45,050 --> 01:18:49,160
+the pool variance model
+that NDNs of course,
+
+1702
+01:18:49,160 --> 01:18:51,500
+we also have
+the possibility
+
+1703
+01:18:51,500 --> 01:18:53,825
+of support was push-based
+communication,
+
+1704
+01:18:53,825 --> 01:18:56,110
+but they will have
+to be adjusted to
+
+1705
+01:18:56,110 --> 01:18:58,370
+serve the IoT
+requirements again,
+
+1706
+01:18:58,370 --> 01:18:59,870
+where we have very
+
+1707
+01:18:59,870 --> 01:19:01,970
+critical and strict
+requirements
+
+1708
+01:19:01,970 --> 01:19:04,710
+like bounded latency
+below one millisecond.
+
+1709
+01:19:04,710 --> 01:19:06,365
+More interesting,
+
+1710
+01:19:06,365 --> 01:19:08,180
+at least was in
+terms of what we
+
+1711
+01:19:08,180 --> 01:19:09,675
+are doing is
+the capability
+
+1712
+01:19:09,675 --> 01:19:13,715
+to do centralized
+synchronization.
+
+1713
+01:19:13,715 --> 01:19:16,740
+Multi-party data
+synchronization.
+
+1714
+01:19:18,070 --> 01:19:22,100
+We have a few options
+available such as
+
+1715
+01:19:22,100 --> 01:19:24,095
+vector sync or
+coronal sync
+
+1716
+01:19:24,095 --> 01:19:26,810
+and this is definitely
+interesting.
+
+1717
+01:19:26,810 --> 01:19:28,670
+Just to explain
+a little bit
+
+1718
+01:19:28,670 --> 01:19:30,620
+what we are trying
+to do right now.
+
+1719
+01:19:30,620 --> 01:19:33,285
+In, a live environment,
+
+1720
+01:19:33,285 --> 01:19:37,070
+we are currently
+basically starting again,
+
+1721
+01:19:37,070 --> 01:19:39,380
+so trying to prepare
+
+1722
+01:19:39,380 --> 01:19:42,345
+and to propose
+adaptations.
+
+1723
+01:19:42,345 --> 01:19:44,265
+When the end, so what
+
+1724
+01:19:44,265 --> 01:19:45,900
+you have on the
+left-hand side is
+
+1725
+01:19:45,900 --> 01:19:49,670
+basically an example of
+where we want to go.
+
+1726
+01:19:49,670 --> 01:19:51,110
+So where we
+have the AGV is
+
+1727
+01:19:51,110 --> 01:19:53,265
+directly communicating
+among themselves.
+
+1728
+01:19:53,265 --> 01:19:55,520
+But also to the
+pickups stations,
+
+1729
+01:19:55,520 --> 01:19:58,370
+let's say to the
+task servers and
+
+1730
+01:19:58,370 --> 01:19:59,840
+on the right-hand
+side is what we are
+
+1731
+01:19:59,840 --> 01:20:02,105
+doing currently
+to test this.
+
+1732
+01:20:02,105 --> 01:20:05,235
+What we want to
+understand is not
+
+1733
+01:20:05,235 --> 01:20:07,310
+just a course to
+look comparison
+
+1734
+01:20:07,310 --> 01:20:10,020
+against MQTT or a
+broker approach.
+
+1735
+01:20:10,020 --> 01:20:11,950
+We want to go a little
+bit beyond that.
+
+1736
+01:20:11,950 --> 01:20:13,670
+We actually would
+like to compare it to
+
+1737
+01:20:13,670 --> 01:20:16,250
+the **** so the
+approach of OPC way,
+
+1738
+01:20:16,250 --> 01:20:18,470
+which is based
+on multicast and
+
+1739
+01:20:18,470 --> 01:20:21,780
+also so try to convince,
+
+1740
+01:20:21,780 --> 01:20:24,900
+let's say, the industrial
+
+1741
+01:20:24,900 --> 01:20:27,700
+IoT people that NDN
+
+1742
+01:20:27,700 --> 01:20:29,620
+is definitely so the
+vendors for instance,
+
+1743
+01:20:29,620 --> 01:20:33,725
+NDN is definitely an
+approach that should be
+
+1744
+01:20:33,725 --> 01:20:37,290
+considered to support
+this decentralization
+
+1745
+01:20:37,290 --> 01:20:39,335
+on the shop floors.
+
+1746
+01:20:39,335 --> 01:20:42,540
+This is my last
+slide. Thank you.
+
+1747
+01:20:45,990 --> 01:20:47,750
+>> Thank you so much.
+
+1748
+01:20:47,750 --> 01:20:49,070
+Thank you for
+accommodating
+
+1749
+01:20:49,070 --> 01:20:51,935
+this while you
+were traveling.
+
+1750
+01:20:51,935 --> 01:20:55,385
+I think you're
+raising a number of
+
+1751
+01:20:55,385 --> 01:20:57,530
+important questions
+that we're going to
+
+1752
+01:20:57,530 --> 01:20:59,620
+come back to in, I think,
+
+1753
+01:20:59,620 --> 01:21:02,750
+NDN and data
+centric research in
+
+1754
+01:21:02,750 --> 01:21:07,145
+general is this
+raise of the edge,
+
+1755
+01:21:07,145 --> 01:21:11,615
+the edge networks,
+the edge computing,
+
+1756
+01:21:11,615 --> 01:21:15,645
+and essentially
+the IIoT and where
+
+1757
+01:21:15,645 --> 01:21:17,295
+there is probably a lot of
+
+1758
+01:21:17,295 --> 01:21:19,665
+opportunities and we
+already saw this.
+
+1759
+01:21:19,665 --> 01:21:22,200
+This is actually the
+perfect segue into,
+
+1760
+01:21:22,200 --> 01:21:25,110
+I know Ike is going
+to talk about.
+
+1761
+01:21:25,110 --> 01:21:28,030
+Ike, please present.
+
+1762
+01:21:28,030 --> 01:21:28,040
+[NOISE].
+
+1763
+01:21:28,040 --> 01:21:33,815
+>> Yeah, hello everyone.
+
+1764
+01:21:33,815 --> 01:21:36,990
+Let me also quickly
+
+1765
+01:21:38,590 --> 01:21:44,010
+see which screen to
+share right now.
+
+1766
+01:21:44,940 --> 01:21:49,010
+That's the wrong
+one, I guess.
+
+1767
+01:21:49,180 --> 01:21:53,130
+Then let's try
+the other one.
+
+1768
+01:22:00,850 --> 01:22:04,635
+Now you should see
+the correct screen.
+
+1769
+01:22:04,635 --> 01:22:06,875
+Hello everyone.
+
+1770
+01:22:06,875 --> 01:22:09,625
+Thank you very much
+for the introduction
+
+1771
+01:22:09,625 --> 01:22:12,665
+and the invitation,
+Marie-Jose.
+
+1772
+01:22:12,665 --> 01:22:15,120
+I guess I'm one
+of the people
+
+1773
+01:22:15,120 --> 01:22:17,360
+who are not that
+directly involved in
+
+1774
+01:22:17,360 --> 01:22:19,305
+NDN because from
+my background I'm
+
+1775
+01:22:19,305 --> 01:22:22,695
+rather working
+on computing
+
+1776
+01:22:22,695 --> 01:22:24,555
+and the network
+only right now.
+
+1777
+01:22:24,555 --> 01:22:27,380
+I'm Ike Kunze, I'm
+a PhD student at
+
+1778
+01:22:27,380 --> 01:22:31,025
+RWTH Aachen University
+in Germany.
+
+1779
+01:22:31,025 --> 01:22:33,915
+What I would like
+to do today is
+
+1780
+01:22:33,915 --> 01:22:36,645
+give an outside view
+into the topics.
+
+1781
+01:22:36,645 --> 01:22:41,765
+I'm generally familiar
+with NDN and such.
+
+1782
+01:22:41,765 --> 01:22:45,635
+But yeah, I'm not
+
+1783
+01:22:45,635 --> 01:22:49,280
+actively working on
+the topic and what
+
+1784
+01:22:49,280 --> 01:22:52,530
+I would like to do here
+is basically give you
+
+1785
+01:22:52,530 --> 01:22:56,705
+my current work,
+what I'm doing.
+
+1786
+01:22:56,705 --> 01:22:59,000
+I'm working in a German
+research project
+
+1787
+01:22:59,000 --> 01:23:00,320
+that is focusing
+on bringing
+
+1788
+01:23:00,320 --> 01:23:01,610
+Internet technology to
+
+1789
+01:23:01,610 --> 01:23:03,710
+industrial networks
+but quite similar to
+
+1790
+01:23:03,710 --> 01:23:07,475
+what we've seen on the
+previous talk by Rute.
+
+1791
+01:23:07,475 --> 01:23:09,980
+Actually, I thought
+one slide is really
+
+1792
+01:23:09,980 --> 01:23:12,860
+similar to what I'm
+about to show you.
+
+1793
+01:23:12,860 --> 01:23:15,980
+What we have in our
+project are a lot
+
+1794
+01:23:15,980 --> 01:23:17,655
+of different demonstrators
+
+1795
+01:23:17,655 --> 01:23:18,890
+and machines that we have.
+
+1796
+01:23:18,890 --> 01:23:21,200
+What I've put
+here on the slide
+
+1797
+01:23:21,200 --> 01:23:23,930
+is fine blanking
+line, for example.
+
+1798
+01:23:23,930 --> 01:23:25,635
+Basically, a high
+
+1799
+01:23:25,635 --> 01:23:28,365
+precision stamping
+process where we
+
+1800
+01:23:28,365 --> 01:23:31,790
+stamp metal or
+a high pressure
+
+1801
+01:23:31,790 --> 01:23:33,845
+die casting process
+where we basically have
+
+1802
+01:23:33,845 --> 01:23:35,540
+molten metal that
+we push into
+
+1803
+01:23:35,540 --> 01:23:37,240
+a form which we then
+
+1804
+01:23:37,240 --> 01:23:39,440
+used to create large pots,
+
+1805
+01:23:39,440 --> 01:23:42,840
+for example, for the
+car manufacturing.
+
+1806
+01:23:42,970 --> 01:23:45,265
+One of the first goals of
+
+1807
+01:23:45,265 --> 01:23:48,050
+our research project is
+
+1808
+01:23:48,050 --> 01:23:49,940
+basically to
+interconnect all
+
+1809
+01:23:49,940 --> 01:23:51,680
+of these different
+machines,
+
+1810
+01:23:51,680 --> 01:23:54,290
+also from different
+locations,
+
+1811
+01:23:54,290 --> 01:23:56,450
+and just to try and
+
+1812
+01:23:56,450 --> 01:23:58,550
+then create and gather
+
+1813
+01:23:58,550 --> 01:23:59,810
+as much data as possible.
+
+1814
+01:23:59,810 --> 01:24:03,800
+I think that was brought
+
+1815
+01:24:03,800 --> 01:24:05,520
+quite good to the point by
+
+1816
+01:24:05,520 --> 01:24:07,715
+Rute and
+Marie-Jose before.
+
+1817
+01:24:07,715 --> 01:24:09,015
+We're just
+trying to gather
+
+1818
+01:24:09,015 --> 01:24:10,595
+as much data as possible.
+
+1819
+01:24:10,595 --> 01:24:12,500
+Then on the right
+hand side you can see
+
+1820
+01:24:12,500 --> 01:24:14,560
+a couple of passwords.
+
+1821
+01:24:14,560 --> 01:24:17,480
+Basically, we want to
+then try to derive
+
+1822
+01:24:17,480 --> 01:24:19,425
+as much information
+out of that data
+
+1823
+01:24:19,425 --> 01:24:21,660
+as possible to
+then finally,
+
+1824
+01:24:21,660 --> 01:24:24,015
+improve the processes
+themselves.
+
+1825
+01:24:24,015 --> 01:24:26,990
+However, in typical
+industrial settings,
+
+1826
+01:24:26,990 --> 01:24:27,710
+what we see is
+
+1827
+01:24:27,710 --> 01:24:29,510
+that the communication
+patterns
+
+1828
+01:24:29,510 --> 01:24:30,975
+are rather static.
+
+1829
+01:24:30,975 --> 01:24:32,810
+For example, you
+would only set
+
+1830
+01:24:32,810 --> 01:24:34,545
+up the connection
+to the Cloud 1s
+
+1831
+01:24:34,545 --> 01:24:39,045
+or if you have a
+fixed supply chain,
+
+1832
+01:24:39,045 --> 01:24:41,835
+for example, you
+will only set
+
+1833
+01:24:41,835 --> 01:24:42,980
+up the communication
+channels
+
+1834
+01:24:42,980 --> 01:24:45,110
+between those
+different parties.
+
+1835
+01:24:45,110 --> 01:24:47,030
+What I personally
+I'm looking at
+
+1836
+01:24:47,030 --> 01:24:48,830
+is how we can
+make everything
+
+1837
+01:24:48,830 --> 01:24:51,604
+a bit more flexible
+by also deploying
+
+1838
+01:24:51,604 --> 01:24:53,400
+compute functionality and
+
+1839
+01:24:53,400 --> 01:24:55,475
+additional functionality
+in the network.
+
+1840
+01:24:55,475 --> 01:24:57,860
+For example, if
+we have a lot of
+
+1841
+01:24:57,860 --> 01:25:02,190
+analysis tasks in the
+Cloud then how can we,
+
+1842
+01:25:02,190 --> 01:25:03,740
+for example, move some
+
+1843
+01:25:03,740 --> 01:25:05,480
+of that functionality
+into the network
+
+1844
+01:25:05,480 --> 01:25:07,339
+so that we can improve
+
+1845
+01:25:07,339 --> 01:25:09,034
+the overall performance.
+
+1846
+01:25:09,034 --> 01:25:10,440
+But also, on
+the other hand,
+
+1847
+01:25:10,440 --> 01:25:12,465
+I'm interested in
+finding out how we can
+
+1848
+01:25:12,465 --> 01:25:15,245
+actually make direct
+use of the data.
+
+1849
+01:25:15,245 --> 01:25:18,440
+We look at the data
+and try to find
+
+1850
+01:25:18,440 --> 01:25:22,370
+out where these data
+is best suited to go.
+
+1851
+01:25:22,370 --> 01:25:24,530
+To illustrate that a bit
+
+1852
+01:25:24,530 --> 01:25:26,925
+let us quickly
+make this a bit
+
+1853
+01:25:26,925 --> 01:25:28,860
+more easy and then also
+
+1854
+01:25:28,860 --> 01:25:31,175
+look at this plot
+at the bottom.
+
+1855
+01:25:31,175 --> 01:25:33,110
+What you can see
+here is basically
+
+1856
+01:25:33,110 --> 01:25:38,840
+a liifetime of the
+pipe linking process.
+
+1857
+01:25:38,840 --> 01:25:40,534
+We have a very
+characteristic
+
+1858
+01:25:40,534 --> 01:25:42,380
+signal, the punch force.
+
+1859
+01:25:42,380 --> 01:25:44,385
+Basically the force with
+
+1860
+01:25:44,385 --> 01:25:47,330
+which the metal
+is punched.
+
+1861
+01:25:47,330 --> 01:25:50,750
+As we can see, the signal
+at the beginning is
+
+1862
+01:25:50,750 --> 01:25:52,370
+rather fluctuating then it
+
+1863
+01:25:52,370 --> 01:25:53,834
+gets a bit more stable.
+
+1864
+01:25:53,834 --> 01:25:55,845
+Then afterwards it
+starts to fluctuate even
+
+1865
+01:25:55,845 --> 01:25:58,805
+more in these
+different phases.
+
+1866
+01:25:58,805 --> 01:26:01,265
+We can divide the process
+
+1867
+01:26:01,265 --> 01:26:03,090
+along those
+different phases.
+
+1868
+01:26:03,090 --> 01:26:04,820
+What we are now trying to
+
+1869
+01:26:04,820 --> 01:26:06,785
+do is basically detect
+
+1870
+01:26:06,785 --> 01:26:08,990
+these different
+stages or phases of
+
+1871
+01:26:08,990 --> 01:26:12,500
+the process already on
+networking devices.
+
+1872
+01:26:12,500 --> 01:26:14,510
+For example, that
+if we are in
+
+1873
+01:26:14,510 --> 01:26:17,255
+a product
+controlled setting,
+
+1874
+01:26:17,255 --> 01:26:19,830
+then we don't need
+all the information,
+
+1875
+01:26:19,830 --> 01:26:20,960
+but we might only be
+
+1876
+01:26:20,960 --> 01:26:22,610
+interested in logging
+the information and
+
+1877
+01:26:22,610 --> 01:26:24,200
+sending them to the Cloud
+
+1878
+01:26:24,200 --> 01:26:26,385
+for example, a
+deeper inspection.
+
+1879
+01:26:26,385 --> 01:26:27,980
+Or if we are in
+
+1880
+01:26:27,980 --> 01:26:32,030
+a face where the process
+seems to go wild,
+
+1881
+01:26:32,030 --> 01:26:33,630
+that we can just
+
+1882
+01:26:33,630 --> 01:26:36,770
+identify that and then
+send all the data to
+
+1883
+01:26:36,770 --> 01:26:39,470
+a process near a edge
+
+1884
+01:26:39,470 --> 01:26:40,790
+Cloud where we then have
+
+1885
+01:26:40,790 --> 01:26:42,380
+the clause that control
+
+1886
+01:26:42,380 --> 01:26:45,135
+that Rute was talking
+about earlier as well.
+
+1887
+01:26:45,135 --> 01:26:48,560
+In this way, what
+we're trying to
+
+1888
+01:26:48,560 --> 01:26:52,325
+do is really try to
+make use of the data,
+
+1889
+01:26:52,325 --> 01:26:54,890
+to also find out
+
+1890
+01:26:54,890 --> 01:26:56,690
+where we want to
+send the data.
+
+1891
+01:26:56,690 --> 01:27:00,290
+As I said, I'm
+looking from
+
+1892
+01:27:00,290 --> 01:27:01,725
+the outside in on NDN
+
+1893
+01:27:01,725 --> 01:27:03,525
+and that's what I
+would, for example,
+
+1894
+01:27:03,525 --> 01:27:05,720
+be interested is finding
+
+1895
+01:27:05,720 --> 01:27:07,775
+out whether these
+concepts are actually
+
+1896
+01:27:07,775 --> 01:27:09,920
+supportable by NDN or
+whether they map to
+
+1897
+01:27:09,920 --> 01:27:14,115
+NDN and if so how this
+is actually done.
+
+1898
+01:27:14,115 --> 01:27:16,760
+Because I'm
+just interested
+
+1899
+01:27:16,760 --> 01:27:19,865
+in how this
+would then work.
+
+1900
+01:27:19,865 --> 01:27:23,070
+Yeah, with that, I'm
+through to my slides.
+
+1901
+01:27:23,070 --> 01:27:24,740
+Thank you very
+much and I'm
+
+1902
+01:27:24,740 --> 01:27:27,080
+looking forward to
+the discussion.
+
+1903
+01:27:27,120 --> 01:27:31,910
+>> Thank you. I guess
+all participants,
+
+1904
+01:27:31,910 --> 01:27:34,265
+I don't see a lot
+of questions yet,
+
+1905
+01:27:34,265 --> 01:27:36,710
+but you can see that
+we're starting to have
+
+1906
+01:27:36,710 --> 01:27:41,940
+this trend of compute
+things aggregate,
+
+1907
+01:27:41,940 --> 01:27:44,135
+things need to
+be discovered.
+
+1908
+01:27:44,135 --> 01:27:47,120
+I think this is something
+that is common to
+
+1909
+01:27:47,120 --> 01:27:51,560
+both the data centric
+and the NDN world.
+
+1910
+01:27:51,560 --> 01:27:55,220
+We'll end, and it's
+not the least,
+
+1911
+01:27:55,220 --> 01:27:57,860
+it's the last
+person but somebody
+
+1912
+01:27:57,860 --> 01:28:01,530
+who brings another
+view from industry
+
+1913
+01:28:03,280 --> 01:28:06,785
+This is Srikathyayani
+from Intel,
+
+1914
+01:28:06,785 --> 01:28:10,340
+who actually is
+participating
+
+1915
+01:28:10,340 --> 01:28:13,820
+in this in spite of
+having an accident.
+
+1916
+01:28:13,820 --> 01:28:16,370
+Thank you so much
+for doing this in
+
+1917
+01:28:16,370 --> 01:28:19,880
+spite of your accident.
+
+1918
+01:28:19,880 --> 01:28:22,160
+I'm very happy that
+you can do it.
+
+1919
+01:28:22,160 --> 01:28:24,530
+I will let you talk
+about your work in MDM
+
+1920
+01:28:24,530 --> 01:28:25,700
+because you are really
+
+1921
+01:28:25,700 --> 01:28:27,825
+involved in the community.
+
+1922
+01:28:27,825 --> 01:28:30,775
+>> Thank you so
+much, Marie-Jose.
+
+1923
+01:28:30,775 --> 01:28:31,750
+Yes, I had
+
+1924
+01:28:31,750 --> 01:28:33,820
+an unfortunate
+accident a couple of
+
+1925
+01:28:33,820 --> 01:28:35,590
+days ago and I apologize
+
+1926
+01:28:35,590 --> 01:28:37,000
+for not having slides.
+
+1927
+01:28:37,000 --> 01:28:38,590
+My vision is
+still blurry and
+
+1928
+01:28:38,590 --> 01:28:40,430
+I need to be
+in a darkroom,
+
+1929
+01:28:40,430 --> 01:28:42,845
+so thank you for
+bearing with me.
+
+1930
+01:28:42,845 --> 01:28:45,635
+I'm Srikathyayani
+Srikanteswara.
+
+1931
+01:28:45,635 --> 01:28:47,540
+I am a Principal
+Engineer at
+
+1932
+01:28:47,540 --> 01:28:50,390
+Intel Labs and I
+currently am leading
+
+1933
+01:28:50,390 --> 01:28:52,640
+research and
+using Endian for
+
+1934
+01:28:52,640 --> 01:28:55,340
+dynamic orchestration
+at the Edge
+
+1935
+01:28:55,340 --> 01:28:57,050
+and also how to adapt and
+
+1936
+01:28:57,050 --> 01:29:00,905
+transition these
+technologies into industry.
+
+1937
+01:29:00,905 --> 01:29:04,160
+Now, my remarks
+will be very much
+
+1938
+01:29:04,160 --> 01:29:07,955
+aligned to what has
+been mentioned already.
+
+1939
+01:29:07,955 --> 01:29:10,280
+Data is everywhere and
+
+1940
+01:29:10,280 --> 01:29:11,735
+it's gaining importance,
+
+1941
+01:29:11,735 --> 01:29:13,280
+but the key is, data
+
+1942
+01:29:13,280 --> 01:29:15,995
+needs to be analyzed,
+interpreted.
+
+1943
+01:29:15,995 --> 01:29:18,980
+When that happens, that
+creates more data.
+
+1944
+01:29:18,980 --> 01:29:20,735
+What that means is,
+
+1945
+01:29:20,735 --> 01:29:24,810
+data and compute
+usually go together.
+
+1946
+01:29:26,260 --> 01:29:29,645
+The other point I
+want to mention is
+
+1947
+01:29:29,645 --> 01:29:32,945
+data and compute
+typically go together.
+
+1948
+01:29:32,945 --> 01:29:35,885
+But data is everywhere
+and so is compute.
+
+1949
+01:29:35,885 --> 01:29:39,215
+But a lot of it is not
+getting used today.
+
+1950
+01:29:39,215 --> 01:29:40,640
+What am I talking
+about? We all
+
+1951
+01:29:40,640 --> 01:29:42,365
+know about Edge Computing.
+
+1952
+01:29:42,365 --> 01:29:44,270
+As we're bringing servers
+
+1953
+01:29:44,270 --> 01:29:45,470
+more closer to the Edge,
+
+1954
+01:29:45,470 --> 01:29:48,140
+maybe at the 5G base
+station and so on.
+
+1955
+01:29:48,140 --> 01:29:50,540
+But there are
+further a lot
+
+1956
+01:29:50,540 --> 01:29:53,090
+more compute
+resources that are
+
+1957
+01:29:53,090 --> 01:29:55,370
+available that do
+not participate
+
+1958
+01:29:55,370 --> 01:29:58,700
+in this providing data
+or Edge Computing.
+
+1959
+01:29:58,700 --> 01:30:00,980
+I'm talking about
+the processing
+
+1960
+01:30:00,980 --> 01:30:02,270
+of CPU in cars,
+
+1961
+01:30:02,270 --> 01:30:04,175
+maybe a server in
+the Starbucks,
+
+1962
+01:30:04,175 --> 01:30:06,095
+your PC in a home,
+
+1963
+01:30:06,095 --> 01:30:07,250
+or even on a PC in
+
+1964
+01:30:07,250 --> 01:30:09,470
+a factory floor
+that is not
+
+1965
+01:30:09,470 --> 01:30:11,270
+part of your factory Cloud
+
+1966
+01:30:11,270 --> 01:30:13,790
+and doesn't participate
+in Edge Computing.
+
+1967
+01:30:13,790 --> 01:30:16,250
+What I want to mention is,
+
+1968
+01:30:16,250 --> 01:30:19,790
+Endian actually has
+this unique ability
+
+1969
+01:30:19,790 --> 01:30:22,865
+to bring all of
+these devices,
+
+1970
+01:30:22,865 --> 01:30:26,180
+compute data
+resources that don't
+
+1971
+01:30:26,180 --> 01:30:27,980
+participate in
+
+1972
+01:30:27,980 --> 01:30:30,560
+this Edge Computing
+data transport,
+
+1973
+01:30:30,560 --> 01:30:32,975
+all of that into the fold.
+
+1974
+01:30:32,975 --> 01:30:35,465
+I think that is
+one place where we
+
+1975
+01:30:35,465 --> 01:30:37,910
+can truly bring out
+the unique features
+
+1976
+01:30:37,910 --> 01:30:39,725
+or benefits of Endian
+
+1977
+01:30:39,725 --> 01:30:41,885
+in an industry
+that might be
+
+1978
+01:30:41,885 --> 01:30:43,910
+otherwise reluctant
+to change
+
+1979
+01:30:43,910 --> 01:30:47,045
+from IP or the way
+they do things.
+
+1980
+01:30:47,045 --> 01:30:49,070
+The unique features
+of Endian,
+
+1981
+01:30:49,070 --> 01:30:50,210
+I don't need to explain
+
+1982
+01:30:50,210 --> 01:30:51,770
+the benefits of an Endian.
+
+1983
+01:30:51,770 --> 01:30:53,660
+But the features of
+Endian that would
+
+1984
+01:30:53,660 --> 01:30:56,000
+help here in the
+scenario that
+
+1985
+01:30:56,000 --> 01:30:57,080
+I mentioned is the fact
+
+1986
+01:30:57,080 --> 01:30:59,240
+that Endian can bridge
+
+1987
+01:30:59,240 --> 01:31:00,920
+wireless networks a lot
+
+1988
+01:31:00,920 --> 01:31:03,185
+more easily than say IP.
+
+1989
+01:31:03,185 --> 01:31:04,730
+Because at the
+network layer,
+
+1990
+01:31:04,730 --> 01:31:06,950
+you don't really care
+whether I'm sending out
+
+1991
+01:31:06,950 --> 01:31:07,970
+my interest packet or
+
+1992
+01:31:07,970 --> 01:31:10,010
+a Wi-Fi network
+or a Bluetooth,
+
+1993
+01:31:10,010 --> 01:31:12,260
+5G, or anything else.
+
+1994
+01:31:12,260 --> 01:31:14,090
+There is that
+big advantage
+
+1995
+01:31:14,090 --> 01:31:15,170
+and I think that
+needs to be
+
+1996
+01:31:15,170 --> 01:31:18,575
+exploited and brought
+out even better.
+
+1997
+01:31:18,575 --> 01:31:21,770
+Also Endian has
+this unique ability
+
+1998
+01:31:21,770 --> 01:31:24,365
+of bridging data silos.
+
+1999
+01:31:24,365 --> 01:31:27,515
+Especially news cases
+like smart city,
+
+2000
+01:31:27,515 --> 01:31:29,000
+which is I guess related
+
+2001
+01:31:29,000 --> 01:31:30,290
+to parts some
+would call it
+
+2002
+01:31:30,290 --> 01:31:33,170
+part of IoT use case.
+
+2003
+01:31:33,170 --> 01:31:34,730
+You have data in
+
+2004
+01:31:34,730 --> 01:31:36,170
+silos transportation
+system,
+
+2005
+01:31:36,170 --> 01:31:37,505
+may be weather system,
+
+2006
+01:31:37,505 --> 01:31:39,470
+in cars, in
+
+2007
+01:31:39,470 --> 01:31:42,770
+the electricity
+department and so on.
+
+2008
+01:31:42,770 --> 01:31:45,275
+All of these need
+to come together.
+
+2009
+01:31:45,275 --> 01:31:47,345
+Especially if you have
+
+2010
+01:31:47,345 --> 01:31:49,340
+a common naming
+scheme and metadata
+
+2011
+01:31:49,340 --> 01:31:50,675
+and visibility to that
+
+2012
+01:31:50,675 --> 01:31:52,955
+and along with
+trust schemes,
+
+2013
+01:31:52,955 --> 01:31:55,130
+Endian offers that
+unique ability
+
+2014
+01:31:55,130 --> 01:31:57,905
+for these use cases.
+
+2015
+01:31:57,905 --> 01:31:59,810
+The other point
+I want to bring
+
+2016
+01:31:59,810 --> 01:32:01,235
+out is especially
+
+2017
+01:32:01,235 --> 01:32:02,960
+in some of the use cases
+
+2018
+01:32:02,960 --> 01:32:04,940
+like IoT or in the
+factory floor,
+
+2019
+01:32:04,940 --> 01:32:06,650
+where data is created at
+
+2020
+01:32:06,650 --> 01:32:09,335
+the Edge and used
+at the Edge,
+
+2021
+01:32:09,335 --> 01:32:12,560
+traditional CDN-like
+approaches will
+
+2022
+01:32:12,560 --> 01:32:14,120
+not work because
+a lot of times
+
+2023
+01:32:14,120 --> 01:32:16,115
+that's the argument
+that I get is,
+
+2024
+01:32:16,115 --> 01:32:17,660
+"I need to transfer data
+
+2025
+01:32:17,660 --> 01:32:18,755
+, Endian does
+so much better.
+
+2026
+01:32:18,755 --> 01:32:20,225
+We'll just use a CDN."
+
+2027
+01:32:20,225 --> 01:32:22,310
+CDNs work great
+when data is at
+
+2028
+01:32:22,310 --> 01:32:24,650
+the core and flows
+to the Edge.
+
+2029
+01:32:24,650 --> 01:32:27,335
+But in areas like
+
+2030
+01:32:27,335 --> 01:32:28,490
+IoT where data is
+
+2031
+01:32:28,490 --> 01:32:30,200
+generated and
+used at the Edge,
+
+2032
+01:32:30,200 --> 01:32:33,080
+that architecture
+doesn't work very well.
+
+2033
+01:32:33,080 --> 01:32:35,210
+Along these lines,
+we actually
+
+2034
+01:32:35,210 --> 01:32:38,330
+developed an
+algorithm within
+
+2035
+01:32:38,330 --> 01:32:40,700
+Endian for dynamic
+orchestration where we
+
+2036
+01:32:40,700 --> 01:32:43,205
+bring together data,
+
+2037
+01:32:43,205 --> 01:32:44,390
+compute, there is
+
+2038
+01:32:44,390 --> 01:32:45,590
+the hardware resource and
+
+2039
+01:32:45,590 --> 01:32:47,180
+software together
+in real time.
+
+2040
+01:32:47,180 --> 01:32:47,990
+That is, they get
+
+2041
+01:32:47,990 --> 01:32:49,430
+discovered in real-time
+and they come
+
+2042
+01:32:49,430 --> 01:32:51,050
+together in
+real-time and we
+
+2043
+01:32:51,050 --> 01:32:53,210
+publish these in Globcom.
+
+2044
+01:32:53,210 --> 01:32:56,060
+What we found is,
+in addition to,
+
+2045
+01:32:56,060 --> 01:32:57,950
+we can indeed
+discover these in
+
+2046
+01:32:57,950 --> 01:32:58,730
+real-time and bring
+
+2047
+01:32:58,730 --> 01:33:00,335
+them together
+in real-time.
+
+2048
+01:33:00,335 --> 01:33:02,315
+What we were
+able to show is,
+
+2049
+01:33:02,315 --> 01:33:03,560
+even if these servers,
+
+2050
+01:33:03,560 --> 01:33:05,285
+let's say they're on
+for five seconds,
+
+2051
+01:33:05,285 --> 01:33:06,800
+they go away,
+they disappear.
+
+2052
+01:33:06,800 --> 01:33:08,390
+We're able to continuously
+
+2053
+01:33:08,390 --> 01:33:10,625
+discover new resources
+and use them.
+
+2054
+01:33:10,625 --> 01:33:12,485
+It supports
+dynamism, which is
+
+2055
+01:33:12,485 --> 01:33:15,230
+a very unique
+feature of Endian.
+
+2056
+01:33:15,230 --> 01:33:16,730
+Another thing we found
+
+2057
+01:33:16,730 --> 01:33:18,065
+that we weren't
+even looking for it
+
+2058
+01:33:18,065 --> 01:33:21,215
+is load balancing
+becomes quite automatic.
+
+2059
+01:33:21,215 --> 01:33:23,570
+There is so much effort
+that's being put
+
+2060
+01:33:23,570 --> 01:33:25,040
+today in how to do
+
+2061
+01:33:25,040 --> 01:33:27,110
+a load balancing and
+what am I referring to?
+
+2062
+01:33:27,110 --> 01:33:29,390
+Is, let's say I have
+two head servers,
+
+2063
+01:33:29,390 --> 01:33:30,650
+suddenly a third
+head server
+
+2064
+01:33:30,650 --> 01:33:31,925
+comes on, a fourth.
+
+2065
+01:33:31,925 --> 01:33:34,985
+Automatically the
+interest packets
+
+2066
+01:33:34,985 --> 01:33:36,710
+start going to the servers
+
+2067
+01:33:36,710 --> 01:33:38,300
+that are less occupied
+because they say,
+
+2068
+01:33:38,300 --> 01:33:40,340
+"Hey, I'm free,"
+they respond.
+
+2069
+01:33:40,340 --> 01:33:43,115
+We see that the
+load is being
+
+2070
+01:33:43,115 --> 01:33:47,480
+shared equally among
+the different servers.
+
+2071
+01:33:47,480 --> 01:33:50,030
+These results, as I
+said they're in local,
+
+2072
+01:33:50,030 --> 01:33:51,170
+unfortunately,
+I'm not able
+
+2073
+01:33:51,170 --> 01:33:52,460
+to show them to
+you right now.
+
+2074
+01:33:52,460 --> 01:33:53,930
+But then we took
+
+2075
+01:33:53,930 --> 01:33:55,760
+all these results
+and then we went
+
+2076
+01:33:55,760 --> 01:33:57,290
+and spoke to some people
+
+2077
+01:33:57,290 --> 01:33:59,180
+who are building these
+end-to-end systems,
+
+2078
+01:33:59,180 --> 01:34:01,085
+working in these areas.
+
+2079
+01:34:01,085 --> 01:34:03,560
+Some of the
+interesting insights
+
+2080
+01:34:03,560 --> 01:34:05,795
+I want to share
+with you are,
+
+2081
+01:34:05,795 --> 01:34:07,490
+a lot of these areas,
+
+2082
+01:34:07,490 --> 01:34:08,780
+as you're already aware,
+
+2083
+01:34:08,780 --> 01:34:10,670
+people are used to
+working with IP,
+
+2084
+01:34:10,670 --> 01:34:12,335
+with the system they have.
+
+2085
+01:34:12,335 --> 01:34:14,150
+There is so much
+of history there.
+
+2086
+01:34:14,150 --> 01:34:14,720
+There's so much of
+
+2087
+01:34:14,720 --> 01:34:16,745
+code already
+existing there.
+
+2088
+01:34:16,745 --> 01:34:19,130
+When they see a lot
+of these results,
+
+2089
+01:34:19,130 --> 01:34:21,455
+they understand it,
+they're excited.
+
+2090
+01:34:21,455 --> 01:34:23,585
+But the other thing
+that we heard was,
+
+2091
+01:34:23,585 --> 01:34:24,980
+if you want us to
+
+2092
+01:34:24,980 --> 01:34:27,395
+change the way we
+are doing things,
+
+2093
+01:34:27,395 --> 01:34:29,000
+when there is a solution,
+
+2094
+01:34:29,000 --> 01:34:30,320
+we want to see 2x,
+
+2095
+01:34:30,320 --> 01:34:32,120
+3x maybe 10x gains and
+
+2096
+01:34:32,120 --> 01:34:35,030
+performance before we
+are going to change.
+
+2097
+01:34:35,030 --> 01:34:37,430
+If we see even if a 50
+percent improvement
+
+2098
+01:34:37,430 --> 01:34:39,410
+the effort and
+changing the code,
+
+2099
+01:34:39,410 --> 01:34:40,490
+no I'm not interested,
+
+2100
+01:34:40,490 --> 01:34:41,870
+which personally to me
+
+2101
+01:34:41,870 --> 01:34:43,370
+as a researcher was
+a little surprising,
+
+2102
+01:34:43,370 --> 01:34:45,305
+but it gets coming from
+
+2103
+01:34:45,305 --> 01:34:47,885
+people who are implementing
+these everyday.
+
+2104
+01:34:47,885 --> 01:34:49,520
+It makes sense.
+
+2105
+01:34:49,520 --> 01:34:53,090
+The other point I
+want to make is,
+
+2106
+01:34:53,090 --> 01:34:54,380
+a lot of these changes in
+
+2107
+01:34:54,380 --> 01:34:56,360
+industry are already
+happening in
+
+2108
+01:34:56,360 --> 01:35:00,230
+terms of you going
+towards naming or
+
+2109
+01:35:00,230 --> 01:35:01,940
+like when you take
+service meshes or
+
+2110
+01:35:01,940 --> 01:35:04,595
+even OPC UA has a
+pub-sub feature.
+
+2111
+01:35:04,595 --> 01:35:06,020
+Some of these aspects
+
+2112
+01:35:06,020 --> 01:35:07,490
+are already beginning to
+
+2113
+01:35:07,490 --> 01:35:10,925
+trickle into the industry.
+
+2114
+01:35:10,925 --> 01:35:12,230
+But what I want to urge
+
+2115
+01:35:12,230 --> 01:35:14,480
+the Endian Community is,
+
+2116
+01:35:14,480 --> 01:35:18,260
+it would really help
+if we integrate,
+
+2117
+01:35:18,260 --> 01:35:19,550
+if all of us and this
+
+2118
+01:35:19,550 --> 01:35:21,140
+is a request one at all.
+
+2119
+01:35:21,140 --> 01:35:23,480
+If we take an
+integrate Endian
+
+2120
+01:35:23,480 --> 01:35:26,000
+into existing popular
+applications.
+
+2121
+01:35:26,000 --> 01:35:29,105
+I heard Kubernetes
+mentioned a few times,
+
+2122
+01:35:29,105 --> 01:35:30,380
+those are some
+of the software
+
+2123
+01:35:30,380 --> 01:35:32,465
+that's being used
+ubiquitously.
+
+2124
+01:35:32,465 --> 01:35:36,140
+If we can show easily,
+just use this step,
+
+2125
+01:35:36,140 --> 01:35:37,175
+this piece of code,
+
+2126
+01:35:37,175 --> 01:35:38,750
+and you can have
+
+2127
+01:35:38,750 --> 01:35:40,865
+part of your
+application in IP,
+
+2128
+01:35:40,865 --> 01:35:42,260
+part of it in
+Endian and you get
+
+2129
+01:35:42,260 --> 01:35:43,370
+all these
+benefits when you
+
+2130
+01:35:43,370 --> 01:35:44,675
+use them in Endian,
+
+2131
+01:35:44,675 --> 01:35:48,005
+I think that would
+go a long way in
+
+2132
+01:35:48,005 --> 01:35:50,540
+industries realizing
+the benefits
+
+2133
+01:35:50,540 --> 01:35:52,475
+of Endian and actually
+adopting them.
+
+2134
+01:35:52,475 --> 01:35:55,250
+Then of course finally,
+last but not least,
+
+2135
+01:35:55,250 --> 01:35:56,555
+when you start
+looking at data
+
+2136
+01:35:56,555 --> 01:35:58,040
+along with compute,
+
+2137
+01:35:58,040 --> 01:36:00,650
+there are some new
+security challenges
+
+2138
+01:36:00,650 --> 01:36:02,195
+that come up as in,
+
+2139
+01:36:02,195 --> 01:36:03,980
+how do you know you are
+
+2140
+01:36:03,980 --> 01:36:07,280
+authorized to
+access compute,
+
+2141
+01:36:07,280 --> 01:36:10,100
+the access control,
+trusted computing,
+
+2142
+01:36:10,100 --> 01:36:12,920
+verifiable computing
+and so on.
+
+2143
+01:36:12,920 --> 01:36:13,880
+We're actually
+
+2144
+01:36:13,880 --> 01:36:15,470
+collaborating with
+the professors,
+
+2145
+01:36:15,470 --> 01:36:18,470
+Jamie Shen, Riza
+[inaudible] on this.
+
+2146
+01:36:18,470 --> 01:36:20,720
+But I think that
+these were some
+
+2147
+01:36:20,720 --> 01:36:21,920
+of the things I
+wanted to mentioned
+
+2148
+01:36:21,920 --> 01:36:23,970
+and l will conclude
+with that.
+
+2149
+01:36:25,300 --> 01:36:26,930
+>> Thank you so much.
+
+2150
+01:36:26,930 --> 01:36:28,820
+It was such a good summary
+
+2151
+01:36:28,820 --> 01:36:29,750
+in the way of everything
+
+2152
+01:36:29,750 --> 01:36:31,475
+we need to talk about.
+
+2153
+01:36:31,475 --> 01:36:34,145
+I think Rute you
+
+2154
+01:36:34,145 --> 01:36:36,260
+are the one who seems
+to be getting a lot
+
+2155
+01:36:36,260 --> 01:36:40,970
+of questions
+from the Slack.
+
+2156
+01:36:40,970 --> 01:36:43,310
+There were things
+about the support
+
+2157
+01:36:43,310 --> 01:36:44,480
+for mobility.
+
+2158
+01:36:44,480 --> 01:36:47,180
+Would you like to share
+with us a little bit
+
+2159
+01:36:47,180 --> 01:36:49,130
+what are the topics
+
+2160
+01:36:49,130 --> 01:36:52,080
+you've been discussing
+on the Slack?
+
+2161
+01:36:54,610 --> 01:36:58,170
+>> Yes. Sorry, I
+was just unmuting.
+
+2162
+01:37:02,410 --> 01:37:05,390
+In terms of
+producing mobility,
+
+2163
+01:37:05,390 --> 01:37:06,814
+there are a few questions
+
+2164
+01:37:06,814 --> 01:37:09,700
+about the solutions that
+
+2165
+01:37:09,700 --> 01:37:11,680
+we have today
+and of course,
+
+2166
+01:37:11,680 --> 01:37:13,510
+we have some solution.
+
+2167
+01:37:13,510 --> 01:37:14,860
+I said, I don't think that
+
+2168
+01:37:14,860 --> 01:37:16,885
+mobility is a
+critical part,
+
+2169
+01:37:16,885 --> 01:37:18,430
+at least to
+convince somebody
+
+2170
+01:37:18,430 --> 01:37:19,990
+manufacturing that
+Endian could be
+
+2171
+01:37:19,990 --> 01:37:24,855
+interesting because we
+have other problems.
+
+2172
+01:37:24,855 --> 01:37:27,950
+But however, here the idea
+
+2173
+01:37:27,950 --> 01:37:28,790
+is that we have
+
+2174
+01:37:28,790 --> 01:37:30,560
+environments where
+the producer,
+
+2175
+01:37:30,560 --> 01:37:33,950
+so we are using Endian
+on top of Ethernet.
+
+2176
+01:37:33,950 --> 01:37:35,899
+Of course, the providers
+
+2177
+01:37:35,899 --> 01:37:38,745
+are robots that
+are eventually
+
+2178
+01:37:38,745 --> 01:37:47,965
+sending information
+with a short interval.
+
+2179
+01:37:47,965 --> 01:37:49,870
+Small messages of course
+
+2180
+01:37:49,870 --> 01:37:52,345
+normally but
+critical messages.
+
+2181
+01:37:52,345 --> 01:37:54,280
+The other aspect
+that I think
+
+2182
+01:37:54,280 --> 01:37:56,110
+is more interesting was,
+
+2183
+01:37:56,110 --> 01:37:57,775
+let me just see,
+
+2184
+01:37:57,775 --> 01:38:02,020
+I'm trying to
+browse related
+
+2185
+01:38:02,020 --> 01:38:07,940
+with the comment I think
+
+2186
+01:38:07,940 --> 01:38:13,460
+by Dirk that of
+course we have
+
+2187
+01:38:13,460 --> 01:38:17,740
+the capability to push
+
+2188
+01:38:17,740 --> 01:38:18,970
+the semantics part and
+
+2189
+01:38:18,970 --> 01:38:21,220
+whether this
+is sufficient.
+
+2190
+01:38:21,220 --> 01:38:22,000
+I would say this is
+
+2191
+01:38:22,000 --> 01:38:25,240
+definitely a
+starting point,
+
+2192
+01:38:25,240 --> 01:38:26,440
+the question, this is
+
+2193
+01:38:26,440 --> 01:38:27,700
+a question
+because at least
+
+2194
+01:38:27,700 --> 01:38:31,505
+I didn't write
+operationally.
+
+2195
+01:38:31,505 --> 01:38:33,875
+We have to send also
+some parameter,
+
+2196
+01:38:33,875 --> 01:38:35,420
+not just from
+the producers,
+
+2197
+01:38:35,420 --> 01:38:38,735
+but also sensor
+parameters,
+
+2198
+01:38:38,735 --> 01:38:39,560
+for instance,
+
+2199
+01:38:39,560 --> 01:38:41,120
+time synchronization
+parameters,
+
+2200
+01:38:41,120 --> 01:38:43,100
+etc, that are important.
+
+2201
+01:38:43,100 --> 01:38:45,635
+The question is whether
+we can do it or not
+
+2202
+01:38:45,635 --> 01:38:48,620
+with this synchronization
+approaches.
+
+2203
+01:38:48,620 --> 01:38:50,210
+This would be the
+synchronization approaches.
+
+2204
+01:38:50,210 --> 01:38:54,200
+[NOISE]
+
+2205
+01:38:54,200 --> 01:38:55,220
+>> This actually this
+
+2206
+01:38:55,220 --> 01:38:57,665
+follows of course
+some of questions by
+
+2207
+01:38:57,665 --> 01:39:00,350
+Ike in terms of how can
+
+2208
+01:39:00,350 --> 01:39:03,365
+Endian help him on
+the factory floor.
+
+2209
+01:39:03,365 --> 01:39:05,615
+I think from what
+we heard also,
+
+2210
+01:39:05,615 --> 01:39:09,750
+I was pleased
+with Tatiana.
+
+2211
+01:39:11,220 --> 01:39:13,134
+mentioning
+
+2212
+01:39:13,134 --> 01:39:15,550
+the different data sources
+
+2213
+01:39:15,550 --> 01:39:17,890
+and the fact that all of
+
+2214
+01:39:17,890 --> 01:39:23,110
+these systems were lines
+and in terms of IoT,
+
+2215
+01:39:23,110 --> 01:39:25,060
+we need to use
+them horizontally
+
+2216
+01:39:25,060 --> 01:39:27,490
+and I'm facing this
+problem all the time.
+
+2217
+01:39:27,490 --> 01:39:29,800
+I think this is
+also [NOISE]
+
+2218
+01:39:29,800 --> 01:39:33,745
+an interesting question
+going back to Dirk.
+
+2219
+01:39:33,745 --> 01:39:36,220
+Well, Dirk, I'm
+throwing you the ball
+
+2220
+01:39:36,220 --> 01:39:38,680
+now because you
+
+2221
+01:39:38,680 --> 01:39:43,480
+raise this idea if the
+data was the answer.
+
+2222
+01:39:43,480 --> 01:39:45,070
+What is the
+problem? I think,
+
+2223
+01:39:45,070 --> 01:39:48,175
+first there's the
+power of rebel of
+
+2224
+01:39:48,175 --> 01:39:51,280
+all those data systems
+and how do you
+
+2225
+01:39:51,280 --> 01:39:55,510
+feel that an NDN and
+ICN can help there.
+
+2226
+01:39:55,510 --> 01:39:57,520
+I will tell you that for
+
+2227
+01:39:57,520 --> 01:40:00,640
+the same reason
+that Srikathyayani.
+
+2228
+01:40:00,640 --> 01:40:02,125
+I call you Srikathyayani
+
+2229
+01:40:02,125 --> 01:40:03,430
+because I know somebody
+
+2230
+01:40:03,430 --> 01:40:04,225
+that's called that way.
+
+2231
+01:40:04,225 --> 01:40:06,310
+I'm sorry, I'm
+missing your name.
+
+2232
+01:40:06,310 --> 01:40:07,810
+>> Just like me
+just an E and
+
+2233
+01:40:07,810 --> 01:40:09,640
+N. By the way I had
+
+2234
+01:40:09,640 --> 01:40:11,875
+a comment about an ability
+
+2235
+01:40:11,875 --> 01:40:14,470
+if it's okay to
+share that one.
+
+2236
+01:40:14,470 --> 01:40:16,630
+>> Before your
+talk, I think
+
+2237
+01:40:16,630 --> 01:40:19,705
+you were right in
+
+2238
+01:40:19,705 --> 01:40:23,755
+mentioning the
+need to have
+
+2239
+01:40:23,755 --> 01:40:25,870
+much better performance
+so that people
+
+2240
+01:40:25,870 --> 01:40:28,600
+will do their transition.
+
+2241
+01:40:28,600 --> 01:40:30,895
+Go ahead maybe
+you can answer
+
+2242
+01:40:30,895 --> 01:40:33,700
+that [inaudible]
+ability and then Dirk,
+
+2243
+01:40:33,700 --> 01:40:35,260
+I really want to
+have your idea
+
+2244
+01:40:35,260 --> 01:40:37,540
+about what do we do with
+the Tower of Babel?
+
+2245
+01:40:37,540 --> 01:40:42,190
+[BACKGROUND]
+
+2246
+01:40:42,190 --> 01:40:42,191
+[OVERLAPPING]
+
+2247
+01:40:42,191 --> 01:40:42,520
+>> Sorry.
+
+2248
+01:40:42,520 --> 01:40:43,570
+Did you want me to
+go ahead or did
+
+2249
+01:40:43,570 --> 01:40:45,445
+you want Dirk to
+go ahead first?
+
+2250
+01:40:45,445 --> 01:40:46,510
+>> No, go ahead.
+
+2251
+01:40:46,510 --> 01:40:46,990
+>> Srikathyayani.
+
+2252
+01:40:46,990 --> 01:40:49,585
+>> Okay, I just
+want you to add to
+
+2253
+01:40:49,585 --> 01:40:52,480
+Rute's comment on
+mobility, some good news.
+
+2254
+01:40:52,480 --> 01:40:53,740
+You're not quite in the
+
+2255
+01:40:53,740 --> 01:40:56,830
+TSM factory
+floor contexts.
+
+2256
+01:40:56,830 --> 01:40:58,270
+But we actually were able
+
+2257
+01:40:58,270 --> 01:41:00,175
+to simulate in ndnSIM.
+
+2258
+01:41:00,175 --> 01:41:01,930
+This is not an actual
+implementation,
+
+2259
+01:41:01,930 --> 01:41:05,070
+but in simulation where
+we have a bunch of
+
+2260
+01:41:05,070 --> 01:41:06,990
+cars moving along the road
+
+2261
+01:41:06,990 --> 01:41:08,700
+and then there are
+some access points.
+
+2262
+01:41:08,700 --> 01:41:09,720
+But at this over by five
+
+2263
+01:41:09,720 --> 01:41:12,495
+because it's a lot
+easier in ndnSIM.
+
+2264
+01:41:12,495 --> 01:41:15,660
+Then, of course, we
+had resources data on
+
+2265
+01:41:15,660 --> 01:41:19,480
+the cars as well as in
+the fixed part and NDN
+
+2266
+01:41:19,480 --> 01:41:21,070
+was able to work
+just fine and
+
+2267
+01:41:21,070 --> 01:41:22,690
+that was the
+dynamism where I
+
+2268
+01:41:22,690 --> 01:41:25,090
+said where you have the
+car resource just for
+
+2269
+01:41:25,090 --> 01:41:26,320
+a few seconds
+and then it's
+
+2270
+01:41:26,320 --> 01:41:27,730
+gone and it works.
+
+2271
+01:41:27,730 --> 01:41:31,720
+Not quite the factory
+floor situation,
+
+2272
+01:41:31,720 --> 01:41:33,340
+the TSM, the
+type controls,
+
+2273
+01:41:33,340 --> 01:41:36,860
+but in other forms of
+mobility it does work.
+
+2274
+01:41:39,600 --> 01:41:42,970
+>> Okay. Dirk, again,
+
+2275
+01:41:42,970 --> 01:41:45,460
+I would like you
+to have this.
+
+2276
+01:41:45,460 --> 01:41:47,665
+What are your views on
+
+2277
+01:41:47,665 --> 01:41:50,275
+all this data orchestration
+that is needed?
+
+2278
+01:41:50,275 --> 01:41:51,580
+All the fact that they use
+
+2279
+01:41:51,580 --> 01:41:53,590
+different semantic models.
+
+2280
+01:41:53,590 --> 01:41:55,000
+Again, you're the one who
+
+2281
+01:41:55,000 --> 01:41:56,530
+started if data's
+the answer,
+
+2282
+01:41:56,530 --> 01:41:59,500
+what's the problem and
+I think the lack of
+
+2283
+01:41:59,500 --> 01:42:04,465
+common interfaces
+actually Captain Yana,
+
+2284
+01:42:04,465 --> 01:42:06,850
+you mentioned
+orchestration as being
+
+2285
+01:42:06,850 --> 01:42:08,560
+a big problem so I will
+
+2286
+01:42:08,560 --> 01:42:10,525
+throw back the
+question to you, Dirk.
+
+2287
+01:42:10,525 --> 01:42:12,625
+We know some of
+the problems.
+
+2288
+01:42:12,625 --> 01:42:15,530
+What do you think
+are the answers?
+
+2289
+01:42:16,620 --> 01:42:18,820
+>> Well, I don't have
+a very good answer.
+
+2290
+01:42:18,820 --> 01:42:22,130
+I'm usually just
+asking questions.
+
+2291
+01:42:23,160 --> 01:42:25,570
+>> That's why I'm
+asking you a question
+
+2292
+01:42:25,570 --> 01:42:28,630
+[OVERLAPPING]
+
+2293
+01:42:28,630 --> 01:42:29,995
+[inaudible] at
+answering things.
+
+2294
+01:42:29,995 --> 01:42:32,560
+>> Yeah. I think
+
+2295
+01:42:32,560 --> 01:42:34,360
+one of the reasons
+why I always
+
+2296
+01:42:34,360 --> 01:42:36,925
+go back to ICN,
+
+2297
+01:42:36,925 --> 01:42:41,530
+even though I departed
+many times is because
+
+2298
+01:42:41,530 --> 01:42:42,910
+as an approach to
+bring together
+
+2299
+01:42:42,910 --> 01:42:44,080
+various concepts that go
+
+2300
+01:42:44,080 --> 01:42:45,670
+from data to computation,
+
+2301
+01:42:45,670 --> 01:42:47,500
+it is extremely
+intriguing and there's
+
+2302
+01:42:47,500 --> 01:42:49,420
+an aspect when you come
+
+2303
+01:42:49,420 --> 01:42:51,730
+to the variability of
+
+2304
+01:42:51,730 --> 01:42:54,820
+data sources that
+has inherently to
+
+2305
+01:42:54,820 --> 01:42:56,020
+do with the centralization
+
+2306
+01:42:56,020 --> 01:42:57,430
+and it goes back
+to comments
+
+2307
+01:42:57,430 --> 01:42:58,570
+made about the
+
+2308
+01:42:58,570 --> 01:43:00,535
+decentralization
+of computation.
+
+2309
+01:43:00,535 --> 01:43:02,320
+Maybe performance
+is one of
+
+2310
+01:43:02,320 --> 01:43:04,570
+the aspects and I
+
+2311
+01:43:04,570 --> 01:43:05,350
+agree if you'd get
+
+2312
+01:43:05,350 --> 01:43:06,430
+30 percent more
+performance,
+
+2313
+01:43:06,430 --> 01:43:09,385
+nobody's going to be
+particularly excited.
+
+2314
+01:43:09,385 --> 01:43:11,050
+But the aspect of
+
+2315
+01:43:11,050 --> 01:43:12,670
+decentralization
+that I find very
+
+2316
+01:43:12,670 --> 01:43:14,680
+interesting is when
+decentralization becomes
+
+2317
+01:43:14,680 --> 01:43:16,990
+more of a qualitative,
+
+2318
+01:43:16,990 --> 01:43:19,180
+maybe governance-driven
+aspect than
+
+2319
+01:43:19,180 --> 01:43:20,470
+a pure performance aspect,
+
+2320
+01:43:20,470 --> 01:43:24,390
+bringing diverse
+systems together,
+
+2321
+01:43:24,390 --> 01:43:26,775
+each with a data
+governance aspect.
+
+2322
+01:43:26,775 --> 01:43:29,650
+Their metadata being
+attached to it.
+
+2323
+01:43:29,650 --> 01:43:32,620
+You will need to
+
+2324
+01:43:32,620 --> 01:43:34,570
+convert from one
+system to the other.
+
+2325
+01:43:34,570 --> 01:43:37,480
+You need adaptation and
+processing functions.
+
+2326
+01:43:37,480 --> 01:43:40,660
+You add an aspect of
+decentralization to
+
+2327
+01:43:40,660 --> 01:43:43,620
+your system that's indeed
+
+2328
+01:43:43,620 --> 01:43:44,730
+significantly different
+
+2329
+01:43:44,730 --> 01:43:46,110
+than the systems
+we know today.
+
+2330
+01:43:46,110 --> 01:43:47,610
+That is a very
+good comment
+
+2331
+01:43:47,610 --> 01:43:50,640
+that NDNs are very good
+in pushing data out,
+
+2332
+01:43:50,640 --> 01:43:52,775
+but they're not
+very good and
+
+2333
+01:43:52,775 --> 01:43:56,200
+really in a
+decentralized manner,
+
+2334
+01:43:56,200 --> 01:43:58,795
+managed and process data.
+
+2335
+01:43:58,795 --> 01:44:00,520
+That's the part that
+intrigues me about
+
+2336
+01:44:00,520 --> 01:44:02,770
+a data-centric
+architecture like
+
+2337
+01:44:02,770 --> 01:44:05,485
+ICN as an [inaudible]
+NDN specifically.
+
+2338
+01:44:05,485 --> 01:44:07,660
+But you have
+the ability to
+
+2339
+01:44:07,660 --> 01:44:09,055
+inherently accommodate
+
+2340
+01:44:09,055 --> 01:44:10,660
+decentralization aspect.
+
+2341
+01:44:10,660 --> 01:44:12,370
+You have the ability
+to integrate
+
+2342
+01:44:12,370 --> 01:44:14,050
+the computational
+part into
+
+2343
+01:44:14,050 --> 01:44:16,530
+it which makes it
+
+2344
+01:44:16,530 --> 01:44:17,910
+indeed very interesting.
+
+2345
+01:44:17,910 --> 01:44:18,600
+That was my question.
+
+2346
+01:44:18,600 --> 01:44:19,950
+I put it on Slack,
+but I realize you
+
+2347
+01:44:19,950 --> 01:44:21,330
+probably can't read
+the Slack question.
+
+2348
+01:44:21,330 --> 01:44:22,920
+[LAUGHTER]
+
+2349
+01:44:22,920 --> 01:44:24,165
+>> I'm repeating it.
+
+2350
+01:44:24,165 --> 01:44:26,860
+That's the part that when
+
+2351
+01:44:26,860 --> 01:44:28,060
+we looked at the
+decentralization of
+
+2352
+01:44:28,060 --> 01:44:29,500
+computed wasn't
+really one that is
+
+2353
+01:44:29,500 --> 01:44:31,585
+necessarily driven by
+the performance aspect,
+
+2354
+01:44:31,585 --> 01:44:33,130
+but it's driven
+by aspects of
+
+2355
+01:44:33,130 --> 01:44:35,260
+localization that
+may require me
+
+2356
+01:44:35,260 --> 01:44:38,650
+to actually pick
+a compute source
+
+2357
+01:44:38,650 --> 01:44:39,805
+that is nearer to me.
+
+2358
+01:44:39,805 --> 01:44:42,985
+I cut very similar
+requirements in his slides
+
+2359
+01:44:42,985 --> 01:44:45,340
+about computed may want
+
+2360
+01:44:45,340 --> 01:44:47,035
+to be very local to you.
+
+2361
+01:44:47,035 --> 01:44:49,360
+It gives qualitative
+aspects of
+
+2362
+01:44:49,360 --> 01:44:52,570
+a system that is
+potentially the driver
+
+2363
+01:44:52,570 --> 01:44:54,160
+for change rather than
+
+2364
+01:44:54,160 --> 01:44:56,560
+the 20 or 30 percent
+more performance
+
+2365
+01:44:56,560 --> 01:44:58,885
+in comparison to a
+centralized approach
+
+2366
+01:44:58,885 --> 01:45:00,700
+and that's something we
+
+2367
+01:45:00,700 --> 01:45:03,790
+increasingly want
+to understand
+
+2368
+01:45:03,790 --> 01:45:04,840
+in some of the use cases
+
+2369
+01:45:04,840 --> 01:45:06,130
+we're looking
+at with three
+
+2370
+01:45:06,130 --> 01:45:08,560
+out the identity space,
+
+2371
+01:45:08,560 --> 01:45:09,970
+for instance, and
+the attributes
+
+2372
+01:45:09,970 --> 01:45:11,200
+that come with
+it and then you
+
+2373
+01:45:11,200 --> 01:45:12,340
+will realize in
+
+2374
+01:45:12,340 --> 01:45:14,440
+a distributed
+identity spaces in
+
+2375
+01:45:14,440 --> 01:45:15,880
+how the data with
+
+2376
+01:45:15,880 --> 01:45:18,130
+different sources, with
+different attributes.
+
+2377
+01:45:18,130 --> 01:45:19,060
+Everybody has their own
+
+2378
+01:45:19,060 --> 01:45:21,040
+semantic and it requires
+
+2379
+01:45:21,040 --> 01:45:23,110
+a networking approach
+that can deal with
+
+2380
+01:45:23,110 --> 01:45:26,335
+that heavy degree of
+decentralization,
+
+2381
+01:45:26,335 --> 01:45:28,435
+which I don't think
+
+2382
+01:45:28,435 --> 01:45:29,560
+in particular
+
+2383
+01:45:29,560 --> 01:45:31,030
+the current Internet
+that sees is
+
+2384
+01:45:31,030 --> 01:45:32,649
+a very significant
+centralization
+
+2385
+01:45:32,649 --> 01:45:34,660
+at the moment into
+
+2386
+01:45:34,660 --> 01:45:37,135
+your localized CDN but
+
+2387
+01:45:37,135 --> 01:45:39,475
+is really designed for.
+
+2388
+01:45:39,475 --> 01:45:41,770
+That's the aspect that
+I find intriguing.
+
+2389
+01:45:41,770 --> 01:45:43,270
+Again, I don't know
+if that's an answer
+
+2390
+01:45:43,270 --> 01:45:45,475
+and we're working on
+some of the answers.
+
+2391
+01:45:45,475 --> 01:45:47,559
+But the joint
+orchestration
+
+2392
+01:45:47,559 --> 01:45:48,400
+that was also mentioned
+
+2393
+01:45:48,400 --> 01:45:54,730
+between computation
+or computation data
+
+2394
+01:45:54,730 --> 01:45:56,530
+is clearly an aspect.
+
+2395
+01:45:56,530 --> 01:45:59,680
+But it's usually
+important because again,
+
+2396
+01:45:59,680 --> 01:46:01,119
+the selection of
+the computation
+
+2397
+01:46:01,119 --> 01:46:02,320
+will heavily
+depend on where
+
+2398
+01:46:02,320 --> 01:46:04,300
+data is coming from
+
+2399
+01:46:04,300 --> 01:46:06,595
+and where is
+it tested for,
+
+2400
+01:46:06,595 --> 01:46:08,650
+and it's a very
+difficult task,
+
+2401
+01:46:08,650 --> 01:46:09,760
+it is a very dynamic task.
+
+2402
+01:46:09,760 --> 01:46:11,695
+The dynamicity was
+mentioned as well,
+
+2403
+01:46:11,695 --> 01:46:14,780
+which is a key
+aspect as well.
+
+2404
+01:46:15,450 --> 01:46:18,565
+>> Thank you. Ike,
+
+2405
+01:46:18,565 --> 01:46:20,770
+since you're
+the new person,
+
+2406
+01:46:20,770 --> 01:46:23,080
+we said that one way
+
+2407
+01:46:23,080 --> 01:46:26,380
+of creating the community,
+
+2408
+01:46:26,380 --> 01:46:28,390
+this was a
+community meeting,
+
+2409
+01:46:28,390 --> 01:46:30,115
+was actually to
+bring people
+
+2410
+01:46:30,115 --> 01:46:31,720
+from outside the community
+
+2411
+01:46:31,720 --> 01:46:33,580
+inside the community
+and you were
+
+2412
+01:46:33,580 --> 01:46:36,010
+asking how can NDN help.
+
+2413
+01:46:36,010 --> 01:46:38,424
+Let's turn the
+question around
+
+2414
+01:46:38,424 --> 01:46:44,035
+and they're just said
+
+2415
+01:46:44,035 --> 01:46:45,970
+it's not how what NDN
+
+2416
+01:46:45,970 --> 01:46:47,680
+may want because that
+
+2417
+01:46:47,680 --> 01:46:49,285
+was one of my questions.
+
+2418
+01:46:49,285 --> 01:46:51,610
+It was not what
+NDN also can offer
+
+2419
+01:46:51,610 --> 01:46:53,920
+but what would be
+
+2420
+01:46:53,920 --> 01:46:56,260
+needed in NDN for you
+
+2421
+01:46:56,260 --> 01:46:59,275
+to maybe mean more
+interested by it.
+
+2422
+01:46:59,275 --> 01:47:01,120
+I know that for example,
+
+2423
+01:47:01,120 --> 01:47:02,545
+in some of the
+work that I do,
+
+2424
+01:47:02,545 --> 01:47:05,770
+it's actually this
+idea of having
+
+2425
+01:47:05,770 --> 01:47:07,090
+more orchestration and
+
+2426
+01:47:07,090 --> 01:47:09,775
+decentralization more
+than performance,
+
+2427
+01:47:09,775 --> 01:47:15,655
+especially in very highly
+distributed areas.
+
+2428
+01:47:15,655 --> 01:47:18,130
+Ike, what are
+
+2429
+01:47:18,130 --> 01:47:20,110
+the pain points and
+
+2430
+01:47:20,110 --> 01:47:22,180
+what you're doing
+that may be
+
+2431
+01:47:22,180 --> 01:47:25,510
+a native data-centric
+approach
+
+2432
+01:47:25,510 --> 01:47:27,235
+could solve instead of
+
+2433
+01:47:27,235 --> 01:47:29,140
+something that you add to.
+
+2434
+01:47:29,140 --> 01:47:32,260
+I understand that the
+client-server issue
+
+2435
+01:47:32,260 --> 01:47:35,360
+doesn't work
+but what else?
+
+2436
+01:47:36,180 --> 01:47:40,990
+>> Yes. Maybe first to
+describe it better,
+
+2437
+01:47:40,990 --> 01:47:42,670
+how I am actually
+situated in
+
+2438
+01:47:42,670 --> 01:47:46,055
+this whole space of
+industrial networking.
+
+2439
+01:47:46,055 --> 01:47:48,180
+I come there from
+
+2440
+01:47:48,180 --> 01:47:49,830
+the computer science
+perspective and
+
+2441
+01:47:49,830 --> 01:47:51,510
+in our research project,
+
+2442
+01:47:51,510 --> 01:47:52,980
+we are working
+together with a lot of
+
+2443
+01:47:52,980 --> 01:47:56,250
+chemical engineers
+and there we
+
+2444
+01:47:56,250 --> 01:47:59,040
+typically already see
+that even what we
+
+2445
+01:47:59,040 --> 01:48:02,730
+now say is not
+sufficient anymore.
+
+2446
+01:48:02,730 --> 01:48:05,774
+IP and all the
+Internet technology,
+
+2447
+01:48:05,774 --> 01:48:07,170
+even bringing that into
+
+2448
+01:48:07,170 --> 01:48:09,285
+the mechanical
+engineering domain
+
+2449
+01:48:09,285 --> 01:48:12,280
+is the challenge
+in itself already.
+
+2450
+01:48:15,630 --> 01:48:19,270
+I think baby steps
+right now on
+
+2451
+01:48:19,270 --> 01:48:22,090
+the way to there and I
+
+2452
+01:48:22,090 --> 01:48:24,520
+think the biggest
+issues there are
+
+2453
+01:48:24,520 --> 01:48:27,760
+that the chemical
+engineers,
+
+2454
+01:48:27,760 --> 01:48:31,120
+at least those that I
+know they are used to
+
+2455
+01:48:31,120 --> 01:48:33,330
+having fixed-function
+devices so
+
+2456
+01:48:33,330 --> 01:48:35,880
+they just buy a box,
+place it somewhere,
+
+2457
+01:48:35,880 --> 01:48:38,070
+and then everything
+is fixed
+
+2458
+01:48:38,070 --> 01:48:40,080
+and then works and
+they don't have to
+
+2459
+01:48:40,080 --> 01:48:42,255
+change anything and
+if we want to have
+
+2460
+01:48:42,255 --> 01:48:45,580
+really these more
+dynamic solutions,
+
+2461
+01:48:45,600 --> 01:48:47,950
+they first have
+to convince
+
+2462
+01:48:47,950 --> 01:48:49,450
+that something
+like that is
+
+2463
+01:48:49,450 --> 01:48:51,910
+actually manageable
+in terms
+
+2464
+01:48:51,910 --> 01:48:55,360
+of the effort that
+needs to be put in
+
+2465
+01:48:55,360 --> 01:48:57,670
+there so that
+they don't have
+
+2466
+01:48:57,670 --> 01:49:00,490
+to put extensive amounts
+
+2467
+01:49:00,490 --> 01:49:02,290
+of time in that
+to make it work,
+
+2468
+01:49:02,290 --> 01:49:04,240
+but that they basically
+can just put a box
+
+2469
+01:49:04,240 --> 01:49:07,000
+there and let it run.
+
+2470
+01:49:07,000 --> 01:49:09,565
+Then obviously also what
+
+2471
+01:49:09,565 --> 01:49:12,400
+Dirk was saying regarding
+the orchestration
+
+2472
+01:49:12,400 --> 01:49:15,310
+and how to put
+the compute and
+
+2473
+01:49:15,310 --> 01:49:18,550
+the data paths together.
+
+2474
+01:49:18,550 --> 01:49:20,110
+That's also something, I
+
+2475
+01:49:20,110 --> 01:49:21,760
+think that might
+be a pain point
+
+2476
+01:49:21,760 --> 01:49:24,500
+because right now they
+
+2477
+01:49:24,500 --> 01:49:27,400
+have really good control
+
+2478
+01:49:27,400 --> 01:49:28,630
+or how they place down
+
+2479
+01:49:28,630 --> 01:49:32,410
+functionality and just
+by placing the boxes
+
+2480
+01:49:32,410 --> 01:49:34,750
+accordingly in their setup
+
+2481
+01:49:34,750 --> 01:49:36,370
+and if we want
+to have that
+
+2482
+01:49:36,370 --> 01:49:37,690
+in a more
+thermodynamic way,
+
+2483
+01:49:37,690 --> 01:49:39,760
+I think it's
+really crucial for
+
+2484
+01:49:39,760 --> 01:49:42,070
+them to have this in a way
+
+2485
+01:49:42,070 --> 01:49:47,440
+that it's simple to define
+
+2486
+01:49:47,440 --> 01:49:50,290
+how those
+different aspects
+
+2487
+01:49:50,290 --> 01:49:53,125
+interact like I showed
+on my slide if we,
+
+2488
+01:49:53,125 --> 01:49:54,760
+for example, depending
+on what kind
+
+2489
+01:49:54,760 --> 01:49:55,960
+of data is now coming out,
+
+2490
+01:49:55,960 --> 01:49:57,220
+on what form it is
+
+2491
+01:49:57,220 --> 01:49:59,020
+coming out where we
+want to send it.
+
+2492
+01:49:59,020 --> 01:50:01,480
+That this can really
+be defined in
+
+2493
+01:50:01,480 --> 01:50:03,070
+an easy-to-understand
+way for
+
+2494
+01:50:03,070 --> 01:50:05,755
+them without that
+much overhead.
+
+2495
+01:50:05,755 --> 01:50:06,880
+That's at least what
+
+2496
+01:50:06,880 --> 01:50:09,805
+I would say about
+this topic.
+
+2497
+01:50:09,805 --> 01:50:12,025
+I think right now,
+
+2498
+01:50:12,025 --> 01:50:13,315
+in the middle between
+
+2499
+01:50:13,315 --> 01:50:15,400
+the people that could
+deploy the stuff in
+
+2500
+01:50:15,400 --> 01:50:19,930
+the shop loss and the
+NDN community trying to
+
+2501
+01:50:19,930 --> 01:50:22,900
+find out how it
+can be deployed
+
+2502
+01:50:22,900 --> 01:50:26,515
+there having the
+outside view on both,
+
+2503
+01:50:26,515 --> 01:50:31,420
+or I'll save you on
+both domains I think.
+
+2504
+01:50:31,420 --> 01:50:34,105
+>> The good name
+you ambassador.
+
+2505
+01:50:34,105 --> 01:50:36,100
+>> That would be a way as.
+
+2506
+01:50:36,100 --> 01:50:39,040
+[LAUGHTER].
+
+2507
+01:50:39,040 --> 01:50:39,970
+>> I'm not seeing a lot
+
+2508
+01:50:39,970 --> 01:50:41,380
+of questions on Slack.
+
+2509
+01:50:41,380 --> 01:50:43,570
+People are still
+discussing a lot
+
+2510
+01:50:43,570 --> 01:50:46,390
+of the previous
+final break.
+
+2511
+01:50:46,390 --> 01:50:48,710
+>> Maria, could I share
+a comment, quickly?
+
+2512
+01:50:48,710 --> 01:50:50,570
+>> Yes, go ahead. I
+was going to say is
+
+2513
+01:50:50,570 --> 01:50:51,770
+anybody also from
+
+2514
+01:50:51,770 --> 01:50:54,065
+the audience?
+Go ahead Rute.
+
+2515
+01:50:54,065 --> 01:50:56,945
+>> Just quickly.
+I agree with Ike,
+
+2516
+01:50:56,945 --> 01:51:00,830
+but I want just to
+comment something.
+
+2517
+01:51:00,830 --> 01:51:03,590
+What I've been
+transmitting
+
+2518
+01:51:03,590 --> 01:51:05,615
+does not relate
+with a performance.
+
+2519
+01:51:05,615 --> 01:51:08,150
+This is not about
+who is best.
+
+2520
+01:51:08,150 --> 01:51:09,950
+The fact is that
+It's not just
+
+2521
+01:51:09,950 --> 01:51:11,600
+convincing the
+mechanical engineer,
+
+2522
+01:51:11,600 --> 01:51:13,670
+It's actually
+convincing the vendors.
+
+2523
+01:51:13,670 --> 01:51:15,200
+Over the last,
+
+2524
+01:51:15,200 --> 01:51:16,610
+I don't five, six years,
+
+2525
+01:51:16,610 --> 01:51:19,940
+I've had talks with
+large vendors trying to
+
+2526
+01:51:19,940 --> 01:51:21,980
+convince them to
+do some research
+
+2527
+01:51:21,980 --> 01:51:24,140
+on NDN to understand,
+
+2528
+01:51:24,140 --> 01:51:26,360
+as Dirk saying, the
+capability, for instance,
+
+2529
+01:51:26,360 --> 01:51:27,080
+to provide
+
+2530
+01:51:27,080 --> 01:51:28,760
+decentralized data
+synchronization,
+
+2531
+01:51:28,760 --> 01:51:29,030
+which is
+
+2532
+01:51:29,030 --> 01:51:31,235
+a crucial problem
+they have actually.
+
+2533
+01:51:31,235 --> 01:51:33,020
+To understand
+better if It could
+
+2534
+01:51:33,020 --> 01:51:36,815
+support an instinct
+timing model, etc.
+
+2535
+01:51:36,815 --> 01:51:39,110
+We have the same problem.
+The answer is no.
+
+2536
+01:51:39,110 --> 01:51:40,490
+They don't want to do It
+
+2537
+01:51:40,490 --> 01:51:42,290
+because they don't
+see any value with.
+
+2538
+01:51:42,290 --> 01:51:43,655
+If I say okay,
+
+2539
+01:51:43,655 --> 01:51:46,220
+but then the end
+does have already
+
+2540
+01:51:46,220 --> 01:51:49,670
+some distributed
+synchronization approaches
+
+2541
+01:51:49,670 --> 01:51:50,810
+which are very,
+
+2542
+01:51:50,810 --> 01:51:53,975
+very interesting
+because as Dirk said,
+
+2543
+01:51:53,975 --> 01:51:56,510
+It allows us to have
+
+2544
+01:51:56,510 --> 01:51:57,800
+the computer
+and the network
+
+2545
+01:51:57,800 --> 01:51:59,615
+also the writer part.
+
+2546
+01:51:59,615 --> 01:52:01,670
+The answer is
+always we can do
+
+2547
+01:52:01,670 --> 01:52:03,815
+It with other approaches.
+
+2548
+01:52:03,815 --> 01:52:05,480
+In my slides, I
+don't know if you
+
+2549
+01:52:05,480 --> 01:52:07,490
+saw that we are
+comparing NDN.
+
+2550
+01:52:07,490 --> 01:52:09,080
+Again, It's not the
+performance it's
+
+2551
+01:52:09,080 --> 01:52:10,835
+trying to understand also
+
+2552
+01:52:10,835 --> 01:52:12,380
+the discovery aspects and
+
+2553
+01:52:12,380 --> 01:52:15,080
+the synchronization
+of the prefix.
+
+2554
+01:52:15,080 --> 01:52:17,300
+It's okay to understand
+if we can say,
+
+2555
+01:52:17,300 --> 01:52:19,595
+"Hey, here's a
+concrete advantage."
+
+2556
+01:52:19,595 --> 01:52:22,565
+We are comparing it
+with COTI which is
+
+2557
+01:52:22,565 --> 01:52:26,390
+an open-source
+decentralized approach
+
+2558
+01:52:26,390 --> 01:52:28,775
+deadlocked by a
+large vendor.
+
+2559
+01:52:28,775 --> 01:52:30,845
+Quite interesting for
+
+2560
+01:52:30,845 --> 01:52:33,425
+a collaborative
+communications in IoT.
+
+2561
+01:52:33,425 --> 01:52:36,560
+It's a regular application
+
+2562
+01:52:36,560 --> 01:52:38,540
+by it's oriented
+communication
+
+2563
+01:52:38,540 --> 01:52:40,550
+approach that does
+discovery and
+
+2564
+01:52:40,550 --> 01:52:43,940
+data synchronization.
+
+2565
+01:52:43,940 --> 01:52:47,100
+Basically, they
+find it is enough.
+
+2566
+01:52:47,560 --> 01:52:50,270
+It's not so much
+whether NDN
+
+2567
+01:52:50,270 --> 01:52:52,040
+from a computational
+perspective or
+
+2568
+01:52:52,040 --> 01:52:53,854
+from a theoretical
+perspective
+
+2569
+01:52:53,854 --> 01:52:55,850
+does have interesting
+properties.
+
+2570
+01:52:55,850 --> 01:52:58,040
+We actually have to prove
+that or at least to
+
+2571
+01:52:58,040 --> 01:52:59,360
+show it running a
+
+2572
+01:52:59,360 --> 01:53:00,965
+little bit like
+Ike is saying.
+
+2573
+01:53:00,965 --> 01:53:02,720
+We need to know why
+they install NDN,
+
+2574
+01:53:02,720 --> 01:53:04,025
+so that we can show, hey,
+
+2575
+01:53:04,025 --> 01:53:05,690
+here's how this runs as
+
+2576
+01:53:05,690 --> 01:53:08,520
+such and we did a little
+bit more than that.
+
+2577
+01:53:10,000 --> 01:53:12,290
+>> Is it okay if
+I add to that?
+
+2578
+01:53:12,290 --> 01:53:13,610
+>> Yeah, go ahead.
+
+2579
+01:53:13,610 --> 01:53:16,070
+>> I completely agree
+with Rute and in fact,
+
+2580
+01:53:16,070 --> 01:53:19,340
+that is our
+observations as well.
+
+2581
+01:53:19,340 --> 01:53:20,870
+If there is something that
+
+2582
+01:53:20,870 --> 01:53:22,850
+already works with IP or
+
+2583
+01:53:22,850 --> 01:53:24,110
+can be made to work
+
+2584
+01:53:24,110 --> 01:53:26,210
+by adding a little
+bit of code,
+
+2585
+01:53:26,210 --> 01:53:27,560
+or even if it's
+not elegant,
+
+2586
+01:53:27,560 --> 01:53:29,585
+even if it's cumbersome
+and hodgepodge,
+
+2587
+01:53:29,585 --> 01:53:31,505
+they'll say I'd
+rather do that,
+
+2588
+01:53:31,505 --> 01:53:33,650
+than go over to NDN.
+
+2589
+01:53:33,650 --> 01:53:35,240
+That is partly where I
+
+2590
+01:53:35,240 --> 01:53:37,340
+came up with a
+performance as well one.
+
+2591
+01:53:37,340 --> 01:53:38,780
+They want to see something
+
+2592
+01:53:38,780 --> 01:53:41,240
+else big,
+whatever that is.
+
+2593
+01:53:41,240 --> 01:53:43,790
+If they are facing
+a problem that they
+
+2594
+01:53:43,790 --> 01:53:46,160
+are absolutely not
+able to solve,
+
+2595
+01:53:46,160 --> 01:53:47,870
+and then we give
+them the solution,
+
+2596
+01:53:47,870 --> 01:53:49,310
+yes, there'll be more
+willing to take it.
+
+2597
+01:53:49,310 --> 01:53:51,320
+But let's be honest,
+you can always
+
+2598
+01:53:51,320 --> 01:53:52,910
+somehow do whether it's
+
+2599
+01:53:52,910 --> 01:53:54,470
+hodgepodge or not elegant.
+
+2600
+01:53:54,470 --> 01:53:55,820
+You can figure
+out a way to do
+
+2601
+01:53:55,820 --> 01:53:57,650
+something similar than IP,
+
+2602
+01:53:57,650 --> 01:53:59,210
+maybe it won't
+scale as much
+
+2603
+01:53:59,210 --> 01:54:00,890
+or maybe it's not
+as horizontal,
+
+2604
+01:54:00,890 --> 01:54:03,140
+but you can somehow
+figure out a way to do it
+
+2605
+01:54:03,140 --> 01:54:04,490
+and they're more willing
+
+2606
+01:54:04,490 --> 01:54:06,215
+to go along those lines.
+
+2607
+01:54:06,215 --> 01:54:07,940
+That was fair.
+
+2608
+01:54:07,940 --> 01:54:09,530
+The other point was,
+
+2609
+01:54:09,530 --> 01:54:12,260
+if the Endian community
+can make it easy,
+
+2610
+01:54:12,260 --> 01:54:13,400
+age of course show the
+
+2611
+01:54:13,400 --> 01:54:14,870
+benefits can make it easy,
+
+2612
+01:54:14,870 --> 01:54:16,940
+have codes tabs or
+plugins that say,
+
+2613
+01:54:16,940 --> 01:54:18,590
+"Hey, just put
+that in here
+
+2614
+01:54:18,590 --> 01:54:20,690
+and you can keep
+your code as is,
+
+2615
+01:54:20,690 --> 01:54:22,640
+but you can do all of
+these added features."
+
+2616
+01:54:22,640 --> 01:54:24,020
+If you can be added
+
+2617
+01:54:24,020 --> 01:54:26,810
+features to something
+that's already there,
+
+2618
+01:54:26,810 --> 01:54:29,780
+I believe that
+the industry
+
+2619
+01:54:29,780 --> 01:54:32,010
+would be more receptive.
+
+2620
+01:54:32,170 --> 01:54:34,880
+>> I was going to
+say this is actually
+
+2621
+01:54:34,880 --> 01:54:37,520
+a perfect segue into
+the next panel,
+
+2622
+01:54:37,520 --> 01:54:38,840
+which is going to
+look a little bit
+
+2623
+01:54:38,840 --> 01:54:40,370
+about these aspects and I
+
+2624
+01:54:40,370 --> 01:54:42,860
+think what you are
+
+2625
+01:54:42,860 --> 01:54:45,470
+saying everyone
+is, I think,
+
+2626
+01:54:45,470 --> 01:54:48,290
+a good take home
+message for
+
+2627
+01:54:48,290 --> 01:54:49,850
+the community in the sense
+
+2628
+01:54:49,850 --> 01:54:52,280
+that there's a lot
+of capabilities,
+
+2629
+01:54:52,280 --> 01:54:53,945
+and worse than that,
+
+2630
+01:54:53,945 --> 01:54:56,120
+I think there's
+a lot of needs.
+
+2631
+01:54:56,120 --> 01:54:58,670
+There's a lot of needs and
+
+2632
+01:54:58,670 --> 01:55:01,160
+NDN has a lot of
+solution and I
+
+2633
+01:55:01,160 --> 01:55:03,530
+think maybe the
+community should do
+
+2634
+01:55:03,530 --> 01:55:07,235
+a better job,
+
+2635
+01:55:07,235 --> 01:55:08,975
+for lack of a better word,
+
+2636
+01:55:08,975 --> 01:55:12,960
+at showing that these
+capabilities exist.
+
+2637
+01:55:13,000 --> 01:55:15,050
+For you guys who are
+
+2638
+01:55:15,050 --> 01:55:17,330
+in industry another issue
+
+2639
+01:55:17,330 --> 01:55:22,500
+that is always raised
+is the issue of cost.
+
+2640
+01:55:22,780 --> 01:55:25,910
+You're mentioning
+that just
+
+2641
+01:55:25,910 --> 01:55:27,335
+adding a few
+lines of code,
+
+2642
+01:55:27,335 --> 01:55:30,200
+it's not very good,
+
+2643
+01:55:30,200 --> 01:55:31,250
+but it doesn't take time.
+
+2644
+01:55:31,250 --> 01:55:32,630
+It doesn't take a
+lot of resources
+
+2645
+01:55:32,630 --> 01:55:34,190
+and doesn't cost
+much money.
+
+2646
+01:55:34,190 --> 01:55:35,990
+That's one thing. I think
+
+2647
+01:55:35,990 --> 01:55:38,465
+there's also this
+issue of money.
+
+2648
+01:55:38,465 --> 01:55:41,930
+We have time for one
+or two questions
+
+2649
+01:55:41,930 --> 01:55:43,685
+from the audience.
+
+2650
+01:55:43,685 --> 01:55:46,130
+But the people in
+the audience who are
+
+2651
+01:55:46,130 --> 01:55:51,695
+the big players in
+the NDN community,
+
+2652
+01:55:51,695 --> 01:55:54,320
+what would you answer
+to the question of
+
+2653
+01:55:54,320 --> 01:55:56,240
+this panel who is
+
+2654
+01:55:56,240 --> 01:55:59,285
+actually asking for
+better solutions?
+
+2655
+01:55:59,285 --> 01:56:01,130
+Is anybody want to talk?
+
+2656
+01:56:01,130 --> 01:56:04,350
+If not, I'm going
+to ask someone so.
+
+2657
+01:56:06,070 --> 01:56:10,020
+Wow, you guys
+are shy today.
+
+2658
+01:56:12,940 --> 01:56:15,530
+>> I'm going to
+ask a question.
+
+2659
+01:56:15,530 --> 01:56:17,105
+>> Go ahead.
+
+2660
+01:56:17,105 --> 01:56:19,190
+>> This is interesting
+discussion
+
+2661
+01:56:19,190 --> 01:56:21,300
+about performance.
+
+2662
+01:56:22,960 --> 01:56:25,460
+So far, I mean,
+
+2663
+01:56:25,460 --> 01:56:27,320
+the performance
+of NDN has not
+
+2664
+01:56:27,320 --> 01:56:30,605
+been great because
+it's an experimental.
+
+2665
+01:56:30,605 --> 01:56:32,090
+It's understandable.
+
+2666
+01:56:32,090 --> 01:56:36,440
+But do you see
+
+2667
+01:56:36,440 --> 01:56:38,660
+the lack of performance
+
+2668
+01:56:38,660 --> 01:56:41,310
+driving people
+away from NDN?
+
+2669
+01:56:44,710 --> 01:56:47,795
+>> Srikathyayani do
+yo wanted to answer?
+
+2670
+01:56:47,795 --> 01:56:51,200
+>> Sure. As I said,
+the key is, I mean,
+
+2671
+01:56:51,200 --> 01:56:52,520
+if we step back
+a little bit
+
+2672
+01:56:52,520 --> 01:56:54,110
+from just the performance,
+
+2673
+01:56:54,110 --> 01:56:56,585
+industry is set
+in their ways,
+
+2674
+01:56:56,585 --> 01:56:58,085
+for lack of a better word.
+
+2675
+01:56:58,085 --> 01:56:59,390
+Because there's
+so much code,
+
+2676
+01:56:59,390 --> 01:57:00,530
+there's so much history,
+
+2677
+01:57:00,530 --> 01:57:02,030
+there's so much
+time was spent in
+
+2678
+01:57:02,030 --> 01:57:04,310
+developing everything
+that they have;
+
+2679
+01:57:04,310 --> 01:57:05,765
+the systems,
+the code-based
+
+2680
+01:57:05,765 --> 01:57:07,415
+software, all of that.
+
+2681
+01:57:07,415 --> 01:57:09,530
+For that to change,
+
+2682
+01:57:09,530 --> 01:57:11,195
+you need a driver.
+
+2683
+01:57:11,195 --> 01:57:13,430
+Now, one of them
+
+2684
+01:57:13,430 --> 01:57:14,750
+can definitely
+be performance.
+
+2685
+01:57:14,750 --> 01:57:17,615
+I think what we're
+saying is we need
+
+2686
+01:57:17,615 --> 01:57:19,385
+whatever that driver is
+
+2687
+01:57:19,385 --> 01:57:21,350
+at that bigger push
+needs to come.
+
+2688
+01:57:21,350 --> 01:57:23,585
+A, it can be if
+it's performance,
+
+2689
+01:57:23,585 --> 01:57:26,480
+yes, surely that'll
+be a driver.
+
+2690
+01:57:26,480 --> 01:57:28,640
+The other thing
+that will also
+
+2691
+01:57:28,640 --> 01:57:30,320
+facilitate is if it
+
+2692
+01:57:30,320 --> 01:57:33,590
+is easy because let's say,
+
+2693
+01:57:33,590 --> 01:57:34,895
+I have my Kubernetes app,
+
+2694
+01:57:34,895 --> 01:57:36,590
+then hey, we all know
+
+2695
+01:57:36,590 --> 01:57:38,555
+there are plenty of
+problems with Kubernetes.
+
+2696
+01:57:38,555 --> 01:57:39,860
+It doesn't do
+discovery, it
+
+2697
+01:57:39,860 --> 01:57:41,120
+doesn't adapt to networks
+
+2698
+01:57:41,120 --> 01:57:42,680
+[OVERLAPPING]
+
+2699
+01:57:42,680 --> 01:57:43,760
+>> If you can say, "Hey,
+
+2700
+01:57:43,760 --> 01:57:47,150
+just put this NDN
+plugin on and just put
+
+2701
+01:57:47,150 --> 01:57:48,650
+these on all these
+nodes are clusters and
+
+2702
+01:57:48,650 --> 01:57:49,460
+devices and suddenly
+
+2703
+01:57:49,460 --> 01:57:50,675
+you'll have these
+capabilities.
+
+2704
+01:57:50,675 --> 01:57:51,950
+You'll still
+get everything
+
+2705
+01:57:51,950 --> 01:57:53,195
+else that you have.
+
+2706
+01:57:53,195 --> 01:57:56,480
+That if we can make it
+easy to transition,
+
+2707
+01:57:56,480 --> 01:57:58,100
+those added benefits are
+
+2708
+01:57:58,100 --> 01:58:00,275
+likely to be accepted.
+
+2709
+01:58:00,275 --> 01:58:02,225
+I don't know if that
+answers your question.
+
+2710
+01:58:02,225 --> 01:58:06,830
+>> It does. What we
+
+2711
+01:58:06,830 --> 01:58:08,240
+have been
+noticing that yes
+
+2712
+01:58:08,240 --> 01:58:10,115
+NDN makes a lot
+of calls easier.
+
+2713
+01:58:10,115 --> 01:58:12,035
+But when you give users
+
+2714
+01:58:12,035 --> 01:58:13,790
+things that make
+their life easier,
+
+2715
+01:58:13,790 --> 01:58:16,490
+the next question
+they ask is,
+
+2716
+01:58:16,490 --> 01:58:19,320
+how I can make this
+perform better?
+
+2717
+01:58:19,480 --> 01:58:23,570
+Kubernetes, this
+is great with NDN,
+
+2718
+01:58:23,570 --> 01:58:25,610
+then they're going
+to complain that,
+
+2719
+01:58:25,610 --> 01:58:27,395
+well, where is
+my performance?
+
+2720
+01:58:27,395 --> 01:58:30,800
+How do you address
+that question?
+
+2721
+01:58:30,800 --> 01:58:32,570
+>> That's a very good
+point. That is where I
+
+2722
+01:58:32,570 --> 01:58:34,220
+think the merging IP and
+
+2723
+01:58:34,220 --> 01:58:35,975
+NDN needs to happen
+
+2724
+01:58:35,975 --> 01:58:37,760
+a little better because
+let's be honest,
+
+2725
+01:58:37,760 --> 01:58:39,170
+IP is not going anywhere.
+
+2726
+01:58:39,170 --> 01:58:40,400
+So the question
+is, how can we
+
+2727
+01:58:40,400 --> 01:58:42,590
+add the benefits of NDN?
+
+2728
+01:58:42,590 --> 01:58:44,690
+To your question is, how
+
+2729
+01:58:44,690 --> 01:58:46,340
+can you make the
+performance better?
+
+2730
+01:58:46,340 --> 01:58:48,605
+A lot of research is
+happening already on IP.
+
+2731
+01:58:48,605 --> 01:58:51,065
+The question is, can
+those translate?
+
+2732
+01:58:51,065 --> 01:58:53,420
+Not everything has
+to be done in NDN.
+
+2733
+01:58:53,420 --> 01:58:55,115
+You can just
+say NDN brings
+
+2734
+01:58:55,115 --> 01:58:57,395
+all these
+additional features
+
+2735
+01:58:57,395 --> 01:58:58,730
+in a much more
+easier manner.
+
+2736
+01:58:58,730 --> 01:58:59,960
+But yes, you can still
+
+2737
+01:58:59,960 --> 01:59:02,660
+maybe do your
+optimizations on IP.
+
+2738
+01:59:02,660 --> 01:59:04,820
+Also coming to
+the performance,
+
+2739
+01:59:04,820 --> 01:59:06,425
+the few points
+that I mentioned,
+
+2740
+01:59:06,425 --> 01:59:08,240
+NDN does perform better.
+
+2741
+01:59:08,240 --> 01:59:10,490
+In fact, in the
+case of what
+
+2742
+01:59:10,490 --> 01:59:12,890
+we found is extreme
+dynamism of resources.
+
+2743
+01:59:12,890 --> 01:59:16,160
+Kubernetes currently
+doesn't handle that.
+
+2744
+01:59:16,160 --> 01:59:17,870
+There are a few pockets
+
+2745
+01:59:17,870 --> 01:59:19,520
+where NDN performs better.
+
+2746
+01:59:19,520 --> 01:59:21,350
+The key is how do
+you then integrate
+
+2747
+01:59:21,350 --> 01:59:23,045
+that with everything else?
+
+2748
+01:59:23,045 --> 01:59:24,350
+Overall, the performance
+
+2749
+01:59:24,350 --> 01:59:26,090
+increases without
+losing what
+
+2750
+01:59:26,090 --> 01:59:28,020
+they already have.
+
+2751
+01:59:28,030 --> 01:59:30,185
+I don't know
+if that helps.
+
+2752
+01:59:30,185 --> 01:59:33,200
+>> Yes. I think we
+are all out of time.
+
+2753
+01:59:33,200 --> 01:59:36,695
+I took some little notes.
+
+2754
+01:59:36,695 --> 01:59:41,480
+If I a look at the
+notes here and again,
+
+2755
+01:59:41,480 --> 01:59:43,880
+just note this is
+a very good segue
+
+2756
+01:59:43,880 --> 01:59:45,305
+into your own panel.
+
+2757
+01:59:45,305 --> 01:59:48,710
+I think there's a
+question of making
+
+2758
+01:59:48,710 --> 01:59:51,995
+sure that NDN essentially
+
+2759
+01:59:51,995 --> 01:59:54,800
+is known as a
+potential solution in
+
+2760
+01:59:54,800 --> 01:59:58,610
+the worlds that others
+are dealing with.
+
+2761
+01:59:58,610 --> 01:59:59,960
+That the performance is
+
+2762
+01:59:59,960 --> 02:00:03,695
+known who are not
+aware of these things.
+
+2763
+02:00:03,695 --> 02:00:09,560
+On the need to have a
+better integration of
+
+2764
+02:00:09,560 --> 02:00:11,390
+the data systems with
+
+2765
+02:00:11,390 --> 02:00:13,460
+the major
+functionality going
+
+2766
+02:00:13,460 --> 02:00:15,530
+back with to
+Dirk's question,
+
+2767
+02:00:15,530 --> 02:00:17,870
+if data is the solution,
+what is the problem?
+
+2768
+02:00:17,870 --> 02:00:19,025
+I think it's having
+
+2769
+02:00:19,025 --> 02:00:21,590
+all these systems
+that are distributed,
+
+2770
+02:00:21,590 --> 02:00:24,560
+talk together in a
+
+2771
+02:00:24,560 --> 02:00:27,380
+functional and productive,
+
+2772
+02:00:27,380 --> 02:00:29,150
+and performing way.
+
+2773
+02:00:29,150 --> 02:00:32,210
+Thank you very much
+to the four of you.
+
+2774
+02:00:32,210 --> 02:00:34,475
+Thank you very much
+to the audience.
+
+2775
+02:00:34,475 --> 02:00:37,590
+You were too quiet,
+but that's okay.
+
+2776
+02:00:38,410 --> 02:00:40,550
+I think here in
+
+2777
+02:00:40,550 --> 02:00:42,425
+the East Coast,
+it's lunchtime.
+
+2778
+02:00:42,425 --> 02:00:44,855
+I think Dirk, you are
+leaving for dinner
+
+2779
+02:00:44,855 --> 02:00:47,000
+and I would love
+
+2780
+02:00:47,000 --> 02:00:49,820
+this team to continue
+the discussion.
+
+2781
+02:00:49,820 --> 02:00:51,515
+Thank you very
+much everyone
+
+2782
+02:00:51,515 --> 02:00:53,600
+and we'll probably see
+
+2783
+02:00:53,600 --> 02:00:56,060
+one another in
+some other Zoom
+
+2784
+02:00:56,060 --> 02:00:58,140
+at one point. Thank you.
+
+2785
+02:00:59,380 --> 02:01:01,520
+>> Thank you. Bye-bye.
+
+2786
+02:01:01,520 --> 02:01:05,480
+[OVERLAPPING]
+
+2787
+02:01:05,480 --> 02:01:06,785
+>> Thank you, everyone.
+
+2788
+02:01:06,785 --> 02:01:09,930
+We will be back
+at 1:00 p.m.

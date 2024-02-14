@@ -1,0 +1,2335 @@
+1
+00:00:01,660 --> 00:00:02,160
+All right.
+好的。
+
+2
+00:00:02,160 --> 00:00:04,270
+Welcome back, everyone.
+欢迎大家回来。
+
+3
+00:00:04,270 --> 00:00:08,320
+This is the session on posters and demos.
+这是海报和演示环节。
+
+4
+00:00:08,320 --> 00:00:12,548
+We have seven talks in this session.
+我们这个环节有七场演讲。
+
+5
+00:00:12,548 --> 00:00:17,728
+Each presenter will have about three minutes to present and afterwards,
+每位演讲者将有大约三分钟的时间进行演讲，之后，
+
+6
+00:00:17,728 --> 00:00:23,340
+we'll have the actual posters and demo session in different BlueJeans rooms.
+我们将在不同的BlueJeans房间进行实际的海报展示和演示环节。
+
+7
+00:00:24,770 --> 00:00:28,254
+The first presentation is by Junxiao Shi on
+Junxiao Shi 将进行第一场演讲。
+
+8
+00:00:28,254 --> 00:00:33,109
+NDNts Named Data Networking libraries for the Modern Web.
+NDNts 是为现代网络设计的命名数据网络库。
+
+9
+00:00:33,109 --> 00:00:37,567
+And Junxiao is currently at NIST he got his PhD from
+Junxiao 目前在 NIST 工作，他的博士学位是从
+
+10
+00:00:37,567 --> 00:00:42,890
+University of Arizona and currently a researcher at NIST.
+他在亚利桑那大学获得了博士学位，目前是 NIST 的一名研究员。
+
+11
+00:00:42,890 --> 00:00:48,583
+He's a core NDN developer and has been developing NDN network forwarders.
+他是 NDN 核心开发者之一，一直在开发 NDN 网络转发器。
+
+12
+00:00:48,583 --> 00:00:52,401
+Most recently the NBN dpdk forwarder.
+最近他在开发 NBN dpdk 转发器。
+
+13
+00:00:52,401 --> 00:00:55,251
+Junxiao go ahead.
+俊晓继续前进。
+
+14
+00:00:55,251 --> 00:00:56,834
+>> Next page.
+>> 下一页。
+
+15
+00:00:56,834 --> 00:00:58,108
+Hi, my Junxiao Shi.
+你好，我是施俊逍。
+
+16
+00:00:58,108 --> 00:01:04,690
+Today I'm presenting my personal project NDNts: NDN Libraries for the Modern Web.
+今天我要介绍我的个人项目NDNts：适用于现代网络的NDN库。
+
+17
+00:01:04,690 --> 00:01:05,190
+Next page.
+~!@#$%^&*()
+
+18
+00:01:07,285 --> 00:01:11,228
+NDNts is a set of modern Java script libraries.
+NDNts是一套现代化的JavaScript库。
+
+19
+00:01:11,228 --> 00:01:16,810
+It is compatible with both TypeScript and the JavaScript projects.
+它既兼容TypeScript又兼容JavaScript项目。
+
+20
+00:01:16,810 --> 00:01:20,855
+It works in both Node.js and the browser environment and
+它既能在Node.js中工作，也能在浏览器环境中运行，并且
+
+21
+00:01:20,855 --> 00:01:26,460
+we have good test coverage as well as automated and manual browser test.
+我们拥有良好的测试覆盖率，以及自动化和手动的浏览器测试。
+
+22
+00:01:26,460 --> 00:01:32,590
+NDNts libraries can operate a stand alone without using a a forwarder or
+NDNts库可以独立运行，无需使用转发器或
+
+23
+00:01:32,590 --> 00:01:37,870
+if you chose, it can connect to NFD or NDN- DPDK forwarders.
+如果您选择，它可以连接到NFD或NDN-DPDK转发器。
+
+24
+00:01:37,870 --> 00:01:43,559
+Most importantly, NDNts project is active maintains new features are being
+最重要的是，NDNts项目正在积极维护，新功能正在被开发中。
+
+25
+00:01:43,559 --> 00:01:49,261
+added mostly to the libraries and we support the latest NDN specifications.
+添加的大多数内容都是针对库的，我们支持最新的NDN规范。
+
+26
+00:01:49,261 --> 00:01:49,761
+Next page.
+在支持海报演示环节期间，
+
+27
+00:01:53,270 --> 00:01:56,126
+During the support poster demo session,
+在支持海报演示环节期间，
+
+28
+00:01:56,126 --> 00:01:59,559
+I will show some code samples of the endpoint API.
+我将展示一些端点 API 的代码示例。
+
+29
+00:01:59,559 --> 00:02:05,110
+This is a new API design which is a better version of the face.
+这是一个新的 API 设计，是面部识别功能的升级版本。
+
+30
+00:02:05,110 --> 00:02:08,581
+And on the left side, there is the features of the current face.
+在左侧是当前面部的特征。
+
+31
+00:02:08,581 --> 00:02:13,280
+It has only a little bit of fisher, but with endpoint it will automatic handle
+它只有一点点的渔夫特征，但配合端点，它将会自动处理。
+
+32
+00:02:13,280 --> 00:02:18,055
+a few things such as the automatic interest retransmission, date signing and
+几个方面，例如自动的兴趣重传、数据签名以及
+
+33
+00:02:18,055 --> 00:02:20,463
+verification based on trust schemas.
+基于信任模式的验证。
+
+34
+00:02:20,463 --> 00:02:23,088
+Data buffering on the producer side, and
+生产者端的数据缓冲，以及
+
+35
+00:02:23,088 --> 00:02:26,740
+it also automatically handles the transport errors.
+它还会自动处理传输错误。
+
+36
+00:02:26,740 --> 00:02:30,900
+So that in the application you just need to focus on application logic.
+因此，在应用程序中您只需要专注于应用逻辑。
+
+37
+00:02:30,900 --> 00:02:31,400
+Next page.
+下一页。
+
+38
+00:02:34,079 --> 00:02:35,148
+In the demo session, I will also show some code samples of
+在演示会议中，我还会展示一些代码示例。
+
+39
+00:02:35,148 --> 00:02:35,765
+Trust Schema implementation.
+所以，Trust Schema 是这个实现。
+
+40
+00:02:35,765 --> 00:02:41,471
+So, Trust Schema is this implementation
+所以，Trust Schema 就是这个实现。
+
+41
+00:02:41,471 --> 00:02:46,687
+is inspired by Casey's talk last year
+是受到去年Casey的演讲启发的。
+
+42
+00:02:46,687 --> 00:02:51,257
+of Versatile Security Toolkit.
+多功能安全工具包。
+
+43
+00:02:51,257 --> 00:02:52,056
+Next Page.
+下一页。
+
+44
+00:02:54,950 --> 00:03:00,635
+I will show online web application which displaces
+我将展示一个在线Web应用程序，它可以显示
+
+45
+00:03:00,635 --> 00:03:05,668
+NLSR status in today's global NDN testbed.
+NLSR状态在今天的全球NDN测试床上。
+
+46
+00:03:05,668 --> 00:03:06,799
+And there's a URL example on top right corner you can already try to look at it.
+右上角有一个URL示例，你可以尝试去看看。
+
+47
+00:03:06,799 --> 00:03:10,544
+Next page.
+下一页。
+
+48
+00:03:14,182 --> 00:03:19,740
+I will show my implementation of the NDN certificate Management Protocol.
+我将展示我的NDN证书管理协议的实现。
+
+49
+00:03:19,740 --> 00:03:23,081
+This includes a Node.js web application called
+这包括一个名为Node.js的网络应用程序。
+
+50
+00:03:23,081 --> 00:03:28,460
+the NDNts Personal Certificate Authority, as well as a commander land client
+NDNts个人证书颁发机构，以及一个命令行客户端。
+
+51
+00:03:28,460 --> 00:03:33,360
+of the NDNts certified management protocol to request a certificate.
+的NDNts认证管理协议来请求一个证书。
+
+52
+00:03:33,360 --> 00:03:33,862
+Next page.
+请翻到下一页。
+
+53
+00:03:40,067 --> 00:03:41,667
+Please switch to the next page.
+请翻到下一页。
+
+54
+00:03:45,267 --> 00:03:52,390
+And finally, I will show a demo of the home civilians camera.
+最后，我将展示家用民用摄像头的演示。
+
+55
+00:03:52,390 --> 00:03:55,960
+I demo the older version of this application two years ago,
+两年前，我演示了这个应用程序的旧版本。
+
+56
+00:03:55,960 --> 00:03:58,000
+which was written on NDNts.
+但现在我已经用我新的库NDNts重建了这个应用程序。
+
+57
+00:03:58,000 --> 00:04:02,640
+But now I have rebuilt this application with my new libraries NDNts.
+但现在我已经用我新的库NDNts重建了这个应用程序。
+
+58
+00:04:02,640 --> 00:04:05,096
+I also added a screencast feature and
+我还增加了一个截屏功能。
+
+59
+00:04:05,096 --> 00:04:09,100
+this will be online demo accessible using this UI.
+这将是一个在线演示，可以通过这个用户界面访问。
+
+60
+00:04:09,100 --> 00:04:09,840
+Okay, thank you.
+好的，谢谢。
+
+61
+00:04:09,840 --> 00:04:14,074
+That's all from me, I hope you can join me after the post session.
+我就说到这里，希望你能在会后加入我。
+
+62
+00:04:16,638 --> 00:04:17,840
+>> Thank you very much Junxiao.
+>> 非常感谢你，俊晓。
+
+63
+00:04:18,860 --> 00:04:22,890
+Next talk is by Alex Afanasyev.
+下一场演讲是由 Alex Afanasyev 进行的。
+
+64
+00:04:22,890 --> 00:04:27,480
+CertCoalesce: Effecient Certificate Pool for NDN-Based Systems.
+CertCoalesce：基于NDN系统的高效证书池。
+
+65
+00:04:27,480 --> 00:04:31,520
+Alex is an assistant professor at Florida International University.
+亚历克斯是佛罗里达国际大学的助理教授。
+
+66
+00:04:31,520 --> 00:04:35,632
+His main research focus is on next generation architectures as part of
+他的主要研究重点是作为下一代架构的一部分。
+
+67
+00:04:35,632 --> 00:04:38,489
+the NDN project, in particular scalability and
+NDN项目，特别是可扩展性和
+
+68
+00:04:38,489 --> 00:04:42,254
+name based routing, auto configuration autoconfiguration,
+基于名称的路由，自动配置 autoconfiguration，
+
+69
+00:04:42,254 --> 00:04:47,084
+distributed data synchronization as well as application and network security.
+分布式数据同步以及应用程序和网络安全。
+
+70
+00:04:47,084 --> 00:04:48,483
+Alex?
+~!@#$%^&*()
+
+71
+00:04:48,483 --> 00:04:52,780
+>> Sure, so you probably can skip the title slide of my presentation.
+当然，所以你可能可以跳过我演讲的标题幻灯片。
+
+72
+00:04:52,780 --> 00:04:55,230
+Just move.
+只要移动。
+
+73
+00:04:55,230 --> 00:04:56,029
+Yeah.
+是的。
+
+74
+00:04:56,029 --> 00:04:58,000
+So basically the motivation for
+所以基本上动机是
+
+75
+00:04:58,000 --> 00:05:02,810
+this work is a simple assumption that we need the many certificates.
+这项工作是一个简单的假设，我们需要许多证书。
+
+76
+00:05:02,810 --> 00:05:07,430
+And so for example, it needs to be used for to realize least privileges
+例如，它需要被用来实现最小权限原则。
+
+77
+00:05:07,430 --> 00:05:11,736
+separation, for example, we have kind of very rich namespace,
+例如，我们有一个非常丰富的命名空间，需要进行分离。
+
+78
+00:05:11,736 --> 00:05:16,513
+you want to have a separate key for individual pieces of that namespace,
+您希望为该命名空间的各个部分拥有单独的键。
+
+79
+00:05:16,513 --> 00:05:20,383
+like foo/bar/a, foo/bar/b and so forth, and so on.
+像foo/bar/a、foo/bar/b等等，诸如此类。
+
+80
+00:05:20,383 --> 00:05:25,260
+Another part is basically trying to limit exposure of individual keys.
+另一部分基本上是在尝试限制个别密钥的暴露。
+
+81
+00:05:25,260 --> 00:05:30,050
+So for example, if you kinda have a validity of one year,
+那么比如说，如果有效期大约是一年，
+
+82
+00:05:30,050 --> 00:05:33,400
+then you have to implement some mechanism to revoke the certificate.
+那么你必须实施一些机制来撤销证书。
+
+83
+00:05:33,400 --> 00:05:36,642
+If you have a validity period of a few minutes,
+如果你的有效期只有几分钟，
+
+84
+00:05:36,642 --> 00:05:40,812
+then you probably don't need the additional mechanisms.
+那么你可能不需要额外的机制。
+
+85
+00:05:40,812 --> 00:05:41,740
+And next slide please.
+接下来请换到下一张幻灯片。
+
+86
+00:05:43,858 --> 00:05:51,950
+So the basic approach in traditional systems is to use kind of
+所以在传统系统中的基本方法是采用某种方式。
+
+87
+00:05:51,950 --> 00:05:57,230
+ordinary certificate systems where on one side you generate the public key pair.
+在普通的证书系统中，你在一方生成公钥对。
+
+88
+00:05:57,230 --> 00:06:00,570
+And whenever you want to get a certificate you basically request certificate
+当你想要获取证书时，你基本上是在请求证书。
+
+89
+00:06:00,570 --> 00:06:01,198
+for this pair.
+对于这对。
+
+90
+00:06:02,510 --> 00:06:07,110
+I mean in theory, you can go certificate authority or
+我是说，理论上，你可以去证书授权机构或者
+
+91
+00:06:07,110 --> 00:06:11,190
+certificate issuer can reissue certificates for the same public key.
+证书发行机构可以为同一个公钥重新签发证书。
+
+92
+00:06:11,190 --> 00:06:16,370
+But that's not a great idea because you want to limit exposure of individual keys.
+但这并不是一个好主意，因为你想要限制单个密钥的暴露风险。
+
+93
+00:06:16,370 --> 00:06:18,360
+That's kind of a basic principle.
+这是一种基本原则。
+
+94
+00:06:18,360 --> 00:06:23,410
+And the limitation or kind of the outcome, if you want to have tons of certificates
+以及限制或者某种结果，如果你想要获取大量的证书
+
+95
+00:06:23,410 --> 00:06:28,860
+for different namespace or tons of certificates for kind of different
+对于不同的命名空间或者大量不同种类的证书
+
+96
+00:06:28,860 --> 00:06:34,440
+time granularities, it's both the network overhead and storage requirement.
+对于时间粒度，既包括了网络开销也包括了存储需求。
+
+97
+00:06:34,440 --> 00:06:39,000
+And basically what I'm trying to do as part of this work is trying to do some
+在这项工作中，我基本上尝试做的是尝试进行一些
+
+98
+00:06:39,000 --> 00:06:44,750
+optimization maybe with a few trade-offs, but trying to do some optimization.
+优化，或许会有一些权衡，但我试图进行一些优化。
+
+99
+00:06:44,750 --> 00:06:45,450
+So the next slide.
+那么，下一张幻灯片。
+
+100
+00:06:50,010 --> 00:06:58,950
+So the basic process here, is still based on elliptic curve cryptography,
+所以基本的过程仍然是基于椭圆曲线密码学的，
+
+101
+00:06:58,950 --> 00:07:03,590
+but instead of having a single key or single private public key, and
+但不是只有一把单一的密钥或者单一的私钥公钥对，
+
+102
+00:07:03,590 --> 00:07:08,160
+then getting the single certificate, you're basically creating a master key or
+然后获取单一证书，你基本上是在创建一个主密钥或者
+
+103
+00:07:08,160 --> 00:07:13,020
+caterpillar key that can bootstrap a sequence of infinite sequence of
+毛毛虫密钥，可以引导一个无限序列的序列。
+
+104
+00:07:13,020 --> 00:07:18,120
+contracts actual public, private key pairs that you can use in the future.
+合同实际上是公私钥对，你将来可以使用。
+
+105
+00:07:18,120 --> 00:07:23,150
+You can request certification of that the single key which will result in
+你可以请求对单个密钥进行认证，这将导致
+
+106
+00:07:23,150 --> 00:07:29,530
+on a kind of certificate the isher site, generation of unlimited
+在某种证书颁发网站上，生成无限的
+
+107
+00:07:29,530 --> 00:07:34,420
+sequence of keys, unlimited sequence of public keys and
+私钥序列，无限的公钥序列和
+
+108
+00:07:34,420 --> 00:07:40,880
+correspondingly it can generate unlimited sequence of certificates basically.
+相应地，它基本上可以生成无限序列的证书。
+
+109
+00:07:40,880 --> 00:07:45,670
+And in case of IT devices, this can be quite easy.
+在IT设备的情况下，这可能会相当容易。
+
+110
+00:07:45,670 --> 00:07:49,798
+You can just store a single, this master key, on the device.
+你可以只在设备上存储一个这样的主密钥。
+
+111
+00:07:49,798 --> 00:07:53,740
+And whenever you need it, you just kind of using the basic conventions,
+当你需要的时候，你只需遵循基本的约定，
+
+112
+00:07:53,740 --> 00:07:54,650
+naming conventions.
+命名约定。
+
+113
+00:07:54,650 --> 00:08:00,720
+You do define when To use specific key, quickly you generate that private key.
+您需要定义何时使用特定的密钥，快速生成那个私钥。
+
+114
+00:08:00,720 --> 00:08:04,350
+As soon as on the certificates on authority site,
+一旦在证书颁发机构的网站上，
+
+115
+00:08:04,350 --> 00:08:09,110
+this key is the corresponding certificate that have been created.
+这个密钥对应的证书已经被创建。
+
+116
+00:08:09,110 --> 00:08:12,960
+I'll probably stop here unless I have a few more minutes.
+我可能会在这里停下，除非我还有几分钟的时间。
+
+117
+00:08:12,960 --> 00:08:16,100
+But in any case this is preliminary work,
+但无论如何，这都是初步工作，
+
+118
+00:08:16,100 --> 00:08:19,240
+we can have devise some ideas how this can be done.
+我们可以构思出一些实现这个目标的想法。
+
+119
+00:08:19,240 --> 00:08:23,075
+We kind of borrowed some ideas from some of the vehicular work
+我们有点借鉴了一些与车辆有关的工作中的想法。
+
+120
+00:08:23,075 --> 00:08:25,336
+that have been proposed recently.
+但我不会完全使用那个环境中的所有提议。
+
+121
+00:08:25,336 --> 00:08:28,554
+I would not use an everything from that environment, but
+我不会完全使用那个环境中的所有东西，但
+
+122
+00:08:28,554 --> 00:08:32,040
+mostly focusing on the ability to have a single key.
+主要集中于拥有单一密钥的能力。
+
+123
+00:08:32,040 --> 00:08:36,909
+Generating, creating multitude of kind of derivative keys even though
+在生成、创建各种衍生密钥的过程中，尽管如此，
+
+124
+00:08:36,909 --> 00:08:42,351
+there's still forward secrecy properties preserved during this derivation.
+在这种衍生过程中，仍然保留了前向保密性质。
+
+125
+00:08:42,351 --> 00:08:47,908
+And ability to independent generate on the certificate issuer site
+以及在证书颁发者网站上独立生成的能力。
+
+126
+00:08:47,908 --> 00:08:53,959
+certificates if your whatever original master key is still not revoked.
+因此，基本上是某种结合了证书授权机构的机制，如果你的任何原始主密钥还未被撤销的话。
+
+127
+00:08:53,959 --> 00:08:59,893
+So basically some kind of combination mechanism of certificate authority or
+所以基本上是某种证书授权机构的组合机制，或者
+
+128
+00:08:59,893 --> 00:09:04,825
+issuing a certificate and revocation certificates by the way of
+通过发放证书和撤销证书的方式
+
+129
+00:09:04,825 --> 00:09:09,410
+not issuing new certificates okay, I guess that would be.
+不再发放新证书，我想这应该是可以的。
+
+130
+00:09:10,630 --> 00:09:12,880
+>> Okay thank you, Alex.
+好的，谢谢你，亚历克斯。
+
+131
+00:09:12,880 --> 00:09:17,520
+Our next presenter is Sanjeev Ramani on MDN Viber vibration assistant
+我们下一位演讲者是Sanjeev Ramani，他将介绍MDN Viber振动助手。
+
+132
+00:09:17,520 --> 00:09:20,900
+automated bootstrapping of IoT devices.
+自动引导物联网设备。
+
+133
+00:09:20,900 --> 00:09:25,450
+Sanjeev is a PHD student At [COUGH] Florida International University working
+Sanjeev是[咳嗽]佛罗里达国际大学的一名博士研究生，在工作
+
+134
+00:09:25,450 --> 00:09:28,940
+with Alex under the supervision of Alex.
+在Alex的指导下。
+
+135
+00:09:28,940 --> 00:09:33,220
+His research interests include NDNViber security as well as privacy and
+他的研究兴趣包括NDNViber的安全性以及隐私保护。
+
+136
+00:09:33,220 --> 00:09:37,770
+trust management in wireless sensor networks and IOT devices.
+无线传感器网络和物联网设备中的信任管理。
+
+137
+00:09:37,770 --> 00:09:41,070
+Sanjeev, >> Hope I'm visible and
+Sanjeev，>> 希望我是看得见的并且
+
+138
+00:09:41,070 --> 00:09:42,460
+all of you can hear me out.
+所有人都能听到我说话。
+
+139
+00:09:42,460 --> 00:09:44,183
+Thank you, Lotti.
+谢谢你，洛蒂。
+
+140
+00:09:44,183 --> 00:09:48,720
+Can you go to the next slide, well all of us.
+你能翻到下一张幻灯片吗，我们大家。
+
+141
+00:09:50,070 --> 00:09:54,010
+Yeah, so all of us know that IoT devices have
+是的，所以我们都知道物联网设备已经
+
+142
+00:09:54,010 --> 00:09:56,880
+pretty much penetrated into everyone's daily livelihood.
+几乎深入到每个人的日常生活中。
+
+143
+00:09:56,880 --> 00:09:59,780
+And we have a lot of wearable devices and
+我们有很多可穿戴设备和
+
+144
+00:09:59,780 --> 00:10:03,950
+other kinds of IoT devices that we use on a day to day basis.
+我们日常使用的其他种类的物联网设备。
+
+145
+00:10:03,950 --> 00:10:10,870
+But, and in the near future, we assume it's going to explode to a larger extent.
+但是，在不远的将来，我们认为它将会有更大规模的爆炸性增长。
+
+146
+00:10:10,870 --> 00:10:18,270
+An important aspect in any IoT devices life cycle is the bootstrapping process
+物联网设备生命周期中的一个重要方面是引导过程。
+
+147
+00:10:18,270 --> 00:10:22,440
+rather than it gets to know of the network or environment it will be working in.
+而它实际上会了解到自己将要工作的网络或环境。
+
+148
+00:10:22,440 --> 00:10:25,450
+And the network on the other hand actually gets to know
+而另一方面，网络实际上也会了解
+
+149
+00:10:25,450 --> 00:10:29,640
+about the device that's joining the environment and so,
+关于加入环境的设备，因此，
+
+150
+00:10:29,640 --> 00:10:34,060
+that they can have trustworthy communication and exchanges later on.
+因此他们日后可以进行值得信赖的通信和交流。
+
+151
+00:10:34,060 --> 00:10:39,407
+So, usually this bootstrapping happens in an auxiliary channel or
+所以，通常这种引导过程发生在一个辅助通道中或者
+
+152
+00:10:39,407 --> 00:10:44,095
+an out of band channel, and when the bootstrapping keys and
+在一个带外通道中，以及当引导密钥和其他信息加密材料被交换时。
+
+153
+00:10:44,095 --> 00:10:47,595
+other info crypto material are exchanged.
+其他信息加密材料被交换时。
+
+154
+00:10:47,595 --> 00:10:52,584
+So, in our exploration, we basically surveyed all the out of band
+所以，在我们的探索中，我们基本上调查了所有的带外
+
+155
+00:10:52,584 --> 00:10:57,129
+channels to identify, which would be most apt in a situation
+通道以确定哪个在特定情况下最合适。
+
+156
+00:10:57,129 --> 00:11:02,140
+rather than you have an IoT device that's not in the line of sight.
+可能是你有一个物联网设备不在视线范围内。
+
+157
+00:11:02,140 --> 00:11:06,410
+It's probably behind the wall or embedded on the table.
+它可能在墙后面或嵌在桌子里。
+
+158
+00:11:06,410 --> 00:11:09,770
+And we want to try to bootstrap this device.
+我们希望尝试引导启动这个设备。
+
+159
+00:11:09,770 --> 00:11:13,600
+By not trying to increase the complexity of the hardware that is associated with
+不试图增加与之相关的硬件复杂性
+
+160
+00:11:13,600 --> 00:11:18,940
+the device, but just trying to use a simple accelerometer or
+但仅仅尝试使用一个简单的加速度计或
+
+161
+00:11:18,940 --> 00:11:23,140
+a device or a sensor that's pretty
+一种相当普遍的设备或传感器，它在当今大多数物联网设备中都有所应用。
+
+162
+00:11:23,140 --> 00:11:27,460
+much available with most of the IoT devices that come in today.
+在当今市场上的大多数物联网设备中都广泛应用。
+
+163
+00:11:27,460 --> 00:11:32,172
+So that's when we place our hands on vibration based autobank
+因此，当我们开始使用基于振动的自动银行系统时。
+
+164
+00:11:32,172 --> 00:11:36,975
+channel which basically give us multiple security benefits as
+通道基本上为我们提供了多重安全好处。
+
+165
+00:11:36,975 --> 00:11:41,340
+well which basically starts our proximity based trust.
+这基本上开启了我们基于接近性的信任。
+
+166
+00:11:41,340 --> 00:11:46,365
+Because you need to have the device and the controller at pretty close
+因为你需要将设备和控制器放得非常近。
+
+167
+00:11:46,365 --> 00:11:51,907
+quarters in close less than in a distance of less than 1.5 centimeters for
+距离小于1.5厘米的范围内。
+
+168
+00:11:51,907 --> 00:11:56,868
+the vibrations to be actually felt by the IoT device and bootstrap.
+通过物联网设备和引导程序实际感受到的振动。
+
+169
+00:11:56,868 --> 00:12:01,479
+And also the NDNViber design that we came up with using
+我们提出的使用NDNViber设计，以及
+
+170
+00:12:01,479 --> 00:12:05,140
+this vibration based channel.
+这种基于振动的通道。
+
+171
+00:12:05,140 --> 00:12:09,580
+Can be a dynamic approach as against the most traditional static
+可以是一种与传统的静态方法相对的动态方法。
+
+172
+00:12:09,580 --> 00:12:11,650
+ways of doing bootstrapping.
+进行引导启动的方法。
+
+173
+00:12:11,650 --> 00:12:16,550
+And also we can use commodity or stock Android phones as controllers.
+我们还可以使用普通或原生安卓手机作为控制器。
+
+174
+00:12:16,550 --> 00:12:17,050
+Next slide please.
+下一张幻灯片，请。
+
+175
+00:12:20,565 --> 00:12:26,230
+So, the NDNViber overview, I'll probably just run through this pretty quick.
+那么，关于NDNViber的概述，我可能会很快地跑过这部分。
+
+176
+00:12:26,230 --> 00:12:30,430
+It's split into four different stages starting with the pilot sequence which
+将其分为四个不同阶段，从引导序列开始，这
+
+177
+00:12:30,430 --> 00:12:37,330
+would basically awaken the IoT device and make it listen on the vibration channel
+将基本上唤醒物联网设备，并使其在振动通道上监听。
+
+178
+00:12:37,330 --> 00:12:42,490
+for any triggers or any information that's passed on by the controller.
+用于接收由控制器传递的任何触发器或任何信息。
+
+179
+00:12:42,490 --> 00:12:45,070
+Then the trigger sequence follows wherein,
+随后是触发器序列的执行，其中，
+
+180
+00:12:46,630 --> 00:12:50,670
+there is an exchange of environment information, and
+进行环境信息的交换，以及
+
+181
+00:12:50,670 --> 00:12:55,880
+also learning information like temporary cryptographic keys or encryption keys.
+还有学习信息，比如临时加密密钥或者加密密钥。
+
+182
+00:12:55,880 --> 00:13:00,600
+And even the channel that the device should use in further
+还有设备在未来应该使用的通道。
+
+183
+00:13:00,600 --> 00:13:02,850
+communication when in the network.
+在网络中进行通信时。
+
+184
+00:13:02,850 --> 00:13:08,320
+Following the trigger sequence and is the anchor of exchanges where the device after
+在触发序列之后，是设备之后交换的锚点。
+
+185
+00:13:08,320 --> 00:13:14,370
+the completion of the anchor sequence gets to know of the trust anchor certificate.
+完成锚点序列后，将了解到信任锚证书。
+
+186
+00:13:14,370 --> 00:13:20,590
+And finally we have the NDN cert sequence that runs when the device is
+最后，我们有了在设备上运行的NDN证书序列。
+
+187
+00:13:20,590 --> 00:13:25,710
+able to generate its and obtain its Indian certificate for the key namespace and
+用于为关键命名空间生成其并获取其印度证书。
+
+188
+00:13:25,710 --> 00:13:29,990
+use it for signing information that it produces in the network.
+用它来对网络中产生的信息进行签名。
+
+189
+00:13:29,990 --> 00:13:31,870
+Next slide please.
+下一张幻灯片，请。
+
+190
+00:13:31,870 --> 00:13:34,250
+So basically this is the overview and
+所以基本上这是一个概览，
+
+191
+00:13:34,250 --> 00:13:40,270
+if you can join me at the poster we could discuss further about.
+如果你能和我一起来到海报前，我们可以进一步讨论。
+
+192
+00:13:40,270 --> 00:13:43,180
+What does a specific in coding scheme that we used for
+我们使用的特定编码方案是什么？
+
+193
+00:13:43,180 --> 00:13:47,645
+vibration channel and how it's used in NDNViber.
+振动通道以及它在NDNViber中的使用方式。
+
+194
+00:13:47,645 --> 00:13:52,080
+And what are the advantages that we see in terms of bootstrapping
+我们在引导方面看到的优势有哪些？
+
+195
+00:13:52,080 --> 00:13:56,717
+multiple devices at the same time, the security properties that we observed and
+我们观察到的安全属性以及同时使用多个设备时的情况。
+
+196
+00:13:56,717 --> 00:14:01,510
+also the challenges in evaluation, preliminary evaluation that we have.
+还有我们所面临的评估挑战，以及我们进行的初步评估。
+
+197
+00:14:02,770 --> 00:14:06,270
+That's pretty much it for this I guess I continue next again.
+那么，我想这就是这部分的全部内容了，我猜我接下来会继续进行。
+
+198
+00:14:07,730 --> 00:14:09,450
+>> Yes so you have two posters.
+是的，所以你有两张海报。
+
+199
+00:14:09,450 --> 00:14:15,430
+This is the second one on use to secure smartphone distribution.
+这是第二个用于确保智能手机分发的海报。
+
+200
+00:14:15,430 --> 00:14:20,850
+>> Okay, so this is basically in its preliminary exploration stage.
+好的，所以这基本上处于初步探索阶段。
+
+201
+00:14:20,850 --> 00:14:25,510
+This is more of we all know that smart grids is a modern adoption
+这更多的是我们都知道智能电网是一种现代化的采纳。
+
+202
+00:14:25,510 --> 00:14:29,650
+of power systems with the potential to revolutionize power distribution and
+的电力系统，具有彻底改变电力分配和管理的潜力。
+
+203
+00:14:29,650 --> 00:14:30,750
+management.
+管理。
+
+204
+00:14:30,750 --> 00:14:35,070
+In a general setting you have multiple,
+在一般情况下，你会有多个，
+
+205
+00:14:35,070 --> 00:14:40,740
+multiple stakeholders be the consumer, the producer of power.
+多个利益相关者，无论是消费者还是电力生产者。
+
+206
+00:14:40,740 --> 00:14:46,360
+And a lot of other intermediary devices, be it sensor or
+以及许多其他中间设备，无论是传感器还是
+
+207
+00:14:46,360 --> 00:14:50,250
+any transmission, right, the transformers that
+变压器，对，那些变压器用来转换电能，通过升压、降压变压器。
+
+208
+00:14:50,250 --> 00:14:54,570
+transform the electricity from step-up, step-down transformers.
+变压器将电能通过升压、降压变压器进行转换。
+
+209
+00:14:54,570 --> 00:14:59,660
+There are a lot of devices and the digital communication that happens among these
+这些设备之间发生了大量的数字通信。
+
+210
+00:14:59,660 --> 00:15:05,707
+devices is basically the support system for the whole operation of the smart grid.
+设备基本上是智能电网整个运作的支持系统。
+
+211
+00:15:05,707 --> 00:15:11,380
+And also smart grid basically provides us decouple the wrong
+智能电网基本上为我们提供了解耦错误的功能。
+
+212
+00:15:11,380 --> 00:15:17,000
+interconnection that power generation sites have with the consumption sites and
+电力生成地点与消费地点之间的互联。
+
+213
+00:15:17,000 --> 00:15:21,120
+makes power basically a commodity that can be requested for.
+使电力基本上成为一种可以请求的商品。
+
+214
+00:15:22,430 --> 00:15:28,389
+Well so I have mentioned two types of information that's basically exchanged in
+那么我提到了两种基本上在交换中的信息。
+
+215
+00:15:28,389 --> 00:15:34,450
+this system that's more a technical data corresponding to the energy profiles.
+这个系统更多的是与能源剖面相对应的技术数据。
+
+216
+00:15:34,450 --> 00:15:38,922
+And management related information that's building, pricing,
+以及与建筑、定价相关的管理信息，
+
+217
+00:15:38,922 --> 00:15:43,315
+and even information that can be used for analytics to identify how
+以及甚至可以用于分析的信息，以识别如何
+
+218
+00:15:43,315 --> 00:15:47,324
+new infrastructure has to be established and other things.
+需要建立新的基础设施和其他事项。
+
+219
+00:15:47,324 --> 00:15:51,774
+And in the end, we believe with all the inherent features,
+最终，我们相信凭借所有这些内在特性，
+
+220
+00:15:51,774 --> 00:15:57,470
+like data centric security Optimal routing and other
+像数据中心安全、最优路由等其他
+
+221
+00:15:57,470 --> 00:16:02,160
+benefits of the data centric approach, data centric
+数据中心方法的好处，数据中心
+
+222
+00:16:03,210 --> 00:16:09,940
+architecture can provide a better is a good fit for smart grid communication.
+架构可以更好地适应智能电网通信。
+
+223
+00:16:09,940 --> 00:16:11,565
+Next slide please.
+请翻到下一张幻灯片。
+
+224
+00:16:15,004 --> 00:16:21,973
+Yeah, so the common issues that we see with the current SmartGrid set up is that
+是的，我们在当前智能电网设置中看到的常见问题是
+
+225
+00:16:21,973 --> 00:16:27,480
+most of these power systems are usually legacy systems.
+大多数这些电力系统通常是传统系统。
+
+226
+00:16:27,480 --> 00:16:29,350
+And they're not interface relative to each other.
+它们之间并不相互兼容。
+
+227
+00:16:29,350 --> 00:16:33,750
+So If you're talking about an IoT device as the end consumer and
+所以如果你谈论的是作为最终消费者的物联网设备，
+
+228
+00:16:33,750 --> 00:16:39,610
+the power generation sites being having large machinary probably the interface
+在电力生成站点，由于拥有大型机械，界面可能会
+
+229
+00:16:39,610 --> 00:16:45,930
+between these devices is not very well taken care of in the current system.
+在当前系统中，这些设备之间的界面并没有得到很好的维护。
+
+230
+00:16:45,930 --> 00:16:50,374
+And also there are a lot of security concerns with information power flowing
+同时，信息权力流动也存在许多安全问题。
+
+231
+00:16:50,374 --> 00:16:54,689
+through different channels and media and which is one that double check.
+通过不同的渠道和媒介，这是一个需要双重检查的问题。
+
+232
+00:16:54,689 --> 00:16:59,648
+With NDN What we can do is more of an off by default approach wherein only
+在NDN中，我们所能做的更多是采取默认关闭的方式，仅在……时才会开启。
+
+233
+00:16:59,648 --> 00:17:03,178
+when any of the nodes are required or requested for
+在任何节点被要求或请求时才会开启。
+
+234
+00:17:03,178 --> 00:17:08,138
+information they could be turned on and hence, you can prevent any bad
+信息一旦被开启，因此，你可以预防任何不良情况。
+
+235
+00:17:08,138 --> 00:17:12,790
+information coming in or any leaks that can happen in the system.
+信息的输入或系统中可能发生的任何泄露。
+
+236
+00:17:14,070 --> 00:17:15,130
+Next slide.
+下一张幻灯片。
+
+237
+00:17:15,130 --> 00:17:19,120
+I probably have a small example here.
+我这里可能有一个小例子。
+
+238
+00:17:19,120 --> 00:17:20,620
+Let's consider a smart home.
+让我们考虑一下智能家居。
+
+239
+00:17:20,620 --> 00:17:23,290
+I hope I'm not running out of time on it.
+我希望我没有在它上面耗尽时间。
+
+240
+00:17:23,290 --> 00:17:24,170
+I'll make it real quick.
+我会很快完成它。
+
+241
+00:17:24,170 --> 00:17:27,020
+So a smart home with the smart refrigerator that's
+所以有一个智能家居，里面有一个智能冰箱，这个是……
+
+242
+00:17:27,020 --> 00:17:29,180
+trying to request for power.
+试图请求供电。
+
+243
+00:17:29,180 --> 00:17:33,410
+It basically has, like I told you there are different stakeholders different
+它基本上有，就像我告诉你的那样，有不同的利益相关者不同
+
+244
+00:17:34,470 --> 00:17:38,220
+notes are different people involved in this whole entire communication and
+笔记中涉及到整个通信过程中的不同人员。
+
+245
+00:17:38,220 --> 00:17:42,610
+NDN provides with its flexible naming convention and
+NDN通过其灵活的命名规则提供了……
+
+246
+00:17:42,610 --> 00:17:48,360
+other benefits makes it an easier option to achieve this power which is
+其他好处使得它成为实现这种能力的一个更容易的选择，这种能力是……
+
+247
+00:17:48,360 --> 00:17:53,270
+basically decoupled as a commodity by the smart credit system and
+基本上被智能信用系统作为一种商品解耦，并且……
+
+248
+00:17:53,270 --> 00:17:56,330
+request efficiently and use it.
+高效地请求并使用它。
+
+249
+00:17:56,330 --> 00:18:00,110
+Next slide, so when you pass by or
+下一张幻灯片，所以当你路过或者
+
+250
+00:18:00,110 --> 00:18:05,920
+when we are at the poster session probably we can
+在海报展示环节，我们或许可以
+
+251
+00:18:05,920 --> 00:18:12,680
+discuss on how NDN basically helps in all these smart-grid operations and
+讨论NDN是如何在所有这些智能电网运营中提供帮助的，以及
+
+252
+00:18:12,680 --> 00:18:19,750
+the smart grid operation can be made more hassle free with the adoption of NDN.
+智能电网的运营可以通过采用NDN变得更加无忧无虑。
+
+253
+00:18:19,750 --> 00:18:20,730
+Thank you, I guess.
+谢谢，我想。
+
+254
+00:18:22,270 --> 00:18:22,860
+>> All right.
+好的。
+
+255
+00:18:22,860 --> 00:18:24,490
+Thank you, Sanjeev.
+谢谢你，Sanjeev。
+
+256
+00:18:24,490 --> 00:18:29,514
+Next speaker is Italo Brito
+下一位发言人是 Italo Brito。
+
+257
+00:18:29,514 --> 00:18:34,680
+on the topic of Distance Vector Routing for NDN.
+关于NDN的距离向量路由主题。
+
+258
+00:18:34,680 --> 00:18:39,370
+Italo is a PhD student at Federal University of Bahia in Brazil.
+Italo是巴西巴伊亚联邦大学的博士研究生。
+
+259
+00:18:40,500 --> 00:18:41,000
+Go ahead Italo.
+请继续，Italo。
+
+260
+00:18:43,960 --> 00:18:44,820
+>> Hello, everyone.
+大家好。
+
+261
+00:18:44,820 --> 00:18:45,780
+Good afternoon?
+下午好？
+
+262
+00:18:45,780 --> 00:18:49,440
+So this work is a collaboration between myself, my advisor,
+所以这项工作是我和我的导师合作的，
+
+263
+00:18:49,440 --> 00:18:53,760
+Professor Lambino, and also Professor Alicia Zang from UCLA.
+兰比诺教授，还有来自加州大学洛杉矶分校的艾丽西亚·桑教授。
+
+264
+00:18:53,760 --> 00:19:01,120
+So the idea is to propose a distance vector routing algorithm for the engine.
+所以这个想法是为引擎提出一个距离向量路由算法。
+
+265
+00:19:01,120 --> 00:19:02,010
+Next slide please.
+下一张幻灯片，请。
+
+266
+00:19:02,010 --> 00:19:08,880
+So, the NDN in the mobile Adhoc Scenarios presents some challenges.
+因此，在移动Adhoc场景中的NDN呈现了一些挑战。
+
+267
+00:19:08,880 --> 00:19:14,450
+And the queue has deployed engine routing protocol NLSR is
+而且队列已经部署了基于NLSR的引擎路由协议。
+
+268
+00:19:14,450 --> 00:19:16,400
+based on link state algorithms.
+基于链路状态算法。
+
+269
+00:19:16,400 --> 00:19:20,610
+Link state ours require synchronization between the link state database across
+链路状态数据库需要在各个节点之间进行同步。
+
+270
+00:19:20,610 --> 00:19:25,330
+the nodes, anything and in the mobile doc scenarios,
+在节点中，在移动文档场景下，
+
+271
+00:19:25,330 --> 00:19:29,950
+which is our wireless, dynamic environments, they design a lightweight
+它们设计了一种轻量级的无线动态环境，
+
+272
+00:19:29,950 --> 00:19:35,500
+routing protocol, to propagate the rapidly change data reachability information.
+路由协议，以传播快速变化的数据可达性信息。
+
+273
+00:19:35,500 --> 00:19:39,780
+The distance vector routing protocol enables each node to selectively
+距离矢量路由协议允许每个节点选择性地
+
+274
+00:19:39,780 --> 00:19:44,770
+the action exchange, name prefix, reachability information and also to
+估算路径可达性信息，以及交换动作、名称前缀。
+
+275
+00:19:44,770 --> 00:19:50,510
+estimate the wish ability to design data in a distributed in a synchronous manner
+估算在分布式同步方式下设计数据的愿望能力。
+
+276
+00:19:50,510 --> 00:19:55,660
+different from the link state our which require the synchronization the distance
+与链路状态路由不同，后者需要同步距离。
+
+277
+00:19:55,660 --> 00:20:01,180
+vector is based on distribution and a synchronous communication.
+向量是基于分布式和异步通信的。
+
+278
+00:20:01,180 --> 00:20:01,980
+Next slide please.
+下一张幻灯片，请。
+
+279
+00:20:06,446 --> 00:20:12,595
+So our goal is to propose a simplest as possible way to propagate the name
+因此，我们的目标是提出一种尽可能简单的方法来传播名称。
+
+280
+00:20:12,595 --> 00:20:18,336
+prefix reachability information in a mobile adhoc scenario, and
+我们的设计基于动态检测邻居来实现移动自组织网络场景中的前缀可达性信息传播。
+
+281
+00:20:18,336 --> 00:20:24,040
+our designs base it on dynamically detect the neighbors.
+我们的设计基于动态检测邻居。
+
+282
+00:20:24,040 --> 00:20:26,270
+Upon detecting a neighbor,
+在检测到一个邻居时，
+
+283
+00:20:26,270 --> 00:20:31,010
+the node sends an interest to retrieve the neighbor's distance vector information,
+节点发送一个兴趣请求来检索邻居的距离向量信息。
+
+284
+00:20:31,010 --> 00:20:36,180
+the routes and we need to remember that the interest they are not secured but
+我们需要记住，这些路由的兴趣请求是不安全的，但是
+
+285
+00:20:36,180 --> 00:20:41,040
+in our case is not a problem because it's just a request and then neighbors replies
+在我们的情况下，这不是问题，因为这只是一个请求，然后邻居就会回复。
+
+286
+00:20:41,040 --> 00:20:45,590
+back with the reachability information which is the distance vector the house.
+带着可达性信息回来，这是到房子的距离向量。
+
+287
+00:20:45,590 --> 00:20:49,190
+And the data packets are secured and can be validated.
+数据包是安全的，可以进行验证。
+
+288
+00:20:49,190 --> 00:20:51,640
+So we can make sure that the data is valid.
+因此，我们可以确保数据是有效的。
+
+289
+00:20:52,740 --> 00:20:58,230
+We use the distributed Bellman-Ford algorithm with sequence number approach.
+我们使用带序列号方法的分布式贝尔曼-福特算法。
+
+290
+00:20:58,230 --> 00:20:59,045
+Those are true,
+这些是真的。
+
+291
+00:20:59,045 --> 00:21:05,090
+well-known algorithm from the mobile adhoc network research community.
+来自移动自组织网络研究社区的著名算法。
+
+292
+00:21:05,090 --> 00:21:09,500
+So we just took advantage of the same well-known algorithms.
+所以我们刚刚利用了相同的著名算法。
+
+293
+00:21:09,500 --> 00:21:10,354
+Next slide please.
+下一张幻灯片，请。
+
+294
+00:21:16,383 --> 00:21:21,388
+Our naming schema, we are based mainly on two message,
+我们的命名方案主要基于两种消息，
+
+295
+00:21:21,388 --> 00:21:27,992
+the hello message, which is the one that is used for Neighbor discover and
+邻居发现以及使用的问候消息。
+
+296
+00:21:27,992 --> 00:21:34,278
+also it is an extended hello message because it It is also used to inform
+同时它也是一种扩展的问候消息，因为它还被用于通知。
+
+297
+00:21:34,278 --> 00:21:39,660
+the neighbors about a new D vector information on the node.
+邻居们关于节点上的新D向量信息。
+
+298
+00:21:39,660 --> 00:21:44,000
+So, we are going to discuss this a little bit later on the poster session.
+所以，我们稍后会在海报展示环节对此进行讨论。
+
+299
+00:21:44,000 --> 00:21:50,010
+But the other type of message is the distance vector information.
+但另一种类型的消息是距离矢量信息。
+
+300
+00:21:50,010 --> 00:21:54,190
+Then we use this naming schema.
+然后我们使用这种命名方案。
+
+301
+00:21:54,190 --> 00:21:58,240
+We have the ndvr, dvinfo, and also the halter name and
+我们有ndvr、dvinfo，还有halter名称和
+
+302
+00:21:58,240 --> 00:22:03,780
+the version of the package, the version of the interest of the data.
+包的版本，数据兴趣的版本。
+
+303
+00:22:03,780 --> 00:22:06,880
+And those messages are silent by the routers key.
+而这些消息被路由器的密钥静默了。
+
+304
+00:22:06,880 --> 00:22:11,900
+And we also have the key exchange we use pretty much the same rock
+我们在密钥交换中使用的方法几乎也是相同的。
+
+305
+00:22:11,900 --> 00:22:20,230
+the same naming schema, as analysts use to the nodes that they exchange the key.
+使用相同的命名方案，正如分析师们在节点间交换密钥时所使用的。
+
+306
+00:22:20,230 --> 00:22:23,110
+The certificate key to validate the data,
+用于验证数据的证书密钥，
+
+307
+00:22:23,110 --> 00:22:27,620
+our assumption is that each node must know about a trust anchor.
+我们的假设是，每个节点都必须知道一个信任锚。
+
+308
+00:22:27,620 --> 00:22:31,680
+In this case, the certificate for the slash network name.
+在这种情况下，是针对斜杠网络名称的证书。
+
+309
+00:22:32,750 --> 00:22:33,634
+Next slide please.
+下一张幻灯片，请。
+
+310
+00:22:36,577 --> 00:22:42,910
+In this example, we just have two wireless routers, router A and router B.
+在这个例子中，我们只有两个无线路由器，路由器A和路由器B。
+
+311
+00:22:42,910 --> 00:22:46,960
+In this case UFBA is just the hotter the network name.
+在这种情况下，UFBA只是网络名称中更热门的一个。
+
+312
+00:22:46,960 --> 00:22:49,730
+It could be Google, it could be UCLA.
+它可以是谷歌，也可以是加州大学洛杉矶分校。
+
+313
+00:22:49,730 --> 00:22:54,350
+It could be NIST, anything that you want, but it's just on a sample.
+它可以是国家标准技术研究院，或者任何你想要的东西，但这只是一个样本。
+
+314
+00:22:54,350 --> 00:23:00,070
+And the first step is the hotter sent out interest on the network to say Hello,
+第一步是在网络上发送出兴趣信号来打招呼，
+
+315
+00:23:00,070 --> 00:23:01,860
+this is hotter A and
+这是更热的A。
+
+316
+00:23:01,860 --> 00:23:07,670
+each URC sent the same interest in the network, in the wi-fi network.
+每个URC在Wi-Fi网络中发送了相同的兴趣。
+
+317
+00:23:07,670 --> 00:23:12,625
+As soon as the hotter get to know about the existence of another hotter
+一旦这个热点得知另一个热点的存在
+
+318
+00:23:12,625 --> 00:23:17,120
+this hotter start requesting the distance factory formation for
+这个热点开始请求距离工厂的构建信息
+
+319
+00:23:17,120 --> 00:23:22,130
+the hotter, which means we send our interest asking for
+我们发送了我们的兴趣请求，这意味着我们要求获得
+
+320
+00:23:22,130 --> 00:23:25,020
+the information for the health that we just discovered.
+我们刚刚发现的健康信息。
+
+321
+00:23:25,020 --> 00:23:28,360
+And as soon as the hotter process, the request,
+它一旦开始更热的过程，请求，
+
+322
+00:23:28,360 --> 00:23:31,370
+it replies back with the distance vector information.
+它回复了距离向量信息。
+
+323
+00:23:31,370 --> 00:23:36,580
+So it's sending these vector data package back to the requester.
+所以它将这些向量数据包发送回请求者。
+
+324
+00:23:36,580 --> 00:23:37,639
+Next slide please.
+下一张幻灯片，请。
+
+325
+00:23:41,607 --> 00:23:46,810
+So I think is this in, I hope you can join us on the poster section.
+所以我认为这是在，我希望你能加入我们的海报部分。
+
+326
+00:23:46,810 --> 00:23:50,420
+In the poster section we will discuss a little bit more about
+在海报部分，我们将进一步讨论一些关于
+
+327
+00:23:50,420 --> 00:23:54,930
+the prototype that we developed on ndnSIM 2.8.
+我们在ndnSIM 2.8上开发的原型。
+
+328
+00:23:54,930 --> 00:23:59,800
+We are going to present some preliminary results from the evaluation that we use,
+我们将展示一些使用该评估得到的初步结果。
+
+329
+00:23:59,800 --> 00:24:05,660
+using the random walk mobility model, and comparing with DTSN,
+使用随机漫步移动模型，并与DTSN进行比较，
+
+330
+00:24:05,660 --> 00:24:09,660
+which is a data synchronization algorithm.
+它是一种数据同步算法。
+
+331
+00:24:09,660 --> 00:24:15,169
+And you're gonna present some challenges some ongoing works about this test.
+你将会提出一些关于这个测试的挑战，一些正在进行的工作。
+
+332
+00:24:15,169 --> 00:24:15,902
+Thank you.
+谢谢。
+
+333
+00:24:17,952 --> 00:24:20,450
+>> Okay, thank you, Lito.
+好的，谢谢你，Lito。
+
+334
+00:24:20,450 --> 00:24:24,370
+Next presenter is Amar Abane
+下一位演讲者是Amar Abane。
+
+335
+00:24:24,370 --> 00:24:29,940
+on managing MDN with the Multiverse Network Management System.
+在使用多元宇宙网络管理系统管理MDN。
+
+336
+00:24:29,940 --> 00:24:34,460
+Amar got his PhD from CNAM in France, and he's currently a researcher.
+阿玛尔在法国国家应用科学院获得了博士学位，目前是一名研究员。
+
+337
+00:24:34,460 --> 00:24:36,954
+And he directs network technologies division at NIST.
+他还负责美国国家标准与技术研究院的网络技术部门。
+
+338
+00:24:36,954 --> 00:24:37,660
+Go ahead, Amar.
+请继续，阿玛尔。
+
+339
+00:24:41,080 --> 00:24:41,660
+>> Okay, thanks.
+>> 好的，谢谢。
+
+340
+00:24:43,840 --> 00:24:48,920
+Yeah, so this is the Multiverse Network Management System Project.
+是的，这就是多元宇宙网络管理系统项目。
+
+341
+00:24:48,920 --> 00:24:52,950
+So just as a situation to describe the situation.
+所以这只是一个用来描述情况的情景。
+
+342
+00:24:52,950 --> 00:24:56,791
+So when we deal with the NDN deployments,
+所以当我们处理NDN部署时，
+
+343
+00:24:56,791 --> 00:25:02,450
+some management features are required or at least some configurations
+一些管理功能是必需的，或者至少需要一些配置。
+
+344
+00:25:02,450 --> 00:25:07,410
+are needed on the forwarders like, basically routing information.
+需要在转发器上配置基本的路由信息。
+
+345
+00:25:09,240 --> 00:25:12,520
+But at least so, to manage our NDN network,
+但至少为了管理我们的NDN网络，
+
+346
+00:25:12,520 --> 00:25:16,630
+we have some different situations.
+我们遇到了一些不同的情况。
+
+347
+00:25:16,630 --> 00:25:19,860
+So we can manage the NDN network via an IP network.
+所以我们可以通过一个IP网络来管理NDN网络。
+
+348
+00:25:20,940 --> 00:25:25,684
+If we for example, if we need the remote management, we can do it.
+如果我们需要远程管理，我们可以做到这一点。
+
+349
+00:25:31,755 --> 00:25:36,853
+Can also manage the NDN network over both IP and NDN and
+也可以同时通过IP和NDN管理NDN网络。
+
+350
+00:25:36,853 --> 00:25:43,090
+since there are still some IP, some equipment that are using IP.
+由于仍然有一些使用IP的设备，因此我们也需要管理一些部分。
+
+351
+00:25:43,090 --> 00:25:47,650
+But we also need to manage some parts of
+但我们也需要管理一些部分。
+
+352
+00:25:47,650 --> 00:25:52,890
+the IP network or so to NDN or IP.
+IP网络或者转向NDN或IP。
+
+353
+00:25:52,890 --> 00:25:57,480
+And we think it may be useful to have one management solution for
+我们认为可能有一个管理解决方案用于这些不同情况或不同宇宙。
+
+354
+00:25:57,480 --> 00:26:01,380
+these different situations or different universes.
+这些不同情况或不同宇宙。
+
+355
+00:26:01,380 --> 00:26:04,144
+So, next slide, please.
+那么，请换到下一张幻灯片。
+
+356
+00:26:07,666 --> 00:26:15,135
+Yes, so that's what the multiverse network management system is designed for.
+是的，这就是多元宇宙网络管理系统设计的目的。
+
+357
+00:26:15,135 --> 00:26:18,785
+So we aim to manage these different situations.
+所以我们的目标是管理这些不同的情况。
+
+358
+00:26:18,785 --> 00:26:19,603
+Next slide.
+下一张幻灯片。
+
+359
+00:26:23,091 --> 00:26:26,502
+Yeah, so briefly it's a centralized management and
+是的，简而言之，它是一种集中管理方式，
+
+360
+00:26:26,502 --> 00:26:31,078
+we want to stick with this very simple architecture and very familiar.
+我们希望坚持使用这种非常简单且非常熟悉的架构。
+
+361
+00:26:31,078 --> 00:26:36,060
+So we have the Data plane with
+所以我们有了数据平面，
+
+362
+00:26:36,060 --> 00:26:42,870
+the NDN-DPDK forwarders which we are working to support currently.
+我们目前正在努力支持的NDN-DPDK转发器。
+
+363
+00:26:42,870 --> 00:26:47,130
+And they are for the Control plane they are agent deployed on each node and
+它们用于控制平面，是部署在每个节点上的代理。
+
+364
+00:26:47,130 --> 00:26:49,800
+they are agents are connected to the controller.
+它们是与控制器相连的代理。
+
+365
+00:26:49,800 --> 00:26:54,990
+And there is a controller provides some centralized management features there
+其中有一个控制器提供了一些集中管理功能。
+
+366
+00:26:54,990 --> 00:27:01,480
+are some of them are automatic features like face creation, face computation.
+有一些是自动功能，比如面部创建、面部计算。
+
+367
+00:27:01,480 --> 00:27:09,230
+And some other things are provided to the operator to be used manually.
+还有一些其他的东西是提供给操作员手动使用的。
+
+368
+00:27:09,230 --> 00:27:14,250
+And there is also, in addition to the management, there is an telemetry
+还有除了管理之外，还有遥测功能。
+
+369
+00:27:15,650 --> 00:27:19,800
+feature integrated with these agents, depending on what
+这些代理程序集成了的功能，取决于什么
+
+370
+00:27:19,800 --> 00:27:25,250
+measurements are implemented on the agent.
+所实施在代理程序上的测量。
+
+371
+00:27:25,250 --> 00:27:26,470
+Yeah, so in the poster,
+是的，在海报中，
+
+372
+00:27:26,470 --> 00:27:31,410
+there will be basically some screenshots of what's implemented so far and
+将会有一些迄今为止实现的功能的屏幕截图，以及
+
+373
+00:27:31,410 --> 00:27:37,860
+some design course also that's in this project.
+这个项目中也包括了一些设计课程。
+
+374
+00:27:39,310 --> 00:27:40,110
+>> I think that's it.
+>> 我认为就是这样。
+
+375
+00:27:40,110 --> 00:27:41,920
+Yeah, thanks.
+嗯，谢谢。
+
+376
+00:27:41,920 --> 00:27:43,760
+>> Okay, thank you Amar.
+好的，谢谢Amar。
+
+377
+00:27:43,760 --> 00:27:49,787
+Next speaker is Quassim Karrakchuo on Novel P4 Target Architecture for
+下一位演讲者是Quassim Karrakchuo，演讲的主题是“新型P4目标架构”。
+
+378
+00:27:49,787 --> 00:27:53,560
+Runtime-Reconfigurable NDN Data Planes.
+运行时可重配置的NDN数据平面。
+
+379
+00:27:53,560 --> 00:27:56,600
+Quassim received his Bachelor's Degree from France and
+Quassim从法国获得了他的学士学位，
+
+380
+00:27:56,600 --> 00:27:59,960
+he's currently a PhD student at University of Ottawa.
+他目前是渥太华大学的博士研究生。
+
+381
+00:27:59,960 --> 00:28:04,580
+With research interests that include ICN, SDN and Cloud Technologies.
+他的研究兴趣包括信息中心网络（ICN）、软件定义网络（SDN）和云技术。
+
+382
+00:28:05,840 --> 00:28:06,698
+Go ahead Ouassim.
+请继续，Ouassim。
+
+383
+00:28:06,698 --> 00:28:08,710
+>> Thank you Lotfi.
+>> 谢谢你，Lotfi。
+
+384
+00:28:08,710 --> 00:28:10,580
+Hello, everyone.
+大家好。
+
+385
+00:28:10,580 --> 00:28:17,770
+So today I give you a quick introduction of our work that is titled,
+所以今天我会快速介绍我们的工作，标题是，
+
+386
+00:28:17,770 --> 00:28:22,326
+a Novelty P4 Targets Architecture for Runtime Reconfigurable Engine Data Planes.
+一种面向运行时可重配置引擎数据平面的新颖P4目标架构。
+
+387
+00:28:22,326 --> 00:28:25,328
+Next slide, please.
+下一张幻灯片，请。
+
+388
+00:28:28,331 --> 00:28:33,115
+So the motivation of our work is that in the current switches,
+所以我们工作的动机是，在当前的交换机中，
+
+389
+00:28:33,115 --> 00:28:37,163
+the switch functionalities are usually fixed, and
+交换机的功能通常是固定的，而且
+
+390
+00:28:37,163 --> 00:28:41,680
+can only be changed by the switch manufacturer.
+只能由交换机制造商进行更改。
+
+391
+00:28:41,680 --> 00:28:45,230
+That means that the algorithms that processed the packets inside the switch,
+这意味着在交换机内部处理数据包的算法，
+
+392
+00:28:45,230 --> 00:28:51,410
+there are either like hardware optimized and hard coded in the hardware.
+它们要么是针对硬件优化的，要么是直接在硬件中硬编码的。
+
+393
+00:28:51,410 --> 00:28:56,630
+So they can only be changed by buying the new hardware, or they are part of
+所以它们只能通过购买新硬件来更改，或者它们是一部分
+
+394
+00:28:56,630 --> 00:29:02,490
+the firmware of the switch, though if a new protocol needs to be supported.
+的交换机固件，不过如果需要支持新协议的话。
+
+395
+00:29:03,830 --> 00:29:09,327
+The network operator will have to wait for a new update from the switch manufacturer.
+网络运营商将不得不等待交换机制造商发布新的更新。
+
+396
+00:29:11,170 --> 00:29:16,040
+So, P4 was introduced to solve this limitation by
+因此，P4语言被引入来解决这一限制，通过
+
+397
+00:29:16,040 --> 00:29:21,310
+opening up the data plane and allowing the network operators to
+打开数据平面，并允许网络运营商自主
+
+398
+00:29:21,310 --> 00:29:27,170
+specify themselves their own custom for writing behaviors in their switches.
+指定他们自己在交换机中编写行为的自定义方式。
+
+399
+00:29:27,170 --> 00:29:28,340
+So how does it work?
+那么它是如何工作的呢？
+
+400
+00:29:28,340 --> 00:29:33,750
+The network operators will use P4 which is a high level programming
+网络运营商将使用P4，这是一种高级编程
+
+401
+00:29:33,750 --> 00:29:38,432
+language to program their data planes using the P4
+语言来使用P4编程他们的数据平面。
+
+402
+00:29:38,432 --> 00:29:43,150
+programs in order to completely specify everything they need in their switches.
+程序，以便完全指定他们在交换机中需要的所有内容。
+
+403
+00:29:44,750 --> 00:29:49,009
+Now, the current P4 architectures, they
+现在，当前的P4架构，它们
+
+404
+00:29:49,009 --> 00:29:54,710
+have a small limitation which is that
+通常有一个小限制，即
+
+405
+00:29:54,710 --> 00:29:59,310
+usually one switch can only run one big P4 program at a time.
+通常一个交换机一次只能运行一个大型P4程序。
+
+406
+00:30:00,600 --> 00:30:05,750
+So that means that if a network operator wants to add a new functionality to
+所以这意味着如果网络运营商想要在他们的交换机上添加新功能，他们必须编辑这个大型P4程序。
+
+407
+00:30:05,750 --> 00:30:10,522
+their switch, they have to edit this large P4 program.
+他们必须编辑这个大型P4程序。
+
+408
+00:30:10,522 --> 00:30:16,750
+And then upload it in the switch, which needs to be reset,
+然后上传到需要重置的交换机中，
+
+409
+00:30:16,750 --> 00:30:20,250
+to update the whole program that's processes everything in the switch.
+更新交换机中处理所有事务的整个程序。
+
+410
+00:30:20,250 --> 00:30:23,290
+So there is always a downtime that is needed
+因此，总是需要一段停机时间。
+
+411
+00:30:23,290 --> 00:30:26,830
+each time you do an update to add the functionality to a switch.
+每次您更新交换机以增加功能时。
+
+412
+00:30:28,160 --> 00:30:34,460
+And a second limitation of P4, which is more specific to the case of NDN
+P4的第二个限制更具体地针对NDN的情况。
+
+413
+00:30:34,460 --> 00:30:40,160
+is that P4 was actually designed in the context of the IP world.
+P4实际上是在IP世界的背景下设计的。
+
+414
+00:30:40,160 --> 00:30:47,180
+Where the headers are usually fixed and have fields that have a fixed size, right?
+在这些头部通常是固定的，并且具有固定大小的字段，对吗？
+
+415
+00:30:47,180 --> 00:30:53,710
+And so, when you want to apply it directly to NDN, where one of the main fields
+在直接应用到NDN（命名数据网络）时，其中一个主要字段
+
+416
+00:30:53,710 --> 00:30:57,990
+in the headers is the constants name, which is a string of a variable length.
+在头部是常量名，它是一个变长的字符串。
+
+417
+00:30:57,990 --> 00:31:03,000
+There are some limitations that you have to overcome.
+您需要克服一些限制。
+
+418
+00:31:03,000 --> 00:31:05,520
+Okay, the next slide please.
+好的，请换到下一张幻灯片。
+
+419
+00:31:11,406 --> 00:31:16,602
+So, the main objective of our work is to have an engine
+所以，我们工作的主要目标是拥有一个引擎，
+
+420
+00:31:16,602 --> 00:31:22,380
+data plane that has some other programmability using P4.
+数据平面具有使用P4进行其他编程的能力。
+
+421
+00:31:23,430 --> 00:31:31,290
+And we want to do it in a way where you can assign a specific custom writing
+我们希望以一种能够分配特定自定义规则的方式来实现这一点。
+
+422
+00:31:31,290 --> 00:31:37,322
+logic to a specific namespace that is all encompassed in the P4 function.
+逻辑分配到一个特定的命名空间中，这全部包含在P4函数里。
+
+423
+00:31:37,322 --> 00:31:41,920
+So your associates a custom P4 function, going and then space.
+所以你的自定义P4函数关联了一个去向空间。
+
+424
+00:31:41,920 --> 00:31:47,110
+And we want to do it in a way where all these P4 functions are independent.
+我们希望以一种方式来实现，使所有这些P4函数都是独立的。
+
+425
+00:31:47,110 --> 00:31:53,570
+And you can add them without impacting the rest of the switch, right, so.
+所以你可以添加它们而不会影响交换机的其他部分，对吧。
+
+426
+00:31:54,570 --> 00:31:59,606
+So we want to design this kind of new P4 target architecture that
+所以我们想设计这种新的P4目标架构，它
+
+427
+00:31:59,606 --> 00:32:04,455
+allows us to run multiple small, lightweight P4 programs,
+允许我们运行多个小型、轻量级的P4程序，
+
+428
+00:32:04,455 --> 00:32:08,745
+which we call P4 functions to run them in isolation and
+让它们在隔离环境中运行，我们称之为P4函数，
+
+429
+00:32:08,745 --> 00:32:11,563
+to have them have a separate state.
+让它们各自拥有独立的状态。
+
+430
+00:32:11,563 --> 00:32:16,237
+So we can have every default function be reconfigurable separately
+因此，我们可以分别重新配置每个默认功能。
+
+431
+00:32:16,237 --> 00:32:21,080
+without impacting anything else, so without causing any down side.
+不影响其他任何事物，也不会引起任何负面影响。
+
+432
+00:32:21,080 --> 00:32:26,604
+And also because the main context of our work is the NDN protocol,
+并且由于我们工作的主要内容是NDN协议，
+
+433
+00:32:26,604 --> 00:32:31,727
+we want to extend the P4 language in efficient way in order to
+我们希望以高效的方式扩展P4语言以便
+
+434
+00:32:31,727 --> 00:32:37,453
+allow all these string processing operations that are critical for
+允许所有这些对于...来说至关重要的字符串处理操作。
+
+435
+00:32:37,453 --> 00:32:40,280
+the support of the NDN protocol.
+同时兼容NDN协议。
+
+436
+00:32:41,410 --> 00:32:48,210
+While at the same time being compatible with the P4
+同时也兼容P4
+
+437
+00:32:48,210 --> 00:32:53,040
+language standard so we can use the normal P4 compilers without any modification.
+语言标准因此我们可以不做任何修改地使用普通的P4编译器。
+
+438
+00:32:55,250 --> 00:32:56,344
+Next slide, please.
+下一张幻灯片，请。
+
+439
+00:32:59,964 --> 00:33:07,730
+So this is an outline of the data plane architecture that we propose.
+所以这是我们提出的数据平面架构的概要。
+
+440
+00:33:07,730 --> 00:33:12,800
+So the main goal of this architecture is, as I said, to be able to assign
+所以这个架构的主要目标，正如我所说的，是能够分配
+
+441
+00:33:12,800 --> 00:33:17,705
+the complex stateful forwarding behavior to a specific namespace,
+将复杂的有状态转发行为分配到一个特定的命名空间中，
+
+442
+00:33:17,705 --> 00:33:21,086
+for example, to do things like telemetering,
+例如，进行遥测这样的事情，
+
+443
+00:33:21,086 --> 00:33:25,507
+geo-monitoring, geo-fencing, stateful firewall etc.
+地理监测、地理围栏、有状态防火墙等。
+
+444
+00:33:25,507 --> 00:33:30,660
+And so our architecture has two main modules.
+因此，我们的架构有两个主要模块。
+
+445
+00:33:30,660 --> 00:33:35,900
+The first module is called the EProcessing module, which I will say basically
+第一个模块称为EProcessing模块，基本上我将会说
+
+446
+00:33:35,900 --> 00:33:42,880
+contains the main NDN forwarding pipeline with some modifications
+包含了主要的NDN转发管道，并且进行了一些修改。
+
+447
+00:33:42,880 --> 00:33:48,640
+in order to do this assignment of a P4 function to a namespace.
+为了将P4函数分配给一个命名空间。
+
+448
+00:33:48,640 --> 00:33:53,830
+And once this EProcessing finishes with the processing of packets,
+一旦这个EProcessing完成了数据包的处理，
+
+449
+00:33:53,830 --> 00:33:57,380
+therefore added to the new module which is called Forwarding Logic,
+它因此被添加到了一个新的模块中，这个模块被称为转发逻辑，
+
+450
+00:33:57,380 --> 00:34:02,480
+which contains a set of different P4 functions running in isolations
+它包含了一组在隔离环境中运行的不同P4功能集。
+
+451
+00:34:02,480 --> 00:34:07,045
+that will process these NDN packets in order to
+以便处理这些NDN数据包以实现
+
+452
+00:34:07,045 --> 00:34:13,450
+do any type of forwarding behaviors that the network operates or wants to do.
+执行网络操作或需要进行的任何类型的转发行为。
+
+453
+00:34:13,450 --> 00:34:18,532
+And then these packets are passed towards the Parser that may
+然后这些数据包被传递给解析器，解析器可能会
+
+454
+00:34:18,532 --> 00:34:25,408
+optionally modify the packets based on instructions from the P4 function before
+在此之前，根据P4功能的指令，解析器可能会选择性地修改数据包。
+
+455
+00:34:25,408 --> 00:34:32,170
+the packets are forwarded through the faces and go to to the next host.
+数据包通过接口被转发，并发送到下一个主机。
+
+456
+00:34:32,170 --> 00:34:39,680
+We did also small modifications where we put the content store outside of the fast
+我们还进行了一些小的修改，将内容存储移到了快速处理路径之外。
+
+457
+00:34:39,680 --> 00:34:45,480
+path of the packets in the NDN pipeline.
+因此，内容存储是通过一个内部接口被访问的。
+
+458
+00:34:45,480 --> 00:34:50,480
+So the content store is accessed through an internal face.
+因此，内容存储是通过一个内部接口被访问的。
+
+459
+00:34:50,480 --> 00:34:54,940
+So the caching decisions can be controlled by adding
+因此，可以通过添加来控制缓存决策。
+
+460
+00:34:54,940 --> 00:34:59,460
+a next hop to the CS by namespace so
+通过命名空间向CS添加下一跳，因此
+
+461
+00:34:59,460 --> 00:35:03,940
+the p4 function can control the caching decisions by adding or
+P4功能可以通过添加或控制缓存决策，
+
+462
+00:35:03,940 --> 00:35:08,270
+removing this next hop to the content store internal face.
+移除指向内容存储内部接口的下一跳。
+
+463
+00:35:09,540 --> 00:35:13,930
+And so in the poster session, I'll explain you in more details
+在海报展示环节，我会向你们提供更多细节。
+
+464
+00:35:14,950 --> 00:35:18,460
+what is inside these different modules and how we did this
+这些不同模块内部是什么，以及我们是如何做到这一点的。
+
+465
+00:35:21,560 --> 00:35:25,260
+data plane and how we interface efficiently with people.
+数据平面以及我们如何有效地与人们交互。
+
+466
+00:35:26,700 --> 00:35:31,890
+And thank you everyone and I'll see you during my poster session.
+谢谢大家，我们海报展示环节见。
+
+467
+00:35:33,880 --> 00:35:35,410
+>> All right, thank you, Ouassim.
+好的，谢谢你，Ouassim。
+
