@@ -7,8 +7,6 @@ from llm.apis import Model
 from llm.apis import Azure, Model
 
 OpenAI.api_key = os.getenv('OPENAI_API_KEY')
-# OpenAI.api_base = "https://api.openai.com/v1"
-# OpenAI.base_url = f"https://ndn.run/v1/"
 
 client = OpenAI()
 client.base_url = f"https://ndn.run/v1/"
@@ -63,7 +61,7 @@ Requirement: (ah, ha, ah, ah) such modal particles do not need to be translated
     
         print('Origin: ', text)
         completion = llm.completions.create(
-            model=Model.GPT_4_TURBO, 
+            model=Model.GPT_4_32K, 
             temperature=0, 
             messages=[
                 {
@@ -83,6 +81,8 @@ Requirement: (ah, ha, ah, ah) such modal particles do not need to be translated
         
 def main():
     t = Translator()
+    
+    # 以下过程：将现成的字幕文件，翻译成中文/英文
     
     # 翻译字幕文件
     subtitle_file_paths = [
@@ -106,13 +106,16 @@ def main():
         "video/2023/Named_Data_Networking_Community_Meeting_Day2_Part1.srt",
         "video/2023/Named_Data_Networking_Community_Meeting_Day2_Part2.srt"
     ]
-    # for src_path in subtitle_file_paths:
-    #     dest_path = src_path.replace('.srt', '_cn.srt')
-    #     blocks = t.read_subtitle_file(src_path)
-    #     translated_blocks =  t.translate_blocks(blocks, text_translation)
-    #     t.write_subtitle_file(translated_blocks, dest_path)
     
-    # return
+    for src_path in subtitle_file_paths:
+        dest_path = src_path.replace('.srt', '_cn.srt')
+        blocks = t.read_subtitle_file(src_path)
+        translated_blocks =  t.translate_blocks(blocks, text_translation)
+        t.write_subtitle_file(translated_blocks, dest_path)
+    
+    return
+
+    # 以下过程：从视频提取音频，转录成文本，再翻译成中文
     
     dir = 'video/2023'
     # file_name = 'Named_Data_Networking_Community_Meeting_Day1_Part1'

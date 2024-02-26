@@ -152,7 +152,7 @@ class Translator:
         Returns:
             List[Dict[str, str]]: 翻译后的字幕块列表。
         """
-        def translate_and_append(block, last_block, next_block):
+        def translate(block, last_block, next_block):
             """翻译单个字幕块的文本并拼接原文与翻译文本。
             
             Args:
@@ -192,7 +192,7 @@ class Translator:
                 
             try:
                 # 直接翻译每个字幕块并添加到列表中
-                translated_block = translate_and_append(block, last_block, next_block)
+                translated_block = translate(block, last_block, next_block)
                 translated_blocks.append(translated_block)
             except Exception as e:
                 print(f"Translation error: {e}")

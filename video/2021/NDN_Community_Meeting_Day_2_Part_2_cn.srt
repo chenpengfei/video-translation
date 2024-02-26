@@ -1,0 +1,452 @@
+1
+00:00:01,010 --> 00:00:03,930
+>> Welcome back everyone.
+
+2
+00:00:03,930 --> 00:00:06,015
+In this session, we have
+
+3
+00:00:06,015 --> 00:00:09,520
+a panel on NDN's accessibility.
+
+4
+00:00:09,520 --> 00:00:13,605
+This is more of an informal panel,
+
+5
+00:00:13,605 --> 00:00:14,940
+so we don't have slides,
+
+6
+00:00:14,940 --> 00:00:16,455
+we are going to go around,
+
+7
+00:00:16,455 --> 00:00:19,935
+talk about what it means to be accessible,
+
+8
+00:00:19,935 --> 00:00:21,000
+what are the challenges
+
+9
+00:00:21,000 --> 00:00:22,620
+and how we can solve this.
+
+10
+00:00:22,620 --> 00:00:24,150
+For the panelists, we
+
+11
+00:00:24,150 --> 00:00:26,835
+have Alex from Clemson,
+
+12
+00:00:26,835 --> 00:00:31,365
+James from Air Force Research Lab, Christos,
+
+13
+00:00:31,365 --> 00:00:33,060
+University of Memphis,
+
+14
+00:00:33,060 --> 00:00:36,675
+Matthias from Berlin,
+
+15
+00:00:36,675 --> 00:00:38,565
+and then make Beichuan from
+
+16
+00:00:38,565 --> 00:00:41,110
+University of Arizona.
+
+17
+00:00:41,270 --> 00:00:46,640
+Welcome to the panel. Maybe we
+
+18
+00:00:46,640 --> 00:00:47,975
+can go around and
+
+19
+00:00:47,975 --> 00:00:50,940
+introduce ourselves to the audience.
+
+20
+00:00:53,320 --> 00:00:56,020
+Alex, you want to go first?
+
+21
+00:00:56,020 --> 00:00:58,340
+>> Yeah, sure. I'm, Alex Feltus.
+
+22
+00:00:58,340 --> 00:01:00,380
+I'm a professor at Clemson University
+
+23
+00:01:00,380 --> 00:01:01,550
+in the Department of Genetics
+
+24
+00:01:01,550 --> 00:01:03,440
+and Biochemistry.
+
+25
+00:01:03,440 --> 00:01:06,035
+I'm not network engineer.
+
+26
+00:01:06,035 --> 00:01:08,000
+We study plants and animals.
+
+27
+00:01:08,000 --> 00:01:08,900
+I just had a lab meeting
+
+28
+00:01:08,900 --> 00:01:09,530
+where we were talking
+
+29
+00:01:09,530 --> 00:01:12,830
+about how bean plants fix nitrogen
+
+30
+00:01:12,830 --> 00:01:15,350
+from the air and how
+
+31
+00:01:15,350 --> 00:01:17,480
+bone wasting disease might
+
+32
+00:01:17,480 --> 00:01:18,910
+be occurring genetically,
+
+33
+00:01:18,910 --> 00:01:22,460
+and also, we talked about how we can estimate
+
+34
+00:01:22,460 --> 00:01:24,320
+Cloud resource usage if we're to
+
+35
+00:01:24,320 --> 00:01:28,045
+run our workflows in the same lab meeting.
+
+36
+00:01:28,045 --> 00:01:31,475
+We're using NDN to try to aggregate data,
+
+37
+00:01:31,475 --> 00:01:32,840
+make a data lake to be able
+
+38
+00:01:32,840 --> 00:01:34,970
+to access all the genomes that had
+
+39
+00:01:34,970 --> 00:01:36,740
+been sequenced for anybody
+
+40
+00:01:36,740 --> 00:01:38,920
+that does any real Biology,
+
+41
+00:01:38,920 --> 00:01:42,070
+a lot of people use these datasets now.
+
+42
+00:01:44,330 --> 00:01:46,140
+>> Beichuan.
+
+43
+00:01:46,140 --> 00:01:52,635
+>> Hi, can you hear me okay?
+
+44
+00:01:52,635 --> 00:01:54,270
+>> Yes, we can hear you.
+
+45
+00:01:54,270 --> 00:01:57,015
+>> Thanks. I'm doing several mic checks.
+
+46
+00:01:57,015 --> 00:01:58,485
+I'm James Lyke,
+
+47
+00:01:58,485 --> 00:01:59,810
+I'm with the Air Force
+
+48
+00:01:59,810 --> 00:02:02,030
+Research Laboratory and I
+
+49
+00:02:02,030 --> 00:02:06,120
+work in Space Vehicle Development.
+
+50
+00:02:06,120 --> 00:02:08,685
+I'm very interested in
+
+51
+00:02:08,685 --> 00:02:12,275
+networking in a global sense
+
+52
+00:02:12,275 --> 00:02:15,185
+or spacecraft play a role in
+
+53
+00:02:15,185 --> 00:02:19,175
+facilitating the network connectivity.
+
+54
+00:02:19,175 --> 00:02:23,540
+I also have an adjunct professor
+
+55
+00:02:23,540 --> 00:02:25,535
+at the University in Mexico,
+
+56
+00:02:25,535 --> 00:02:28,410
+that's actually where I'm sitting today.
+
+57
+00:02:28,930 --> 00:02:34,585
+I think the interest we have in NDN is
+
+58
+00:02:34,585 --> 00:02:37,190
+using it in some way to help
+
+59
+00:02:37,190 --> 00:02:41,135
+facilitate an improvement in connectivity.
+
+60
+00:02:41,135 --> 00:02:43,925
+I think in some sense it has
+
+61
+00:02:43,925 --> 00:02:45,890
+interesting features
+
+62
+00:02:45,890 --> 00:02:48,620
+that we wanted to exploit.
+
+63
+00:02:48,620 --> 00:02:51,350
+I'm interested in more pervasive uses
+
+64
+00:02:51,350 --> 00:02:55,170
+in Department of Defense,
+
+65
+00:02:55,170 --> 00:02:57,275
+but then we have
+
+66
+00:02:57,275 --> 00:02:59,350
+also experienced some significant barriers.
+
+67
+00:02:59,350 --> 00:03:02,240
+I think it's that ossification that we hear
+
+68
+00:03:02,240 --> 00:03:04,460
+about with Internet technologies,
+
+69
+00:03:04,460 --> 00:03:05,510
+Internet protocols,
+
+70
+00:03:05,510 --> 00:03:06,800
+and some of those barriers are very
+
+71
+00:03:06,800 --> 00:03:09,320
+difficult and so in
+
+72
+00:03:09,320 --> 00:03:10,985
+research trying to figure out ways
+
+73
+00:03:10,985 --> 00:03:14,540
+to make the benefits of
+
+74
+00:03:14,540 --> 00:03:20,860
+NDN more accessible, more understood. Thanks.
+
+75
+00:03:20,860 --> 00:03:25,700
+>> Thank you. Beichuan,
+
+76
+00:03:25,700 --> 00:03:27,720
+do you want to go next?
+
+77
+00:03:29,150 --> 00:03:32,445
+>> Yeah, my name's Beichuan Zhang.
+
+78
+00:03:32,445 --> 00:03:34,310
+I'm a Professor of
+
+79
+00:03:34,310 --> 00:03:35,945
+Neuroscience Department,
+
+80
+00:03:35,945 --> 00:03:38,170
+University of Arizona.
+
+81
+00:03:38,170 --> 00:03:41,310
+I am a network researcher.
+
+82
+00:03:41,310 --> 00:03:47,140
+I have been working on NDN for last decade.
+
+83
+00:03:47,150 --> 00:03:54,075
+I'm not really a real-world user
+
+84
+00:03:54,075 --> 00:03:55,880
+of NDN for this panel,
+
+85
+00:03:55,880 --> 00:03:57,800
+but I can talk about
+
+86
+00:03:57,800 --> 00:03:59,960
+my group experience of
+
+87
+00:03:59,960 --> 00:04:01,880
+developing some applications
+
+88
+00:04:01,880 --> 00:04:04,640
+and the accessibility issues we ran
+
+89
+00:04:04,640 --> 00:04:06,680
+into and effort we're
+
+90
+00:04:06,680 --> 00:04:08,300
+trying to solve those issues,
+
+91
+00:04:08,300 --> 00:04:11,540
+but still they solve a problem,
+
+92
+00:04:11,540 --> 00:04:14,180
+so also very interesting.
+
+93
+00:04:14,180 --> 00:04:16,280
+Let's hear what other people
+
+94
+00:04:16,280 --> 00:04:18,780
+on this panel will say about that.
+
+95
+00:04:19,100 --> 00:04:22,845
+>> Thank you. Christos.
+
+96
+00:04:22,845 --> 00:04:25,470
+>> I'm Christos Papadopoulos,
+
+97
+00:04:25,470 --> 00:04:28,190
+I'm a professor at the University of Memphis,
+
+98
+00:04:28,190 --> 00:04:30,170
+also in Computer Science and
+
+99
+00:04:30,170 --> 00:04:31,445
+my background is also
+
+100
+00:04:31,445 --> 00:04:33,215
+networking like Beichuan.
+
+101
+00:04:33,215 --> 00:04:35,090
+I have been with the NDN
+
+102
+00:04:35,090 --> 00:04:37,855
+team since the beginning.
+
+103
+00:04:37,855 --> 00:04:39,870
+I spent a couple of years at
+
+104
+00:04:39,870 --> 00:04:42,085
+the HS as a program manager,
+
+105
+00:04:42,085 --> 00:04:44,120
+and that is where I got exposed
+
+106
+00:04:44,120 --> 00:04:48,730
+to things such as legal cybersecurity,
+
+107
+00:04:48,730 --> 00:04:50,670
+which I found really interesting,
+
+108
+00:04:50,670 --> 00:04:53,450
+and my interest after
+
+109
+00:04:53,450 --> 00:04:56,390
+that is seeing how to apply NDN
+
+110
+00:04:56,390 --> 00:04:59,270
+into legal communication and more
+
+111
+00:04:59,270 --> 00:05:00,320
+broadly into
+
+112
+00:05:00,320 --> 00:05:03,510
+the transportation infrastructure. Thanks.
+
+113
+00:05:03,510 --> 00:05:06,615
+>> Thank you, Christos. Matthias.
+

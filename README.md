@@ -1,6 +1,6 @@
 # video-translation
 
-自动下载视频，并为视频生成中英文字幕
+为视频生成中英文字幕
 
 # prompt
 

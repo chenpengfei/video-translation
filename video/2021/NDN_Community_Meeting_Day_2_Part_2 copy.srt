@@ -1,0 +1,8453 @@
+1
+00:00:01,010 --> 00:00:03,930
+>> Welcome back everyone.
+
+2
+00:00:03,930 --> 00:00:06,015
+In this session, we have
+
+3
+00:00:06,015 --> 00:00:09,520
+a panel on NDN's
+accessibility.
+
+4
+00:00:09,520 --> 00:00:13,605
+This is more of an
+informal panel,
+
+5
+00:00:13,605 --> 00:00:14,940
+so we don't have slides,
+
+6
+00:00:14,940 --> 00:00:16,455
+we are going to go around,
+
+7
+00:00:16,455 --> 00:00:19,935
+talk about what it
+means to be accessible,
+
+8
+00:00:19,935 --> 00:00:21,000
+what are the challenges
+
+9
+00:00:21,000 --> 00:00:22,620
+and how we can solve this.
+
+10
+00:00:22,620 --> 00:00:24,150
+For the panelists, we
+
+11
+00:00:24,150 --> 00:00:26,835
+have Alex from Clemson,
+
+12
+00:00:26,835 --> 00:00:31,365
+James from Air Force
+Research Lab, Christos,
+
+13
+00:00:31,365 --> 00:00:33,060
+University of Memphis,
+
+14
+00:00:33,060 --> 00:00:36,675
+Matthias from Berlin,
+
+15
+00:00:36,675 --> 00:00:38,565
+and then make
+Beichuan from
+
+16
+00:00:38,565 --> 00:00:41,110
+University of Arizona.
+
+17
+00:00:41,270 --> 00:00:46,640
+Welcome to the
+panel. Maybe we
+
+18
+00:00:46,640 --> 00:00:47,975
+can go around and
+
+19
+00:00:47,975 --> 00:00:50,940
+introduce ourselves
+to the audience.
+
+20
+00:00:53,320 --> 00:00:56,020
+Alex, you want
+to go first?
+
+21
+00:00:56,020 --> 00:00:58,340
+>> Yeah, sure.
+I'm, Alex Feltus.
+
+22
+00:00:58,340 --> 00:01:00,380
+I'm a professor at
+Clemson University
+
+23
+00:01:00,380 --> 00:01:01,550
+in the Department
+of Genetics
+
+24
+00:01:01,550 --> 00:01:03,440
+and Biochemistry.
+
+25
+00:01:03,440 --> 00:01:06,035
+I'm not network engineer.
+
+26
+00:01:06,035 --> 00:01:08,000
+We study plants
+and animals.
+
+27
+00:01:08,000 --> 00:01:08,900
+I just had a lab meeting
+
+28
+00:01:08,900 --> 00:01:09,530
+where we were talking
+
+29
+00:01:09,530 --> 00:01:12,830
+about how bean
+plants fix nitrogen
+
+30
+00:01:12,830 --> 00:01:15,350
+from the air and how
+
+31
+00:01:15,350 --> 00:01:17,480
+bone wasting disease might
+
+32
+00:01:17,480 --> 00:01:18,910
+be occurring genetically,
+
+33
+00:01:18,910 --> 00:01:22,460
+and also, we talked about
+how we can estimate
+
+34
+00:01:22,460 --> 00:01:24,320
+Cloud resource
+usage if we're to
+
+35
+00:01:24,320 --> 00:01:28,045
+run our workflows in
+the same lab meeting.
+
+36
+00:01:28,045 --> 00:01:31,475
+We're using NDN to try
+to aggregate data,
+
+37
+00:01:31,475 --> 00:01:32,840
+make a data
+lake to be able
+
+38
+00:01:32,840 --> 00:01:34,970
+to access all the
+genomes that had
+
+39
+00:01:34,970 --> 00:01:36,740
+been sequenced for anybody
+
+40
+00:01:36,740 --> 00:01:38,920
+that does any
+real Biology,
+
+41
+00:01:38,920 --> 00:01:42,070
+a lot of people use
+these datasets now.
+
+42
+00:01:44,330 --> 00:01:46,140
+>> Beichuan.
+
+43
+00:01:46,140 --> 00:01:52,635
+>> Hi, can you
+hear me okay?
+
+44
+00:01:52,635 --> 00:01:54,270
+>> Yes, we can hear you.
+
+45
+00:01:54,270 --> 00:01:57,015
+>> Thanks. I'm doing
+several mic checks.
+
+46
+00:01:57,015 --> 00:01:58,485
+I'm James Lyke,
+
+47
+00:01:58,485 --> 00:01:59,810
+I'm with the Air Force
+
+48
+00:01:59,810 --> 00:02:02,030
+Research Laboratory and I
+
+49
+00:02:02,030 --> 00:02:06,120
+work in Space
+Vehicle Development.
+
+50
+00:02:06,120 --> 00:02:08,685
+I'm very interested in
+
+51
+00:02:08,685 --> 00:02:12,275
+networking in
+a global sense
+
+52
+00:02:12,275 --> 00:02:15,185
+or spacecraft
+play a role in
+
+53
+00:02:15,185 --> 00:02:19,175
+facilitating the
+network connectivity.
+
+54
+00:02:19,175 --> 00:02:23,540
+I also have an
+adjunct professor
+
+55
+00:02:23,540 --> 00:02:25,535
+at the University
+in Mexico,
+
+56
+00:02:25,535 --> 00:02:28,410
+that's actually where
+I'm sitting today.
+
+57
+00:02:28,930 --> 00:02:34,585
+I think the interest
+we have in NDN is
+
+58
+00:02:34,585 --> 00:02:37,190
+using it in some
+way to help
+
+59
+00:02:37,190 --> 00:02:41,135
+facilitate an improvement
+in connectivity.
+
+60
+00:02:41,135 --> 00:02:43,925
+I think in some
+sense it has
+
+61
+00:02:43,925 --> 00:02:45,890
+interesting features
+
+62
+00:02:45,890 --> 00:02:48,620
+that we wanted to exploit.
+
+63
+00:02:48,620 --> 00:02:51,350
+I'm interested in
+more pervasive uses
+
+64
+00:02:51,350 --> 00:02:55,170
+in Department of Defense,
+
+65
+00:02:55,170 --> 00:02:57,275
+but then we have
+
+66
+00:02:57,275 --> 00:02:59,350
+also experienced some
+significant barriers.
+
+67
+00:02:59,350 --> 00:03:02,240
+I think it's that
+ossification that we hear
+
+68
+00:03:02,240 --> 00:03:04,460
+about with Internet
+technologies,
+
+69
+00:03:04,460 --> 00:03:05,510
+Internet protocols,
+
+70
+00:03:05,510 --> 00:03:06,800
+and some of those
+barriers are very
+
+71
+00:03:06,800 --> 00:03:09,320
+difficult and so in
+
+72
+00:03:09,320 --> 00:03:10,985
+research trying to
+figure out ways
+
+73
+00:03:10,985 --> 00:03:14,540
+to make the benefits of
+
+74
+00:03:14,540 --> 00:03:20,860
+NDN more accessible,
+more understood. Thanks.
+
+75
+00:03:20,860 --> 00:03:25,700
+>> Thank you. Beichuan,
+
+76
+00:03:25,700 --> 00:03:27,720
+do you want to go next?
+
+77
+00:03:29,150 --> 00:03:32,445
+>> Yeah, my name's
+Beichuan Zhang.
+
+78
+00:03:32,445 --> 00:03:34,310
+I'm a Professor of
+
+79
+00:03:34,310 --> 00:03:35,945
+Neuroscience Department,
+
+80
+00:03:35,945 --> 00:03:38,170
+University of Arizona.
+
+81
+00:03:38,170 --> 00:03:41,310
+I am a network researcher.
+
+82
+00:03:41,310 --> 00:03:47,140
+I have been working on
+NDN for last decade.
+
+83
+00:03:47,150 --> 00:03:54,075
+I'm not really a
+real-world user
+
+84
+00:03:54,075 --> 00:03:55,880
+of NDN for this panel,
+
+85
+00:03:55,880 --> 00:03:57,800
+but I can talk about
+
+86
+00:03:57,800 --> 00:03:59,960
+my group experience of
+
+87
+00:03:59,960 --> 00:04:01,880
+developing some
+applications
+
+88
+00:04:01,880 --> 00:04:04,640
+and the accessibility
+issues we ran
+
+89
+00:04:04,640 --> 00:04:06,680
+into and effort we're
+
+90
+00:04:06,680 --> 00:04:08,300
+trying to solve
+those issues,
+
+91
+00:04:08,300 --> 00:04:11,540
+but still they
+solve a problem,
+
+92
+00:04:11,540 --> 00:04:14,180
+so also very interesting.
+
+93
+00:04:14,180 --> 00:04:16,280
+Let's hear what
+other people
+
+94
+00:04:16,280 --> 00:04:18,780
+on this panel will
+say about that.
+
+95
+00:04:19,100 --> 00:04:22,845
+>> Thank you. Christos.
+
+96
+00:04:22,845 --> 00:04:25,470
+>> I'm Christos
+Papadopoulos,
+
+97
+00:04:25,470 --> 00:04:28,190
+I'm a professor at the
+University of Memphis,
+
+98
+00:04:28,190 --> 00:04:30,170
+also in Computer
+Science and
+
+99
+00:04:30,170 --> 00:04:31,445
+my background is also
+
+100
+00:04:31,445 --> 00:04:33,215
+networking like Beichuan.
+
+101
+00:04:33,215 --> 00:04:35,090
+I have been with the NDN
+
+102
+00:04:35,090 --> 00:04:37,855
+team since the beginning.
+
+103
+00:04:37,855 --> 00:04:39,870
+I spent a couple
+of years at
+
+104
+00:04:39,870 --> 00:04:42,085
+the HS as a
+program manager,
+
+105
+00:04:42,085 --> 00:04:44,120
+and that is where
+I got exposed
+
+106
+00:04:44,120 --> 00:04:48,730
+to things such as
+legal cybersecurity,
+
+107
+00:04:48,730 --> 00:04:50,670
+which I found
+really interesting,
+
+108
+00:04:50,670 --> 00:04:53,450
+and my interest after
+
+109
+00:04:53,450 --> 00:04:56,390
+that is seeing
+how to apply NDN
+
+110
+00:04:56,390 --> 00:04:59,270
+into legal
+communication and more
+
+111
+00:04:59,270 --> 00:05:00,320
+broadly into
+
+112
+00:05:00,320 --> 00:05:03,510
+the transportation
+infrastructure. Thanks.
+
+113
+00:05:03,510 --> 00:05:06,615
+>> Thank you,
+Christos. Matthias.
+
+114
+00:05:06,615 --> 00:05:08,805
+>> Hello, my
+name is Matthias
+
+115
+00:05:08,805 --> 00:05:10,725
+from F. Berlin.
+
+116
+00:05:10,725 --> 00:05:12,780
+I'm an Assistant
+Professor heading
+
+117
+00:05:12,780 --> 00:05:15,460
+the Internet technologies
+research group.
+
+118
+00:05:15,470 --> 00:05:19,155
+One of my research is
+Internet of Things,
+
+119
+00:05:19,155 --> 00:05:22,340
+and this is one use
+case that we try to
+
+120
+00:05:22,340 --> 00:05:26,035
+exploit for NDN
+and IC in general.
+
+121
+00:05:26,035 --> 00:05:27,710
+I'm not only
+doing research,
+
+122
+00:05:27,710 --> 00:05:30,455
+I'm also involved in
+open source communities.
+
+123
+00:05:30,455 --> 00:05:31,910
+I'm also the co-founder of
+
+124
+00:05:31,910 --> 00:05:33,335
+RIOT operating system,
+
+125
+00:05:33,335 --> 00:05:35,120
+an open-source
+operating system
+
+126
+00:05:35,120 --> 00:05:37,160
+for constraint
+IoT devices.
+
+127
+00:05:37,160 --> 00:05:40,850
+This is where we
+try to exploit
+
+128
+00:05:40,850 --> 00:05:42,590
+the benefits of NDN by
+
+129
+00:05:42,590 --> 00:05:44,870
+segment resources such
+as battery power,
+
+130
+00:05:44,870 --> 00:05:46,280
+increased scalability
+
+131
+00:05:46,280 --> 00:05:48,295
+and and loss in networks.
+
+132
+00:05:48,295 --> 00:05:52,770
+>> Great, thank you.
+I think we will have
+
+133
+00:05:52,770 --> 00:05:54,990
+a few diverse
+applications as from
+
+134
+00:05:54,990 --> 00:05:59,065
+genomics and then
+space and IoT.
+
+135
+00:05:59,065 --> 00:06:00,950
+I think that accessibility
+
+136
+00:06:00,950 --> 00:06:01,970
+challenges are going to
+
+137
+00:06:01,970 --> 00:06:05,460
+be different for this.
+
+138
+00:06:05,460 --> 00:06:08,270
+Maybe the panelists can
+
+139
+00:06:08,270 --> 00:06:09,680
+talk a little bit about
+
+140
+00:06:09,680 --> 00:06:11,975
+what were the challenges
+
+141
+00:06:11,975 --> 00:06:15,095
+that you faced when
+you tried to use NDN.
+
+142
+00:06:15,095 --> 00:06:17,705
+Is it backup
+documentation,
+
+143
+00:06:17,705 --> 00:06:19,745
+lack of customer
+applications,
+
+144
+00:06:19,745 --> 00:06:24,430
+is it lack of
+quantifiability?
+
+145
+00:06:33,710 --> 00:06:36,240
+Matthias, you
+mentioned IoT,
+
+146
+00:06:36,240 --> 00:06:38,770
+maybe what are
+the challenges
+
+147
+00:06:38,770 --> 00:06:42,200
+in using NDN for IoT?
+
+148
+00:06:42,350 --> 00:06:45,225
+>> From a software
+point of view,
+
+149
+00:06:45,225 --> 00:06:47,655
+actually I do not see
+
+150
+00:06:47,655 --> 00:06:51,450
+much challenges from
+the NDN companies.
+
+151
+00:06:51,450 --> 00:06:53,495
+It is well-documented,
+
+152
+00:06:53,495 --> 00:06:56,335
+the maintainers are
+easily approachable.
+
+153
+00:06:56,335 --> 00:06:58,000
+It's definitely
+a challenge from
+
+154
+00:06:58,000 --> 00:07:00,970
+a systems
+perspective to bring
+
+155
+00:07:00,970 --> 00:07:03,160
+NDN's deck to
+constraint devices,
+
+156
+00:07:03,160 --> 00:07:06,380
+but it's doable.
+
+157
+00:07:07,920 --> 00:07:09,760
+From this point of view,
+
+158
+00:07:09,760 --> 00:07:11,035
+I do not see
+much challenges
+
+159
+00:07:11,035 --> 00:07:15,050
+even for our
+research purposes.
+
+160
+00:07:16,380 --> 00:07:18,430
+in the end, I see
+
+161
+00:07:18,430 --> 00:07:22,580
+endish approaches
+in larger testbeds.
+
+162
+00:07:23,040 --> 00:07:25,780
+Where maybe I
+see a challenge,
+
+163
+00:07:25,780 --> 00:07:28,630
+is these testbeds,
+
+164
+00:07:28,630 --> 00:07:30,220
+is some more little
+bit constrained,
+
+165
+00:07:30,220 --> 00:07:32,725
+confined
+environments to have
+
+166
+00:07:32,725 --> 00:07:36,040
+actually easily
+accessible testbeds
+
+167
+00:07:36,040 --> 00:07:39,580
+that spends several
+universities and
+
+168
+00:07:39,580 --> 00:07:41,770
+they have in the
+real inter-domain
+
+169
+00:07:41,770 --> 00:07:43,405
+type of connectivity.
+
+170
+00:07:43,405 --> 00:07:46,285
+This is something
+that I actually miss.
+
+171
+00:07:46,285 --> 00:07:49,885
+The other thing
+that I miss is
+
+172
+00:07:49,885 --> 00:07:54,910
+perspectives on
+a global level,
+
+173
+00:07:54,910 --> 00:07:58,420
+global approach in the
+sense, for example,
+
+174
+00:07:58,420 --> 00:08:02,335
+that there's not much
+thought and effort in,
+
+175
+00:08:02,335 --> 00:08:04,060
+for example, how to
+
+176
+00:08:04,060 --> 00:08:05,995
+manage the
+namespace in NDN,
+
+177
+00:08:05,995 --> 00:08:08,350
+and this is
+independent of IoT.
+
+178
+00:08:08,350 --> 00:08:11,200
+But I think a very
+crucial aspects
+
+179
+00:08:11,200 --> 00:08:12,970
+that we have a lot of
+
+180
+00:08:12,970 --> 00:08:14,680
+interesting and
+challenging research
+
+181
+00:08:14,680 --> 00:08:16,015
+questions that
+you all tackled,
+
+182
+00:08:16,015 --> 00:08:19,000
+but we somehow miss the
+operational aspects,
+
+183
+00:08:19,000 --> 00:08:22,915
+and so that is how we
+
+184
+00:08:22,915 --> 00:08:25,165
+manage the
+namespace in case
+
+185
+00:08:25,165 --> 00:08:28,150
+of NDN gets globally used.
+
+186
+00:08:28,150 --> 00:08:30,130
+>> There is the
+challenge then
+
+187
+00:08:30,130 --> 00:08:32,050
+in deploying NDN
+
+188
+00:08:32,050 --> 00:08:36,955
+rather than using NDN
+in a small-scale.
+
+189
+00:08:36,955 --> 00:08:40,030
+>> I mean, it's
+definitely a challenge.
+
+190
+00:08:40,030 --> 00:08:41,740
+It is always a
+challenge to get
+
+191
+00:08:41,740 --> 00:08:45,235
+a new protocol and
+architecture deployed.
+
+192
+00:08:45,235 --> 00:08:48,550
+>> No, even within this
+research community,
+
+193
+00:08:48,550 --> 00:08:56,795
+not in the
+internet per se.
+
+194
+00:08:56,795 --> 00:08:58,090
+>> No. I mean using
+
+195
+00:08:58,090 --> 00:08:59,290
+NDN in the research
+environment.
+
+196
+00:08:59,290 --> 00:09:00,610
+I don't think it's a
+challenge actually,
+
+197
+00:09:00,610 --> 00:09:02,860
+it is straightforward
+and useable.
+
+198
+00:09:02,860 --> 00:09:04,810
+>> When you say
+global approach,
+
+199
+00:09:04,810 --> 00:09:07,315
+you mean the actual
+commercial intranet.
+
+200
+00:09:07,315 --> 00:09:11,455
+>> Right. Getting
+NDN out of the lab,
+
+201
+00:09:11,455 --> 00:09:16,360
+and in addition to
+what I said before is,
+
+202
+00:09:16,360 --> 00:09:18,940
+I think we miss
+awareness in
+
+203
+00:09:18,940 --> 00:09:21,775
+the operational
+community about NDN,
+
+204
+00:09:21,775 --> 00:09:25,060
+and this is something
+that probably
+
+205
+00:09:25,060 --> 00:09:29,350
+prevents larger adoption
+of software system.
+
+206
+00:09:29,350 --> 00:09:32,680
+For example, I never
+heard someone talking
+
+207
+00:09:32,680 --> 00:09:35,710
+about NDN on at
+NANOG for example.
+
+208
+00:09:35,710 --> 00:09:37,990
+But if you want to get
+NDN out of the lab,
+
+209
+00:09:37,990 --> 00:09:39,880
+you'll need to
+raise awareness
+
+210
+00:09:39,880 --> 00:09:42,950
+outside of the
+research community.
+
+211
+00:09:44,730 --> 00:09:49,010
+>> James you mentioned
+ossification.
+
+212
+00:09:49,080 --> 00:09:52,810
+It's becoming hard to use
+
+213
+00:09:52,810 --> 00:09:57,190
+anything other than IP.
+
+214
+00:09:57,190 --> 00:09:59,590
+What's your take on this?
+
+215
+00:09:59,590 --> 00:10:02,305
+>> Well, I think
+
+216
+00:10:02,305 --> 00:10:05,935
+to that problem
+specifically,
+
+217
+00:10:05,935 --> 00:10:12,054
+I experienced this
+problem in other areas,
+
+218
+00:10:12,054 --> 00:10:14,290
+having nothing to do with
+
+219
+00:10:14,290 --> 00:10:17,920
+networking per se,
+like interfaces.
+
+220
+00:10:17,920 --> 00:10:20,170
+For example, we have
+
+221
+00:10:20,170 --> 00:10:22,060
+something in
+Department of Defense
+
+222
+00:10:22,060 --> 00:10:24,670
+called mill standard 1553.
+
+223
+00:10:24,670 --> 00:10:26,260
+I don't know if any of
+you've heard of It,
+
+224
+00:10:26,260 --> 00:10:30,070
+but It was an
+aircraft interface
+
+225
+00:10:30,070 --> 00:10:31,960
+invented in the 1970s.
+
+226
+00:10:31,960 --> 00:10:33,310
+It was really
+first put to use
+
+227
+00:10:33,310 --> 00:10:34,930
+on the 15 aircraft.
+
+228
+00:10:34,930 --> 00:10:39,730
+It's a very slow but
+very deterministic.
+
+229
+00:10:39,730 --> 00:10:44,155
+I guess I'd call it
+layer two technology.
+
+230
+00:10:44,155 --> 00:10:46,120
+It's still in use
+
+231
+00:10:46,120 --> 00:10:48,430
+today and we can't
+get rid of It.
+
+232
+00:10:48,430 --> 00:10:50,560
+It keeps
+reasserting itself,
+
+233
+00:10:50,560 --> 00:10:51,520
+and a lot of It is because
+
+234
+00:10:51,520 --> 00:10:52,840
+people are
+comfortable with It.
+
+235
+00:10:52,840 --> 00:10:54,775
+They've used It before.
+
+236
+00:10:54,775 --> 00:10:57,879
+That is just a
+tiny example
+
+237
+00:10:57,879 --> 00:11:00,055
+of how the
+ossification problem
+
+238
+00:11:00,055 --> 00:11:02,290
+happens in things
+having nothing to do
+
+239
+00:11:02,290 --> 00:11:04,735
+with, say,
+Internet Protocol.
+
+240
+00:11:04,735 --> 00:11:08,330
+It's just a much
+worse problem if we,
+
+241
+00:11:08,700 --> 00:11:12,100
+I think there's
+a lot of beauty
+
+242
+00:11:12,100 --> 00:11:14,530
+and elegance in
+the NDN concept.
+
+243
+00:11:14,530 --> 00:11:16,120
+I think people
+appreciate that
+
+244
+00:11:16,120 --> 00:11:19,510
+even with overview
+presentations.
+
+245
+00:11:19,510 --> 00:11:23,020
+But, I think
+
+246
+00:11:23,020 --> 00:11:25,210
+the would-be
+proponents are
+
+247
+00:11:25,210 --> 00:11:28,345
+soon running into a
+type of a buzz saw.
+
+248
+00:11:28,345 --> 00:11:31,825
+Because we find
+people want
+
+249
+00:11:31,825 --> 00:11:35,320
+to legislate
+the use of IP.
+
+250
+00:11:35,320 --> 00:11:36,580
+I may almost say,
+well, It must
+
+251
+00:11:36,580 --> 00:11:38,080
+be IP that works good.
+
+252
+00:11:38,080 --> 00:11:40,495
+It's worked good
+for so many years.
+
+253
+00:11:40,495 --> 00:11:42,895
+I think the conservativism
+
+254
+00:11:42,895 --> 00:11:45,115
+has a strong barrier.
+
+255
+00:11:45,115 --> 00:11:47,470
+I'm a big fan
+of being able
+
+256
+00:11:47,470 --> 00:11:51,925
+to create maybe
+educational,
+
+257
+00:11:51,925 --> 00:11:56,140
+ideas that help improve
+educational exposure.
+
+258
+00:11:56,140 --> 00:11:59,850
+I've made appeals
+for people,
+
+259
+00:11:59,850 --> 00:12:01,815
+to create, for example,
+
+260
+00:12:01,815 --> 00:12:04,080
+a virtual like
+maybe a single
+
+261
+00:12:04,080 --> 00:12:06,090
+click Install
+that allows you
+
+262
+00:12:06,090 --> 00:12:09,040
+to kick the tires on
+
+263
+00:12:09,040 --> 00:12:10,960
+NDN to work through
+
+264
+00:12:10,960 --> 00:12:13,330
+simple examples
+and tutorials.
+
+265
+00:12:13,330 --> 00:12:18,430
+I'm finding that
+It's difficult to
+
+266
+00:12:18,430 --> 00:12:21,160
+simply just grab NDN
+and explore It if you
+
+267
+00:12:21,160 --> 00:12:24,610
+are a casual user.
+
+268
+00:12:24,610 --> 00:12:26,560
+I think that the
+degree to which
+
+269
+00:12:26,560 --> 00:12:28,240
+that could be
+done would go
+
+270
+00:12:28,240 --> 00:12:33,555
+a long way to show
+people the benefits.
+
+271
+00:12:33,555 --> 00:12:36,060
+Let's just put It this
+way, it can't hurt.
+
+272
+00:12:36,060 --> 00:12:38,100
+But there are significant
+barriers and I
+
+273
+00:12:38,100 --> 00:12:40,380
+don't have easy answers.
+
+274
+00:12:40,380 --> 00:12:43,690
+I've thought about this
+for a while and we've
+
+275
+00:12:43,690 --> 00:12:46,810
+demonstrated some
+research implementations
+
+276
+00:12:46,810 --> 00:12:48,190
+of the idea,
+
+277
+00:12:48,190 --> 00:12:48,790
+and people will say,
+
+278
+00:12:48,790 --> 00:12:49,840
+"Yeah, that's pretty neat,
+
+279
+00:12:49,840 --> 00:12:51,340
+but I'm not really going
+
+280
+00:12:51,340 --> 00:12:52,600
+to be able to use It
+
+281
+00:12:52,600 --> 00:12:54,100
+because I have all
+these rules that I,
+
+282
+00:12:54,100 --> 00:12:55,660
+and none of them are.,
+
+283
+00:12:55,660 --> 00:13:00,820
+they're all hostile for
+new ideas like NDN,
+
+284
+00:13:00,820 --> 00:13:03,560
+I wish it weren't
+the case.
+
+285
+00:13:03,690 --> 00:13:09,025
+>> I mean, inertia
+is a problem.
+
+286
+00:13:09,025 --> 00:13:12,050
+We have been seeing
+this for some time.
+
+287
+00:13:13,560 --> 00:13:18,250
+What can we do as a
+community to make
+
+288
+00:13:18,250 --> 00:13:20,050
+them at least
+take a look at
+
+289
+00:13:20,050 --> 00:13:22,600
+NDN and explore
+and say that well,
+
+290
+00:13:22,600 --> 00:13:26,050
+this might make sense
+for my use case.
+
+291
+00:13:26,050 --> 00:13:28,375
+You mentioned
+a single click
+
+292
+00:13:28,375 --> 00:13:31,075
+Install documentation.
+
+293
+00:13:31,075 --> 00:13:32,530
+Well, I guess
+documentation
+
+294
+00:13:32,530 --> 00:13:33,775
+is not going to help.
+
+295
+00:13:33,775 --> 00:13:38,035
+It's more easy to use
+turn on solutions.
+
+296
+00:13:38,035 --> 00:13:41,690
+Maybe a container,
+is that?
+
+297
+00:13:41,940 --> 00:13:44,080
+>> I like to
+think things like
+
+298
+00:13:44,080 --> 00:13:45,865
+that, for example,
+
+299
+00:13:45,865 --> 00:13:48,070
+maybe even very
+
+300
+00:13:48,070 --> 00:13:53,365
+simplified web only
+demonstration.
+
+301
+00:13:53,365 --> 00:13:55,660
+I think people who
+
+302
+00:13:55,660 --> 00:13:57,640
+get their hands
+dirty, so to speak,
+
+303
+00:13:57,640 --> 00:14:00,820
+with networking and
+understand the concepts.
+
+304
+00:14:00,820 --> 00:14:03,440
+[NOISE] I'm sorry.
+
+305
+00:14:04,260 --> 00:14:07,029
+They can spend the time
+
+306
+00:14:07,029 --> 00:14:11,095
+and they can tackle
+the learning curve.
+
+307
+00:14:11,095 --> 00:14:12,495
+I think when people
+
+308
+00:14:12,495 --> 00:14:14,390
+get an overview
+presentation,
+
+309
+00:14:14,390 --> 00:14:16,760
+it's also at a high
+level, It's encapsulated.
+
+310
+00:14:16,760 --> 00:14:18,500
+They get the ideas.
+
+311
+00:14:18,500 --> 00:14:20,300
+But then there's
+this vast chasm
+
+312
+00:14:20,300 --> 00:14:22,070
+between those
+two extremes.
+
+313
+00:14:22,070 --> 00:14:23,420
+The people who
+have the time to
+
+314
+00:14:23,420 --> 00:14:25,340
+invest and can in
+
+315
+00:14:25,340 --> 00:14:27,830
+their laboratories
+show the benefits
+
+316
+00:14:27,830 --> 00:14:29,300
+and the casual people say,
+
+317
+00:14:29,300 --> 00:14:31,730
+well that sounds
+like a neat idea.
+
+318
+00:14:31,730 --> 00:14:33,380
+There needs to be a
+
+319
+00:14:33,380 --> 00:14:36,930
+few increments in between,
+
+320
+00:14:36,930 --> 00:14:39,710
+and I would just
+say educationally,
+
+321
+00:14:39,710 --> 00:14:44,810
+you can't hurt the
+cause by looking for
+
+322
+00:14:44,810 --> 00:14:47,100
+more creative ways to
+
+323
+00:14:47,100 --> 00:14:50,650
+get these ideas
+out in the world.
+
+324
+00:14:50,650 --> 00:14:53,045
+But things that allow,
+
+325
+00:14:53,045 --> 00:14:54,830
+I know even like
+with Docker,
+
+326
+00:14:54,830 --> 00:14:57,110
+for example, there's
+a docker Labs,
+
+327
+00:14:57,110 --> 00:14:59,720
+which is a neat idea where
+
+328
+00:14:59,720 --> 00:15:02,510
+you can go to a
+website and for
+
+329
+00:15:02,510 --> 00:15:05,015
+four hours you get
+to play with Docker
+
+330
+00:15:05,015 --> 00:15:08,555
+and you can do a lot
+in a short time,
+
+331
+00:15:08,555 --> 00:15:10,280
+things like that for NDN
+
+332
+00:15:10,280 --> 00:15:11,840
+I think would help a lot.
+
+333
+00:15:11,840 --> 00:15:15,020
+I would certainly be
+front at the line trying
+
+334
+00:15:15,020 --> 00:15:18,110
+to explore that myself
+
+335
+00:15:18,110 --> 00:15:18,800
+and I would certainly
+
+336
+00:15:18,800 --> 00:15:21,005
+share that with
+colleagues.
+
+337
+00:15:21,005 --> 00:15:23,535
+But right now it's
+
+338
+00:15:23,535 --> 00:15:26,405
+a very rarified
+group of people who
+
+339
+00:15:26,405 --> 00:15:28,565
+have the ability
+to really dig in
+
+340
+00:15:28,565 --> 00:15:31,190
+and look in real
+life at NDN,
+
+341
+00:15:31,190 --> 00:15:33,530
+if there's a much
+bigger world out there
+
+342
+00:15:33,530 --> 00:15:35,840
+and you should consider
+
+343
+00:15:35,840 --> 00:15:37,250
+ways of reaching
+that world.
+
+344
+00:15:37,250 --> 00:15:38,360
+It's not just aerospace,
+
+345
+00:15:38,360 --> 00:15:40,190
+just many other sectors,
+
+346
+00:15:40,190 --> 00:15:43,590
+but aerospace is the
+one that I work in.
+
+347
+00:15:45,300 --> 00:15:48,350
+I know people are
+attracted by the idea,
+
+348
+00:15:48,350 --> 00:15:49,610
+but then they
+just quickly run
+
+349
+00:15:49,610 --> 00:15:52,140
+into lots of barriers.
+
+350
+00:15:53,440 --> 00:15:56,030
+>> Thank you. I
+think we're going to
+
+351
+00:15:56,030 --> 00:15:57,665
+go to Christos
+and Beichuan.
+
+352
+00:15:57,665 --> 00:15:59,420
+You have lot of experience
+
+353
+00:15:59,420 --> 00:16:03,755
+in NDN for different
+use cases.
+
+354
+00:16:03,755 --> 00:16:08,180
+What's your take
+on how we can make
+
+355
+00:16:08,180 --> 00:16:13,595
+this simpler for James
+and his colleagues.
+
+356
+00:16:13,595 --> 00:16:15,395
+>> Since you put
+my name first,
+
+357
+00:16:15,395 --> 00:16:16,535
+let me jump in.
+
+358
+00:16:16,535 --> 00:16:18,830
+First of all,
+I'm so happy to
+
+359
+00:16:18,830 --> 00:16:20,030
+see so many people working
+
+360
+00:16:20,030 --> 00:16:21,350
+on applications on NDN.
+
+361
+00:16:21,350 --> 00:16:24,630
+That is exactly
+what we need.
+
+362
+00:16:25,060 --> 00:16:29,075
+I want to remind
+people that NDN has
+
+363
+00:16:29,075 --> 00:16:31,130
+a very unique
+advantage compared to
+
+364
+00:16:31,130 --> 00:16:33,200
+IP in terms of when
+was developed.
+
+365
+00:16:33,200 --> 00:16:34,490
+When IP was developed in
+
+366
+00:16:34,490 --> 00:16:36,260
+the 60s and the 70s,
+
+367
+00:16:36,260 --> 00:16:37,850
+people didn't really have
+
+368
+00:16:37,850 --> 00:16:39,335
+any experience
+with networking.
+
+369
+00:16:39,335 --> 00:16:40,520
+They didn't know
+
+370
+00:16:40,520 --> 00:16:43,760
+what applications
+would use networking.
+
+371
+00:16:43,760 --> 00:16:44,480
+There were some people
+
+372
+00:16:44,480 --> 00:16:45,710
+who never believed that
+
+373
+00:16:45,710 --> 00:16:48,245
+networking was important
+or interesting.
+
+374
+00:16:48,245 --> 00:16:50,090
+It is not surprising that
+
+375
+00:16:50,090 --> 00:16:51,634
+they looked at
+the telephone
+
+376
+00:16:51,634 --> 00:16:53,540
+which was the only
+application that
+
+377
+00:16:53,540 --> 00:16:55,445
+we had that uses
+networking and they said,
+
+378
+00:16:55,445 --> 00:16:56,585
+this is what we need,
+
+379
+00:16:56,585 --> 00:16:58,625
+let's build a network that
+
+380
+00:16:58,625 --> 00:17:00,320
+resembles the
+phone network
+
+381
+00:17:00,320 --> 00:17:01,940
+and we know how that went.
+
+382
+00:17:01,940 --> 00:17:05,000
+Today with NDN, we
+have a vast experience
+
+383
+00:17:05,000 --> 00:17:07,835
+with all applications
+that use the network.
+
+384
+00:17:07,835 --> 00:17:09,140
+I think we're all here
+
+385
+00:17:09,140 --> 00:17:10,520
+because we believe that we
+
+386
+00:17:10,520 --> 00:17:11,450
+have a better way to do
+
+387
+00:17:11,450 --> 00:17:13,730
+networking than with IP.
+
+388
+00:17:13,730 --> 00:17:16,520
+But we need to use
+that wisdom that we
+
+389
+00:17:16,520 --> 00:17:19,340
+have acquired by looking
+
+390
+00:17:19,340 --> 00:17:21,185
+at 50 years of
+experience worth
+
+391
+00:17:21,185 --> 00:17:24,170
+of applications and try
+
+392
+00:17:24,170 --> 00:17:26,750
+to convince people who
+
+393
+00:17:26,750 --> 00:17:27,979
+use those applications
+
+394
+00:17:27,979 --> 00:17:29,735
+about the merits of NDN.
+
+395
+00:17:29,735 --> 00:17:32,060
+I think the best
+way to do this
+
+396
+00:17:32,060 --> 00:17:34,385
+is to just go out there to
+
+397
+00:17:34,385 --> 00:17:36,140
+people who use
+applications
+
+398
+00:17:36,140 --> 00:17:37,730
+and talk to them and
+
+399
+00:17:37,730 --> 00:17:39,380
+try to capture
+their imagination.
+
+400
+00:17:39,380 --> 00:17:40,430
+We need to convince
+
+401
+00:17:40,430 --> 00:17:41,540
+the networking
+researchers,
+
+402
+00:17:41,540 --> 00:17:43,835
+but we really need to
+capture the imagination
+
+403
+00:17:43,835 --> 00:17:47,244
+of people who run
+applications.
+
+404
+00:17:47,244 --> 00:17:48,850
+I'm so happy to
+see Alex Feltus on
+
+405
+00:17:48,850 --> 00:17:51,470
+the panel because
+I remember
+
+406
+00:17:51,470 --> 00:17:54,110
+talking to him at the
+cc star PI meeting
+
+407
+00:17:54,110 --> 00:17:56,330
+and introducing
+NDN to him.
+
+408
+00:17:56,330 --> 00:18:00,200
+He was interested,
+he got it.
+
+409
+00:18:00,200 --> 00:18:04,085
+He was a big supporter
+from day zero.
+
+410
+00:18:04,085 --> 00:18:05,660
+I was shocked
+at how quickly
+
+411
+00:18:05,660 --> 00:18:08,630
+Alex got the
+concept behind NDN.
+
+412
+00:18:08,630 --> 00:18:10,880
+We did the same
+thing with climate
+
+413
+00:18:10,880 --> 00:18:12,725
+and high-energy
+physics people.
+
+414
+00:18:12,725 --> 00:18:17,000
+We found groups,
+communities
+
+415
+00:18:17,000 --> 00:18:18,380
+that had a need
+
+416
+00:18:18,380 --> 00:18:21,170
+and we tried to
+speak to that need.
+
+417
+00:18:21,170 --> 00:18:22,670
+I think that was very
+
+418
+00:18:22,670 --> 00:18:23,690
+important thing in terms
+
+419
+00:18:23,690 --> 00:18:26,990
+of capturing their
+imagination.
+
+420
+00:18:26,990 --> 00:18:29,540
+I'm trying to do
+the same thing here
+
+421
+00:18:29,540 --> 00:18:34,100
+with the automotive
+community.
+
+422
+00:18:34,100 --> 00:18:37,370
+The reason I'm doing
+that, first of all,
+
+423
+00:18:37,370 --> 00:18:38,900
+it's a big domain,
+
+424
+00:18:38,900 --> 00:18:40,370
+it's a big application.
+
+425
+00:18:40,370 --> 00:18:42,485
+They have real needs.
+
+426
+00:18:42,485 --> 00:18:44,885
+Deploying a networking
+
+427
+00:18:44,885 --> 00:18:47,360
+on millions of vehicles,
+
+428
+00:18:47,360 --> 00:18:50,569
+connected vehicles,
+autonomous vehicles.
+
+429
+00:18:50,569 --> 00:18:53,510
+The networking needs
+insider vehicle.
+
+430
+00:18:53,510 --> 00:18:55,325
+The networking
+needs some vehicles
+
+431
+00:18:55,325 --> 00:18:57,350
+to connect to the Cloud.
+
+432
+00:18:57,350 --> 00:18:58,940
+I don't have to
+
+433
+00:18:58,940 --> 00:19:00,500
+be speaking to
+the choir here.
+
+434
+00:19:00,500 --> 00:19:02,495
+NDN is perfect for those.
+
+435
+00:19:02,495 --> 00:19:05,585
+They are asking questions
+
+436
+00:19:05,585 --> 00:19:07,220
+as they're moving to
+
+437
+00:19:07,220 --> 00:19:09,679
+IP that we were asking
+
+438
+00:19:09,679 --> 00:19:11,330
+when we were talking
+
+439
+00:19:11,330 --> 00:19:13,620
+about NDN at
+the beginning.
+
+440
+00:19:14,380 --> 00:19:16,880
+The interesting
+thing about
+
+441
+00:19:16,880 --> 00:19:19,339
+the automotive community
+when they started
+
+442
+00:19:19,339 --> 00:19:21,995
+with simpler networks like
+
+443
+00:19:21,995 --> 00:19:24,110
+Cantor Controller
+Area Network,
+
+444
+00:19:24,110 --> 00:19:26,390
+which was invented back
+in the 80s by Bosch.
+
+445
+00:19:26,390 --> 00:19:28,160
+If you look at it, it
+
+446
+00:19:28,160 --> 00:19:30,530
+is the first ICN network.
+
+447
+00:19:30,530 --> 00:19:33,080
+It communicates by putting
+
+448
+00:19:33,080 --> 00:19:35,060
+names of signals
+on the wire.
+
+449
+00:19:35,060 --> 00:19:36,920
+Very simple, very
+primitive network,
+
+450
+00:19:36,920 --> 00:19:39,500
+but it is an
+ICN network and
+
+451
+00:19:39,500 --> 00:19:41,210
+the automotive
+community is
+
+452
+00:19:41,210 --> 00:19:43,505
+used to that paradigm.
+
+453
+00:19:43,505 --> 00:19:45,575
+We're forcing them into
+
+454
+00:19:45,575 --> 00:19:47,810
+an endpoint
+communication with
+
+455
+00:19:47,810 --> 00:19:50,300
+IP and they're attracted
+
+456
+00:19:50,300 --> 00:19:51,770
+because of all the
+standardization
+
+457
+00:19:51,770 --> 00:19:53,820
+or the work that
+has gone in IP.
+
+458
+00:19:53,820 --> 00:19:56,335
+But this is not
+
+459
+00:19:56,335 --> 00:19:59,110
+the way they're used to
+doing communication,
+
+460
+00:19:59,110 --> 00:20:01,855
+they're forced
+into these now.
+
+461
+00:20:01,855 --> 00:20:05,185
+To summarize, I think
+the best way to
+
+462
+00:20:05,185 --> 00:20:08,665
+evangelize and for
+obligates NDN,
+
+463
+00:20:08,665 --> 00:20:10,850
+is to just go out there
+
+464
+00:20:10,850 --> 00:20:13,670
+find the Alex Feltus
+service community.
+
+465
+00:20:13,670 --> 00:20:17,180
+We have real needs.
+Talk to them.
+
+466
+00:20:17,180 --> 00:20:20,225
+There are people
+out there who will
+
+467
+00:20:20,225 --> 00:20:22,070
+understand the
+technical aspect
+
+468
+00:20:22,070 --> 00:20:23,675
+of NDN, and their
+advantages.
+
+469
+00:20:23,675 --> 00:20:25,640
+Let's find them,
+talk to them,
+
+470
+00:20:25,640 --> 00:20:28,760
+and see if we can convince
+them that we have
+
+471
+00:20:28,760 --> 00:20:32,835
+a better way to do
+things. That's it.
+
+472
+00:20:32,835 --> 00:20:36,500
+>> Thank Christos.
+Beichuan.
+
+473
+00:20:36,690 --> 00:20:38,560
+>> I totally agree
+
+474
+00:20:38,560 --> 00:20:40,165
+with Christos
+what has said.
+
+475
+00:20:40,165 --> 00:20:46,280
+We need to get the ideas
+
+476
+00:20:46,280 --> 00:20:49,190
+from people who
+actually use NDN in
+
+477
+00:20:49,190 --> 00:20:50,960
+their domain
+and figure out
+
+478
+00:20:50,960 --> 00:20:53,000
+what are the problems
+they run into
+
+479
+00:20:53,000 --> 00:20:55,040
+and try to solve
+this problem to make
+
+480
+00:20:55,040 --> 00:20:59,270
+NDN being very used.
+
+481
+00:20:59,270 --> 00:21:02,225
+I want to follow up on
+
+482
+00:21:02,225 --> 00:21:05,300
+James' comments
+
+483
+00:21:05,300 --> 00:21:08,690
+about making this
+more approachable,
+
+484
+00:21:08,690 --> 00:21:12,335
+more accessible to
+cover users that
+
+485
+00:21:12,335 --> 00:21:14,030
+who don't have a lot of
+
+486
+00:21:14,030 --> 00:21:16,655
+time to go through
+the learning curves.
+
+487
+00:21:16,655 --> 00:21:19,205
+I think that's a very
+important point.
+
+488
+00:21:19,205 --> 00:21:21,440
+In our experience, we've
+
+489
+00:21:21,440 --> 00:21:23,735
+found out a
+couple of things.
+
+490
+00:21:23,735 --> 00:21:25,490
+One is when we did
+
+491
+00:21:25,490 --> 00:21:29,000
+this browser-based video
+
+492
+00:21:29,000 --> 00:21:30,995
+streaming using NDN,
+
+493
+00:21:30,995 --> 00:21:34,310
+we find that it's a
+very good approach
+
+494
+00:21:34,310 --> 00:21:38,810
+to involve everyday
+user to use this.
+
+495
+00:21:38,810 --> 00:21:41,030
+Even though they may
+
+496
+00:21:41,030 --> 00:21:43,220
+now know they're
+using NDN,
+
+497
+00:21:43,220 --> 00:21:45,560
+but they actually
+using NDN video
+
+498
+00:21:45,560 --> 00:21:47,990
+streaming and it can
+
+499
+00:21:47,990 --> 00:21:50,340
+be a very good
+demonstration.
+
+500
+00:21:51,010 --> 00:21:54,770
+From NDN researcher or
+
+501
+00:21:54,770 --> 00:21:57,020
+developer point
+of view, I think,
+
+502
+00:21:57,020 --> 00:22:00,440
+strengthen this
+browser support
+
+503
+00:22:00,440 --> 00:22:02,330
+is a good way to
+
+504
+00:22:02,330 --> 00:22:04,685
+improve the
+accessibility of NDN.
+
+505
+00:22:04,685 --> 00:22:08,435
+I'm glad to see yesterday,
+
+506
+00:22:08,435 --> 00:22:12,605
+future topologies,
+tap square library.
+
+507
+00:22:12,605 --> 00:22:15,680
+Varun talked about
+his NDN play,
+
+508
+00:22:15,680 --> 00:22:17,765
+which is web-based demo.
+
+509
+00:22:17,765 --> 00:22:21,725
+I think those are
+very good things.
+
+510
+00:22:21,725 --> 00:22:23,915
+Another thing there is
+
+511
+00:22:23,915 --> 00:22:27,810
+plug-and-play of NDN code.
+
+512
+00:22:29,980 --> 00:22:33,050
+My experience from
+
+513
+00:22:33,050 --> 00:22:34,925
+other people's
+appearance I talk to,
+
+514
+00:22:34,925 --> 00:22:36,275
+UL they are two things.
+
+515
+00:22:36,275 --> 00:22:39,050
+One is, when you
+set up NDN nodes,
+
+516
+00:22:39,050 --> 00:22:41,480
+let's say even
+very small scale
+
+517
+00:22:41,480 --> 00:22:42,950
+and you want to run some
+
+518
+00:22:42,950 --> 00:22:44,900
+single NDN applications,
+
+519
+00:22:44,900 --> 00:22:47,765
+turns out you had to
+set up the routes.
+
+520
+00:22:47,765 --> 00:22:49,340
+You have to know
+the IP address and
+
+521
+00:22:49,340 --> 00:22:51,515
+set up the routes,
+and this and that.
+
+522
+00:22:51,515 --> 00:22:53,630
+Is very counterintuitive
+
+523
+00:22:53,630 --> 00:22:55,385
+when we talk about NDN.
+
+524
+00:22:55,385 --> 00:22:58,730
+We develop the so-called
+self-learning,
+
+525
+00:22:58,730 --> 00:23:01,040
+which you basically build
+
+526
+00:23:01,040 --> 00:23:02,540
+customer first packet and
+
+527
+00:23:02,540 --> 00:23:03,845
+find out where data is.
+
+528
+00:23:03,845 --> 00:23:06,110
+Then in the later,
+later packets,
+
+529
+00:23:06,110 --> 00:23:07,790
+you automatically set up
+
+530
+00:23:07,790 --> 00:23:09,530
+routes based on the result
+
+531
+00:23:09,530 --> 00:23:11,550
+of the first packet.
+
+532
+00:23:12,310 --> 00:23:16,715
+Another thing is the
+security bootstrap
+
+533
+00:23:16,715 --> 00:23:18,560
+is very big part of
+
+534
+00:23:18,560 --> 00:23:20,405
+this so-called
+plug-and-play,
+
+535
+00:23:20,405 --> 00:23:22,895
+and that's really
+non-trivial
+
+536
+00:23:22,895 --> 00:23:24,710
+because it involves
+the policy,
+
+537
+00:23:24,710 --> 00:23:26,240
+involves a schema and
+
+538
+00:23:26,240 --> 00:23:28,685
+how you automate
+all of this.
+
+539
+00:23:28,685 --> 00:23:33,840
+I think that's part
+require a lot of work.
+
+540
+00:23:35,020 --> 00:23:37,535
+Coming together all this,
+
+541
+00:23:37,535 --> 00:23:40,895
+how to say how do
+the falling states,
+
+542
+00:23:40,895 --> 00:23:43,115
+how to bootstrap security,
+
+543
+00:23:43,115 --> 00:23:45,365
+they are all
+important so that
+
+544
+00:23:45,365 --> 00:23:47,990
+a user without
+the time to deep
+
+545
+00:23:47,990 --> 00:23:50,840
+into the technical
+details can actually
+
+546
+00:23:50,840 --> 00:23:53,120
+run and again say out of
+
+547
+00:23:53,120 --> 00:23:55,130
+the box without
+too much hassle.
+
+548
+00:23:55,130 --> 00:23:57,320
+That's also very important
+
+549
+00:23:57,320 --> 00:24:03,140
+for improve the
+accessibility of NDN.
+
+550
+00:24:03,140 --> 00:24:05,390
+Couple of other things,
+
+551
+00:24:05,390 --> 00:24:07,100
+I think also mentioned in
+
+552
+00:24:07,100 --> 00:24:09,800
+yesterday's either
+talk or panel,
+
+553
+00:24:09,800 --> 00:24:14,495
+one is for the
+application developers
+
+554
+00:24:14,495 --> 00:24:17,090
+who don't know a lot about
+
+555
+00:24:17,090 --> 00:24:20,720
+NDN network
+details and who
+
+556
+00:24:20,720 --> 00:24:22,250
+shouldn't need to know
+
+557
+00:24:22,250 --> 00:24:25,355
+those details for
+them to use NDN.
+
+558
+00:24:25,355 --> 00:24:29,915
+There should be a good
+high-level library or
+
+559
+00:24:29,915 --> 00:24:31,520
+API for them to
+
+560
+00:24:31,520 --> 00:24:35,040
+easily cool run
+NDN applications.
+
+561
+00:24:39,190 --> 00:24:42,725
+Probably a single library
+will not be enough.
+
+562
+00:24:42,725 --> 00:24:48,275
+But say people work
+in vehicle network,
+
+563
+00:24:48,275 --> 00:24:51,530
+they may come out
+with their library,
+
+564
+00:24:51,530 --> 00:24:52,910
+that will be really good.
+
+565
+00:24:52,910 --> 00:24:55,775
+Or Alex come up with
+his library for
+
+566
+00:24:55,775 --> 00:24:58,910
+people in this biological
+research area,
+
+567
+00:24:58,910 --> 00:25:00,680
+that would be really good
+
+568
+00:25:00,680 --> 00:25:03,290
+to increase the
+accessibility.
+
+569
+00:25:03,290 --> 00:25:06,320
+The last point I
+want to make is,
+
+570
+00:25:06,320 --> 00:25:11,375
+my personal wish is if
+there's some framework
+
+571
+00:25:11,375 --> 00:25:14,105
+so that people can
+follow to migrate
+
+572
+00:25:14,105 --> 00:25:17,705
+existing applications
+to NDN application.
+
+573
+00:25:17,705 --> 00:25:19,280
+In a real world,
+
+574
+00:25:19,280 --> 00:25:20,630
+there's so many
+application people
+
+575
+00:25:20,630 --> 00:25:22,250
+have put in
+
+576
+00:25:22,250 --> 00:25:25,685
+so much time to
+
+577
+00:25:25,685 --> 00:25:28,325
+really develop
+those applications.
+
+578
+00:25:28,325 --> 00:25:31,235
+But I see the
+biggest obstacle
+
+579
+00:25:31,235 --> 00:25:34,040
+of NDN deployment is
+
+580
+00:25:34,040 --> 00:25:37,260
+you require changes
+to the application.
+
+581
+00:25:38,830 --> 00:25:40,970
+In TCP, IP, they
+
+582
+00:25:40,970 --> 00:25:43,085
+all address to
+some port numbers.
+
+583
+00:25:43,085 --> 00:25:45,410
+But now we need names,
+
+584
+00:25:45,410 --> 00:25:48,960
+and we need name come
+from the application.
+
+585
+00:25:49,240 --> 00:25:52,685
+I see that's the
+biggest hurdle
+
+586
+00:25:52,685 --> 00:25:54,800
+more than how efficient,
+
+587
+00:25:54,800 --> 00:25:56,285
+how scalable
+your network is,
+
+588
+00:25:56,285 --> 00:25:59,450
+is people have to
+make changes to
+
+589
+00:25:59,450 --> 00:26:01,280
+their application
+in order to get
+
+590
+00:26:01,280 --> 00:26:04,110
+a lot of benefit from
+any architecture.
+
+591
+00:26:04,110 --> 00:26:07,630
+It's not a simple question
+like you just make
+
+592
+00:26:07,630 --> 00:26:09,250
+a few changes to
+
+593
+00:26:09,250 --> 00:26:11,470
+the function call
+or somewhere,
+
+594
+00:26:11,470 --> 00:26:13,755
+it dependent with
+applications.
+
+595
+00:26:13,755 --> 00:26:15,530
+Sometimes you have to
+
+596
+00:26:15,530 --> 00:26:17,255
+go deep into the
+application,
+
+597
+00:26:17,255 --> 00:26:20,450
+and sometimes the
+application itself was
+
+598
+00:26:20,450 --> 00:26:24,065
+designed with this
+data-centric remind,
+
+599
+00:26:24,065 --> 00:26:26,105
+you just change the
+
+600
+00:26:26,105 --> 00:26:27,800
+network communication part
+
+601
+00:26:27,800 --> 00:26:30,260
+or some function course
+that you ignore.
+
+602
+00:26:30,260 --> 00:26:32,225
+But sometimes you
+have to go deep.
+
+603
+00:26:32,225 --> 00:26:35,120
+If there's some framework
+
+604
+00:26:35,120 --> 00:26:38,030
+to guide people go
+through these courses,
+
+605
+00:26:38,030 --> 00:26:41,490
+I think that will
+be very helpful.
+
+606
+00:26:43,150 --> 00:26:47,630
+These are the more
+technical point,
+
+607
+00:26:47,630 --> 00:26:49,970
+I think what we need to
+
+608
+00:26:49,970 --> 00:26:51,200
+do in order to improve
+
+609
+00:26:51,200 --> 00:26:53,120
+the accessibility of NDN.
+
+610
+00:26:53,120 --> 00:26:55,100
+>> Beichuan, I'll
+
+611
+00:26:55,100 --> 00:26:57,140
+come to Alex
+pretty soon and he
+
+612
+00:26:57,140 --> 00:27:01,670
+can tell us if I'm
+thinking this correctly,
+
+613
+00:27:01,670 --> 00:27:03,440
+but you mentioned
+that there're
+
+614
+00:27:03,440 --> 00:27:08,600
+simple applications
+that we
+
+615
+00:27:08,600 --> 00:27:10,565
+can get them
+started with NDN.
+
+616
+00:27:10,565 --> 00:27:13,805
+But I think
+people like Alex,
+
+617
+00:27:13,805 --> 00:27:16,040
+they would take that
+simple application.
+
+618
+00:27:16,040 --> 00:27:17,450
+They'll move
+to the complex
+
+619
+00:27:17,450 --> 00:27:18,710
+stage pretty quickly.
+
+620
+00:27:18,710 --> 00:27:20,180
+Then that point,
+
+621
+00:27:20,180 --> 00:27:22,265
+the problem then
+becomes on how
+
+622
+00:27:22,265 --> 00:27:24,980
+can I do this cool
+thing with NDN.
+
+623
+00:27:24,980 --> 00:27:28,220
+It's not, can I get
+started with NDN.
+
+624
+00:27:28,220 --> 00:27:30,690
+We need to have
+
+625
+00:27:31,630 --> 00:27:36,140
+more primitive
+approach for
+
+626
+00:27:36,140 --> 00:27:37,460
+accessibility
+and then more
+
+627
+00:27:37,460 --> 00:27:40,520
+advanced approach
+where people
+
+628
+00:27:40,520 --> 00:27:43,340
+can actually play
+the NDN libraries.
+
+629
+00:27:43,340 --> 00:27:45,080
+I think Alex,
+you'd be better
+
+630
+00:27:45,080 --> 00:27:48,350
+suited to comment
+on this one.
+
+631
+00:27:48,350 --> 00:27:50,246
+>> Can you hear me?
+
+632
+00:27:50,246 --> 00:27:52,840
+>> Yeah.. [NOISE]
+
+633
+00:27:52,840 --> 00:27:53,290
+>> If we're talking
+
+634
+00:27:53,290 --> 00:27:54,700
+about accessibility still,
+
+635
+00:27:54,700 --> 00:27:56,950
+I was trying to
+think about that.
+
+636
+00:27:56,950 --> 00:27:58,870
+There's really
+two versions
+
+637
+00:27:58,870 --> 00:28:00,895
+of accessibility for NDN.
+
+638
+00:28:00,895 --> 00:28:03,520
+Starting with the
+real end-user,
+
+639
+00:28:03,520 --> 00:28:04,540
+the biologist,
+
+640
+00:28:04,540 --> 00:28:06,489
+I want to get it from
+their perspective
+
+641
+00:28:06,489 --> 00:28:07,990
+that we need
+
+642
+00:28:07,990 --> 00:28:11,454
+a content delivery
+system for genomes
+
+643
+00:28:11,454 --> 00:28:13,720
+where the genomes have
+been processed and may
+
+644
+00:28:13,720 --> 00:28:16,750
+be downstream analysis in
+
+645
+00:28:16,750 --> 00:28:18,190
+those datasets where
+we need to be able to
+
+646
+00:28:18,190 --> 00:28:19,690
+have them be
+passed around and
+
+647
+00:28:19,690 --> 00:28:23,245
+a naming system is what
+attracts me to NDN.
+
+648
+00:28:23,245 --> 00:28:25,495
+From an accessibility,
+
+649
+00:28:25,495 --> 00:28:27,250
+I need a data lake
+and we're working
+
+650
+00:28:27,250 --> 00:28:28,780
+on the hydro project
+together full
+
+651
+00:28:28,780 --> 00:28:31,000
+disclosure for
+
+652
+00:28:31,000 --> 00:28:32,995
+creating this
+repository where
+
+653
+00:28:32,995 --> 00:28:35,470
+an application can
+go in and say,
+
+654
+00:28:35,470 --> 00:28:37,150
+give me this version of
+
+655
+00:28:37,150 --> 00:28:39,430
+the human genome that's
+been named properly,
+
+656
+00:28:39,430 --> 00:28:42,040
+then pull it into
+a complex workflow
+
+657
+00:28:42,040 --> 00:28:43,480
+and then go out and have
+
+658
+00:28:43,480 --> 00:28:45,190
+all the troubleshooting
+and everything
+
+659
+00:28:45,190 --> 00:28:46,330
+break after that because
+
+660
+00:28:46,330 --> 00:28:47,425
+whenever you're doing,
+
+661
+00:28:47,425 --> 00:28:49,180
+data intensive
+genomics work,
+
+662
+00:28:49,180 --> 00:28:50,260
+it's always broken at
+
+663
+00:28:50,260 --> 00:28:53,470
+all levels of the
+data lifecycle.
+
+664
+00:28:53,470 --> 00:28:55,060
+It's insane and I spend
+
+665
+00:28:55,060 --> 00:28:56,800
+a lot of my time teaching
+
+666
+00:28:56,800 --> 00:28:58,990
+how to troubleshoot just
+
+667
+00:28:58,990 --> 00:29:00,490
+the really bad
+software systems.
+
+668
+00:29:00,490 --> 00:29:01,840
+But from
+
+669
+00:29:01,840 --> 00:29:03,820
+an NDN accessibility
+perspective for user,
+
+670
+00:29:03,820 --> 00:29:04,900
+I just needed to
+have the ability
+
+671
+00:29:04,900 --> 00:29:07,450
+for a person who
+writes workflows,
+
+672
+00:29:07,450 --> 00:29:09,880
+writes links
+applications together
+
+673
+00:29:09,880 --> 00:29:11,140
+to go and pull
+data into it,
+
+674
+00:29:11,140 --> 00:29:12,520
+pull it in with a name.
+
+675
+00:29:12,520 --> 00:29:14,035
+That's really all
+they need to know,
+
+676
+00:29:14,035 --> 00:29:16,555
+how to access this
+documentation,
+
+677
+00:29:16,555 --> 00:29:18,910
+access the data lake,
+
+678
+00:29:18,910 --> 00:29:20,140
+pull data with the name
+
+679
+00:29:20,140 --> 00:29:22,435
+and move forward
+with your stuff.
+
+680
+00:29:22,435 --> 00:29:25,630
+The other part of
+the accessibility is
+
+681
+00:29:25,630 --> 00:29:27,130
+me trying to develop
+
+682
+00:29:27,130 --> 00:29:29,245
+the system and
+I cannot do.
+
+683
+00:29:29,245 --> 00:29:31,165
+We've been doing it for
+quite a while now and
+
+684
+00:29:31,165 --> 00:29:34,420
+I'm not a computer scientist
+or network engineer,
+
+685
+00:29:34,420 --> 00:29:37,120
+I'm a bioinformatician
+where
+
+686
+00:29:37,120 --> 00:29:38,185
+I know how to do stuff,
+
+687
+00:29:38,185 --> 00:29:40,495
+makes hack basically,
+
+688
+00:29:40,495 --> 00:29:43,420
+a lot of the data
+and the workflows,
+
+689
+00:29:43,420 --> 00:29:44,920
+but I have to
+work with Susmit
+
+690
+00:29:44,920 --> 00:29:47,560
+and Christos and
+some other people
+
+691
+00:29:47,560 --> 00:29:49,390
+that I've been
+working with on
+
+692
+00:29:49,390 --> 00:29:51,370
+implementing
+this stuff with
+
+693
+00:29:51,370 --> 00:29:52,375
+people in my lab,
+
+694
+00:29:52,375 --> 00:29:54,940
+where I get part of
+an FTE to program
+
+695
+00:29:54,940 --> 00:29:56,155
+on this for a few years
+
+696
+00:29:56,155 --> 00:29:57,520
+and get this to happen.
+
+697
+00:29:57,520 --> 00:30:00,445
+Then we've had major
+accessibility problems,
+
+698
+00:30:00,445 --> 00:30:01,990
+even with working directly
+
+699
+00:30:01,990 --> 00:30:03,250
+with people in
+the community,
+
+700
+00:30:03,250 --> 00:30:05,650
+they're awesome
+with implementing
+
+701
+00:30:05,650 --> 00:30:06,790
+it on the system.
+
+702
+00:30:06,790 --> 00:30:08,110
+We have to have this stuff
+
+703
+00:30:08,110 --> 00:30:09,565
+work on a real system.
+
+704
+00:30:09,565 --> 00:30:13,090
+We use several distributed
+Cloud-based systems,
+
+705
+00:30:13,090 --> 00:30:14,725
+again this
+cluster we have,
+
+706
+00:30:14,725 --> 00:30:16,840
+and then there's problems
+with networking.
+
+707
+00:30:16,840 --> 00:30:19,705
+Whenever trying
+the test bed,
+
+708
+00:30:19,705 --> 00:30:21,805
+there's firewall issues or
+
+709
+00:30:21,805 --> 00:30:23,800
+just trying to get
+containers to run on
+
+710
+00:30:23,800 --> 00:30:25,930
+a distributed
+Kubernetes system and
+
+711
+00:30:25,930 --> 00:30:28,360
+being able to
+have to turn on
+
+712
+00:30:28,360 --> 00:30:29,980
+some particular
+networking aspect
+
+713
+00:30:29,980 --> 00:30:31,345
+that's been blocked
+
+714
+00:30:31,345 --> 00:30:34,480
+by the system
+administrator, the system.
+
+715
+00:30:34,480 --> 00:30:36,010
+It's like trying to
+
+716
+00:30:36,010 --> 00:30:37,360
+get this thing
+just to turn on
+
+717
+00:30:37,360 --> 00:30:40,570
+the switch and is
+
+718
+00:30:40,570 --> 00:30:41,110
+hard and that's from
+
+719
+00:30:41,110 --> 00:30:42,805
+an accessibility
+perspective.
+
+720
+00:30:42,805 --> 00:30:44,890
+I wouldn't even begin
+to do anything that I'm
+
+721
+00:30:44,890 --> 00:30:46,780
+trying to do
+without direct help
+
+722
+00:30:46,780 --> 00:30:48,910
+from the computer science
+
+723
+00:30:48,910 --> 00:30:51,730
+network engineer community
+that's here today.
+
+724
+00:30:51,730 --> 00:30:53,530
+I think the
+accessibility is
+
+725
+00:30:53,530 --> 00:30:55,840
+basically zero
+for somebody
+
+726
+00:30:55,840 --> 00:30:57,640
+like me based upon
+
+727
+00:30:57,640 --> 00:30:59,725
+the documentation and
+things like that.
+
+728
+00:30:59,725 --> 00:31:00,310
+I wouldn't know how to
+
+729
+00:31:00,310 --> 00:31:01,150
+start to solve the problem
+
+730
+00:31:01,150 --> 00:31:03,955
+without having
+my handheld.
+
+731
+00:31:03,955 --> 00:31:05,320
+I feel like it's coming
+
+732
+00:31:05,320 --> 00:31:06,775
+from the other
+way too that,
+
+733
+00:31:06,775 --> 00:31:10,345
+I know what we need
+after we get the data,
+
+734
+00:31:10,345 --> 00:31:13,435
+the usage after that
+and try to make
+
+735
+00:31:13,435 --> 00:31:15,970
+the downstream
+applications accessible to
+
+736
+00:31:15,970 --> 00:31:17,650
+the networking
+community too
+
+737
+00:31:17,650 --> 00:31:19,375
+is what I'm trying to do.
+
+738
+00:31:19,375 --> 00:31:23,800
+Does that make any
+sense? [NOISE]
+
+739
+00:31:23,800 --> 00:31:28,330
+>> Yeah, and I think
+Beichuan talked about
+
+740
+00:31:28,330 --> 00:31:30,655
+this high-level
+libraries and I think
+
+741
+00:31:30,655 --> 00:31:32,410
+Alex mentioned
+
+742
+00:31:32,410 --> 00:31:34,580
+[OVERLAPPING] its use
+had been stopped.
+
+743
+00:31:34,620 --> 00:31:37,825
+Do you think if we had
+
+744
+00:31:37,825 --> 00:31:39,550
+high-level libraries that
+
+745
+00:31:39,550 --> 00:31:43,975
+implemented NDN primitive
+that would be more?
+
+746
+00:31:43,975 --> 00:31:45,970
+I know we spend
+a lot of time in
+
+747
+00:31:45,970 --> 00:31:48,115
+the first part
+setting things up,
+
+748
+00:31:48,115 --> 00:31:51,155
+the forwarding and
+getting all that working,
+
+749
+00:31:51,155 --> 00:31:54,495
+but that part can be
+solved by having,
+
+750
+00:31:54,495 --> 00:31:55,860
+let's say,
+virtual machines
+
+751
+00:31:55,860 --> 00:31:57,455
+or Docker containers.
+
+752
+00:31:57,455 --> 00:31:59,470
+The next part is
+more challenging.
+
+753
+00:31:59,470 --> 00:32:04,100
+How do you integrate
+NDN with your,
+
+754
+00:32:04,110 --> 00:32:08,420
+as Beichuan was saying,
+existing workflows?
+
+755
+00:32:08,880 --> 00:32:11,830
+If we had high-level
+libraries
+
+756
+00:32:11,830 --> 00:32:13,000
+that can take
+care of that,
+
+757
+00:32:13,000 --> 00:32:15,280
+do you think that
+would be more useful?
+
+758
+00:32:15,280 --> 00:32:16,660
+[NOISE]
+
+759
+00:32:16,660 --> 00:32:21,790
+>> Definitely, I have to have
+a high level libraries, yes,
+
+760
+00:32:21,790 --> 00:32:23,200
+that will make it
+more easy, but also
+
+761
+00:32:23,200 --> 00:32:27,355
+a system where I can
+publish data from.
+
+762
+00:32:27,355 --> 00:32:28,810
+Right now, I'm
+so interested
+
+763
+00:32:28,810 --> 00:32:30,820
+in creating the system,
+
+764
+00:32:30,820 --> 00:32:32,905
+creating the data
+lake to be able to
+
+765
+00:32:32,905 --> 00:32:34,930
+use high-level
+libraries to
+
+766
+00:32:34,930 --> 00:32:36,805
+interact with that place.
+
+767
+00:32:36,805 --> 00:32:38,050
+That's where we're trying
+
+768
+00:32:38,050 --> 00:32:39,070
+to get the containers and
+
+769
+00:32:39,070 --> 00:32:41,440
+everything packed
+together right
+
+770
+00:32:41,440 --> 00:32:43,180
+now to have a system
+that's functional.
+
+771
+00:32:43,180 --> 00:32:45,790
+[OVERLAPPING] The
+answer is yes,
+
+772
+00:32:45,790 --> 00:32:47,230
+that'll be very helpful,
+
+773
+00:32:47,230 --> 00:32:49,000
+I'm sure, but
+we're not even at
+
+774
+00:32:49,000 --> 00:32:52,375
+that stage for me.
+
+775
+00:32:52,375 --> 00:32:55,000
+>> You're saying the
+accessibility challenges
+
+776
+00:32:55,000 --> 00:32:56,800
+are three levels, not two.
+
+777
+00:32:56,800 --> 00:32:58,270
+Getting started and then
+
+778
+00:32:58,270 --> 00:33:00,610
+getting the
+infrastructure up,
+
+779
+00:33:00,610 --> 00:33:04,660
+and then doing the high
+level applications.
+
+780
+00:33:04,660 --> 00:33:06,625
+>> Yes.
+
+781
+00:33:06,625 --> 00:33:08,275
+>> Okay.
+
+782
+00:33:08,275 --> 00:33:09,760
+>> Yes. We haven't
+gotten there
+
+783
+00:33:09,760 --> 00:33:11,770
+yet to the high level
+applications, yes.
+
+784
+00:33:11,770 --> 00:33:14,330
+We will need
+that very soon.
+
+785
+00:33:14,400 --> 00:33:16,780
+>> The NDN community has
+
+786
+00:33:16,780 --> 00:33:18,205
+a couple of testbeds,
+
+787
+00:33:18,205 --> 00:33:22,780
+where NDN can run,
+things can happen.
+
+788
+00:33:22,780 --> 00:33:25,660
+Do you think, and
+this is the question
+
+789
+00:33:25,660 --> 00:33:28,870
+for all the other
+panelists as well.
+
+790
+00:33:28,870 --> 00:33:30,940
+Just having a
+testbed is that
+
+791
+00:33:30,940 --> 00:33:32,890
+sufficient or
+do you want to
+
+792
+00:33:32,890 --> 00:33:34,525
+take this and run in on
+
+793
+00:33:34,525 --> 00:33:40,910
+your own system,
+the infrastructure?
+
+794
+00:33:43,800 --> 00:33:47,125
+>> I would say that
+the testbed is great.
+
+795
+00:33:47,125 --> 00:33:49,090
+I think the fact that
+it has, I think,
+
+796
+00:33:49,090 --> 00:33:50,830
+36 notes as Zhang said
+
+797
+00:33:50,830 --> 00:33:53,005
+yesterday and
+spans the world,
+
+798
+00:33:53,005 --> 00:33:54,490
+except Australia
+and Antarctica
+
+799
+00:33:54,490 --> 00:33:55,795
+, I think you said.
+
+800
+00:33:55,795 --> 00:33:57,520
+That's wonderful,
+and it's there
+
+801
+00:33:57,520 --> 00:34:00,325
+and a lot of
+people can use it.
+
+802
+00:34:00,325 --> 00:34:03,190
+But it's a large
+
+803
+00:34:03,190 --> 00:34:05,260
+network Internet
+style testbed.
+
+804
+00:34:05,260 --> 00:34:09,220
+We need more testbeds
+for other applications.
+
+805
+00:34:09,220 --> 00:34:10,720
+Matthias, I think
+will agree with me
+
+806
+00:34:10,720 --> 00:34:14,335
+that we need testbeds
+to do IoT devices.
+
+807
+00:34:14,335 --> 00:34:15,490
+I'm looking at testbeds
+
+808
+00:34:15,490 --> 00:34:18,535
+that do automotive
+devices.
+
+809
+00:34:18,535 --> 00:34:20,440
+I think as a community,
+
+810
+00:34:20,440 --> 00:34:22,840
+we should support
+
+811
+00:34:22,840 --> 00:34:25,795
+the big testbeds
+and it's wonderful.
+
+812
+00:34:25,795 --> 00:34:28,165
+We should
+definitely support
+
+813
+00:34:28,165 --> 00:34:31,030
+all other types of
+testbeds where NDN can be
+
+814
+00:34:31,030 --> 00:34:32,890
+applied because that shows
+
+815
+00:34:32,890 --> 00:34:36,865
+generality of
+application for NDN.
+
+816
+00:34:36,865 --> 00:34:38,200
+It is challenging to
+
+817
+00:34:38,200 --> 00:34:39,220
+do these testbeds because
+
+818
+00:34:39,220 --> 00:34:41,170
+each application that we
+
+819
+00:34:41,170 --> 00:34:43,700
+look at is different.
+
+820
+00:34:43,980 --> 00:34:47,980
+As an example, in
+automotive applications,
+
+821
+00:34:47,980 --> 00:34:50,050
+they were looking at
+
+822
+00:34:50,050 --> 00:34:52,540
+creating testbeds
+that yes,
+
+823
+00:34:52,540 --> 00:34:54,850
+are composed of ECUs,
+
+824
+00:34:54,850 --> 00:34:58,135
+which resemble
+the sensor nets
+
+825
+00:34:58,135 --> 00:34:59,290
+approach, if you like,
+
+826
+00:34:59,290 --> 00:35:01,750
+constrained devices,
+except that may
+
+827
+00:35:01,750 --> 00:35:05,320
+be the power concern
+is not as big.
+
+828
+00:35:05,320 --> 00:35:09,265
+The automotive environment
+wants applications
+
+829
+00:35:09,265 --> 00:35:10,990
+with networks that are
+
+830
+00:35:10,990 --> 00:35:13,030
+very light in
+terms of weight,
+
+831
+00:35:13,030 --> 00:35:14,950
+I mean the physical
+weight, because they
+
+832
+00:35:14,950 --> 00:35:17,545
+care about what
+goes into the car.
+
+833
+00:35:17,545 --> 00:35:20,230
+That was an eye-opening
+for me when I started
+
+834
+00:35:20,230 --> 00:35:22,030
+talking to
+automotive people,
+
+835
+00:35:22,030 --> 00:35:23,425
+they said, "Well,
+
+836
+00:35:23,425 --> 00:35:25,030
+we're moving
+into automotive
+
+837
+00:35:25,030 --> 00:35:26,155
+ethernet then you guys
+
+838
+00:35:26,155 --> 00:35:27,340
+use wires that have eight
+
+839
+00:35:27,340 --> 00:35:28,630
+conductors in them,"
+and I'm like,
+
+840
+00:35:28,630 --> 00:35:29,920
+"Yeah, we need them to
+
+841
+00:35:29,920 --> 00:35:33,640
+do hundreds of
+gigabits per second."
+
+842
+00:35:33,640 --> 00:35:34,600
+They are like, "Wait,
+
+843
+00:35:34,600 --> 00:35:36,040
+we don't need hundreds
+of gigabytes per
+
+844
+00:35:36,040 --> 00:35:38,725
+second and your wires
+are too heavy."
+
+845
+00:35:38,725 --> 00:35:40,180
+I'm like, "What are
+you talking about?
+
+846
+00:35:40,180 --> 00:35:41,245
+Wires are light."
+
+847
+00:35:41,245 --> 00:35:43,390
+Then they said,
+"Did you know
+
+848
+00:35:43,390 --> 00:35:45,520
+that the wiring
+harness in a car is
+
+849
+00:35:45,520 --> 00:35:49,690
+the third most heavy
+item in a car?"
+
+850
+00:35:49,690 --> 00:35:52,405
+I'm like, "No, I
+have no idea."
+
+851
+00:35:52,405 --> 00:35:54,550
+We do need to get into
+
+852
+00:35:54,550 --> 00:35:56,920
+these domains and try
+to understand what
+
+853
+00:35:56,920 --> 00:35:59,290
+the requirements
+are and learn more
+
+854
+00:35:59,290 --> 00:36:00,820
+about these different
+application
+
+855
+00:36:00,820 --> 00:36:02,350
+domains and speak
+
+856
+00:36:02,350 --> 00:36:06,310
+their language and
+perhaps start looking
+
+857
+00:36:06,310 --> 00:36:11,630
+into these things.
+Yeah, that's it.
+
+858
+00:36:13,890 --> 00:36:17,050
+>> Mathias, you want to?
+
+859
+00:36:17,050 --> 00:36:21,790
+>> Yeah. I definitely
+agree with Christos,
+
+860
+00:36:21,790 --> 00:36:24,250
+but the other thing
+is also that we
+
+861
+00:36:24,250 --> 00:36:27,190
+really need to
+raise awareness.
+
+862
+00:36:27,190 --> 00:36:29,710
+I'm not really sure
+
+863
+00:36:29,710 --> 00:36:30,925
+whether the question about
+
+864
+00:36:30,925 --> 00:36:33,190
+accessibility is
+the right question
+
+865
+00:36:33,190 --> 00:36:35,050
+because as we talked,
+
+866
+00:36:35,050 --> 00:36:37,600
+these things that
+are there and
+
+867
+00:36:37,600 --> 00:36:38,905
+the infrastructure
+that is there is
+
+868
+00:36:38,905 --> 00:36:41,215
+accessible and can
+be used to this use,
+
+869
+00:36:41,215 --> 00:36:43,270
+but it may be used by
+
+870
+00:36:43,270 --> 00:36:47,455
+a quiet confined group
+of people and users.
+
+871
+00:36:47,455 --> 00:36:50,950
+This is because
+people who we
+
+872
+00:36:50,950 --> 00:36:52,330
+would like to see
+that they are using
+
+873
+00:36:52,330 --> 00:36:54,910
+NDN are not aware of NDN.
+
+874
+00:36:54,910 --> 00:37:00,375
+We really should try to
+engage other groups,
+
+875
+00:37:00,375 --> 00:37:04,275
+which means that the
+NDN community should be
+
+876
+00:37:04,275 --> 00:37:08,010
+visible at other events
+
+877
+00:37:08,010 --> 00:37:11,620
+that are not NDN
+or ICN specific.
+
+878
+00:37:12,660 --> 00:37:15,865
+>> That's a great point.
+
+879
+00:37:15,865 --> 00:37:18,130
+I think we can go back to
+
+880
+00:37:18,130 --> 00:37:19,810
+James' comment
+about having
+
+881
+00:37:19,810 --> 00:37:21,685
+a Docker container
+or something.
+
+882
+00:37:21,685 --> 00:37:24,550
+What would be
+the specific way
+
+883
+00:37:24,550 --> 00:37:27,295
+of creating the
+statements?
+
+884
+00:37:27,295 --> 00:37:32,770
+These are not
+easy to create.
+
+885
+00:37:32,770 --> 00:37:34,315
+We can create a
+docker container,
+
+886
+00:37:34,315 --> 00:37:35,710
+but creating a
+testbed out of
+
+887
+00:37:35,710 --> 00:37:38,200
+docker containers,
+that's more involved.
+
+888
+00:37:38,200 --> 00:37:41,740
+[NOISE] With the
+accessibility needs,
+
+889
+00:37:41,740 --> 00:37:43,810
+creating different
+testbeds
+
+890
+00:37:43,810 --> 00:37:45,595
+for different
+applications,
+
+891
+00:37:45,595 --> 00:37:50,330
+that's something we need
+to also think about.
+
+892
+00:37:54,090 --> 00:37:55,855
+>> Sorry, go ahead.
+
+893
+00:37:55,855 --> 00:37:57,100
+>> You go ahead, sorry.
+
+894
+00:37:57,100 --> 00:37:59,980
+>> You mean
+that a user can
+
+895
+00:37:59,980 --> 00:38:01,420
+more or less
+virtually create
+
+896
+00:38:01,420 --> 00:38:04,130
+his own test bed
+out-of-the-box.
+
+897
+00:38:04,200 --> 00:38:06,520
+You mean something
+like this?
+
+898
+00:38:06,520 --> 00:38:09,680
+>> Right. Test
+bed in a box.
+
+899
+00:38:14,070 --> 00:38:15,625
+>> [OVERLAPPING]
+I'm sorry.
+
+900
+00:38:15,625 --> 00:38:17,245
+I keep interrupting.
+
+901
+00:38:17,245 --> 00:38:21,220
+>> I was just going to
+say, I think the idea
+
+902
+00:38:21,220 --> 00:38:24,370
+of something that can
+be approached quickly,
+
+903
+00:38:24,370 --> 00:38:26,650
+easily, and put to use,
+
+904
+00:38:26,650 --> 00:38:30,220
+one form of that
+is, for example,
+
+905
+00:38:30,220 --> 00:38:32,950
+either a web accessible
+or a single click
+
+906
+00:38:32,950 --> 00:38:34,990
+install environment
+
+907
+00:38:34,990 --> 00:38:36,790
+with examples
+and tutorials,
+
+908
+00:38:36,790 --> 00:38:38,695
+that would be helpful.
+
+909
+00:38:38,695 --> 00:38:40,930
+Those of you who play
+with things like
+
+910
+00:38:40,930 --> 00:38:42,880
+Arduinos and
+Raspberry ***,
+
+911
+00:38:42,880 --> 00:38:46,400
+of course there are
+companies like SparkFun.
+
+912
+00:38:46,440 --> 00:38:50,020
+I can't remember the
+name of one ecosystem I
+
+913
+00:38:50,020 --> 00:38:51,700
+saw where you could
+
+914
+00:38:51,700 --> 00:38:55,280
+buy different blocks
+and put them together.
+
+915
+00:38:58,170 --> 00:39:01,150
+This is partly education,
+
+916
+00:39:01,150 --> 00:39:09,249
+partly lowering the
+boundaries for access.
+
+917
+00:39:09,249 --> 00:39:12,040
+I think there's a
+variety of ways.
+
+918
+00:39:12,040 --> 00:39:14,800
+But otherwise, test beds,
+
+919
+00:39:14,800 --> 00:39:17,320
+just as a generic idea,
+
+920
+00:39:17,320 --> 00:39:20,650
+I think certainly
+in aerospace,
+
+921
+00:39:20,650 --> 00:39:24,440
+I've seen many multimillion
+dollar test beds.
+
+922
+00:39:25,350 --> 00:39:28,780
+I think test beds
+by themselves
+
+923
+00:39:28,780 --> 00:39:32,470
+without maybe something
+more in mind,
+
+924
+00:39:32,470 --> 00:39:33,670
+it depends on
+what the purpose
+
+925
+00:39:33,670 --> 00:39:34,720
+of the test bed is,
+
+926
+00:39:34,720 --> 00:39:36,355
+but I think that
+
+927
+00:39:36,355 --> 00:39:37,930
+you could create
+essentially
+
+928
+00:39:37,930 --> 00:39:38,980
+a large number of
+
+929
+00:39:38,980 --> 00:39:41,680
+very easily
+accessible test beds
+
+930
+00:39:41,680 --> 00:39:43,000
+in the form of
+the things I've
+
+931
+00:39:43,000 --> 00:39:45,130
+mentioned and I
+feel that it'll be
+
+932
+00:39:45,130 --> 00:39:48,800
+a great benefit to that.
+
+933
+00:39:51,500 --> 00:39:54,915
+>> Beichuan, do you
+have any comments?
+
+934
+00:39:54,915 --> 00:40:00,175
+>> Can I go back to
+Alex's [NOISE] situation.
+
+935
+00:40:00,175 --> 00:40:01,735
+She said she has
+all the help
+
+936
+00:40:01,735 --> 00:40:02,890
+from Indian people,
+
+937
+00:40:02,890 --> 00:40:04,270
+but he has
+really difficult
+
+938
+00:40:04,270 --> 00:40:06,160
+time to get the system up.
+
+939
+00:40:06,160 --> 00:40:08,665
+That's not due to
+
+940
+00:40:08,665 --> 00:40:10,900
+the configuration
+setup on Indian,
+
+941
+00:40:10,900 --> 00:40:12,595
+but due to the
+configuration of
+
+942
+00:40:12,595 --> 00:40:15,640
+underlying network
+reachability,
+
+943
+00:40:15,640 --> 00:40:16,885
+is that right?
+
+944
+00:40:16,885 --> 00:40:18,700
+Like the firewalls and
+
+945
+00:40:18,700 --> 00:40:21,025
+other stuff are
+blocking somehow
+
+946
+00:40:21,025 --> 00:40:23,950
+your nose or long
+different size
+
+947
+00:40:23,950 --> 00:40:26,050
+come to each
+other in India.
+
+948
+00:40:26,050 --> 00:40:29,000
+>> There's so
+many problems.
+
+949
+00:40:30,000 --> 00:40:33,280
+I found that when I'm
+developing systems,
+
+950
+00:40:33,280 --> 00:40:35,320
+that's always the
+fundamental problem,
+
+951
+00:40:35,320 --> 00:40:38,200
+especially when I'm
+using campus test beds,
+
+952
+00:40:38,200 --> 00:40:40,000
+is that getting
+the person on
+
+953
+00:40:40,000 --> 00:40:42,190
+the phone to go and change
+
+954
+00:40:42,190 --> 00:40:44,290
+a firewall rule or fix
+
+955
+00:40:44,290 --> 00:40:45,370
+something or just reboot
+
+956
+00:40:45,370 --> 00:40:47,590
+the computer can be
+very challenging.
+
+957
+00:40:47,590 --> 00:40:51,550
+We're trying to build
+virtualized test beds
+
+958
+00:40:51,550 --> 00:40:54,010
+on democratized
+Kubernetes systems
+
+959
+00:40:54,010 --> 00:40:55,600
+and fabric as well,
+
+960
+00:40:55,600 --> 00:40:57,070
+so that we could
+just build it up
+
+961
+00:40:57,070 --> 00:40:59,510
+ourselves and have
+control over it.
+
+962
+00:41:01,380 --> 00:41:03,955
+>> But this problem,
+
+963
+00:41:03,955 --> 00:41:06,010
+probably other
+people will run
+
+964
+00:41:06,010 --> 00:41:07,675
+into similar
+problem as well,
+
+965
+00:41:07,675 --> 00:41:09,010
+because when
+they deal with
+
+966
+00:41:09,010 --> 00:41:10,300
+real-world network with
+
+967
+00:41:10,300 --> 00:41:12,295
+all these restrictions.
+
+968
+00:41:12,295 --> 00:41:15,775
+Thinking in terms
+of accessibility,
+
+969
+00:41:15,775 --> 00:41:22,430
+what can we do to
+solve this problem?
+
+970
+00:41:23,490 --> 00:41:26,830
+If we proxy
+everything over HTTP,
+
+971
+00:41:26,830 --> 00:41:27,700
+you probably can get
+
+972
+00:41:27,700 --> 00:41:28,690
+through all the firewall,
+
+973
+00:41:28,690 --> 00:41:32,630
+but you have all this
+downside of doing that.
+
+974
+00:41:34,140 --> 00:41:36,250
+But that's a real
+
+975
+00:41:36,250 --> 00:41:37,870
+problem people
+can run into.
+
+976
+00:41:37,870 --> 00:41:40,510
+Even it's not your
+Indian's code,
+
+977
+00:41:40,510 --> 00:41:43,015
+but it's
+accessibility problem
+
+978
+00:41:43,015 --> 00:41:44,500
+in the real world.
+
+979
+00:41:44,500 --> 00:41:46,480
+>> Yeah, the
+real world to me
+
+980
+00:41:46,480 --> 00:41:48,850
+is a system that's already
+
+981
+00:41:48,850 --> 00:41:50,050
+existing and being able to
+
+982
+00:41:50,050 --> 00:41:52,510
+layer Indian applications
+on top of that,
+
+983
+00:41:52,510 --> 00:41:52,900
+because we're trying
+
+984
+00:41:52,900 --> 00:41:54,160
+to build this repository.
+
+985
+00:41:54,160 --> 00:41:57,280
+That's our use case
+with big datasets.
+
+986
+00:41:57,280 --> 00:42:00,925
+We need 1-100 petabytes of
+
+987
+00:42:00,925 --> 00:42:03,309
+storage in this repository
+
+988
+00:42:03,309 --> 00:42:05,305
+to be able to do anything.
+
+989
+00:42:05,305 --> 00:42:07,870
+Even on a small
+collaboration level,
+
+990
+00:42:07,870 --> 00:42:12,530
+that's the storage you
+need to do genomics.
+
+991
+00:42:16,170 --> 00:42:18,580
+>> Alex, let me
+ask you this,
+
+992
+00:42:18,580 --> 00:42:20,350
+is the problem setting up
+
+993
+00:42:20,350 --> 00:42:22,960
+the infrastructure
+or is the problem
+
+994
+00:42:22,960 --> 00:42:24,340
+setting up the
+infrastructure
+
+995
+00:42:24,340 --> 00:42:29,390
+and Indian software?
+
+996
+00:42:34,530 --> 00:42:36,775
+>> We have a
+campus cluster,
+
+997
+00:42:36,775 --> 00:42:40,510
+two distributed
+Kubernetes systems
+
+998
+00:42:40,510 --> 00:42:41,920
+that we do a
+lot to work on,
+
+999
+00:42:41,920 --> 00:42:43,330
+and the Open Science Grid,
+
+1000
+00:42:43,330 --> 00:42:44,545
+I won't even go there.
+
+1001
+00:42:44,545 --> 00:42:47,320
+But the
+infrastructure exists
+
+1002
+00:42:47,320 --> 00:42:48,370
+and we need to be able
+
+1003
+00:42:48,370 --> 00:42:50,350
+to have Indian function
+
+1004
+00:42:50,350 --> 00:42:52,465
+in those existing
+infrastructures.
+
+1005
+00:42:52,465 --> 00:42:54,730
+That's got to map with
+
+1006
+00:42:54,730 --> 00:42:56,320
+different
+Kubernetes systems.
+
+1007
+00:42:56,320 --> 00:42:58,820
+They're configured
+differently.
+
+1008
+00:42:58,980 --> 00:43:01,360
+The ability of
+containers to
+
+1009
+00:43:01,360 --> 00:43:03,115
+communicate with
+each other is
+
+1010
+00:43:03,115 --> 00:43:04,510
+dictated by the policy
+
+1011
+00:43:04,510 --> 00:43:07,000
+of the person who
+built the cluster.
+
+1012
+00:43:07,000 --> 00:43:10,000
+We're lucky enough to
+be able to work with
+
+1013
+00:43:10,000 --> 00:43:11,290
+the leadership of some of
+
+1014
+00:43:11,290 --> 00:43:13,885
+the systems in their
+experimental systems,
+
+1015
+00:43:13,885 --> 00:43:15,700
+NSF-funded systems to be
+
+1016
+00:43:15,700 --> 00:43:17,125
+able to configure it.
+
+1017
+00:43:17,125 --> 00:43:19,060
+My ultimate goal
+is to be able to
+
+1018
+00:43:19,060 --> 00:43:20,980
+have not a
+button to press,
+
+1019
+00:43:20,980 --> 00:43:22,810
+but complex
+documentation to set up
+
+1020
+00:43:22,810 --> 00:43:25,630
+a data lake in a
+commercial Cloud,
+
+1021
+00:43:25,630 --> 00:43:28,060
+then I have the ability
+and get funding
+
+1022
+00:43:28,060 --> 00:43:28,840
+for that and keep it up
+
+1023
+00:43:28,840 --> 00:43:30,460
+for as long as I want,
+
+1024
+00:43:30,460 --> 00:43:32,455
+and have control
+over that.
+
+1025
+00:43:32,455 --> 00:43:33,490
+I have to pay the bills,
+
+1026
+00:43:33,490 --> 00:43:35,515
+but not trying to
+
+1027
+00:43:35,515 --> 00:43:37,690
+map this to
+different campuses,
+
+1028
+00:43:37,690 --> 00:43:39,190
+because no one campus has
+
+1029
+00:43:39,190 --> 00:43:41,110
+enough resources
+including my own.
+
+1030
+00:43:41,110 --> 00:43:43,555
+We have a top 300 cluster,
+
+1031
+00:43:43,555 --> 00:43:46,130
+but it's not enough
+to do my work.
+
+1032
+00:43:46,170 --> 00:43:48,160
+We're entering a phase in
+
+1033
+00:43:48,160 --> 00:43:49,645
+genomics where we're
+going to have,
+
+1034
+00:43:49,645 --> 00:43:52,300
+I don't know, the
+private sector,
+
+1035
+00:43:52,300 --> 00:43:55,135
+a million Exascale users
+
+1036
+00:43:55,135 --> 00:43:57,220
+who need to work
+at the Exascale
+
+1037
+00:43:57,220 --> 00:43:59,065
+to be able to
+do their work.
+
+1038
+00:43:59,065 --> 00:44:02,479
+We're running out
+of electrons.
+
+1039
+00:44:04,380 --> 00:44:07,510
+>> What you're saying
+implicitly is that
+
+1040
+00:44:07,510 --> 00:44:08,410
+it's important to get
+
+1041
+00:44:08,410 --> 00:44:10,690
+the DevOps
+people involved.
+
+1042
+00:44:10,690 --> 00:44:11,110
+>> Yes.
+
+1043
+00:44:11,110 --> 00:44:12,250
+>> Those who manage
+
+1044
+00:44:12,250 --> 00:44:13,840
+the network for
+you and they
+
+1045
+00:44:13,840 --> 00:44:17,980
+should start to laugh
+and like in the end.
+
+1046
+00:44:17,980 --> 00:44:19,300
+Then if they do this,
+
+1047
+00:44:19,300 --> 00:44:21,490
+and they take care
+
+1048
+00:44:21,490 --> 00:44:24,475
+that basic stuff
+is running.
+
+1049
+00:44:24,475 --> 00:44:26,425
+They configure
+the firewall
+
+1050
+00:44:26,425 --> 00:44:28,690
+automatically and so on.
+
+1051
+00:44:28,690 --> 00:44:30,190
+Getting DevOps
+super involved
+
+1052
+00:44:30,190 --> 00:44:32,140
+seems to be a
+crucial point.
+
+1053
+00:44:32,140 --> 00:44:33,970
+>> They're involved,
+but I have
+
+1054
+00:44:33,970 --> 00:44:34,990
+to be very careful where I
+
+1055
+00:44:34,990 --> 00:44:36,580
+don't get them involved
+
+1056
+00:44:36,580 --> 00:44:37,360
+too much where
+they don't want
+
+1057
+00:44:37,360 --> 00:44:38,440
+to talk to me anymore.
+
+1058
+00:44:38,440 --> 00:44:40,840
+>> No. [LAUGHTER] I
+
+1059
+00:44:40,840 --> 00:44:42,565
+also means in the end
+community actually.
+
+1060
+00:44:42,565 --> 00:44:44,740
+Maybe you should
+approach DevOps people,
+
+1061
+00:44:44,740 --> 00:44:46,375
+since they already know
+
+1062
+00:44:46,375 --> 00:44:48,670
+in the end concepts and
+software and so on,
+
+1063
+00:44:48,670 --> 00:44:50,080
+it's already
+prepared if you
+
+1064
+00:44:50,080 --> 00:44:52,520
+want to use it in advance.
+
+1065
+00:44:53,850 --> 00:44:56,110
+>> We're working with
+
+1066
+00:44:56,110 --> 00:44:58,585
+FIA, Tennessee Tech, UCLA.
+
+1067
+00:44:58,585 --> 00:45:00,460
+I would assume
+that if there is
+
+1068
+00:45:00,460 --> 00:45:02,440
+a need that we need
+from the community
+
+1069
+00:45:02,440 --> 00:45:04,990
+that the Indian people
+that I'm working with
+
+1070
+00:45:04,990 --> 00:45:06,490
+will help identify
+
+1071
+00:45:06,490 --> 00:45:08,215
+the DevOps people
+or whenever.
+
+1072
+00:45:08,215 --> 00:45:10,760
+We need to get
+the job done.
+
+1073
+00:45:15,180 --> 00:45:18,685
+>> I'd like to mention
+one thing about the,
+
+1074
+00:45:18,685 --> 00:45:19,780
+I don't know what
+the word was,
+
+1075
+00:45:19,780 --> 00:45:20,380
+but to be able
+
+1076
+00:45:20,380 --> 00:45:23,455
+to get people
+excited about NDN.
+
+1077
+00:45:23,455 --> 00:45:24,670
+This is, I think,
+
+1078
+00:45:24,670 --> 00:45:26,275
+an overlooked thing a lot.
+
+1079
+00:45:26,275 --> 00:45:28,540
+I see this from a lot
+of IT perspectives,
+
+1080
+00:45:28,540 --> 00:45:30,895
+is that there's faculty.
+
+1081
+00:45:30,895 --> 00:45:34,750
+I have 100 student
+bioinformatics class.
+
+1082
+00:45:34,750 --> 00:45:37,180
+Their Linux labs
+where they go in
+
+1083
+00:45:37,180 --> 00:45:39,010
+VMs and run workflows,
+
+1084
+00:45:39,010 --> 00:45:40,300
+I teach them how
+to do that stuff
+
+1085
+00:45:40,300 --> 00:45:41,740
+at the undergraduate
+level.
+
+1086
+00:45:41,740 --> 00:45:43,540
+Once I have a
+test bed working,
+
+1087
+00:45:43,540 --> 00:45:45,220
+instead of going
+and teaching them
+
+1088
+00:45:45,220 --> 00:45:47,125
+some complicated
+way to go click and
+
+1089
+00:45:47,125 --> 00:45:49,420
+all these different
+things and pull down
+
+1090
+00:45:49,420 --> 00:45:52,360
+a genome from some
+weird web service,
+
+1091
+00:45:52,360 --> 00:45:53,680
+where I'll have them go,
+
+1092
+00:45:53,680 --> 00:45:55,780
+take the name and pull
+out of the test bed.
+
+1093
+00:45:55,780 --> 00:45:58,195
+What I'll do is
+I probably train
+
+1094
+00:45:58,195 --> 00:46:01,480
+300 people a year
+in my classes and
+
+1095
+00:46:01,480 --> 00:46:02,530
+workshops and I would
+
+1096
+00:46:02,530 --> 00:46:03,790
+expose 300 people a year
+
+1097
+00:46:03,790 --> 00:46:05,290
+to a system where they
+
+1098
+00:46:05,290 --> 00:46:06,940
+can get the data
+from a NDN system.
+
+1099
+00:46:06,940 --> 00:46:09,730
+I would take the time
+to explain what NDN is,
+
+1100
+00:46:09,730 --> 00:46:12,135
+the philosophy of it,
+
+1101
+00:46:12,135 --> 00:46:14,355
+and how cool it is,
+all that stuff.
+
+1102
+00:46:14,355 --> 00:46:17,250
+Let's say you put
+in classes from
+
+1103
+00:46:17,250 --> 00:46:18,750
+the educational
+perspective and people
+
+1104
+00:46:18,750 --> 00:46:20,130
+will not know they
+
+1105
+00:46:20,130 --> 00:46:21,630
+weren't supposed to
+know what NDN was,
+
+1106
+00:46:21,630 --> 00:46:22,800
+so they've been
+taught about
+
+1107
+00:46:22,800 --> 00:46:25,760
+it. They'll think
+it's normal.
+
+1108
+00:46:35,570 --> 00:46:39,030
+>> I think we started
+with ossification.
+
+1109
+00:46:39,030 --> 00:46:40,200
+How do we end?
+
+1110
+00:46:40,200 --> 00:46:42,015
+The other panel also
+talked about it.
+
+1111
+00:46:42,015 --> 00:46:44,160
+How do we put
+our interface
+
+1112
+00:46:44,160 --> 00:46:47,205
+existing applications
+with NDN.
+
+1113
+00:46:47,205 --> 00:46:49,545
+For some applications,
+it's easy,
+
+1114
+00:46:49,545 --> 00:46:54,215
+so they're starting from
+scratch, maybe IoT.
+
+1115
+00:46:54,215 --> 00:46:56,260
+Some applications
+already have
+
+1116
+00:46:56,260 --> 00:46:57,880
+so much time
+invested in it,
+
+1117
+00:46:57,880 --> 00:47:00,505
+they don't want to
+get the grid of that.
+
+1118
+00:47:00,505 --> 00:47:02,845
+What's your take on this?
+
+1119
+00:47:02,845 --> 00:47:05,560
+How do we interface
+
+1120
+00:47:05,560 --> 00:47:08,815
+existing applications
+with NDN?
+
+1121
+00:47:08,815 --> 00:47:11,870
+What's the best
+way of doing this?
+
+1122
+00:47:23,940 --> 00:47:27,675
+>> I can answer what
+we're doing with that.
+
+1123
+00:47:27,675 --> 00:47:28,270
+We're going to see,
+
+1124
+00:47:28,270 --> 00:47:29,680
+we have to have
+the test bed
+
+1125
+00:47:29,680 --> 00:47:32,320
+that has enough
+functionality.
+
+1126
+00:47:32,320 --> 00:47:33,680
+It's got enough
+performance to be
+
+1127
+00:47:33,680 --> 00:47:35,725
+able to use it to
+pull data from.
+
+1128
+00:47:35,725 --> 00:47:37,270
+But then once we do that,
+
+1129
+00:47:37,270 --> 00:47:38,355
+we already have
+existing data
+
+1130
+00:47:38,355 --> 00:47:39,865
+transfer mechanisms,
+
+1131
+00:47:39,865 --> 00:47:42,415
+IP-based things from
+the repositories
+
+1132
+00:47:42,415 --> 00:47:43,900
+and we'll just
+swap that out
+
+1133
+00:47:43,900 --> 00:47:45,310
+in our workflows.
+
+1134
+00:47:45,310 --> 00:47:47,320
+We have a workflow manager
+system that we use
+
+1135
+00:47:47,320 --> 00:47:49,900
+for running our
+applications.
+
+1136
+00:47:49,900 --> 00:47:52,330
+We'll just make
+that a data stream.
+
+1137
+00:47:52,330 --> 00:47:54,730
+We'll swap it out from
+our existing things.
+
+1138
+00:47:54,730 --> 00:47:55,700
+I don't think
+it's going to be
+
+1139
+00:47:55,700 --> 00:47:57,325
+hard for us to do that.
+
+1140
+00:47:57,325 --> 00:48:00,025
+But we have to have a
+functional test bed.
+
+1141
+00:48:00,025 --> 00:48:02,005
+I use the P word.
+
+1142
+00:48:02,005 --> 00:48:03,940
+I need a
+production system.
+
+1143
+00:48:03,940 --> 00:48:06,385
+Most people don't like
+that word production.
+
+1144
+00:48:06,385 --> 00:48:08,470
+I need a system
+that is production,
+
+1145
+00:48:08,470 --> 00:48:11,600
+meaning that it works
+95 percent of the time.
+
+1146
+00:48:11,600 --> 00:48:14,510
+That's my definition of
+a production system.
+
+1147
+00:48:15,880 --> 00:48:18,580
+>> Christos, you were
+saying something.
+
+1148
+00:48:18,580 --> 00:48:20,000
+>> Yeah. I mean,
+
+1149
+00:48:20,000 --> 00:48:21,385
+it's a really
+tough question.
+
+1150
+00:48:21,385 --> 00:48:23,140
+But it's a very
+important question
+
+1151
+00:48:23,140 --> 00:48:25,170
+because if we tell people
+
+1152
+00:48:25,170 --> 00:48:26,740
+we don't know
+how you can take
+
+1153
+00:48:26,740 --> 00:48:27,820
+your existing application
+
+1154
+00:48:27,820 --> 00:48:28,900
+and run it over NDN,
+
+1155
+00:48:28,900 --> 00:48:32,360
+then they're going
+to just walk away.
+
+1156
+00:48:32,970 --> 00:48:36,159
+I'm not sure if we have
+done that exercise,
+
+1157
+00:48:36,159 --> 00:48:38,360
+but maybe doing
+an exercise
+
+1158
+00:48:38,360 --> 00:48:40,605
+where we take an existing
+application and try
+
+1159
+00:48:40,605 --> 00:48:42,790
+to put NDN under
+
+1160
+00:48:42,790 --> 00:48:44,755
+it might be worthwhile
+
+1161
+00:48:44,755 --> 00:48:47,170
+and doing it for a
+few applications.
+
+1162
+00:48:47,170 --> 00:48:49,360
+I'm going to go out on
+a limb here and say
+
+1163
+00:48:49,360 --> 00:48:50,890
+that if maybe we can find
+
+1164
+00:48:50,890 --> 00:48:53,680
+applications that
+were written well
+
+1165
+00:48:53,680 --> 00:48:55,180
+from a software
+engineering point
+
+1166
+00:48:55,180 --> 00:48:56,740
+of view and they
+are modular,
+
+1167
+00:48:56,740 --> 00:48:58,990
+and maybe we can try to
+
+1168
+00:48:58,990 --> 00:49:01,315
+yank out IP and
+put in the end.
+
+1169
+00:49:01,315 --> 00:49:03,700
+I know that this is
+oversimplifying things,
+
+1170
+00:49:03,700 --> 00:49:06,655
+but I think we
+can be selective.
+
+1171
+00:49:06,655 --> 00:49:08,515
+If we can find
+these applications
+
+1172
+00:49:08,515 --> 00:49:10,765
+and do a few
+demonstrations,
+
+1173
+00:49:10,765 --> 00:49:13,090
+then we will at least
+
+1174
+00:49:13,090 --> 00:49:16,440
+have proof that
+it can be done.
+
+1175
+00:49:16,440 --> 00:49:19,150
+Going from zero
+to one or two,
+
+1176
+00:49:19,150 --> 00:49:20,545
+it's a huge step.
+
+1177
+00:49:20,545 --> 00:49:24,460
+Then yes, we can argue
+and somebody says,
+
+1178
+00:49:24,460 --> 00:49:25,390
+"Well, I tried to do it
+
+1179
+00:49:25,390 --> 00:49:26,820
+and it was terrible."
+
+1180
+00:49:26,820 --> 00:49:28,690
+Then we can write
+our finger and say,
+
+1181
+00:49:28,690 --> 00:49:28,900
+well,
+
+1182
+00:49:28,900 --> 00:49:30,550
+your application wasn't
+written properly.
+
+1183
+00:49:30,550 --> 00:49:32,230
+Otherwise, look we did it,
+
+1184
+00:49:32,230 --> 00:49:32,875
+and it was easy,
+
+1185
+00:49:32,875 --> 00:49:35,770
+with an application
+that was well-written.
+
+1186
+00:49:35,770 --> 00:49:37,940
+But I think that this is
+
+1187
+00:49:37,940 --> 00:49:39,830
+a really important
+exercise
+
+1188
+00:49:39,830 --> 00:49:42,010
+that we should
+try to deal with.
+
+1189
+00:49:42,010 --> 00:49:43,640
+The problem is
+that I don't
+
+1190
+00:49:43,640 --> 00:49:45,310
+know if I can get an
+NSF funding to do
+
+1191
+00:49:45,310 --> 00:49:47,260
+that and I don't
+know if I can
+
+1192
+00:49:47,260 --> 00:49:49,885
+graduate a student
+doing that.
+
+1193
+00:49:49,885 --> 00:49:51,070
+Hopefully, I
+can get a paper
+
+1194
+00:49:51,070 --> 00:49:52,705
+in place here and
+if I do that.
+
+1195
+00:49:52,705 --> 00:49:54,670
+But we need to find
+the right incentives
+
+1196
+00:49:54,670 --> 00:49:56,860
+and absolutely do this.
+
+1197
+00:49:56,860 --> 00:49:58,990
+I think maybe
+it's going to
+
+1198
+00:49:58,990 --> 00:50:00,940
+take a little bit of
+
+1199
+00:50:00,940 --> 00:50:02,890
+time finding the
+right application so
+
+1200
+00:50:02,890 --> 00:50:05,990
+that we can put our
+NDN, but we shouldn't.
+
+1201
+00:50:06,060 --> 00:50:07,720
+>> I'm going to go to
+
+1202
+00:50:07,720 --> 00:50:09,030
+Matthias and
+then Beichuan,
+
+1203
+00:50:09,030 --> 00:50:11,605
+I know Beichuan worked
+on this before.
+
+1204
+00:50:11,605 --> 00:50:15,340
+Matthias, I think
+for IoT It's easier,
+
+1205
+00:50:15,340 --> 00:50:17,425
+we have the new devices.
+
+1206
+00:50:17,425 --> 00:50:23,650
+Well, I don't know.
+[OVERLAPPING].
+
+1207
+00:50:23,650 --> 00:50:24,855
+>> You're right.
+It's easy because
+
+1208
+00:50:24,855 --> 00:50:26,770
+we just start
+from scratch.
+
+1209
+00:50:26,770 --> 00:50:29,230
+That means I had to
+use devices that we're
+
+1210
+00:50:29,230 --> 00:50:31,945
+looking on vary
+constraint.
+
+1211
+00:50:31,945 --> 00:50:33,445
+We do not have
+much memory,
+
+1212
+00:50:33,445 --> 00:50:34,810
+which means that we cannot
+
+1213
+00:50:34,810 --> 00:50:38,450
+easily integrate
+some middle value.
+
+1214
+00:50:38,800 --> 00:50:42,105
+Our applications for
+NDN are written from
+
+1215
+00:50:42,105 --> 00:50:45,770
+scratch base for
+our NDN ICN.
+
+1216
+00:50:47,010 --> 00:50:51,060
+If you ask whether
+we can challenge by
+
+1217
+00:50:51,060 --> 00:50:53,270
+implementing
+specific use cases
+
+1218
+00:50:53,270 --> 00:50:54,585
+based on the NDN.
+
+1219
+00:50:54,585 --> 00:50:56,455
+I mean, there have been
+
+1220
+00:50:56,455 --> 00:50:57,855
+ongoing discussions
+
+1221
+00:50:57,855 --> 00:50:59,725
+about push and
+pull this stuff,
+
+1222
+00:50:59,725 --> 00:51:03,560
+but this is not
+
+1223
+00:51:03,560 --> 00:51:07,885
+a real challenge
+that you can solve.
+
+1224
+00:51:07,885 --> 00:51:10,090
+>> Okay. Thank you.
+
+1225
+00:51:10,090 --> 00:51:12,240
+I'm thinking this is
+
+1226
+00:51:12,240 --> 00:51:13,720
+accessibility problem
+
+1227
+00:51:13,720 --> 00:51:15,445
+because most
+of the people,
+
+1228
+00:51:15,445 --> 00:51:17,620
+as James was saying,
+coming from IP,
+
+1229
+00:51:17,620 --> 00:51:19,900
+they have already an
+application model
+
+1230
+00:51:19,900 --> 00:51:21,430
+or application in mind.
+
+1231
+00:51:21,430 --> 00:51:24,105
+They look at NDN
+and say well,
+
+1232
+00:51:24,105 --> 00:51:25,335
+I don't want to
+
+1233
+00:51:25,335 --> 00:51:27,710
+rewrite the whole
+application.
+
+1234
+00:51:27,710 --> 00:51:32,190
+Beichuan, I think your
+student did a lot
+
+1235
+00:51:32,190 --> 00:51:37,085
+of work in translating
+between IP and NDN.
+
+1236
+00:51:37,085 --> 00:51:38,880
+>> Susmit, can I
+
+1237
+00:51:38,880 --> 00:51:39,990
+interrupt for
+just a second?
+
+1238
+00:51:39,990 --> 00:51:42,270
+You have a raised
+hand in the audience,
+
+1239
+00:51:42,270 --> 00:51:44,245
+someone who wants to
+
+1240
+00:51:44,245 --> 00:51:46,940
+get some real-world
+experience.
+
+1241
+00:51:47,760 --> 00:51:50,370
+>> Unfortunately,
+I don't see it.
+
+1242
+00:51:50,370 --> 00:51:52,880
+Maybe Kevin you can help.
+
+1243
+00:51:53,460 --> 00:51:55,580
+>> Guys, it's
+right here. I just
+
+1244
+00:51:55,580 --> 00:51:57,560
+unmuted my microphone,
+I think it's me.
+
+1245
+00:51:57,560 --> 00:52:00,075
+>> Okay. Yeah, sure.
+
+1246
+00:52:00,075 --> 00:52:01,770
+>> Okay. I've got a
+lot to get through,
+
+1247
+00:52:01,770 --> 00:52:03,870
+so I'm going to talk
+really quickly.
+
+1248
+00:52:03,870 --> 00:52:06,040
+What you really
+fundamentally talking about
+
+1249
+00:52:06,040 --> 00:52:07,725
+here is diffusion
+of innovation.
+
+1250
+00:52:07,725 --> 00:52:10,000
+Everett Rogers wrote
+the book titled
+
+1251
+00:52:10,000 --> 00:52:12,315
+that and the core of it.
+
+1252
+00:52:12,315 --> 00:52:13,820
+This is everything
+you've been talking
+
+1253
+00:52:13,820 --> 00:52:14,530
+about and then I can
+
+1254
+00:52:14,530 --> 00:52:16,030
+share what we've
+done here.
+
+1255
+00:52:16,030 --> 00:52:18,160
+He says that to
+
+1256
+00:52:18,160 --> 00:52:19,790
+diffuse innovation
+into a market,
+
+1257
+00:52:19,790 --> 00:52:21,325
+you have to be accessible,
+
+1258
+00:52:21,325 --> 00:52:22,810
+not complex, compatible,
+
+1259
+00:52:22,810 --> 00:52:24,615
+observable, tolerable.
+
+1260
+00:52:24,615 --> 00:52:28,000
+The core things that
+you're talking about,
+
+1261
+00:52:28,000 --> 00:52:29,590
+Christos is exactly right.
+
+1262
+00:52:29,590 --> 00:52:31,850
+You've got to find
+a green field site
+
+1263
+00:52:31,850 --> 00:52:32,860
+and a green fields
+customer and
+
+1264
+00:52:32,860 --> 00:52:34,075
+that's almost impossible,
+
+1265
+00:52:34,075 --> 00:52:35,425
+except I think we might
+
+1266
+00:52:35,425 --> 00:52:39,140
+be this close to
+having got it done.
+
+1267
+00:52:39,930 --> 00:52:42,700
+The other thing
+that you keep
+
+1268
+00:52:42,700 --> 00:52:45,100
+saying is the world is IP,
+
+1269
+00:52:45,100 --> 00:52:48,385
+and that is an
+incredible battleship
+
+1270
+00:52:48,385 --> 00:52:49,660
+that frankly,
+
+1271
+00:52:49,660 --> 00:52:51,615
+I don't think we're
+going to turn.
+
+1272
+00:52:51,615 --> 00:52:54,290
+The approach that
+we've taken is to work
+
+1273
+00:52:54,290 --> 00:52:56,260
+with the network
+equipment vendors
+
+1274
+00:52:56,260 --> 00:52:58,330
+because they are the
+guys [inaudible] here.
+
+1275
+00:52:58,330 --> 00:53:00,205
+We're working
+with Nokia and
+
+1276
+00:53:00,205 --> 00:53:01,660
+some very smart guys in
+
+1277
+00:53:01,660 --> 00:53:04,075
+Australia to get this.
+
+1278
+00:53:04,075 --> 00:53:06,460
+Our plan is to build
+
+1279
+00:53:06,460 --> 00:53:08,500
+a joule stack on
+a Nokia service
+
+1280
+00:53:08,500 --> 00:53:11,355
+rather in a new open
+SO Bluemix service
+
+1281
+00:53:11,355 --> 00:53:13,510
+rather and to
+build our stack,
+
+1282
+00:53:13,510 --> 00:53:16,300
+which is half of
+which is effectively
+
+1283
+00:53:16,300 --> 00:53:17,860
+a known domain that
+we're making or an
+
+1284
+00:53:17,860 --> 00:53:20,110
+information centric
+networking protocol.
+
+1285
+00:53:20,110 --> 00:53:22,850
+The other thing we
+combine, which I think,
+
+1286
+00:53:22,850 --> 00:53:23,860
+Alex addresses some of
+
+1287
+00:53:23,860 --> 00:53:25,510
+your issues and I talked
+
+1288
+00:53:25,510 --> 00:53:27,280
+about this in one of
+the forums before,
+
+1289
+00:53:27,280 --> 00:53:28,690
+it's distributed
+storage to get
+
+1290
+00:53:28,690 --> 00:53:32,595
+this mass-scale storage
+thing happening.
+
+1291
+00:53:32,595 --> 00:53:34,860
+We're going to build
+this into a stack
+
+1292
+00:53:34,860 --> 00:53:37,750
+so that it will sit in
+the router and hold
+
+1293
+00:53:37,750 --> 00:53:38,950
+the switch and
+you'll be able to do
+
+1294
+00:53:38,950 --> 00:53:42,640
+TCPIP or recognize a
+packet and say okay,
+
+1295
+00:53:42,640 --> 00:53:44,295
+well, this is a content
+centric packets,
+
+1296
+00:53:44,295 --> 00:53:46,645
+it's a span AI packet
+which is our protocol.
+
+1297
+00:53:46,645 --> 00:53:49,270
+I know about this,
+I can deal with it.
+
+1298
+00:53:49,270 --> 00:53:51,340
+Then you would obviously
+
+1299
+00:53:51,340 --> 00:53:53,260
+have to build gateways.
+
+1300
+00:53:53,260 --> 00:53:55,645
+What that does is
+
+1301
+00:53:55,645 --> 00:53:57,830
+that then addresses
+those two problems.
+
+1302
+00:53:57,830 --> 00:54:00,325
+Then to get it
+up and working,
+
+1303
+00:54:00,325 --> 00:54:01,675
+Christos, you're
+absolutely right.
+
+1304
+00:54:01,675 --> 00:54:02,860
+You got to find
+green fields.
+
+1305
+00:54:02,860 --> 00:54:04,305
+Like I said, well,
+
+1306
+00:54:04,305 --> 00:54:05,770
+I think hopefully
+a week or two
+
+1307
+00:54:05,770 --> 00:54:07,030
+away from something
+very [OVERLAPPING].
+
+1308
+00:54:07,030 --> 00:54:09,140
+>> I think we lost
+you for a moment.
+
+1309
+00:54:09,180 --> 00:54:12,610
+>> Am I back yet? I'm on
+
+1310
+00:54:12,610 --> 00:54:14,260
+a pretty dodgy connection
+
+1311
+00:54:14,260 --> 00:54:16,270
+in Australia. Sorry,
+guys. Am I back?
+
+1312
+00:54:16,270 --> 00:54:17,995
+>> I can still hear him.
+
+1313
+00:54:17,995 --> 00:54:19,450
+>> I think we lost Susmit.
+
+1314
+00:54:19,450 --> 00:54:20,950
+>> Yeah I can hear you.
+
+1315
+00:54:20,950 --> 00:54:22,350
+>> I think we lost Susmit.
+
+1316
+00:54:22,350 --> 00:54:24,045
+>> Rhett, you can continue
+
+1317
+00:54:24,045 --> 00:54:25,430
+talking. Hopefully,
+Susmit will come back.
+
+1318
+00:54:25,430 --> 00:54:28,670
+>> Okay. Where was I?
+
+1319
+00:54:28,670 --> 00:54:30,325
+My train of thought
+got interrupted.
+
+1320
+00:54:30,325 --> 00:54:33,800
+Yeah. That's what
+we're proposing to do.
+
+1321
+00:54:33,840 --> 00:54:37,450
+The process of
+diffusion is you guys
+
+1322
+00:54:37,450 --> 00:54:38,860
+need to find your
+early adopter
+
+1323
+00:54:38,860 --> 00:54:40,300
+and guess what? Here I am.
+
+1324
+00:54:40,300 --> 00:54:41,860
+Because I'm some
+crazy guy who has
+
+1325
+00:54:41,860 --> 00:54:43,780
+been doing private
+research on this,
+
+1326
+00:54:43,780 --> 00:54:45,070
+privately funded research;
+
+1327
+00:54:45,070 --> 00:54:46,780
+chunk of my own money,
+chunk of my mates
+
+1328
+00:54:46,780 --> 00:54:49,165
+money for 10 years.
+
+1329
+00:54:49,165 --> 00:54:53,000
+Here's the thing to the
+observability pace,
+
+1330
+00:54:53,000 --> 00:54:55,030
+I didn't discover you
+guys until we were
+
+1331
+00:54:55,030 --> 00:54:57,130
+doing some work with
+Protocol Labs on
+
+1332
+00:54:57,130 --> 00:54:59,170
+IPFS and helping them to
+
+1333
+00:54:59,170 --> 00:55:00,405
+optimize some of the
+
+1334
+00:55:00,405 --> 00:55:03,055
+unfortunate decisions
+that they have taken.
+
+1335
+00:55:03,055 --> 00:55:05,620
+In one of their RFPs
+for R and D was
+
+1336
+00:55:05,620 --> 00:55:07,360
+this little one
+line paper that I
+
+1337
+00:55:07,360 --> 00:55:08,710
+think we've seen and you
+
+1338
+00:55:08,710 --> 00:55:10,165
+may even have been
+an author of.
+
+1339
+00:55:10,165 --> 00:55:11,260
+It said, "Hey,
+
+1340
+00:55:11,260 --> 00:55:13,090
+we think this might
+be a useful thing to
+
+1341
+00:55:13,090 --> 00:55:16,135
+unify IPFS in the
+end," and I'm,
+
+1342
+00:55:16,135 --> 00:55:19,525
+oh yeah, that's a
+very useful thing.
+
+1343
+00:55:19,525 --> 00:55:21,550
+I know I've got
+to cover a lot of
+
+1344
+00:55:21,550 --> 00:55:23,835
+ground there,
+but in essence,
+
+1345
+00:55:23,835 --> 00:55:25,700
+that's the challenge
+and I relate to
+
+1346
+00:55:25,700 --> 00:55:26,620
+it completely because like
+
+1347
+00:55:26,620 --> 00:55:27,430
+I said in the comments,
+
+1348
+00:55:27,430 --> 00:55:28,605
+this is what I
+do for a living.
+
+1349
+00:55:28,605 --> 00:55:29,800
+But it's about
+
+1350
+00:55:29,800 --> 00:55:31,570
+finding who wants
+what you got.
+
+1351
+00:55:31,570 --> 00:55:33,550
+That's the essence of it.
+
+1352
+00:55:33,550 --> 00:55:36,310
+I'm that weird guy,
+right now I'm here.
+
+1353
+00:55:36,310 --> 00:55:39,400
+[LAUGHTER] Then we've
+got a weird guy,
+
+1354
+00:55:39,400 --> 00:55:41,560
+I'm amazed, that we found,
+
+1355
+00:55:41,560 --> 00:55:43,960
+who has very
+serious budget
+
+1356
+00:55:43,960 --> 00:55:45,220
+to spend on this and build
+
+1357
+00:55:45,220 --> 00:55:47,110
+a global network that will
+
+1358
+00:55:47,110 --> 00:55:50,720
+be a content-based
+network.
+
+1359
+00:55:50,720 --> 00:55:53,170
+[OVERLAPPING] Try
+it, it helps.
+
+1360
+00:55:53,170 --> 00:55:55,120
+Specifically Alex,
+before I go,
+
+1361
+00:55:55,120 --> 00:55:56,410
+you might want to get
+
+1362
+00:55:56,410 --> 00:55:57,880
+in touch with an advisor,
+
+1363
+00:55:57,880 --> 00:55:59,350
+a guy called
+Jonathan Hall,
+
+1364
+00:55:59,350 --> 00:56:00,620
+who works with
+the Protocol
+
+1365
+00:56:00,620 --> 00:56:01,945
+Labs and talk on guys.
+
+1366
+00:56:01,945 --> 00:56:03,475
+He built a
+genomic database.
+
+1367
+00:56:03,475 --> 00:56:07,020
+He's the Chief
+Medical Officer
+
+1368
+00:56:07,020 --> 00:56:10,420
+currently for
+ConsenSys Medical,
+
+1369
+00:56:10,420 --> 00:56:11,770
+spelled with an S-Y-S,
+
+1370
+00:56:11,770 --> 00:56:13,960
+which is Joe
+Lupin's company
+
+1371
+00:56:13,960 --> 00:56:15,310
+for commercializing
+a theorem.
+
+1372
+00:56:15,310 --> 00:56:17,590
+Joe gets this.
+Joe understands.
+
+1373
+00:56:17,590 --> 00:56:20,320
+You have to put it
+out in the market.
+
+1374
+00:56:20,320 --> 00:56:23,150
+If you look at ConsenSys,
+
+1375
+00:56:23,670 --> 00:56:26,810
+with a Y-S,
+that's the model.
+
+1376
+00:56:26,810 --> 00:56:27,940
+If you look at
+Protocol Labs,
+
+1377
+00:56:27,940 --> 00:56:29,590
+they have done a
+genius job admittedly.
+
+1378
+00:56:29,590 --> 00:56:31,005
+They had 200 million
+bucks that they
+
+1379
+00:56:31,005 --> 00:56:32,725
+raised in a prions
+here to play with.
+
+1380
+00:56:32,725 --> 00:56:33,990
+But they have done
+this brilliantly.
+
+1381
+00:56:33,990 --> 00:56:38,835
+They've just gone
+from basically,
+
+1382
+00:56:38,835 --> 00:56:41,980
+a library of p to p
+storage applications to
+
+1383
+00:56:41,980 --> 00:56:43,760
+a complete system that's
+
+1384
+00:56:43,760 --> 00:56:45,835
+now out in the market
+and got a market cap.
+
+1385
+00:56:45,835 --> 00:56:47,170
+Well, I think it
+changed today,
+
+1386
+00:56:47,170 --> 00:56:50,290
+but billions and
+billions of dollars.
+
+1387
+00:56:50,290 --> 00:56:53,305
+That's the prices.
+Read Everett Rogers,
+
+1388
+00:56:53,305 --> 00:56:54,880
+find who wants
+what you've got.
+
+1389
+00:56:54,880 --> 00:56:57,290
+I'm here. I'm
+happy to help.
+
+1390
+00:56:57,510 --> 00:57:00,620
+>> Well, thank you.
+
+1391
+00:57:01,330 --> 00:57:03,140
+>> Thank you for
+the comments,
+
+1392
+00:57:03,140 --> 00:57:03,860
+those are very useful.
+
+1393
+00:57:03,860 --> 00:57:05,540
+I have a question for you,
+
+1394
+00:57:05,540 --> 00:57:06,245
+I think you're
+
+1395
+00:57:06,245 --> 00:57:07,835
+the right person
+to answer this.
+
+1396
+00:57:07,835 --> 00:57:10,070
+With NDN we often run into
+
+1397
+00:57:10,070 --> 00:57:12,080
+this brick wall
+that says, well,
+
+1398
+00:57:12,080 --> 00:57:13,970
+you guys don't have
+any standards and we
+
+1399
+00:57:13,970 --> 00:57:16,010
+are an industry,
+we need standards.
+
+1400
+00:57:16,010 --> 00:57:17,375
+We need to prove we
+
+1401
+00:57:17,375 --> 00:57:19,500
+only work with
+things at work.
+
+1402
+00:57:19,810 --> 00:57:22,910
+How do you have
+
+1403
+00:57:22,910 --> 00:57:24,680
+the conversation
+with customers?
+
+1404
+00:57:24,680 --> 00:57:25,970
+We say that, when they
+
+1405
+00:57:25,970 --> 00:57:27,350
+come back to you
+and they say, well,
+
+1406
+00:57:27,350 --> 00:57:28,850
+IP checks all
+the boxes that
+
+1407
+00:57:28,850 --> 00:57:30,380
+I need and then we scream
+
+1408
+00:57:30,380 --> 00:57:32,060
+and yell we'll look
+
+1409
+00:57:32,060 --> 00:57:33,770
+inside that box
+is checked.
+
+1410
+00:57:33,770 --> 00:57:35,090
+It's really not
+as great as we
+
+1411
+00:57:35,090 --> 00:57:37,505
+think you are. How did
+you deal with this?
+
+1412
+00:57:37,505 --> 00:57:40,010
+>> Very good
+question. The answer
+
+1413
+00:57:40,010 --> 00:57:41,270
+is a big part
+of what we're
+
+1414
+00:57:41,270 --> 00:57:41,780
+going to do is we're
+
+1415
+00:57:41,780 --> 00:57:42,560
+going to publish
+standards,
+
+1416
+00:57:42,560 --> 00:57:44,840
+so we're going
+to design it,
+
+1417
+00:57:44,840 --> 00:57:45,545
+we're going to build it,
+
+1418
+00:57:45,545 --> 00:57:47,555
+and then we're going
+to publish the APIs
+
+1419
+00:57:47,555 --> 00:57:48,800
+at a couple of levels at
+
+1420
+00:57:48,800 --> 00:57:49,730
+the routing level and at
+
+1421
+00:57:49,730 --> 00:57:50,750
+the AI level because we
+
+1422
+00:57:50,750 --> 00:57:53,015
+use a lot of AI in this,
+
+1423
+00:57:53,015 --> 00:57:54,230
+but you're absolutely
+right, you
+
+1424
+00:57:54,230 --> 00:57:55,700
+have to publish
+the standards,
+
+1425
+00:57:55,700 --> 00:57:56,360
+you have to first of all,
+
+1426
+00:57:56,360 --> 00:57:57,380
+you got to write them.
+
+1427
+00:57:57,380 --> 00:58:00,110
+This is how every
+network technology has
+
+1428
+00:58:00,110 --> 00:58:02,840
+gone out, in fact,
+
+1429
+00:58:02,840 --> 00:58:06,860
+Jonathan wrote
+the ITF standard
+
+1430
+00:58:06,860 --> 00:58:08,300
+that now means
+
+1431
+00:58:08,300 --> 00:58:12,335
+you can type IPFS://
+
+1432
+00:58:12,335 --> 00:58:13,790
+into a browser and
+it will work now,
+
+1433
+00:58:13,790 --> 00:58:14,990
+I forget what
+that's called.
+
+1434
+00:58:14,990 --> 00:58:15,890
+I agree totally,
+
+1435
+00:58:15,890 --> 00:58:17,000
+you've got to write
+those standards.
+
+1436
+00:58:17,000 --> 00:58:18,110
+We're going to
+do part of that.
+
+1437
+00:58:18,110 --> 00:58:19,490
+You guys obviously you're
+
+1438
+00:58:19,490 --> 00:58:20,900
+the guys to do that.
+
+1439
+00:58:20,900 --> 00:58:23,210
+The big one and this
+is one of our areas of
+
+1440
+00:58:23,210 --> 00:58:25,400
+innovation that's
+in our patents,
+
+1441
+00:58:25,400 --> 00:58:26,870
+is as everybody has said,
+
+1442
+00:58:26,870 --> 00:58:29,330
+we need a unified naming
+
+1443
+00:58:29,330 --> 00:58:32,690
+and addressing scheme
+that everyone can use.
+
+1444
+00:58:32,690 --> 00:58:35,000
+You're absolutely
+right there's
+
+1445
+00:58:35,000 --> 00:58:36,080
+a whole bunch
+of standards,
+
+1446
+00:58:36,080 --> 00:58:37,070
+so it's got to
+be written here.
+
+1447
+00:58:37,070 --> 00:58:38,915
+The classic example with
+
+1448
+00:58:38,915 --> 00:58:39,920
+one of our advisors guy
+
+1449
+00:58:39,920 --> 00:58:40,820
+called Terry Personal,
+
+1450
+00:58:40,820 --> 00:58:42,680
+who was the guy who ran
+
+1451
+00:58:42,680 --> 00:58:45,335
+the project at CSIRO
+that invented Wi-Fi.
+
+1452
+00:58:45,335 --> 00:58:47,180
+I know the
+stories of fact.
+
+1453
+00:58:47,180 --> 00:58:48,890
+They solve the problem,
+
+1454
+00:58:48,890 --> 00:58:50,150
+they filed a patent and
+
+1455
+00:58:50,150 --> 00:58:52,730
+then they created
+attitude at one.
+
+1456
+00:58:52,730 --> 00:58:56,675
+Terry and his guys
+started the ADA to D21,
+
+1457
+00:58:56,675 --> 00:58:59,150
+it got adopted
+by the IEEE.
+
+1458
+00:58:59,150 --> 00:59:01,430
+The IEEE sent them a
+thing and said, Hey,
+
+1459
+00:59:01,430 --> 00:59:03,110
+do you have any
+patents and will you,
+
+1460
+00:59:03,110 --> 00:59:04,940
+a, never sell them,
+
+1461
+00:59:04,940 --> 00:59:08,420
+b, give them away or c,
+
+1462
+00:59:08,420 --> 00:59:10,130
+sell them at a reasonable
+price and they tick
+
+1463
+00:59:10,130 --> 00:59:12,425
+box C and the
+rest is history,
+
+1464
+00:59:12,425 --> 00:59:13,655
+but absolutely,
+
+1465
+00:59:13,655 --> 00:59:15,395
+it's standards are
+fundamental thing here.
+
+1466
+00:59:15,395 --> 00:59:18,200
+This is Everett
+Rogers observability
+
+1467
+00:59:18,200 --> 00:59:19,805
+and compatibility pot,
+
+1468
+00:59:19,805 --> 00:59:21,710
+and it won't work
+unless you do that
+
+1469
+00:59:21,710 --> 00:59:24,380
+but I think it's too much
+
+1470
+00:59:24,380 --> 00:59:28,190
+to try and change
+
+1471
+00:59:28,190 --> 00:59:30,605
+or retrofit, and
+I think this is,
+
+1472
+00:59:30,605 --> 00:59:35,210
+some people have a problem
+
+1473
+00:59:35,210 --> 00:59:36,545
+with this of trying to
+
+1474
+00:59:36,545 --> 00:59:39,935
+graph TCPIP concepts into
+
+1475
+00:59:39,935 --> 00:59:43,640
+NDN to make it work
+quote-unquote.
+
+1476
+00:59:43,640 --> 00:59:45,470
+I think I'm going to
+have to keep them
+
+1477
+00:59:45,470 --> 00:59:46,220
+separate and you're going
+
+1478
+00:59:46,220 --> 00:59:47,299
+to build them
+side-by-side.
+
+1479
+00:59:47,299 --> 00:59:48,785
+It's the same thing
+with the Internet.
+
+1480
+00:59:48,785 --> 00:59:50,660
+Day 1, 1969,
+
+1481
+00:59:50,660 --> 00:59:51,680
+there was no Internet, day
+
+1482
+00:59:51,680 --> 00:59:53,495
+2 there were four nodes,
+
+1483
+00:59:53,495 --> 00:59:56,045
+and here we are day
+whatever it is,
+
+1484
+00:59:56,045 --> 00:59:57,620
+and there's millions of
+
+1485
+00:59:57,620 --> 00:59:59,465
+them and that's
+the process.
+
+1486
+00:59:59,465 --> 01:00:00,740
+Fortunately, it's a little
+
+1487
+01:00:00,740 --> 01:00:03,260
+easier, and thank you.
+
+1488
+01:00:03,260 --> 01:00:08,450
+My understanding is
+that the NFD daemon is
+
+1489
+01:00:08,450 --> 01:00:10,730
+supported in Ubuntu
+and that's like it's
+
+1490
+01:00:10,730 --> 01:00:13,610
+already on 400 million
+servers. Job done.
+
+1491
+01:00:13,610 --> 01:00:16,070
+Just sighted people
+plugging into that guys.
+
+1492
+01:00:16,070 --> 01:00:17,315
+That's what we're doing,
+
+1493
+01:00:17,315 --> 01:00:18,770
+so there are ways to
+
+1494
+01:00:18,770 --> 01:00:21,470
+do this that's
+simplified for people,
+
+1495
+01:00:21,470 --> 01:00:23,675
+and this is the
+fundamental thing.
+
+1496
+01:00:23,675 --> 01:00:26,660
+I always quote Paul Baron.
+
+1497
+01:00:26,660 --> 01:00:27,890
+Who invented
+packet switching
+
+1498
+01:00:27,890 --> 01:00:28,460
+and he went to see
+
+1499
+01:00:28,460 --> 01:00:31,370
+AT&T in the 60s and
+explained it to them,
+
+1500
+01:00:31,370 --> 01:00:34,070
+and the Chief Engineer
+of AT&T turns to
+
+1501
+01:00:34,070 --> 01:00:35,210
+his guys and rolls
+
+1502
+01:00:35,210 --> 01:00:36,200
+his eyes to inspect
+
+1503
+01:00:36,200 --> 01:00:37,310
+to Paul Brandon and says,
+
+1504
+01:00:37,310 --> 01:00:40,680
+son let me tell you
+how telephone work,
+
+1505
+01:00:42,070 --> 01:00:44,810
+it's a one person at
+
+1506
+01:00:44,810 --> 01:00:46,940
+a time conversation
+to convert people,
+
+1507
+01:00:46,940 --> 01:00:49,835
+but you've got to try
+and find that leverage.
+
+1508
+01:00:49,835 --> 01:00:52,220
+Crazy guys like me and
+the guys that we've
+
+1509
+01:00:52,220 --> 01:00:54,800
+found that just
+get you there,
+
+1510
+01:00:54,800 --> 01:00:56,825
+and I had this
+conversation with
+
+1511
+01:00:56,825 --> 01:00:58,625
+supposedly the head of
+
+1512
+01:00:58,625 --> 01:01:00,140
+finding new
+technology at Akamai.
+
+1513
+01:01:00,140 --> 01:01:01,820
+Turns out he's the
+guy who's in charge
+
+1514
+01:01:01,820 --> 01:01:03,320
+of killing new technology
+
+1515
+01:01:03,320 --> 01:01:04,550
+that might be a threat,
+
+1516
+01:01:04,550 --> 01:01:06,725
+and he said to me,
+
+1517
+01:01:06,725 --> 01:01:08,540
+he obviously is a
+source of threat,
+
+1518
+01:01:08,540 --> 01:01:09,440
+and he said, how are you
+
+1519
+01:01:09,440 --> 01:01:10,280
+going to get it out there?
+
+1520
+01:01:10,280 --> 01:01:11,810
+At the time I said,
+
+1521
+01:01:11,810 --> 01:01:13,880
+given the Internet story
+and he said, Yeah,
+
+1522
+01:01:13,880 --> 01:01:16,130
+but back then Akamai
+didn't exist,
+
+1523
+01:01:16,130 --> 01:01:18,515
+and then quite had
+
+1524
+01:01:18,515 --> 01:01:20,900
+cut back to him and
+all the rest of it,
+
+1525
+01:01:20,900 --> 01:01:23,285
+innovator's dilemma etc,
+
+1526
+01:01:23,285 --> 01:01:24,770
+but it turns out
+
+1527
+01:01:24,770 --> 01:01:26,855
+Akamai's doing our
+marketing for us.
+
+1528
+01:01:26,855 --> 01:01:29,870
+Does massive
+failures recently,
+
+1529
+01:01:29,870 --> 01:01:32,030
+thesis is that the
+Internet is too
+
+1530
+01:01:32,030 --> 01:01:34,000
+complex for human
+beings to manage.
+
+1531
+01:01:34,000 --> 01:01:34,780
+We are going to fix that,
+
+1532
+01:01:34,780 --> 01:01:35,590
+and the only way to fix
+
+1533
+01:01:35,590 --> 01:01:37,975
+that is with some MLI.
+
+1534
+01:01:37,975 --> 01:01:40,000
+I'm sorry, I'm
+writing because
+
+1535
+01:01:40,000 --> 01:01:41,500
+I'm trying to summarize
+
+1536
+01:01:41,500 --> 01:01:43,330
+10 years of
+experience in pioneer
+
+1537
+01:01:43,330 --> 01:01:46,760
+in a shorter space
+of time as I can.
+
+1538
+01:01:48,910 --> 01:01:51,260
+>> Maybe that will be
+
+1539
+01:01:51,260 --> 01:01:52,760
+a future tunnel system
+
+1540
+01:01:52,760 --> 01:01:54,320
+it up with we
+are after all,
+
+1541
+01:01:54,320 --> 01:01:55,610
+being hosted at Nest.
+
+1542
+01:01:55,610 --> 01:01:56,510
+Maybe that could be
+
+1543
+01:01:56,510 --> 01:01:58,130
+a good topic
+for the future.
+
+1544
+01:01:58,130 --> 01:02:01,745
+>> Yes, absolutely, and
+
+1545
+01:02:01,745 --> 01:02:03,485
+thanks for the comments,
+
+1546
+01:02:03,485 --> 01:02:08,810
+and I think let's
+
+1547
+01:02:08,810 --> 01:02:10,220
+continue the
+conversation even
+
+1548
+01:02:10,220 --> 01:02:13,025
+after the panel and
+the conversation.
+
+1549
+01:02:13,025 --> 01:02:15,900
+Happy to reach out.
+
+1550
+01:02:16,420 --> 01:02:19,220
+I don't know if we're out
+
+1551
+01:02:19,220 --> 01:02:21,260
+of time or we have
+10 more minutes,
+
+1552
+01:02:21,260 --> 01:02:22,370
+I'd like to have 10 more
+
+1553
+01:02:22,370 --> 01:02:23,960
+minutes if we have it,
+
+1554
+01:02:23,960 --> 01:02:28,250
+but I think the
+last question
+
+1555
+01:02:28,250 --> 01:02:31,970
+I had was we started with.
+
+1556
+01:02:31,970 --> 01:02:33,830
+>> Excuse me, you
+have 15 more minutes.
+
+1557
+01:02:33,830 --> 01:02:37,370
+>> Greta. Thank
+you. We started
+
+1558
+01:02:37,370 --> 01:02:39,350
+with the community meeting
+
+1559
+01:02:39,350 --> 01:02:42,185
+with the goal of
+creating a wish list.
+
+1560
+01:02:42,185 --> 01:02:44,960
+In terms of accessibility,
+
+1561
+01:02:44,960 --> 01:02:47,870
+what would be
+your wish list?
+
+1562
+01:02:47,870 --> 01:02:50,225
+That goes to the panelist
+
+1563
+01:02:50,225 --> 01:02:52,940
+and then also
+the audience.
+
+1564
+01:02:52,940 --> 01:02:55,650
+The panelist first.
+
+1565
+01:02:58,900 --> 01:03:02,030
+>> My wish list is
+to have DevOps,
+
+1566
+01:03:02,030 --> 01:03:04,580
+if NDN engineers
+working directly
+
+1567
+01:03:04,580 --> 01:03:05,750
+with me on my project and
+
+1568
+01:03:05,750 --> 01:03:07,950
+my wishes had
+been granted.
+
+1569
+01:03:19,600 --> 01:03:21,980
+>> James, you mentioned
+
+1570
+01:03:21,980 --> 01:03:24,349
+a docker easy to
+use applications.
+
+1571
+01:03:24,349 --> 01:03:25,715
+Is there anything else?
+
+1572
+01:03:25,715 --> 01:03:29,100
+>> Well, as I said,
+
+1573
+01:03:29,740 --> 01:03:33,680
+just creative ways to
+increase exposure.
+
+1574
+01:03:33,680 --> 01:03:36,140
+I think one of
+the problems
+
+1575
+01:03:36,140 --> 01:03:39,830
+with the half-century
+existence
+
+1576
+01:03:39,830 --> 01:03:44,300
+of Internet and
+precursor technologies
+
+1577
+01:03:44,300 --> 01:03:46,025
+is that everyone,
+
+1578
+01:03:46,025 --> 01:03:47,900
+practically
+everyone has grown
+
+1579
+01:03:47,900 --> 01:03:50,630
+up in the age of networks.
+
+1580
+01:03:50,630 --> 01:03:54,305
+There already is a
+lot of conditioning,
+
+1581
+01:03:54,305 --> 01:03:56,270
+specifically people
+thinking they
+
+1582
+01:03:56,270 --> 01:04:00,410
+understand how
+networks work,
+
+1583
+01:04:00,410 --> 01:04:02,885
+and like I said this
+
+1584
+01:04:02,885 --> 01:04:05,705
+contributes to that
+ossification problem,
+
+1585
+01:04:05,705 --> 01:04:08,870
+and so you have to
+counter that and then I
+
+1586
+01:04:08,870 --> 01:04:12,710
+think any of the means
+
+1587
+01:04:12,710 --> 01:04:14,075
+that we've talked about,
+
+1588
+01:04:14,075 --> 01:04:17,240
+again, web accessible,
+
+1589
+01:04:17,240 --> 01:04:20,630
+single click Install,
+very simple.
+
+1590
+01:04:20,630 --> 01:04:22,985
+Do It Yourself, Kits,
+
+1591
+01:04:22,985 --> 01:04:26,450
+I think are things
+like mosquito, MQTT,
+
+1592
+01:04:26,450 --> 01:04:28,130
+things that there are
+
+1593
+01:04:28,130 --> 01:04:29,825
+hobbyists at
+play with those.
+
+1594
+01:04:29,825 --> 01:04:33,330
+I don't hear of hobbyists
+playing within NDN.
+
+1595
+01:04:33,490 --> 01:04:37,415
+I think one
+important problem
+
+1596
+01:04:37,415 --> 01:04:38,630
+that I was not able to
+
+1597
+01:04:38,630 --> 01:04:42,860
+crack so far was you
+need in aerospace,
+
+1598
+01:04:42,860 --> 01:04:44,150
+this is very important
+
+1599
+01:04:44,150 --> 01:04:45,575
+maybe and other sectors,
+
+1600
+01:04:45,575 --> 01:04:47,000
+you don't switch to
+
+1601
+01:04:47,000 --> 01:04:49,250
+something because it's
+beautiful or elegant.
+
+1602
+01:04:49,250 --> 01:04:51,155
+You switch to something
+because it has
+
+1603
+01:04:51,155 --> 01:04:54,395
+a concrete proven benefit,
+
+1604
+01:04:54,395 --> 01:04:56,240
+and so one of the things I
+
+1605
+01:04:56,240 --> 01:04:58,235
+wanted to do and I
+was not able to,
+
+1606
+01:04:58,235 --> 01:05:01,010
+or had not so far been
+able to do was to
+
+1607
+01:05:01,010 --> 01:05:04,190
+create a benchmark suite.
+
+1608
+01:05:04,190 --> 01:05:07,070
+Well, so this would be
+possibly a testbed,
+
+1609
+01:05:07,070 --> 01:05:11,435
+but a simulation
+where we show,
+
+1610
+01:05:11,435 --> 01:05:14,495
+I don't know, I'll
+pick an example.
+
+1611
+01:05:14,495 --> 01:05:16,970
+Latency or energy where
+
+1612
+01:05:16,970 --> 01:05:19,070
+we demonstrate
+concrete benefits.
+
+1613
+01:05:19,070 --> 01:05:20,570
+If I use an NDN
+implementation,
+
+1614
+01:05:20,570 --> 01:05:24,995
+I gain x over an
+IP implementation,
+
+1615
+01:05:24,995 --> 01:05:28,040
+and I haven't heard
+anyone talk about
+
+1616
+01:05:28,040 --> 01:05:29,885
+why from
+
+1617
+01:05:29,885 --> 01:05:33,455
+a measurable performance
+standpoint NDN,
+
+1618
+01:05:33,455 --> 01:05:35,990
+I think we have
+ideas about how
+
+1619
+01:05:35,990 --> 01:05:39,080
+content based networks
+can outperform,
+
+1620
+01:05:39,080 --> 01:05:41,000
+but that is how you sell
+
+1621
+01:05:41,000 --> 01:05:42,215
+things in
+
+1622
+01:05:42,215 --> 01:05:43,970
+certainly the
+Department of Defense.
+
+1623
+01:05:43,970 --> 01:05:46,610
+That example I talked
+about in the beginning,
+
+1624
+01:05:46,610 --> 01:05:49,445
+the mill standard 1553
+
+1625
+01:05:49,445 --> 01:05:52,715
+was adopted in
+the F-15 program.
+
+1626
+01:05:52,715 --> 01:05:55,070
+Before that, believe
+it or not, was analog.
+
+1627
+01:05:55,070 --> 01:05:56,945
+It was analog,
+lots of wiring,
+
+1628
+01:05:56,945 --> 01:06:02,270
+and the way that they
+were able to sell 1553,
+
+1629
+01:06:02,270 --> 01:06:03,500
+which of course
+now I'm saying I
+
+1630
+01:06:03,500 --> 01:06:04,940
+wish they would
+get rid of because
+
+1631
+01:06:04,940 --> 01:06:07,220
+it's such an old
+technolog the way
+
+1632
+01:06:07,220 --> 01:06:08,270
+they were able to sell it
+
+1633
+01:06:08,270 --> 01:06:09,500
+was they demonstraY.
+
+1634
+01:06:09,500 --> 01:06:10,640
+Ted white savings.
+
+1635
+01:06:10,640 --> 01:06:11,990
+We're talking
+hundreds of pounds,
+
+1636
+01:06:11,990 --> 01:06:13,490
+and I think it was
+mentioned earlier
+
+1637
+01:06:13,490 --> 01:06:15,890
+that wiring harnesses are
+
+1638
+01:06:15,890 --> 01:06:18,740
+a significant element of
+
+1639
+01:06:18,740 --> 01:06:21,050
+weight in systems
+aerospace system.
+
+1640
+01:06:21,050 --> 01:06:23,075
+I know if one,
+I think GPS,
+
+1641
+01:06:23,075 --> 01:06:25,040
+I think it's rumored
+that I want to
+
+1642
+01:06:25,040 --> 01:06:27,590
+say 400 pounds of
+
+1643
+01:06:27,590 --> 01:06:30,410
+wiring harness and or
+kilograms and it's
+
+1644
+01:06:30,410 --> 01:06:34,265
+like $50,000 a kilogram
+to launch something.
+
+1645
+01:06:34,265 --> 01:06:36,005
+There was an incentive.
+
+1646
+01:06:36,005 --> 01:06:39,080
+When they were
+able to say, Look,
+
+1647
+01:06:39,080 --> 01:06:40,580
+I can save you a lot of
+
+1648
+01:06:40,580 --> 01:06:43,085
+weight on the
+F15 aircraft.
+
+1649
+01:06:43,085 --> 01:06:45,590
+If you switch
+to the standard
+
+1650
+01:06:45,590 --> 01:06:49,325
+that put it over whatever
+the tipping point,
+
+1651
+01:06:49,325 --> 01:06:52,460
+and at that point,
+since the F-15 did it,
+
+1652
+01:06:52,460 --> 01:06:53,960
+then the F-16 copied it
+
+1653
+01:06:53,960 --> 01:06:56,525
+and many other
+systems copied it.
+
+1654
+01:06:56,525 --> 01:06:58,700
+That incentive
+structure helps
+
+1655
+01:06:58,700 --> 01:07:00,620
+another question
+about accessibility,
+
+1656
+01:07:00,620 --> 01:07:03,215
+but I think that
+part of this is,
+
+1657
+01:07:03,215 --> 01:07:05,025
+what is the idea?
+
+1658
+01:07:05,025 --> 01:07:06,925
+The idea is elegant,
+
+1659
+01:07:06,925 --> 01:07:08,560
+but why elegance that
+
+1660
+01:07:08,560 --> 01:07:09,910
+in itself is not enough.
+
+1661
+01:07:09,910 --> 01:07:12,340
+What is it that I
+need to push us over
+
+1662
+01:07:12,340 --> 01:07:16,360
+the top? I'll stop there.
+
+1663
+01:07:16,360 --> 01:07:19,300
+>> Now, I think
+that's a great point.
+
+1664
+01:07:19,300 --> 01:07:23,395
+It's the economy
+of things.
+
+1665
+01:07:23,395 --> 01:07:24,640
+I think we need to have
+
+1666
+01:07:24,640 --> 01:07:26,335
+a panel on that as well.
+
+1667
+01:07:26,335 --> 01:07:29,285
+>> I just wanted
+
+1668
+01:07:29,285 --> 01:07:31,830
+to throw out
+something quickly.
+
+1669
+01:07:31,870 --> 01:07:35,675
+Thinking into
+what resources
+
+1670
+01:07:35,675 --> 01:07:37,805
+made research
+on the internet
+
+1671
+01:07:37,805 --> 01:07:39,365
+useful and valuable,
+
+1672
+01:07:39,365 --> 01:07:41,150
+one of them that I
+don't think we've
+
+1673
+01:07:41,150 --> 01:07:43,505
+covered so far
+is datasets.
+
+1674
+01:07:43,505 --> 01:07:44,660
+There were a lot of
+
+1675
+01:07:44,660 --> 01:07:46,130
+datasets that were
+collected over
+
+1676
+01:07:46,130 --> 01:07:49,085
+the internet that drove
+a lot of research,
+
+1677
+01:07:49,085 --> 01:07:51,320
+the study of TCP
+congestion control
+
+1678
+01:07:51,320 --> 01:07:52,430
+and lots of other things,
+
+1679
+01:07:52,430 --> 01:07:56,285
+and I don't think we
+have NDN datasets.
+
+1680
+01:07:56,285 --> 01:07:59,210
+We don't have many
+applications,
+
+1681
+01:07:59,210 --> 01:08:00,620
+but we do have some.
+
+1682
+01:08:00,620 --> 01:08:03,290
+We have climate,
+we have genomics.
+
+1683
+01:08:03,290 --> 01:08:06,185
+Would it be
+useful if people
+
+1684
+01:08:06,185 --> 01:08:09,140
+who run these
+applications,
+
+1685
+01:08:09,140 --> 01:08:11,270
+if we collected some
+data sets and made
+
+1686
+01:08:11,270 --> 01:08:14,090
+those available
+to the community,
+
+1687
+01:08:14,090 --> 01:08:15,590
+may have to be a little
+
+1688
+01:08:15,590 --> 01:08:17,315
+different because
+obviously there's
+
+1689
+01:08:17,315 --> 01:08:19,160
+caching and this
+retrieval from
+
+1690
+01:08:19,160 --> 01:08:21,290
+multiple locations
+and so forth?
+
+1691
+01:08:21,290 --> 01:08:23,449
+But I wonder if
+the availability
+
+1692
+01:08:23,449 --> 01:08:24,830
+of datasets something that
+
+1693
+01:08:24,830 --> 01:08:28,925
+a graduate student can
+delay the hands-on in
+
+1694
+01:08:28,925 --> 01:08:30,110
+and look at India and
+
+1695
+01:08:30,110 --> 01:08:33,680
+studied and even some
+an animation tool.
+
+1696
+01:08:33,680 --> 01:08:35,090
+I wonder if those
+things would
+
+1697
+01:08:35,090 --> 01:08:39,030
+help propagate in the
+end a little more?
+
+1698
+01:08:41,100 --> 01:08:43,130
+>> When we start
+doing a lot of
+
+1699
+01:08:43,130 --> 01:08:44,840
+simulations on fabric,
+
+1700
+01:08:44,840 --> 01:08:46,650
+we could generate
+that data
+
+1701
+01:08:46,650 --> 01:08:48,560
+in our genomics
+experiments,
+
+1702
+01:08:48,560 --> 01:08:50,475
+I presume, if I understand
+
+1703
+01:08:50,475 --> 01:08:53,380
+what data you're
+talking about.
+
+1704
+01:08:55,160 --> 01:08:59,100
+>> Yeah. I have a couple
+of comments on that,
+
+1705
+01:08:59,100 --> 01:09:01,200
+but let me see if there
+are any questions or
+
+1706
+01:09:01,200 --> 01:09:02,940
+comments from the audience
+
+1707
+01:09:02,940 --> 01:09:05,080
+and then we'll
+come back to that.
+
+1708
+01:09:08,030 --> 01:09:11,140
+If you have any questions
+from the audience,
+
+1709
+01:09:11,140 --> 01:09:14,590
+feel free to
+speak up, please.
+
+1710
+01:09:17,390 --> 01:09:25,960
+It doesn't look like
+there are any questions.
+
+1711
+01:09:26,120 --> 01:09:28,740
+But this is also
+going back to
+
+1712
+01:09:28,740 --> 01:09:30,190
+the testware
+discussion and
+
+1713
+01:09:30,190 --> 01:09:32,230
+the docker discussion.
+
+1714
+01:09:32,230 --> 01:09:33,965
+Is it enough to have
+
+1715
+01:09:33,965 --> 01:09:35,555
+just a dataset or
+
+1716
+01:09:35,555 --> 01:09:37,265
+the testware or
+the docker or
+
+1717
+01:09:37,265 --> 01:09:43,660
+should we try to create
+an example use cases
+
+1718
+01:09:43,660 --> 01:09:45,935
+where the genomic
+students can go
+
+1719
+01:09:45,935 --> 01:09:48,290
+play with the data
+
+1720
+01:09:48,290 --> 01:09:51,175
+and the software
+and the workflow?
+
+1721
+01:09:51,175 --> 01:09:55,030
+The aerospace researchers
+can go play with
+
+1722
+01:09:55,030 --> 01:09:58,270
+that particular set
+of containers and
+
+1723
+01:09:58,270 --> 01:10:03,100
+so should we have
+
+1724
+01:10:03,100 --> 01:10:05,490
+distributed systems
+that allows
+
+1725
+01:10:05,490 --> 01:10:07,375
+you to play with NDN,
+
+1726
+01:10:07,375 --> 01:10:10,120
+with actual data sets?
+
+1727
+01:10:14,450 --> 01:10:17,960
+>> Nothing beats having
+the applications
+
+1728
+01:10:17,960 --> 01:10:19,930
+and play with the
+applications themselves.
+
+1729
+01:10:19,930 --> 01:10:21,150
+But I was thinking
+if there was
+
+1730
+01:10:21,150 --> 01:10:22,750
+a dataset where it
+
+1731
+01:10:22,750 --> 01:10:24,660
+demonstrated the
+fact that you set
+
+1732
+01:10:24,660 --> 01:10:25,810
+an interest and then it
+
+1733
+01:10:25,810 --> 01:10:27,220
+takes so much time
+to get it back,
+
+1734
+01:10:27,220 --> 01:10:28,580
+and then you send
+
+1735
+01:10:28,580 --> 01:10:30,430
+somebody else who has
+an interest and they
+
+1736
+01:10:30,430 --> 01:10:32,045
+get it from a cache or
+
+1737
+01:10:32,045 --> 01:10:33,845
+showing things
+like failover,
+
+1738
+01:10:33,845 --> 01:10:35,110
+some robustness
+and so forth,
+
+1739
+01:10:35,110 --> 01:10:37,780
+I think those are simple
+things that we could
+
+1740
+01:10:37,780 --> 01:10:41,190
+do that could demonstrate
+
+1741
+01:10:41,190 --> 01:10:42,545
+some of the
+aspects of NDN,
+
+1742
+01:10:42,545 --> 01:10:44,920
+not everything, of
+course, but some of them.
+
+1743
+01:10:44,920 --> 01:10:47,110
+>> Christos,
+by dataset you
+
+1744
+01:10:47,110 --> 01:10:50,110
+also include the traffic.
+
+1745
+01:10:50,990 --> 01:10:53,180
+>> Exactly. Yes,
+
+1746
+01:10:53,180 --> 01:10:56,340
+I do want to see
+that net flow traces
+
+1747
+01:10:56,340 --> 01:11:01,210
+that demonstrate
+how NDN works.
+
+1748
+01:11:01,700 --> 01:11:04,500
+>> I'm saying
+proof of evidence.
+
+1749
+01:11:04,500 --> 01:11:06,125
+Here it is we see,
+
+1750
+01:11:06,125 --> 01:11:08,890
+here's the real traffic,
+it looks better.
+
+1751
+01:11:09,820 --> 01:11:12,230
+>> When we get started,
+
+1752
+01:11:12,230 --> 01:11:13,640
+we'll come back and
+
+1753
+01:11:13,640 --> 01:11:14,900
+talk to you,
+Christos, about that.
+
+1754
+01:11:14,900 --> 01:11:16,375
+We'll generate
+that for fabric,
+
+1755
+01:11:16,375 --> 01:11:17,785
+but also for the
+
+1756
+01:11:17,785 --> 01:11:19,085
+distributed Kubernetes
+
+1757
+01:11:19,085 --> 01:11:21,660
+specific research
+platform.
+
+1758
+01:11:22,680 --> 01:11:24,250
+It's actually across
+
+1759
+01:11:24,250 --> 01:11:26,020
+the country now and we'll
+
+1760
+01:11:26,020 --> 01:11:27,710
+capture that
+networking data
+
+1761
+01:11:27,710 --> 01:11:28,660
+and I'll make sure
+
+1762
+01:11:28,660 --> 01:11:29,360
+we capture the
+right stuff.
+
+1763
+01:11:29,360 --> 01:11:31,150
+We're capturing resource
+data just not at
+
+1764
+01:11:31,150 --> 01:11:33,570
+that granularity at
+the network level.
+
+1765
+01:11:33,570 --> 01:11:34,670
+We're already
+doing that for
+
+1766
+01:11:34,670 --> 01:11:36,820
+AI algorithms to predict
+
+1767
+01:11:36,820 --> 01:11:38,975
+our usage patterns in
+the future so that we
+
+1768
+01:11:38,975 --> 01:11:42,160
+can ask estimator
+in the Cloud.
+
+1769
+01:11:48,770 --> 01:11:51,270
+>> I think we
+are coming to
+
+1770
+01:11:51,270 --> 01:11:56,885
+the end of the time.
+
+1771
+01:11:56,885 --> 01:11:58,895
+There's an eco somewhere.
+
+1772
+01:11:58,895 --> 01:12:01,300
+I still want to see
+once more if there are
+
+1773
+01:12:01,300 --> 01:12:04,760
+any questions or comments
+from the audience.
+
+1774
+01:12:14,240 --> 01:12:17,375
+>> Final very quick
+comment, Susmit.
+
+1775
+01:12:17,375 --> 01:12:18,670
+When we talked about
+
+1776
+01:12:18,670 --> 01:12:19,530
+standards, the other thing
+
+1777
+01:12:19,530 --> 01:12:20,820
+that I would
+really like to
+
+1778
+01:12:20,820 --> 01:12:24,555
+see some work is,
+
+1779
+01:12:24,555 --> 01:12:27,910
+what about putting
+NDN in hardware?
+
+1780
+01:12:30,840 --> 01:12:34,125
+Are we not ready
+yet or are there
+
+1781
+01:12:34,125 --> 01:12:37,240
+some basic simple
+functionalities that we can
+
+1782
+01:12:37,240 --> 01:12:41,445
+define that can actually
+get NDN in silicon?
+
+1783
+01:12:41,445 --> 01:12:43,910
+If we're not
+ready yet, great,
+
+1784
+01:12:43,910 --> 01:12:44,940
+but I think having that
+
+1785
+01:12:44,940 --> 01:12:47,870
+conversation will
+be interesting.
+
+1786
+01:12:52,150 --> 01:12:55,050
+>> I raised my hand,
+I guess it's hard to
+
+1787
+01:12:55,050 --> 01:12:57,815
+see. Can people hear me?
+
+1788
+01:12:57,815 --> 01:12:58,885
+>> Yes.
+
+1789
+01:12:58,885 --> 01:13:01,725
+>> I was just typing
+in my comments.
+
+1790
+01:13:01,725 --> 01:13:05,530
+Personally, I
+believe the price,
+
+1791
+01:13:05,530 --> 01:13:06,990
+the selling points for
+
+1792
+01:13:06,990 --> 01:13:11,790
+NDN wouldn't be a
+unique functionality.
+
+1793
+01:13:11,790 --> 01:13:14,785
+Being an old person,
+
+1794
+01:13:14,785 --> 01:13:17,485
+being through the
+old days of how
+
+1795
+01:13:17,485 --> 01:13:20,625
+IP went over the world,
+
+1796
+01:13:20,625 --> 01:13:24,925
+performance wasn't
+IPs strong points
+
+1797
+01:13:24,925 --> 01:13:26,935
+at the very beginning.
+
+1798
+01:13:26,935 --> 01:13:29,650
+I remember that my
+
+1799
+01:13:29,650 --> 01:13:32,180
+former advisor,
+David Clarke,
+
+1800
+01:13:32,180 --> 01:13:36,095
+had to write papers
+explaining to
+
+1801
+01:13:36,095 --> 01:13:41,460
+the world why TCP wasn't
+intrinsically slow,
+
+1802
+01:13:41,460 --> 01:13:43,230
+rather just there is
+
+1803
+01:13:43,230 --> 01:13:45,640
+an early days of
+implementation.
+
+1804
+01:13:45,640 --> 01:13:48,255
+Nobody is talking about
+
+1805
+01:13:48,255 --> 01:13:50,780
+TCP being too slow now,
+
+1806
+01:13:51,320 --> 01:13:53,600
+but in the early days,
+
+1807
+01:13:53,600 --> 01:13:56,735
+there's lots of
+criticism about
+
+1808
+01:13:56,735 --> 01:14:01,620
+IPs, TCP/IPs poor
+performance.
+
+1809
+01:14:01,620 --> 01:14:06,235
+I think that new things
+
+1810
+01:14:06,235 --> 01:14:09,430
+are not polished
+and it's hard to
+
+1811
+01:14:09,430 --> 01:14:12,505
+beat the legacies
+which has been
+
+1812
+01:14:12,505 --> 01:14:18,645
+debolished over the
+package of deployment.
+
+1813
+01:14:18,645 --> 01:14:22,055
+That is just my
+little thoughts on
+
+1814
+01:14:22,055 --> 01:14:25,415
+the competing and
+performance front
+
+1815
+01:14:25,415 --> 01:14:30,610
+based on the past
+observation. Thanks.
+
+1816
+01:14:42,560 --> 01:14:45,890
+>> Susmit, we
+cannot hear you.
+
+1817
+01:14:45,890 --> 01:14:47,860
+>> Susmit, you're muted.
+
+1818
+01:15:00,530 --> 01:15:06,639
+>> He's unmuted but
+just not talking.
+
+1819
+01:15:08,240 --> 01:15:11,700
+>> Looks like
+we lost Susmit.
+
+1820
+01:15:11,700 --> 01:15:14,240
+>> Release the other.
+
+1821
+01:15:15,270 --> 01:15:18,700
+>> It's 2:15,
+
+1822
+01:15:18,700 --> 01:15:21,340
+so I guess its all time
+
+1823
+01:15:21,340 --> 01:15:25,715
+to end the law, I guess.
+
+1824
+01:15:25,715 --> 01:15:28,280
+On behalf of Susmit,
+
+1825
+01:15:28,280 --> 01:15:30,600
+thank you-all
+the panelists
+
+1826
+01:15:30,600 --> 01:15:33,875
+and the agenda has
+
+1827
+01:15:33,875 --> 01:15:35,400
+scheduled for a 15 minutes
+
+1828
+01:15:35,400 --> 01:15:37,445
+break starting now.
+
+1829
+01:15:37,445 --> 01:15:39,875
+Thank you very much.
+
+1830
+01:15:39,875 --> 01:15:42,080
+>> Thank you, Clemson.
